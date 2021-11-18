@@ -7,6 +7,7 @@ const morgan = require("morgan");
 const userRoute = require("./routes/users.js");
 const authRoute = require("./routes/auth");
 const empRoute = require("./routes/employees");
+const shiftRoute = require("./routes/shifts");
 
 //servidor express
 const port = process.env.PORT || 8080;
@@ -45,6 +46,7 @@ app.use(morgan("common"))
 
 app.use('/api/user', userRoute)
 app.use('/api/auth', authRoute)
+app.use('/api/shift', shiftRoute)
 app.use('/api/emp', empRoute)
 
 
