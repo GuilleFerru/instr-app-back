@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const EmployeesSchema = new mongoose.Schema({
     legajo: {
@@ -13,21 +13,12 @@ const EmployeesSchema = new mongoose.Schema({
         require: true,
         max: 50,
     },
-    turno: {
+    apellido: {
         type: String,
         require: true,
         max: 50,
-    },
-    horario: {
-        type: String,
-        require: true,
-    },
-    horasDiarias: {
-        type: String,
-        require: true,
     }
 },
     { timestamps: true }
 );
-
-module.exports = mongoose.model("Employees", EmployeesSchema);
+export const empleados = mongoose.model("Employees", EmployeesSchema);

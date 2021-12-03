@@ -1,15 +1,14 @@
-const express = require("express");
-const app = express();
-const mongoose = require("mongoose");
-const dotenv = require("dotenv");
-const helmet = require("helmet");
-const morgan = require("morgan");
-const userRoute = require("./routes/users.js");
-const authRoute = require("./routes/auth");
-const empRoute = require("./routes/employees");
-const shiftRoute = require("./routes/shifts");
+import express, {json} from 'express';
+import mongoose from "mongoose";
+import { config } from "dotenv";
+import helmet from "helmet";
+import morgan from "morgan";
+import {userRoute} from "./routes/users.js";
+import {authRoute} from "./routes/auth.js";
+import {empRoute} from "./routes/employees.js";
+import {shiftRoute} from "./routes/shifts.js";
 
-//servidor express
+const app = express();
 const port = process.env.PORT || 8080;
 app.listen(port, () => {
     console.info(`Servidor listo en el puerto ${port}`);
@@ -19,8 +18,10 @@ app.on("error", (error) => {
     console.error(error);
 });
 
+config();
 
-dotenv.config();
+app.use(json());
+app.use(express.urlencoded({ extended: true }));
 
 try {
     mongoose.connect(process.env.MONGO_URL, () => {
@@ -33,14 +34,8 @@ catch (err) {
 }
 
 
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-
-
 //middleware
-app.use(express.json());
+app.use(json());
 app.use(helmet());
 app.use(morgan("common"))
 

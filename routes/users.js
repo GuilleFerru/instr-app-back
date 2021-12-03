@@ -1,8 +1,8 @@
-const router = require("express").Router();
+import express from "express";
 
-
+const router = express.Router();
 
 router.get('/',(req,res)=>{
     res.send('user route')
 })
-module.exports = router;
+export const userRoute = router;

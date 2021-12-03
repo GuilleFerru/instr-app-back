@@ -1,20 +1,16 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const ShiftsSchema = new mongoose.Schema({
     nombre: {
         type: String,
         require: true,
     },
-    mes: {
+    shift: {
         type: Array,
         require: true,
         
     },
-    dia: {
-        type: String,
-        require: true,
-    },
-    horario: {
+    anio: {
         type: String,
         require: true,
     }
@@ -22,4 +18,4 @@ const ShiftsSchema = new mongoose.Schema({
     { timestamps: true }
 );
 
-module.exports = mongoose.model("Shifts", ShiftsSchema);
+export const shifts = mongoose.model("shifts", ShiftsSchema);

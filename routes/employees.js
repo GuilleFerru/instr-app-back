@@ -1,19 +1,21 @@
-const router = require("express").Router();
-const Employee = require('../models/Employees');
+import express from "express";
+import { empleados } from '../models/Employees.js';
+
+
+const router = express.Router();
 
 router.post('/register', async (req, res) => {
     try {
-        const newEmployee = await new Employee({
+        const newEmployee = await empleados.insertMany({
             legajo: req.body.legajo,
             nombre: req.body.nombre,
-            turno: req.body.turno,
-            horario: req.body.horario,
-            horasDiarias: req.body.horasDiarias
+            apellido: req.body.apellido,
         })
-        const employee = await newEmployee.save();
-        res.status(200).json(employee)
+        res.status(200).json(newEmployee)
     } catch (err) {
         res.status(500).json(err);
+    } finally {
+        // await newEmployee.disconnect();
     }
 })
-module.exports = router;
+export const empRoute = router;
