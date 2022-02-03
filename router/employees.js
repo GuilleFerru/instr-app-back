@@ -1,5 +1,5 @@
 import express from "express";
-import { empleados } from '../models/Employees.js';
+import { empleados } from '../model/models/Employees.js';
 
 
 const router = express.Router();

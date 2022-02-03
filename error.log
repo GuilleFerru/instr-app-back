@@ -1,0 +1,77 @@
+[2022-02-01T21:09:17.216] [ERROR] error - TypeError: this.connection.insertMany is not a function
+    at DBMongoDao.createShift (file:///E:/instr-app/instr-app-back/model/DAOs/DBMongoDao.js:19:49)
+    at ApiShift.createShift (file:///E:/instr-app/instr-app-back/api/shifts.js:112:49)
+    at createShift (file:///E:/instr-app/instr-app-back/controllers/shifts.js:14:47)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at E:\instr-app\instr-app-back\node_modules\express\lib\router\index.js:281:22
+    at Function.process_params (E:\instr-app\instr-app-back\node_modules\express\lib\router\index.js:335:12)
+    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\index.js:275:10)
+[2022-02-01T21:11:09.881] [ERROR] error - TypeError: this.connection.insertMany is not a function
+    at DBMongoDao.createShift (file:///E:/instr-app/instr-app-back/model/DAOs/DBMongoDao.js:19:49)
+    at ApiShift.createShift (file:///E:/instr-app/instr-app-back/api/shifts.js:112:49)
+    at createShift (file:///E:/instr-app/instr-app-back/controllers/shifts.js:14:47)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at E:\instr-app\instr-app-back\node_modules\express\lib\router\index.js:281:22
+    at Function.process_params (E:\instr-app\instr-app-back\node_modules\express\lib\router\index.js:335:12)
+    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\index.js:275:10)
+[2022-02-01T21:11:47.332] [ERROR] error - TypeError: this.connection.insertMany is not a function
+    at DBMongoDao.createShift (file:///E:/instr-app/instr-app-back/model/DAOs/DBMongoDao.js:20:49)
+    at ApiShift.createShift (file:///E:/instr-app/instr-app-back/api/shifts.js:112:49)
+    at createShift (file:///E:/instr-app/instr-app-back/controllers/shifts.js:14:47)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at E:\instr-app\instr-app-back\node_modules\express\lib\router\index.js:281:22
+    at Function.process_params (E:\instr-app\instr-app-back\node_modules\express\lib\router\index.js:335:12)
+    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\index.js:275:10)
+[2022-02-01T21:12:53.032] [ERROR] error - TypeError: this.connection.insertMany is not a function
+    at DBMongoDao.createShift (file:///E:/instr-app/instr-app-back/model/DAOs/DBMongoDao.js:20:49)
+    at ApiShift.createShift (file:///E:/instr-app/instr-app-back/api/shifts.js:112:49)
+    at createShift (file:///E:/instr-app/instr-app-back/controllers/shifts.js:14:47)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at E:\instr-app\instr-app-back\node_modules\express\lib\router\index.js:281:22
+    at Function.process_params (E:\instr-app\instr-app-back\node_modules\express\lib\router\index.js:335:12)
+    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\index.js:275:10)
+[2022-02-01T21:13:27.651] [ERROR] error - TypeError: this.connection.insertMany is not a function
+    at DBMongoDao.createShift (file:///E:/instr-app/instr-app-back/model/DAOs/DBMongoDao.js:20:49)
+    at ApiShift.createShift (file:///E:/instr-app/instr-app-back/api/shifts.js:112:49)
+    at createShift (file:///E:/instr-app/instr-app-back/controllers/shifts.js:14:47)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at E:\instr-app\instr-app-back\node_modules\express\lib\router\index.js:281:22
+    at Function.process_params (E:\instr-app\instr-app-back\node_modules\express\lib\router\index.js:335:12)
+    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\index.js:275:10)
+[2022-02-01T21:13:47.750] [ERROR] error - TypeError: this.connection.insertMany is not a function
+    at DBMongoDao.createShift (file:///E:/instr-app/instr-app-back/model/DAOs/DBMongoDao.js:21:49)
+    at ApiShift.createShift (file:///E:/instr-app/instr-app-back/api/shifts.js:112:49)
+    at createShift (file:///E:/instr-app/instr-app-back/controllers/shifts.js:14:47)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at E:\instr-app\instr-app-back\node_modules\express\lib\router\index.js:281:22
+    at Function.process_params (E:\instr-app\instr-app-back\node_modules\express\lib\router\index.js:335:12)
+    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\index.js:275:10)
+[2022-02-01T21:32:35.533] [ERROR] error - TypeError: this.connection.insertMany is not a function
+    at DBMongoDao.createShift (file:///E:/instr-app/instr-app-back/model/DAOs/DBMongoDao.js:23:49)
+    at ApiShift.createShift (file:///E:/instr-app/instr-app-back/api/shifts.js:112:49)
+    at createShift (file:///E:/instr-app/instr-app-back/controllers/shifts.js:14:47)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at E:\instr-app\instr-app-back\node_modules\express\lib\router\index.js:281:22
+    at Function.process_params (E:\instr-app\instr-app-back\node_modules\express\lib\router\index.js:335:12)
+    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\index.js:275:10)

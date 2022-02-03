@@ -3,10 +3,10 @@ import mongoose from "mongoose";
 import { config } from "dotenv";
 import helmet from "helmet";
 import morgan from "morgan";
-import {userRoute} from "./routes/users.js";
-import {authRoute} from "./routes/auth.js";
-import {empRoute} from "./routes/employees.js";
-import {shiftRoute} from "./routes/shifts.js";
+// import {userRoute} from "./router/users.js.js";
+// import {authRoute} from "./router/auth.js.js";
+// import {empRoute} from "./router/employees.js";
+
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -37,12 +37,16 @@ catch (err) {
 //middleware
 app.use(json());
 app.use(helmet());
-app.use(morgan("common"))
+app.use(morgan("common"));
 
-app.use('/api/user', userRoute)
-app.use('/api/auth', authRoute)
-app.use('/api/shift', shiftRoute)
-app.use('/api/emp', empRoute)
+import {RouterShift} from "./router/shifts.js";
+// const RouterShift = require('./router/shifts.js');
+const routerShift = new RouterShift();
+
+// app.use('/api/user', userRoute)
+// app.use('/api/auth', authRoute)
+app.use('/api/shift', routerShift.start())
+// app.use('/api/emp', empRoute)
 
 
 

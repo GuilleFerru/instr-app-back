@@ -1,0 +1,152 @@
+[2022-01-31T23:07:37.235] [INFO] info - Contectando a la Base de datos...
+[2022-01-31T23:07:38.371] [INFO] info - Base de datos conectada
+[2022-01-31T23:07:49.915] [INFO] info - Contectando a la Base de datos...
+[2022-01-31T23:07:50.450] [INFO] info - Base de datos conectada <ref *1> Mongoose {
+  connections: [
+    NativeConnection {
+      base: [Circular *1],
+      collections: {},
+      models: {},
+      config: {},
+      replica: false,
+      options: null,
+      otherDbs: [],
+      relatedDbs: {},
+      states: [Object: null prototype],
+      _readyState: 1,
+      _closeCalled: undefined,
+      _hasOpened: true,
+      plugins: [],
+      id: 0,
+      _queue: [],
+      _listening: false,
+      _connectionString: 'mongodb+srv://ecommerce:3JUOQTzjfNkDKtnh@cluster0.sl41s.mongodb.net/ecommerce?retryWrites=true&w=majority',
+      _connectionOptions: [Object],
+      client: [MongoClient],
+      '$initialConnection': [Promise],
+      db: [Db],
+      host: 'cluster0-shard-00-01.sl41s.mongodb.net',
+      port: 27017,
+      name: 'ecommerce'
+    }
+  ],
+  models: {},
+  events: EventEmitter {
+    _events: [Object: null prototype] {},
+    _eventsCount: 0,
+    _maxListeners: undefined,
+    [Symbol(kCapture)]: false
+  },
+  options: {
+    pluralization: true,
+    autoIndex: true,
+    autoCreate: true,
+    [Symbol(mongoose:default)]: true
+  },
+  _pluralize: [Function: pluralize],
+  Schema: [Function: Schema] {
+    reserved: [Object: null prototype] {
+      validate: 1,
+      toObject: 1,
+      save: 1,
+      remove: 1,
+      populated: 1,
+      isNew: 1,
+      isModified: 1,
+      init: 1,
+      get: 1,
+      errors: 1,
+      collection: 1,
+      removeListener: 1,
+      on: 1,
+      listeners: 1,
+      emit: 1,
+      prototype: 1
+    },
+    Types: {
+      String: [Function],
+      Number: [Function],
+      Boolean: [Function],
+      DocumentArray: [Function],
+      Subdocument: [Function],
+      Array: [Function],
+      Buffer: [Function],
+      Date: [Function],
+      ObjectId: [Function],
+      Mixed: [Function],
+      Decimal: [Function],
+      Decimal128: [Function],
+      Map: [Function],
+      Oid: [Function],
+      Object: [Function],
+      Bool: [Function],
+      ObjectID: [Function]
+    },
+    ObjectId: [Function: ObjectId] {
+      schemaName: 'ObjectId',
+      defaultOptions: {},
+      get: [Function (anonymous)],
+      set: [Function: set],
+      _checkRequired: [Function (anonymous)],
+      _cast: [Function: castObjectId],
+      cast: [Function: cast],
+      _defaultCaster: [Function (anonymous)],
+      checkRequired: [Function (anonymous)]
+    }
+  },
+  model: [Function (anonymous)],
+  plugins: [
+    [ [Function: addIdGetter], [Object] ],
+    [ [Function (anonymous)], [Object] ],
+    [ [Function (anonymous)], [Object] ],
+    [ [Function], [Object] ],
+    [ [Function (anonymous)], [Object] ],
+    [ [Function: trackTransaction], [Object] ]
+  ]
+}
+[2022-01-31T23:08:09.536] [INFO] info - Contectando a la Base de datos...
+[2022-01-31T23:08:10.100] [INFO] info - Base de datos conectada
+[2022-02-01T21:04:02.300] [INFO] info - Contectando a la Base de datos...
+[2022-02-01T21:04:03.511] [INFO] info - Base de datos conectada
+[2022-02-01T21:05:04.676] [INFO] info - Contectando a la Base de datos...
+[2022-02-01T21:05:05.765] [INFO] info - Base de datos conectada
+[2022-02-01T21:05:21.773] [INFO] info - Contectando a la Base de datos...
+[2022-02-01T21:05:22.289] [INFO] info - Base de datos conectada
+[2022-02-01T21:05:43.420] [INFO] info - Contectando a la Base de datos...
+[2022-02-01T21:05:43.924] [INFO] info - Base de datos conectada
+[2022-02-01T21:09:12.388] [INFO] info - Contectando a la Base de datos...
+[2022-02-01T21:09:13.133] [INFO] info - Base de datos conectada
+[2022-02-01T21:11:03.769] [INFO] info - Contectando a la Base de datos...
+[2022-02-01T21:11:04.849] [INFO] info - Base de datos conectada
+[2022-02-01T21:11:39.669] [INFO] info - Contectando a la Base de datos...
+[2022-02-01T21:11:40.166] [INFO] info - Base de datos conectada
+[2022-02-01T21:11:42.194] [INFO] info - Contectando a la Base de datos...
+[2022-02-01T21:11:42.744] [INFO] info - Base de datos conectada
+[2022-02-01T21:12:33.197] [INFO] info - Contectando a la Base de datos...
+[2022-02-01T21:12:34.268] [INFO] info - Base de datos conectada
+[2022-02-01T21:13:11.138] [INFO] info - Contectando a la Base de datos...
+[2022-02-01T21:13:11.674] [INFO] info - Base de datos conectada
+[2022-02-01T21:13:43.367] [INFO] info - Contectando a la Base de datos...
+[2022-02-01T21:13:44.424] [INFO] info - Base de datos conectada
+[2022-02-01T21:16:28.533] [INFO] info - Contectando a la Base de datos...
+[2022-02-01T21:16:29.283] [INFO] info - Base de datos conectada
+[2022-02-01T21:21:12.065] [INFO] info - Contectando a la Base de datos...
+[2022-02-01T21:21:13.282] [INFO] info - Base de datos conectada
+[2022-02-01T21:21:51.212] [INFO] info - Contectando a la Base de datos...
+[2022-02-01T21:21:51.761] [INFO] info - Base de datos conectada
+[2022-02-01T21:22:00.280] [INFO] info - Contectando a la Base de datos...
+[2022-02-01T21:22:00.792] [INFO] info - Base de datos conectada
+[2022-02-01T21:22:05.203] [INFO] info - Contectando a la Base de datos...
+[2022-02-01T21:22:05.758] [INFO] info - Base de datos conectada
+[2022-02-01T21:22:26.161] [INFO] info - Contectando a la Base de datos...
+[2022-02-01T21:22:26.864] [INFO] info - Base de datos conectada
+[2022-02-01T21:24:26.553] [INFO] info - Contectando a la Base de datos...
+[2022-02-01T21:24:27.479] [INFO] info - Base de datos conectada
+[2022-02-01T21:24:31.403] [INFO] info - Contectando a la Base de datos...
+[2022-02-01T21:24:31.978] [INFO] info - Base de datos conectada
+[2022-02-01T21:25:41.496] [INFO] info - Contectando a la Base de datos...
+[2022-02-01T21:25:42.632] [INFO] info - Base de datos conectada
+[2022-02-01T21:25:56.152] [INFO] info - Contectando a la Base de datos...
+[2022-02-01T21:25:56.713] [INFO] info - Base de datos conectada
+[2022-02-01T21:26:07.379] [INFO] info - Contectando a la Base de datos...
+[2022-02-01T21:26:13.531] [INFO] info - Base de datos conectada cluster0-shard-00-02.sl41s.mongodb.net
