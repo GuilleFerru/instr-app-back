@@ -1,21 +1,17 @@
-import express from "express";
-import { empleados } from '../model/models/Employees.js';
-
+import express from 'express';
+import { ControllerEmployee } from '../controllers/employees.js';
 
 const router = express.Router();
 
-router.post('/register', async (req, res) => {
-    try {
-        const newEmployee = await empleados.insertMany({
-            legajo: req.body.legajo,
-            nombre: req.body.nombre,
-            apellido: req.body.apellido,
-        })
-        res.status(200).json(newEmployee)
-    } catch (err) {
-        res.status(500).json(err);
-    } finally {
-        // await newEmployee.disconnect();
+export class RouterEmployee {
+    constructor() {
+        this.controllerEmployee = new ControllerEmployee();
     }
-})
-export const empRoute = router;
+
+    start() {
+        router.post('/create', this.controllerEmployee.createEmployee);
+        router.get('/getForSchedule', this.controllerEmployee.getForScheduleEmployees);
+        return router;
+    }
+
+}

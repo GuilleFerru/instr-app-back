@@ -2,10 +2,8 @@ import mongoose from "mongoose";
 
 const EmployeesSchema = new mongoose.Schema({
     legajo: {
-        type: String,
+        type: Number,
         require: true,
-        min: 3,
-        max: 20,
         unique: true
     },
     nombre: {
@@ -17,8 +15,27 @@ const EmployeesSchema = new mongoose.Schema({
         type: String,
         require: true,
         max: 50,
+    },
+    puesto: {
+        type: String,
+        require: true,
+        max: 100,
+    },
+    categoria: {
+        type: String,
+        require: true,
+        max: 50,
+    },
+    shift:{
+        type: Number,
+        require: true,
+        default: 5
+    },
+    schedule: {
+        type: Number,
+        require: true,
     }
 },
     { timestamps: true }
 );
-export const empleados = mongoose.model("Employees", EmployeesSchema);
+export const empModel = mongoose.model("employees", EmployeesSchema);

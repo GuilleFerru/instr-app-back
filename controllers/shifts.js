@@ -8,9 +8,9 @@ export class ControllerShift {
 
     createShift = async (req, res) => {
         try {
-            const { turno } = req.body;
-            const shift = await this.apiShift.createShift(turno);
-            return res.status(200).json(shift);
+            const rounds = req.body.rounds !== undefined ? req.body.rounds : 1;
+            await this.apiShift.createShift(rounds);
+            return res.status(200).json(true);
         } catch (err) {
             console.log(err);
             return res.status(500).json(err);

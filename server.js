@@ -1,8 +1,10 @@
-import express, {json} from 'express';
-import mongoose from "mongoose";
+import express, { json } from 'express';
 import { config } from "dotenv";
 import helmet from "helmet";
 import morgan from "morgan";
+import DaoFactory from './model/DAOs/DaoFactory.js';
+import cors from 'cors'
+import { loggerError, loggerInfo, loggerWarn } from "./utils/logger.js";
 // import {userRoute} from "./router/users.js.js";
 // import {authRoute} from "./router/auth.js.js";
 // import {empRoute} from "./router/employees.js";
@@ -23,30 +25,36 @@ config();
 app.use(json());
 app.use(express.urlencoded({ extended: true }));
 
-try {
-    mongoose.connect(process.env.MONGO_URL, () => {
-        console.log('Connected to MongoDB');
-    });
-}
-catch (err) {
-    loggerError.error(`MongoDB: Error en conectar: ${err}`)
-    throw err
-}
+
+const daoInstance = DaoFactory.getInstance();
+export const dao = daoInstance.get('mongo');
+
 
 
 //middleware
 app.use(json());
 app.use(helmet());
 app.use(morgan("common"));
+app.use(cors());
 
-import {RouterShift} from "./router/shifts.js";
-// const RouterShift = require('./router/shifts.js');
+import { RouterShift } from "./router/shifts.js";
 const routerShift = new RouterShift();
+import { RouterEmployee } from "./router/employees.js";
+const routerEmployee = new RouterEmployee();
+import { RouterSchedule } from "./router/schedules.js";
+const routerSchedule = new RouterSchedule();
+import { RouterTimeSchedule } from "./router/timeSchedules.js";
+const routerTimeSchedule = new RouterTimeSchedule();
+import { RouterAditional } from "./router/aditionals.js";
+const routerAditional = new RouterAditional();
 
 // app.use('/api/user', userRoute)
 // app.use('/api/auth', authRoute)
-app.use('/api/shift', routerShift.start())
-// app.use('/api/emp', empRoute)
+app.use('/api/shift', routerShift.start());
+app.use('/api/emp', routerEmployee.start());
+app.use('/api/schedule', routerSchedule.start());
+app.use('/api/timeSchedule', routerTimeSchedule.start());
+app.use('/api/aditional', routerAditional.start());
 
 
 

@@ -1,21 +1,17 @@
 import mongoose from "mongoose";
 
 const ShiftsSchema = new mongoose.Schema({
-    nombre: {
+    date: {
         type: String,
         require: true,
     },
-    shift: {
+    shifts: {
         type: Array,
         require: true,
         
-    },
-    anio: {
-        type: String,
-        require: true,
     }
 },
     { timestamps: true }
 );
 
-export const shifts = mongoose.model("shifts", ShiftsSchema);
+export const shiftModel = mongoose.model("shifts", ShiftsSchema);

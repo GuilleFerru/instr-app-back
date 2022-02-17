@@ -1,7 +1,14 @@
 import mongoose from "mongoose";
 import config from "../../config.js";
-import {shifts} from "../models/Shifts.js";
+import { shiftModel } from "../models/Shifts.js";
+import { empModel } from "../models/Employees.js";
+import { scheduleModel } from "../models/Schedules.js";
+import { timeScheduleModel } from "../models/TimeSchedules.js";
+import { workHoursModel } from "../models/WorkHours.js";
+import { aditionalModel } from "../models/Aditionals.js";
 import { loggerError, loggerInfo, loggerWarn } from "../../utils/logger.js";
+import { shiftDTO } from '../DTOs/shifts.js';
+import { employeeDTO } from '../DTOs/employee.js';
 
 const MONGO_URL = config.MONGO_URL;
 
@@ -15,18 +22,149 @@ export class DBMongoDao {
         })();
     }
 
-    createShift = async (turno, shiftsArray) => {
-        try {
+    /* TURNOS   */
 
-            const shift = await shifts.insertMany({
-                nombre: turno,
-                shift: shiftsArray,
-            });          
-            return shift;
+    createShift = async (shifts) => {
+        try {
+            await shiftModel.insertMany(shiftDTO(shifts));
+            return true;
         } catch (error) {
             loggerError.error(error)
         }
-
     }
+
+    getShift = async (date) => {
+        try {
+            const shiftResp = await shiftModel.find({ date: date }, { __v: 0, createdAt: 0, updatedAt: 0 });
+            return shiftResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    dropShiftCollection = async () => {
+        try {
+            await shiftModel.deleteMany({});
+            return true;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    /*          */
+
+    /* HORAS TRABAJADAS */
+
+    getWorkHours = async () => {
+        try {
+            const workHours = await workHoursModel.find({}, { __v: 0, createdAt: 0, updatedAt: 0 });
+            return workHours;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    /*          */
+
+
+    /* EMPLEADOS */
+
+    createEmployee = async (employee) => {
+        try {
+            const empResp = await empModel.insertMany(employeeDTO(employee));
+            return empResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    getEmployees = async () => {
+        try {
+            const empResp = await empModel.find({}, { __v: 0, createdAt: 0, updatedAt: 0 });
+            return empResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+    /*          */
+
+    /* ADICIONALES */
+    createAditional = async (aditional) => {
+        try {
+            const aditionalResp = await aditionalModel.insertMany(aditional);
+            return aditionalResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    getAditionals = async () => {
+        try {
+            const aditionalResp = await aditionalModel.find({}, { __v: 0, createdAt: 0, updatedAt: 0 });
+            return aditionalResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    /*          */
+
+    /* SCHEDULE */
+
+    createSchedule = async (schedule) => {
+        try {
+            const scheduleResp = await scheduleModel.insertMany(schedule);
+            return scheduleResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    getSchedule = async (date) => {
+        try {
+            const scheduleResp = await scheduleModel.find({ date: date }, { __v: 0, createdAt: 0, updatedAt: 0 });
+            return scheduleResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    updateSchedule = async (date, schedule) => {
+        try {
+            const scheduleResp = await scheduleModel.updateMany({ date: date }, { $set: {schedule} });
+            return scheduleResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    createTimeSchedule = async (timeSchedule) => {
+        try {
+
+            const timeScheduleResp = await timeScheduleModel.insertMany(timeSchedule);
+            return timeScheduleResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    getTimeSchedule = async () => {
+        try {
+            const timeScheduleResp = await timeScheduleModel.find({}, { _id: 0, __v: 0, createdAt: 0, updatedAt: 0 });
+            return timeScheduleResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    dropTimeScheduleCollection = async () => {
+        try {
+            await timeScheduleModel.deleteMany({});
+            return true;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    /*          */
 }
-// module.exports = DBMongoDao;
