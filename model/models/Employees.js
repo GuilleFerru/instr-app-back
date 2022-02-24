@@ -34,7 +34,11 @@ const EmployeesSchema = new mongoose.Schema({
     schedule: {
         type: Number,
         require: true,
-    }
+    },
+    sector: {
+        type: String,
+        require: true,
+    },
 },
     { timestamps: true }
 );

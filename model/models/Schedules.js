@@ -10,18 +10,16 @@ const SchedulesSchema = new mongoose.Schema({
         require: true,
 
     },
-    timeSchedule: {
+    columns: {
         type: Array,
         require: true,
     },
-    employeesForSchedule: {
-        type: Array,
-        require: true,
-    },
-    aditionals: {
-        type: Array,
+    sector:{
+        type: String,
         require: true,
     }
+
+
 },
     { timestamps: true }
 );

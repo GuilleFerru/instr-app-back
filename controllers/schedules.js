@@ -1,5 +1,7 @@
 import { ApiSchedule } from '../api/schedules.js';
 import { loggerError } from '../utils/logger.js';
+import {formatDate} from '../utils/formatDate.js';
+
 
 export class ControllerSchedule {
 
@@ -9,10 +11,7 @@ export class ControllerSchedule {
 
     createSchedule = async (req, res) => {
         try {
-
             const { date } = req.body;
-
-
             return res.status(200).json(true);
         } catch (err) {
             loggerError.error(err);
@@ -23,7 +22,7 @@ export class ControllerSchedule {
     getSchedule = async (req, res) => {
         try {
             const { date } = req.params;
-            const dateLocal = new Date(date).toLocaleString("es-AR", { dateStyle: "short" });
+            const dateLocal = formatDate(date);
             const resultado = await this.apiSchedule.getSchedule(dateLocal);
             if (!resultado) {
                 const created = await this.apiSchedule.createSchedule(dateLocal);
@@ -45,8 +44,8 @@ export class ControllerSchedule {
         try {
             const { date } = req.params;
             const { newSchedule } = req.body;
-            const dateLocal = new Date(date).toLocaleString("es-AR", { dateStyle: "short" }); 
-            const resultado = await this.apiSchedule.updateSchedule(dateLocal,newSchedule);
+            const dateLocal = formatDate(date);
+            const resultado = await this.apiSchedule.updateSchedule(dateLocal, newSchedule);
             if (resultado) {
                 return res.status(200).json(resultado);
             } else {
@@ -56,6 +55,25 @@ export class ControllerSchedule {
                 } else {
                     return res.status(500).json(created);
                 }
+            }
+        } catch (error) {
+            loggerError.error(error)
+            return res.status(500).json(error);
+        }
+    }
+
+
+
+    updateScheduleColumns = async (req, res) => {
+        try {           
+            const { date } = req.params;
+            const { newColumns } = req.body;
+            const dateLocal = formatDate(date);
+            const resultado = await this.apiSchedule.updateScheduleColumns(dateLocal, newColumns);
+            if (resultado) {
+                return res.status(200).json(resultado);
+            } else {
+                return res.status(500).json(created);
             }
         } catch (error) {
             loggerError.error(error)

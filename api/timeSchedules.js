@@ -1,5 +1,4 @@
 import { dao } from '../server.js';
-import { timeScheduleDTO } from '../model/DTOs/timeSchedule.js';
 import { loggerError, loggerInfo } from '../utils/logger.js'
 
 export class ApiTimeSchedule {

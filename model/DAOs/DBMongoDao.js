@@ -9,6 +9,7 @@ import { aditionalModel } from "../models/Aditionals.js";
 import { loggerError, loggerInfo, loggerWarn } from "../../utils/logger.js";
 import { shiftDTO } from '../DTOs/shifts.js';
 import { employeeDTO } from '../DTOs/employee.js';
+import { plantsModel } from '../models/Plants.js';
 
 const MONGO_URL = config.MONGO_URL;
 
@@ -109,6 +110,8 @@ export class DBMongoDao {
 
     /*          */
 
+
+
     /* SCHEDULE */
 
     createSchedule = async (schedule) => {
@@ -131,7 +134,7 @@ export class DBMongoDao {
 
     updateSchedule = async (date, schedule) => {
         try {
-            const scheduleResp = await scheduleModel.updateMany({ date: date }, { $set: {schedule} });
+            const scheduleResp = await scheduleModel.updateMany({ date: date }, { $set: { schedule } });
             return scheduleResp;
         } catch (error) {
             loggerError.error(error)
@@ -166,5 +169,61 @@ export class DBMongoDao {
         }
     }
 
+    updateScheduleColumns = async (date, columns) => {
+        try {
+            const scheduleResp = await scheduleModel.updateMany({ date: date }, { $set: { columns } });
+            return scheduleResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+
+    }
+
     /*          */
+
+    /* PLANTAS */
+
+    createPlant = async (plant) => {
+        try {
+            const plantResp = await plantsModel.insertMany(plant);
+            return plantResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    getPlants = async () => {
+        try {
+            const plantResp = await plantsModel.find({}, { _id: 0, __v: 0, createdAt: 0, updatedAt: 0 });
+            return plantResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    /*          */
+
+    /* DAILYWORKS   */
+
+    createDailyWork = async (dailyWork) => {
+        try {
+            const dailyWorkResp = await dailyWorkModel.insertMany(dailyWork);
+            return dailyWorkResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    getDailyWork = async (date) => {
+        try {
+            const dailyWorkResp = await dailyWorkModel.find({ date: date }, { __v: 0, createdAt: 0, updatedAt: 0 });
+            return dailyWorkResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+
+
+
 }

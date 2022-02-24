@@ -11,7 +11,8 @@ export class RouterSchedule {
     start() {
         router.post('/create', this.controllerSchedule.createSchedule);
         router.get('/get/:date', this.controllerSchedule.getSchedule);
-        router.put('/update/:date', this.controllerSchedule.updateSchedule)
+        router.put('/update/:date', this.controllerSchedule.updateSchedule);
+        router.put('/update/columns/:date', this.controllerSchedule.updateScheduleColumns);
         return router;
     }
 

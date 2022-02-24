@@ -47,6 +47,11 @@ import { RouterTimeSchedule } from "./router/timeSchedules.js";
 const routerTimeSchedule = new RouterTimeSchedule();
 import { RouterAditional } from "./router/aditionals.js";
 const routerAditional = new RouterAditional();
+import {RouterPlant} from "./router/plants.js";
+const routerPlant = new RouterPlant();
+import {RouterDailyWork} from "./router/dailyWorks.js";
+const routerDailyWork = new RouterDailyWork();
+
 
 // app.use('/api/user', userRoute)
 // app.use('/api/auth', authRoute)
@@ -55,6 +60,8 @@ app.use('/api/emp', routerEmployee.start());
 app.use('/api/schedule', routerSchedule.start());
 app.use('/api/timeSchedule', routerTimeSchedule.start());
 app.use('/api/aditional', routerAditional.start());
+app.use('/api/plant', routerPlant.start());
+app.use('/api/dailyWork', routerDailyWork.start());
 
 
 
