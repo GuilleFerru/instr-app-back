@@ -1,4 +1,6 @@
 import { dao } from '../server.js';
+import { reduceForLookUp } from '../utils/reduceForLookup.js';
+import { loggerError, loggerInfo } from '../utils/logger.js'
 
 
 export class ApiPlant {
@@ -12,10 +14,10 @@ export class ApiPlant {
             const plantResp = await dao.createPlant(newPlant);
             return plantResp;
         } catch (err) {
-            console.log(err);
+            loggerInfo.info(err);
             return err;
         } finally {
-            console.log('createPlant');
+            
         }
     }
 
@@ -24,10 +26,22 @@ export class ApiPlant {
             const plants = await dao.getPlants();
             return plants;
         } catch (err) {
-            console.log(err);
+            loggerInfo.info(err);
             return err;
         } finally {
-            console.log('getPlants');
+            
+        }
+    }
+
+    static getPlantsForColumnTable = async () => {
+        try {
+            const plants = await dao.getPlants();
+            return reduceForLookUp(plants);
+        } catch (err) {
+            loggerInfo.info(err);
+            return err;
+        } finally {
+            
         }
     }
 }

@@ -3,21 +3,19 @@ import { config } from "dotenv";
 import helmet from "helmet";
 import morgan from "morgan";
 import DaoFactory from './model/DAOs/DaoFactory.js';
-import cors from 'cors'
+import cors from 'cors';
+import * as router from './utils/routersInstances.js';
 import { loggerError, loggerInfo, loggerWarn } from "./utils/logger.js";
-// import {userRoute} from "./router/users.js.js";
-// import {authRoute} from "./router/auth.js.js";
-// import {empRoute} from "./router/employees.js";
 
 
 const app = express();
 const port = process.env.PORT || 8080;
 app.listen(port, () => {
-    console.info(`Servidor listo en el puerto ${port}`);
+    loggerInfo.info(`Servidor listo en el puerto ${port}`);
 });
 
 app.on("error", (error) => {
-    console.error(error);
+    loggerError.error(error);
 });
 
 config();
@@ -37,34 +35,19 @@ app.use(helmet());
 app.use(morgan("common"));
 app.use(cors());
 
-import { RouterShift } from "./router/shifts.js";
-const routerShift = new RouterShift();
-import { RouterEmployee } from "./router/employees.js";
-const routerEmployee = new RouterEmployee();
-import { RouterSchedule } from "./router/schedules.js";
-const routerSchedule = new RouterSchedule();
-import { RouterTimeSchedule } from "./router/timeSchedules.js";
-const routerTimeSchedule = new RouterTimeSchedule();
-import { RouterAditional } from "./router/aditionals.js";
-const routerAditional = new RouterAditional();
-import {RouterPlant} from "./router/plants.js";
-const routerPlant = new RouterPlant();
-import {RouterDailyWork} from "./router/dailyWorks.js";
-const routerDailyWork = new RouterDailyWork();
-
-
-// app.use('/api/user', userRoute)
-// app.use('/api/auth', authRoute)
-app.use('/api/shift', routerShift.start());
-app.use('/api/emp', routerEmployee.start());
-app.use('/api/schedule', routerSchedule.start());
-app.use('/api/timeSchedule', routerTimeSchedule.start());
-app.use('/api/aditional', routerAditional.start());
-app.use('/api/plant', routerPlant.start());
-app.use('/api/dailyWork', routerDailyWork.start());
-
-
-
+// endpoints
+app.use('/api/shift', router.routerShift.start());
+app.use('/api/emp', router.routerEmployee.start());
+app.use('/api/schedule', router.routerSchedule.start());
+app.use('/api/timeSchedule', router.routerTimeSchedule.start());
+app.use('/api/aditional', router.routerAditional.start());
+app.use('/api/plant', router.routerPlant.start());
+app.use('/api/dailyWork', router.routerDailyWork.start());
+app.use('/api/attelier', router.routerAttelier.start());
+app.use('/api/tag', router.routerTag.start());
+app.use('/api/routine', router.routerRoutine.start());
+app.use('/api/manteinance', router.routerManteinance.start());
+app.use('/api/manteinanceAction', router.routerManteinanceAction.start());
 
 app.get('/', (req, res) => {
     res.send('Home Page')

@@ -6,10 +6,18 @@ import { scheduleModel } from "../models/Schedules.js";
 import { timeScheduleModel } from "../models/TimeSchedules.js";
 import { workHoursModel } from "../models/WorkHours.js";
 import { aditionalModel } from "../models/Aditionals.js";
-import { loggerError, loggerInfo, loggerWarn } from "../../utils/logger.js";
+import { attelierModel } from "../models/Attelieres.js";
+import { tagModel } from "../models/Tags.js";
+import { manteinanceModel } from "../models/Manteinances.js";
+import { manteinanceActionModel } from "../models/ManteinanceActions.js";
+import { dailyWorkModel } from "../models/DailyWorks.js";
+import { routineModel } from "../models/Routines.js";
+import { routineScheduleModel } from "../models/RoutinesSchedule.js";
+import { loggerError, loggerInfo } from "../../utils/logger.js";
 import { shiftDTO } from '../DTOs/shifts.js';
 import { employeeDTO } from '../DTOs/employee.js';
 import { plantsModel } from '../models/Plants.js';
+
 
 const MONGO_URL = config.MONGO_URL;
 
@@ -111,7 +119,6 @@ export class DBMongoDao {
     /*          */
 
 
-
     /* SCHEDULE */
 
     createSchedule = async (schedule) => {
@@ -134,7 +141,9 @@ export class DBMongoDao {
 
     updateSchedule = async (date, schedule) => {
         try {
+            console.log(schedule)
             const scheduleResp = await scheduleModel.updateMany({ date: date }, { $set: { schedule } });
+            console.log(scheduleResp)
             return scheduleResp;
         } catch (error) {
             loggerError.error(error)
@@ -181,6 +190,7 @@ export class DBMongoDao {
 
     /*          */
 
+
     /* PLANTAS */
 
     createPlant = async (plant) => {
@@ -203,6 +213,105 @@ export class DBMongoDao {
 
     /*          */
 
+
+    /* ATTELIERES */
+
+    createAttelier = async (attelier) => {
+        try {
+            const attelierResp = await attelierModel.insertMany(attelier);
+            return attelierResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    getAttelieres = async () => {
+        try {
+            const attelierResp = await attelierModel.find({}, { _id: 0, __v: 0, createdAt: 0, updatedAt: 0 });
+            return attelierResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    getAttelieresByPlant = async (plant) => {
+        try {
+            const attelierResp = await attelierModel.find({ plant: plant }, { _id: 0, __v: 0, createdAt: 0, updatedAt: 0 });
+            return attelierResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    /*          */
+
+
+    /* TAGS */
+
+    createTag = async (tag) => {
+        try {
+            const tagResp = await tagModel.insertMany(tag);
+            return tagResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    getTag = async (tag) => {
+        try {
+            const tagResp = await tagModel.find({ tag: tag }, { _id: 0, __v: 0, createdAt: 0, updatedAt: 0 });
+            return tagResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    /*          */
+
+
+    /* MANTEINANCE */
+
+    createManteinance = async (manteinance) => {
+        try {
+            const manteinanceResp = await manteinanceModel.insertMany(manteinance);
+            return manteinanceResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    getManteinances = async () => {
+        try {
+            const manteinanceResp = await manteinanceModel.find({}, { _id: 0, __v: 0, createdAt: 0, updatedAt: 0 });
+            return manteinanceResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    /*          */
+
+
+    /* MANTEINANCE ACTIONS  */
+
+    createManteinanceAction = async (manteinanceAction) => {
+        try {
+            const manteinanceActionResp = await manteinanceActionModel.insertMany(manteinanceAction);
+            return manteinanceActionResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    getManteinanceActions = async () => {
+        try {
+            const manteinanceActionResp = await manteinanceActionModel.find({}, { _id: 0, __v: 0, createdAt: 0, updatedAt: 0 });
+            return manteinanceActionResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
     /* DAILYWORKS   */
 
     createDailyWork = async (dailyWork) => {
@@ -216,14 +325,168 @@ export class DBMongoDao {
 
     getDailyWork = async (date) => {
         try {
-            const dailyWorkResp = await dailyWorkModel.find({ date: date }, { __v: 0, createdAt: 0, updatedAt: 0 });
+            const dailyWorkResp = await dailyWorkModel.find({ beginDate: date }, { __v: 0, createdAt: 0, updatedAt: 0 });
             return dailyWorkResp;
         } catch (error) {
             loggerError.error(error)
         }
     }
 
+    updateDailyWork = async (date, dailyWork) => {
+        try {
 
 
+
+            await dailyWorkModel.updateOne({ $and: [{ "beginDate": date }, { "_id": dailyWork._id }] }, {
+                $set: {
+                    "plant": dailyWork.plant,
+                    "attelier": dailyWork.attelier,
+                    "tag": dailyWork.tag,
+                    "timeSchedule": dailyWork.timeSchedule,
+                    "manteinance": dailyWork.manteinance,
+                    "ot": dailyWork.ot,
+                    "action": dailyWork.action,
+                    "description": dailyWork.description,
+                    "complete": dailyWork.complete,
+                    "beginDate": dailyWork.beginDate,
+                    "endDate": dailyWork.endDate,
+                    "routineScheduleId": dailyWork.routineScheduleId,
+                    "sector": dailyWork.sector,
+                }
+            });
+            return true;
+        } catch (error) {
+            console.log(error)
+            loggerError.error(error)
+        }
+    }
+
+
+    deleteDailyWork = async (id) => {
+        try {
+            const dailyWorkResp = await dailyWorkModel.deleteMany({ _id: id });
+            return dailyWorkResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    /*          */
+
+
+    /* ROUTINES */
+
+    createRoutine = async (routine) => {
+        try {
+            const routineResp = await routineModel.insertMany(routine);
+            return routineResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    getRoutine = async (id) => {
+        try {
+            const routineResp = await routineModel.find({ _id: id }, { __v: 0, createdAt: 0, updatedAt: 0 });
+            return routineResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    getRoutineBettwenDates = async (dayone, daytwo) => {
+        try {
+            const routineResp = await routineModel.find({ $and: [{ beginDate: { $gte: dayone } }, { endDate: { $lte: daytwo } }] }, { __v: 0, createdAt: 0, updatedAt: 0 });
+            return routineResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+
+    }
+
+
+    getRoutineScheduleBetweenDates = async (startDate, endDate) => {
+        try {
+            const routineResp = await routineScheduleModel.find({ startDate: { $gte: startDate }, endDate: { $lte: endDate } }, { __v: 0, createdAt: 0, updatedAt: 0 });
+            return routineResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+
+    getLastRoutineId = async () => {
+        try {
+            const routineResp = await routineModel.find({}, { _id: 1, __v: 0, createdAt: 0, updatedAt: 0 }).sort({ _id: -1 }).limit(1);
+            const routineId = routineResp[0]._id;
+            return routineId;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    createRoutineSchedule = async (routineSchedule) => {
+        try {
+            const routineScheduleResp = await routineScheduleModel.insertMany(routineSchedule);
+            return routineScheduleResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+
+    getActualMonthRoutineSchedule = async (checkDays) => {
+        try {
+            const routineResp = await routineScheduleModel.find({ $and: [{ complete: false }, { checkDays: checkDays }] }, { __v: 0, createdAt: 0, updatedAt: 0 });
+            return routineResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    // monthlyRoutineSchedule = async (checkDays) => {
+    //     try {
+    //         const routineResp = await routineScheduleModel.find({ checkDays: checkDays }, { __v: 0, createdAt: 0, updatedAt: 0 });
+    //         return routineResp;
+    //     } catch (error) {
+    //         loggerError.error(error)
+    //     }
+    // }
+
+    getOthersRoutineSchedule = async (otherCheckDay) => {
+        try {
+            const routineResp = await routineScheduleModel.find({ otherCheckDay: otherCheckDay }, { __v: 0, createdAt: 0, updatedAt: 0 });
+            return routineResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    updateRoutineScheduleOT = async (id, ot) => {
+        try {
+            await routineScheduleModel.updateOne({ "_id": id }, {
+                $set: {
+                    "ot": ot
+                }
+            });
+            return true;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    updateRoutineScheduleComplete = async (dueDate) => {
+        try {
+            await routineScheduleModel.updateMany({ "dueDate": dueDate }, {
+                $set: {
+                    "complete": true
+                }
+            });
+            const updatedRoutinesSchedules = await routineScheduleModel.find({ "dueDate": dueDate }, { __v: 0, createdAt: 0, updatedAt: 0 });
+            return updatedRoutinesSchedules;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
 
 }

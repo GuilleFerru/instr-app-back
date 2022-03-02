@@ -1,4 +1,5 @@
 import { dao } from '../server.js';
+import { reduceForLookUp } from '../utils/reduceForLookup.js';
 import { loggerError, loggerInfo } from '../utils/logger.js'
 
 export class ApiTimeSchedule {
@@ -25,7 +26,16 @@ export class ApiTimeSchedule {
         } catch (err) {
             loggerError.error(err);
         } finally {
-            loggerInfo.info('getTimeSchedule');
+        }
+    }
+
+    static getTimeScheduleForColumnTable = async () => {
+        try {
+            const timeSchedule = await dao.getTimeSchedule();
+            return reduceForLookUp(timeSchedule);
+        } catch (err) {
+            loggerError.error(err);
+        } finally {
         }
     }
 

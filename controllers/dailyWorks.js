@@ -1,5 +1,6 @@
 import { ApiDailyWork } from '../api/dailyWorks.js';
-import { formatDate } from '../utils/formatDate.js';
+
+
 
 export class ControllerDailyWork {
 
@@ -9,7 +10,9 @@ export class ControllerDailyWork {
 
     createDailyWork = async (req, res) => {
         try {
-
+            const data = req.body;
+            const dailyWork = await this.apiDailyWork.createDailyWork(data);
+            res.status(200).send(dailyWork);
         } catch (err) {
             console.log(err);
             return res.status(500).json(err);
@@ -19,18 +22,31 @@ export class ControllerDailyWork {
     getDailyWork = async (req, res) => {
         try {
             const { date } = req.params;
-            
-            const resultado = false
-            if (!resultado) {
-                const created = await this.apiDailyWork.createDailyWork(date);
-                if (created) {
-                    return res.status(200).json(created);
-                } else {
-                    return res.status(500).json(created);
-                }
-            } else {
-                return res.status(200).json(resultado);
-            }
+            const resultado = await this.apiDailyWork.getDailyWork(date);
+            return res.status(200).json(resultado);
+        } catch (err) {
+            console.log(err);
+            return res.status(500).json(err);
+        }
+    }
+
+    updateDailyWork = async (req, res) => {
+        try {
+            const {date} = req.params;
+            const {updatedWork} = req.body;
+            const dailyWork = await this.apiDailyWork.updateDailyWork(date, updatedWork);
+            res.status(200).send(dailyWork);
+        } catch (err) {
+            console.log(err);
+            return res.status(500).json(err);
+        }
+    }
+
+    deleteDailyWork = async (req, res) => {
+        try {
+            const {id} = req.body.data;
+            const dailyWork = await this.apiDailyWork.deleteDailyWork(id);
+            res.status(200).send(dailyWork);
         } catch (err) {
             console.log(err);
             return res.status(500).json(err);

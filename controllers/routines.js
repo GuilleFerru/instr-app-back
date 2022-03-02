@@ -6,12 +6,22 @@ export class ControllerRoutine {
         this.apiRoutine = new ApiRoutine();
     }
 
-    createDayRoutine = async (req, res) => {
+    createRoutine = async (req, res) => {
+        try {
+            const routine = req.body;
+            await this.apiRoutine.createRoutine(routine);
+            return res.status(200).json(true);
+        } catch (err) {
+            console.log(err);
+            return res.status(500).json(err);
+        }
+    }
+
+    getRoutine = async (req, res) => {
         try {
             const { date } = req.params;
-            
-            await this.apiRoutine.createRoutine(date);
-            return res.status(200).json(true);
+            const routine = await this.apiRoutine.getRoutine(date);
+            return res.status(200).json(routine);
         } catch (err) {
             console.log(err);
             return res.status(500).json(err);

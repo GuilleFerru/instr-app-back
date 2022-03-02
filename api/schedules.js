@@ -1,11 +1,14 @@
 import { dao } from '../server.js'
 import { ApiShift } from './shifts.js';
 import { ApiEmployee } from './employees.js';
+import {reduceForLookUp} from '../utils/reduceForLookup.js';
 import { scheduleDTO, saveScheduleDTO, returnScheduleDTO, updateScheduleDTO } from '../model/DTOs/schedule.js';
 import { getForScheduleEmployeesDTO } from '../model/DTOs/employee.js';
 import { timeScheduleForScheduleDTO } from '../model/DTOs/timeSchedule.js';
 import { loggerError, loggerInfo } from '../utils/logger.js'
 
+
+//MODIFICAR Y DEJAR IGUAL A DAILY WORKS... USAR LOS METODOS ESTATICOS 
 
 
 const getDayShift = async (date) => {
@@ -19,13 +22,6 @@ const getEmployees = async () => {
     const apiEmployee = new ApiEmployee();
     const employees = await apiEmployee.getEmployees();
     return employees;
-}
-
-const reduceForLookUp = (arr) => {
-    return arr.reduce((acc, curr) => {
-        acc[curr.id] = curr.name;
-        return acc;
-    }, {});
 }
 
 const createScheduleColumns = (timeSchedule, employeesForSchedule) => {
@@ -59,7 +55,6 @@ const createScheduleColumns = (timeSchedule, employeesForSchedule) => {
     ];
     return columns;
 }
-
 
 export class ApiSchedule {
 

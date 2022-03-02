@@ -11,6 +11,8 @@ export class RouterDailyWork {
     start() {
         router.post('/create', this.controllerDailyWork.createDailyWork);
         router.get('/get/:date', this.controllerDailyWork.getDailyWork);
+        router.put('/update/:date', this.controllerDailyWork.updateDailyWork);
+        router.delete('/delete', this.controllerDailyWork.deleteDailyWork);
         return router;
     }
 
