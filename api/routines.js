@@ -83,12 +83,11 @@ export class ApiRoutine {
 
     getRoutine = async (date) => {
         try {
+            
             const routinesId = [];
             const weekDay = new Date(date).getDay();
-            const dateLocal = formatDate(date);
-            console.log(dateLocal)
-            const controlDate = dateInLocalDate(new Date(date));
             const today = todayInLocalDate();
+            
             const actualMonthRoutineSchedule = await dao.getActualMonthRoutineSchedule(weekDay);
 
             const actualRoutineScheduleDates = actualMonthRoutineSchedule.map(routine => {
@@ -119,12 +118,6 @@ export class ApiRoutine {
                 }
             }
 
-            const othersRoutineSchedule = await dao.getOthersRoutineSchedule(dateLocal);
-            if (othersRoutineSchedule !== undefined) {
-                othersRoutineSchedule.map(element => {
-                    routinesId.push({ _id: element._id, routineId: element.routine, complete: element.complete, ot: element.ot });
-                });
-            }
             const routines = []
             for (const element of routinesId) {
                 const routine = await dao.getRoutine(element.routineId);

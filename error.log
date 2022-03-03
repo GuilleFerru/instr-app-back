@@ -3578,3 +3578,11 @@
   },
   valueType: 'string'
 }
+[2022-03-02T22:49:09.575] [ERROR] error - ReferenceError: today is not defined
+    at ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:130:29)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:25:31)
+[2022-03-02T22:49:26.828] [ERROR] error - TypeError: currentMonth.getMonth is not a function
+    at ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:130:42)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:25:31)

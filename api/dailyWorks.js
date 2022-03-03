@@ -1,5 +1,5 @@
 import { dao } from '../server.js';
-import { formatDate } from '../utils/formatDate.js';
+import { formatDate, todayInLocalDate, dateInLocalDate } from '../utils/formatDate.js';
 import { ApiRoutine } from './routines.js';
 import { ApiPlant } from './plants.js';
 import { ApiAttelier } from './attelieres.js';
@@ -106,22 +106,27 @@ export class ApiDailyWork {
 
     getDailyWork = async (date) => {
         try {
+            //para crear las columnas de la tabla
             const plantsForColumnTable = await ApiPlant.getPlantsForColumnTable();
             const atteliersForColumnTable = await ApiAttelier.getAttelieresForColumnTable();
             const timeScheduleForColumnTable = await ApiTimeSchedule.getTimeScheduleForColumnTable();
             const manteinancesForColumnTable = await ApiManteinance.getManteinancesForColumnTable();
             const manteinanceActionsForColumnTable = await ApiManteinanceAction.getManteinanceActionsForColumnTable();
             const columns = createDailyWorkColumns(plantsForColumnTable, atteliersForColumnTable, timeScheduleForColumnTable, manteinancesForColumnTable, manteinanceActionsForColumnTable);
-            const dateLocal = formatDate(date);
-            const dayWorks = await dao.getDailyWork(dateLocal);
+            //
+
+            const dateLocalString = formatDate(date);
+            const dayWorks = await dao.getDailyWork(dateLocalString);
 
             if (dayWorks.length === 0) {
                 const routines = await apiRoutine.getRoutine(date);
                 const dayWorks = [];
                 routines.map(routine => {
-                    dayWorks.push(saveDailyWorkDTO(routine, dateLocal))
+                    dayWorks.push(saveDailyWorkDTO(routine, dateLocalString))
                 });
-                await dao.createDailyWork(dayWorks);
+                const currentMonth = todayInLocalDate().getMonth() + 1;
+                const dateMonth = dateInLocalDate(date).getMonth() + 1;
+                currentMonth === dateMonth && await dao.createDailyWork(dayWorks);
                 return worksResp(dayWorks, columns);
             } else {
                 return worksResp(dayWorks, columns);
