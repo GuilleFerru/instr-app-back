@@ -118,11 +118,12 @@ export class ApiSchedule {
 
     updateSchedule = async (date, schedule) => {
         try {
-            if (date && schedule) {
+            const dateLocal = formatDate(date);
+            if (dateLocal && schedule) {
                 const newSchedule = schedule.map(element => {
                     return updateScheduleDTO(element);
                 });
-                const resultado = await dao.updateSchedule(date, newSchedule);
+                const resultado = await dao.updateSchedule(dateLocal, newSchedule);
                 if (resultado) {
                     return resultado;
                 } else {
@@ -136,8 +137,9 @@ export class ApiSchedule {
 
     updateScheduleColumns = async (date, columns) => {
         try {
-            if (date && columns) {
-                const resultado = await dao.updateScheduleColumns(date, columns)
+            const dateLocal = formatDate(date);
+            if (dateLocal && columns) {
+                const resultado = await dao.updateScheduleColumns(dateLocal, columns)
                 if (resultado) {
                     return resultado;
                 } else {

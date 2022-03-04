@@ -43,12 +43,11 @@ export class ControllerSchedule {
         try {
             const { date } = req.params;
             const { newSchedule } = req.body;
-            const dateLocal = formatDate(date);
-            const resultado = await this.apiSchedule.updateSchedule(dateLocal, newSchedule);
+            const resultado = await this.apiSchedule.updateSchedule(date, newSchedule);
             if (resultado) {
                 return res.status(200).json(resultado);
             } else {
-                const created = await this.apiSchedule.createSchedule(dateLocal);
+                const created = await this.apiSchedule.createSchedule(date);
                 if (created) {
                     return res.status(200).json(created);
                 } else {
@@ -67,8 +66,7 @@ export class ControllerSchedule {
         try {           
             const { date } = req.params;
             const { newColumns } = req.body;
-            const dateLocal = formatDate(date);
-            const resultado = await this.apiSchedule.updateScheduleColumns(dateLocal, newColumns);
+            const resultado = await this.apiSchedule.updateScheduleColumns(date, newColumns);
             if (resultado) {
                 return res.status(200).json(resultado);
             } else {
