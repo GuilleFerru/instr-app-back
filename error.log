@@ -3663,3 +3663,79 @@
     at param (E:\instr-app\instr-app-back\node_modules\express\lib\router\index.js:354:14)
     at param (E:\instr-app\instr-app-back\node_modules\express\lib\router\index.js:365:14)
     at Function.process_params (E:\instr-app\instr-app-back\node_modules\express\lib\router\index.js:410:3)
+[2022-03-04T09:08:41.414] [ERROR] error - TypeError: Cannot read property 'shifts' of undefined
+    at file:///D:/VSCode/instr-app/instr-app-back/api/schedules.js:74:40
+    at Array.map (<anonymous>)
+    at ApiSchedule.createSchedule (file:///D:/VSCode/instr-app/instr-app-back/api/schedules.js:73:40)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async getSchedule (file:///D:/VSCode/instr-app/instr-app-back/controllers/schedules.js:28:33)
+[2022-03-04T09:11:07.593] [ERROR] error - TypeError: Cannot read property 'shifts' of undefined
+    at file:///D:/VSCode/instr-app/instr-app-back/api/schedules.js:74:40
+    at Array.map (<anonymous>)
+    at ApiSchedule.createSchedule (file:///D:/VSCode/instr-app/instr-app-back/api/schedules.js:73:40)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async getSchedule (file:///D:/VSCode/instr-app/instr-app-back/controllers/schedules.js:27:33)
+[2022-03-04T09:11:13.986] [ERROR] error - TypeError: Cannot read property 'shifts' of undefined
+    at file:///D:/VSCode/instr-app/instr-app-back/api/schedules.js:74:40
+    at Array.map (<anonymous>)
+    at ApiSchedule.createSchedule (file:///D:/VSCode/instr-app/instr-app-back/api/schedules.js:73:40)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async getSchedule (file:///D:/VSCode/instr-app/instr-app-back/controllers/schedules.js:27:33)
+[2022-03-04T09:12:34.450] [ERROR] error - TypeError: Cannot read property 'shifts' of undefined
+    at file:///D:/VSCode/instr-app/instr-app-back/api/schedules.js:75:40
+    at Array.map (<anonymous>)
+    at ApiSchedule.createSchedule (file:///D:/VSCode/instr-app/instr-app-back/api/schedules.js:74:40)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async getSchedule (file:///D:/VSCode/instr-app/instr-app-back/controllers/schedules.js:27:33)
+[2022-03-04T09:38:17.501] [ERROR] error - TypeError: Cannot read property 'shifts' of undefined
+    at file:///D:/VSCode/instr-app/instr-app-back/api/schedules.js:75:40
+    at Array.map (<anonymous>)
+    at ApiSchedule.createSchedule (file:///D:/VSCode/instr-app/instr-app-back/api/schedules.js:74:40)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async getSchedule (file:///D:/VSCode/instr-app/instr-app-back/controllers/schedules.js:27:33)
+[2022-03-04T09:58:29.302] [ERROR] error - TypeError: Cannot read property 'shifts' of undefined
+    at file:///D:/VSCode/instr-app/instr-app-back/api/schedules.js:75:40
+    at Array.map (<anonymous>)
+    at ApiSchedule.createSchedule (file:///D:/VSCode/instr-app/instr-app-back/api/schedules.js:74:40)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async getSchedule (file:///D:/VSCode/instr-app/instr-app-back/controllers/schedules.js:27:33)
+[2022-03-04T09:58:32.650] [ERROR] error - TypeError: Cannot read property 'shifts' of undefined
+    at file:///D:/VSCode/instr-app/instr-app-back/api/schedules.js:75:40
+    at Array.map (<anonymous>)
+    at ApiSchedule.createSchedule (file:///D:/VSCode/instr-app/instr-app-back/api/schedules.js:74:40)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async getSchedule (file:///D:/VSCode/instr-app/instr-app-back/controllers/schedules.js:27:33)
+[2022-03-04T09:58:36.209] [ERROR] error - TypeError: Cannot read property 'shifts' of undefined
+    at file:///D:/VSCode/instr-app/instr-app-back/api/schedules.js:75:40
+    at Array.map (<anonymous>)
+    at ApiSchedule.createSchedule (file:///D:/VSCode/instr-app/instr-app-back/api/schedules.js:74:40)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async getSchedule (file:///D:/VSCode/instr-app/instr-app-back/controllers/schedules.js:27:33)
+[2022-03-04T09:58:58.963] [ERROR] error - TypeError: Cannot read property 'shifts' of undefined
+    at file:///D:/VSCode/instr-app/instr-app-back/api/schedules.js:75:40
+    at Array.map (<anonymous>)
+    at ApiSchedule.createSchedule (file:///D:/VSCode/instr-app/instr-app-back/api/schedules.js:74:40)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async getSchedule (file:///D:/VSCode/instr-app/instr-app-back/controllers/schedules.js:27:33)
+[2022-03-04T09:59:47.270] [ERROR] error - TypeError: Cannot read property 'shifts' of undefined
+    at file:///D:/VSCode/instr-app/instr-app-back/api/schedules.js:75:40
+    at Array.map (<anonymous>)
+    at ApiSchedule.createSchedule (file:///D:/VSCode/instr-app/instr-app-back/api/schedules.js:74:40)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async getSchedule (file:///D:/VSCode/instr-app/instr-app-back/controllers/schedules.js:27:33)
+[2022-03-04T10:00:16.357] [ERROR] error - TypeError: Cannot read property 'shifts' of undefined
+    at file:///D:/VSCode/instr-app/instr-app-back/api/schedules.js:75:40
+    at Array.map (<anonymous>)
+    at ApiSchedule.createSchedule (file:///D:/VSCode/instr-app/instr-app-back/api/schedules.js:74:40)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async getSchedule (file:///D:/VSCode/instr-app/instr-app-back/controllers/schedules.js:27:33)
+[2022-03-04T10:00:50.174] [ERROR] error - TypeError: Cannot read property 'shifts' of undefined
+    at file:///D:/VSCode/instr-app/instr-app-back/api/schedules.js:75:40
+    at Array.map (<anonymous>)
+    at ApiSchedule.createSchedule (file:///D:/VSCode/instr-app/instr-app-back/api/schedules.js:74:40)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async getSchedule (file:///D:/VSCode/instr-app/instr-app-back/controllers/schedules.js:27:33)

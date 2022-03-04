@@ -2,6 +2,7 @@ import { dao } from '../server.js'
 import { ApiShift } from './shifts.js';
 import { ApiEmployee } from './employees.js';
 import {reduceForLookUp} from '../utils/reduceForLookup.js';
+import {formatDate, dateInLocalDate} from '../utils/formatDate.js';
 import { scheduleDTO, saveScheduleDTO, returnScheduleDTO, updateScheduleDTO } from '../model/DTOs/schedule.js';
 import { getForScheduleEmployeesDTO } from '../model/DTOs/employee.js';
 import { timeScheduleForScheduleDTO } from '../model/DTOs/timeSchedule.js';
@@ -61,7 +62,8 @@ export class ApiSchedule {
     createSchedule = async (date) => {
         try {
             // llamadas a las bases de datos para buscar información
-            const dayShift = await getDayShift(date);
+            const dateLocal = formatDate(date);
+            const dayShift = await getDayShift(dateLocal);
             const employees = await getEmployees();
             const workHours = await dao.getWorkHours();
             const timeSchedule = await dao.getTimeSchedule();
@@ -81,10 +83,10 @@ export class ApiSchedule {
             //creo la columna base de la tabla con los lookups del horario y el nombre completo
             const columns = createScheduleColumns(timeScheduleForScheduleDTO(timeSchedule), getForScheduleEmployeesDTO(employees));
 
-            const saveSchedule = saveScheduleDTO(date, schedule, columns);
+            const saveSchedule = saveScheduleDTO(dateLocal, schedule, columns);
             await dao.createSchedule(saveSchedule);
 
-            const returnSchedule = returnScheduleDTO(date, schedule, columns, reduceForLookUp(aditionals));
+            const returnSchedule = returnScheduleDTO(dateLocal, schedule, columns, reduceForLookUp(aditionals));
             return returnSchedule;
         } catch (err) {
             loggerError.error(err);
@@ -94,9 +96,11 @@ export class ApiSchedule {
     }
 
     getSchedule = async (date) => {
-        try {
-            if (date) {
-                const resultado = await dao.getSchedule(date);
+        try {       
+            const dateLocalDate = dateInLocalDate(date);
+            if (dateLocalDate >=  new Date('2022-01-01')) {
+                const dateLocal = formatDate(date);
+                const resultado = await dao.getSchedule(dateLocal);
                 if (resultado.length > 0) {
                     const aditionals = await dao.getAditionals();
                     const returnSchedule = returnScheduleDTO(resultado[0].date, resultado[0].schedule, resultado[0].columns ,reduceForLookUp(aditionals));
@@ -104,6 +108,8 @@ export class ApiSchedule {
                 } else {
                     return false;
                 }
+            }else {
+                return [''];
             }
         } catch (error) {
             console.log(error);

@@ -1,6 +1,6 @@
 import { ApiSchedule } from '../api/schedules.js';
 import { loggerError } from '../utils/logger.js';
-import {formatDate} from '../utils/formatDate.js';
+
 
 
 export class ControllerSchedule {
@@ -22,10 +22,9 @@ export class ControllerSchedule {
     getSchedule = async (req, res) => {
         try {
             const { date } = req.params;
-            const dateLocal = formatDate(date);
-            const resultado = await this.apiSchedule.getSchedule(dateLocal);
+            const resultado = await this.apiSchedule.getSchedule(date);
             if (!resultado) {
-                const created = await this.apiSchedule.createSchedule(dateLocal);
+                const created = await this.apiSchedule.createSchedule(date);
                 if (created) {
                     return res.status(200).json(created);
                 } else {

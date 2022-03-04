@@ -141,9 +141,7 @@ export class DBMongoDao {
 
     updateSchedule = async (date, schedule) => {
         try {
-            console.log(schedule)
             const scheduleResp = await scheduleModel.updateMany({ date: date }, { $set: { schedule } });
-            console.log(scheduleResp)
             return scheduleResp;
         } catch (error) {
             loggerError.error(error)
