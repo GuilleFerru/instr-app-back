@@ -20,3 +20,20 @@ export const updateDayWorkDTO = (dayWorks) => {
     const { tableData, ...scheduleRest } = dayWorks;
     return scheduleRest;
 }
+
+export const completedDailyWorkDTO = (dayWorks, today) => ({
+    _id: dayWorks._id,
+    plant: dayWorks.plant,
+    attelier: dayWorks.attelier,
+    tag: dayWorks.tag ? dayWorks.tag : '',
+    timeSchedule: dayWorks.timeSchedule,
+    manteinance: dayWorks.manteinance,
+    ot: dayWorks.ot === undefined ? '' : dayWorks.ot,
+    action: dayWorks.action,
+    description: dayWorks.description === undefined ? '' : dayWorks.description,
+    complete: dayWorks.complete,
+    beginDate: dayWorks.beginDate,
+    endDate: dayWorks.complete === 'C' ? today : '',
+    routineScheduleId: dayWorks.routineScheduleId === undefined ? '' : dayWorks.routineScheduleId,
+    sector: 'Instrumentos-Sistemas'
+})

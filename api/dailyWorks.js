@@ -6,7 +6,7 @@ import { ApiAttelier } from './attelieres.js';
 import { ApiTimeSchedule } from './timeSchedules.js';
 import { ApiManteinance } from './manteinances.js';
 import { ApiManteinanceAction } from './manteinanceActions.js';
-import { saveDailyWorkDTO, updateDayWorkDTO } from '../model/DTOs/dailyWork.js';
+import { saveDailyWorkDTO, updateDayWorkDTO, completedDailyWorkDTO } from '../model/DTOs/dailyWork.js';
 import { loggerError, loggerInfo } from '../utils/logger.js';
 
 
@@ -143,14 +143,18 @@ export class ApiDailyWork {
             const dateLocal = formatDate(date);
             if (dateLocal && dayWork) {
                 const dailyWork = updateDayWorkDTO(dayWork);
-                const routineOT = dailyWork.action === 2 && dailyWork.ot != '' ? dailyWork.ot : false;
+             
 
+                //si es una rutina y tiene OT guardo la OT en routineSchedule
+                const routineOT = dailyWork.action === 2 && dailyWork.ot != '' ? dailyWork.ot : false;
                 if (routineOT) {
                     const routineScheduleId = dayWork.routineScheduleId;
                     await dao.updateRoutineScheduleOT(routineScheduleId, routineOT);
                 }
-
-                const resultado = await dao.updateDailyWork(dateLocal, dailyWork);
+                const today = formatDate(todayInLocalDate());
+                console.log(today)
+                const dailyWorkToUpdate = completedDailyWorkDTO(dayWork, today)
+                const resultado = await dao.updateDailyWork(dateLocal, dailyWorkToUpdate);
                 if (resultado) {
                     return resultado;
                 } else {
@@ -158,6 +162,7 @@ export class ApiDailyWork {
                 }
             }
         } catch (err) {
+            console.log(err)
             loggerError.error(err);
         } finally {
         }
