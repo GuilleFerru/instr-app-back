@@ -9,7 +9,7 @@ export const saveDailyWorkDTO = (data, dateLocal) => ({
     ot: data.ot,
     action: data.action,
     description: data.description,
-    complete: data.complete === false ? 'P' : 'C',
+    complete: data.complete === false ? 'P' : data.complete ,
     beginDate: data.beginDate ? formatDate(data.beginDate) : dateLocal,
     endDate: data.complete === 'C' ? formatDate(new Date()) : '',
     routineScheduleId: data._id ? data._id : '',

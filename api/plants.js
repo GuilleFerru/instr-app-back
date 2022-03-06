@@ -1,5 +1,6 @@
 import { dao } from '../server.js';
 import { reduceForLookUp } from '../utils/reduceForLookup.js';
+import { ApiDailyWorksColumnTable } from '../utils/dailyWorksColumnTable.js';
 import { loggerError, loggerInfo } from '../utils/logger.js'
 
 
@@ -12,12 +13,16 @@ export class ApiPlant {
                 name: plant
             }
             const plantResp = await dao.createPlant(newPlant);
+            
+            await ApiDailyWorksColumnTable.deleteColumns(await ApiDailyWorksColumnTable.getColumnsId())
+            await ApiDailyWorksColumnTable.createColumns();
+
             return plantResp;
         } catch (err) {
-            loggerInfo.info(err);
+            loggerError.error(err);
             return err;
         } finally {
-            
+
         }
     }
 
@@ -26,10 +31,10 @@ export class ApiPlant {
             const plants = await dao.getPlants();
             return plants;
         } catch (err) {
-            loggerInfo.info(err);
+            loggerError.error(err);
             return err;
         } finally {
-            
+
         }
     }
 
@@ -38,10 +43,10 @@ export class ApiPlant {
             const plants = await dao.getPlants();
             return reduceForLookUp(plants);
         } catch (err) {
-            loggerInfo.info(err);
+            loggerError.error(err);
             return err;
         } finally {
-            
+
         }
     }
 }

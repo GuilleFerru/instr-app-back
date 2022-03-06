@@ -1,5 +1,6 @@
 import { dao } from '../server.js';
 import { reduceForLookUp } from '../utils/reduceForLookup.js';
+import { ApiDailyWorksColumnTable } from '../utils/dailyWorksColumnTable.js';
 import { loggerError, loggerInfo } from '../utils/logger.js'
 
 export class ApiTimeSchedule {
@@ -10,6 +11,10 @@ export class ApiTimeSchedule {
             const dropCollection = true
             if (dropCollection) {
                 const timeScheduleResp = await dao.createTimeSchedule(timeSchedule);
+
+                await ApiDailyWorksColumnTable.deleteColumns(await ApiDailyWorksColumnTable.getColumnsId())
+                await ApiDailyWorksColumnTable.createColumns();
+
                 return timeScheduleResp;
             }
         } catch (err) {

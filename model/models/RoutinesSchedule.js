@@ -15,12 +15,12 @@ const routineScheduleSchema = new mongoose.Schema({
     },
     dueDate: {
         type: Date,
-        
+
     },
     checkDays: {
         type: Array
     },
-    otherCheckDay:{
+    otherCheckDay: {
         type: Date,
         default: undefined
     },
@@ -34,10 +34,16 @@ const routineScheduleSchema = new mongoose.Schema({
         require: true,
         default: false
     },
+    filePath: {
+        type: String,
+    },
+    nickname: {
+        type: String,
+    },
     sector: {
         type: String,
         require: true,
-    }
+    },
 },
     { timestamps: true }
 );

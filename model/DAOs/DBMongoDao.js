@@ -17,6 +17,8 @@ import { loggerError, loggerInfo } from "../../utils/logger.js";
 import { shiftDTO } from '../DTOs/shifts.js';
 import { employeeDTO } from '../DTOs/employee.js';
 import { plantsModel } from '../models/Plants.js';
+import { dailyWorkColumnsModel } from '../models/DailyWorksColumns.js';
+import { otherRoutineColumnModel } from '../models/OthersRoutinesColumns.js';
 
 
 const MONGO_URL = config.MONGO_URL;
@@ -356,6 +358,18 @@ export class DBMongoDao {
         }
     }
 
+    updateDailyWorkRoutineOtBySchedRoutineId = (routineScheduleId, ot) => {
+        try {
+            dailyWorkModel.updateMany({ routineScheduleId: routineScheduleId }, {
+                $set: {
+                    ot: ot,
+                }
+            });
+            return true;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
 
     deleteDailyWork = async (id) => {
         try {
@@ -439,11 +453,13 @@ export class DBMongoDao {
         }
     }
 
-    getOthersRoutineSchedule = async (otherCheckDay) => {
+    getOthersRoutineSchedule = async (date) => {
         try {
-            const routineResp = await routineScheduleModel.find({ otherCheckDay: otherCheckDay }, { __v: 0, createdAt: 0, updatedAt: 0 });
+            const routineResp = await routineScheduleModel.find({ $and: [{ beginDate: { $lte: date } }, { dueDate: { $gte: date } }, { otherCheckDay: { $ne: null } }] }, { __v: 0, createdAt: 0, updatedAt: 0 });
+
             return routineResp;
         } catch (error) {
+            console.log(error)
             loggerError.error(error)
         }
     }
@@ -475,4 +491,69 @@ export class DBMongoDao {
         }
     }
 
+    /*   COLUMNAS DE TABLAS */
+
+
+    createDailyWorksColumns = async (columns) => {
+        try {
+            const dailyWorkColumns = await dailyWorkColumnsModel.insertMany(columns);
+            return dailyWorkColumns;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    getDailyWorksColumns = async () => {
+        try {
+            const dailyWorkColumns = await dailyWorkColumnsModel.find({}, { _id: 0, __v: 0, createdAt: 0, updatedAt: 0 });
+            return dailyWorkColumns;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    getIdDailyWorkColumns = async () => {
+        try {
+            const dailyWorkColumns = await dailyWorkColumnsModel.find({}, { _id: 1, columns: 0, __v: 0, createdAt: 0, updatedAt: 0 }).sort({ "_id": -1 }).limit(1);
+            return dailyWorkColumns[0]._id;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    deleteDailyWorksColumns = async (id) => {
+        try {
+            const dailyWorkColumns = await dailyWorkColumnsModel.deleteMany({ _id: id });
+            return dailyWorkColumns;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    createOthersRoutinesColumns = async (columns) => {
+        try {
+            const othersRoutinesColumns = await otherRoutineColumnModel.insertMany(columns);
+            return othersRoutinesColumns;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    getOtherRoutinesColumns = async () => {
+        try {
+            const othersRoutinesColumns = await otherRoutineColumnModel.find({}, { _id: 0, __v: 0, createdAt: 0, updatedAt: 0 });
+            return othersRoutinesColumns;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+
+
+    /*          */
+
+
+
 }
+
+

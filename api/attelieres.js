@@ -1,5 +1,6 @@
 import { dao } from '../server.js';
 import {reduceForLookUp} from '../utils/reduceForLookup.js';
+import { ApiDailyWorksColumnTable } from '../utils/dailyWorksColumnTable.js';
 import { loggerError, loggerInfo } from '../utils/logger.js'
 
 export class ApiAttelier {
@@ -7,6 +8,10 @@ export class ApiAttelier {
     createAttelier = async (attelier) => {
         try {
             const attelierResp = await dao.createAttelier(attelier);
+
+            await ApiDailyWorksColumnTable.deleteColumns(await ApiDailyWorksColumnTable.getColumnsId())
+            await ApiDailyWorksColumnTable.createColumns();
+            
             return attelierResp;
         } catch (err) {
             loggerError.error(err);
