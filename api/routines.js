@@ -79,14 +79,14 @@ const getRoutines = async (routineSchedules) => {
 
     if (routineSchedules !== undefined) {
         routineSchedules.map(element => {
-            routinesId.push({ _id: element._id, routineId: element.routine, complete: element.complete, ot: element.ot, nickname: element.nickname, filePath: element.filePath });
+            routinesId.push({ _id: element._id, routineId: element.routine, complete: element.complete, ot: element.ot, nickname: element.nickname, filePath: element.filePath, checkDay: element.otherCheckDay });
         });
     }
     for (const element of routinesId) {
         const routine = await dao.getRoutine(element.routineId);
         const routineFrecuency = routine[0].frecuency;
         if (routineFrecuency > 4) {
-            const routineRes = routineRespForOthersRoutineDTO(routine[0], element.complete, element._id, element.ot, element.filePath, element.nickname);
+            const routineRes = routineRespForOthersRoutineDTO(routine[0], element.complete, element._id, element.ot, element.filePath, element.nickname, element.checkDay);
             routines.push(routineRes);
         } else {
             const routineRes = routineRespDTO(routine[0], element.complete, element._id, element.ot);

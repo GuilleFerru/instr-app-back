@@ -2,7 +2,7 @@ import { dao } from '../server.js';
 import { plantData, attelierData, timeScheduleData, manteinanceData, manteinanceActionData } from './commonLookUpsTables.js';
 import { loggerError, loggerInfo } from './logger.js';
 
-const createOthersRoutinesColumns = (plantsForColumnTable, atteliersForColumnTable, timeScheduleForColumnTable, manteinancesForColumnTable, manteinanceActionsForColumnTable) => {
+const createOthersRoutinesColumns = (plantsForColumnTable, atteliersForColumnTable ) => {
     const columns = [
         {
             field: '_id',
@@ -11,7 +11,8 @@ const createOthersRoutinesColumns = (plantsForColumnTable, atteliersForColumnTab
         },
         {
             field: 'nickname',
-            title: 'Nickname',
+            title: 'Nombre',
+            defaultGroupOrder:0,
         },
         {
             field: 'plant',
@@ -29,28 +30,16 @@ const createOthersRoutinesColumns = (plantsForColumnTable, atteliersForColumnTab
             type: 'string',
         },
         {
-            field: 'timeSchedule',
-            title: 'Horario',
-            lookup: timeScheduleForColumnTable,
-            initialEditValue: '5',
-        },
-        {
-            field: 'manteinance',
-            title: 'Tipo de mto',
-            lookup: manteinancesForColumnTable,
-            initialEditValue: '1',
+            field: 'endDate',
+            title: 'Dia de Revisión',
+            type: 'date',
+            dateSetting: { locale: 'es-AR', format: 'DD.MM.YYYY' },
         },
         {
             field: 'ot',
             title: 'OT',
             type: 'string',
             align: 'left',
-        },
-        {
-            field: 'action',
-            title: 'Acción',
-            lookup: manteinanceActionsForColumnTable,
-            initialEditValue: 1
         },
         {
             field: 'description',
@@ -67,7 +56,7 @@ const createOthersRoutinesColumns = (plantsForColumnTable, atteliersForColumnTab
                 'C': 'Completado',
                 'R': 'Demorado',
             },
-            initialEditValue: 'C',
+            initialEditValue: 'P',
         },
         {
             field: 'filePath',
@@ -81,7 +70,7 @@ export class OthersRoutineColumnTable {
 
     static createColumns = async () => {
         try {
-            const columns = createOthersRoutinesColumns(await plantData(), await attelierData(), await timeScheduleData(), await manteinanceData(), await manteinanceActionData());
+            const columns = createOthersRoutinesColumns(await plantData(), await attelierData());
             const saveColumns = { columns: columns };
             const resp = await dao.createOthersRoutinesColumns(saveColumns);
             return resp;

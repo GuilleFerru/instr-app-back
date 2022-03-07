@@ -1,0 +1,32 @@
+[2022-03-06T18:52:50.943] [ERROR] error - ReferenceError: string is not defined
+    at createOthersRoutinesColumns (file:///E:/instr-app/instr-app-back/utils/otherRoutinesColumnTable.js:34:36)
+    at Function.createColumns (file:///E:/instr-app/instr-app-back/utils/otherRoutinesColumnTable.js:71:29)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiRoutine.getOtherRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:162:38)
+    at async getOtherRoutine (file:///E:/instr-app/instr-app-back/controllers/routines.js:34:29)
+[2022-03-06T18:52:50.956] [ERROR] error - TypeError: Cannot read property '0' of undefined
+    at ApiRoutine.getOtherRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:163:42)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getOtherRoutine (file:///E:/instr-app/instr-app-back/controllers/routines.js:34:29)
+[2022-03-06T18:53:03.945] [ERROR] error - ReferenceError: string is not defined
+    at createOthersRoutinesColumns (file:///E:/instr-app/instr-app-back/utils/otherRoutinesColumnTable.js:34:36)
+    at Function.createColumns (file:///E:/instr-app/instr-app-back/utils/otherRoutinesColumnTable.js:71:29)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiRoutine.getOtherRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:162:38)
+    at async getOtherRoutine (file:///E:/instr-app/instr-app-back/controllers/routines.js:34:29)
+[2022-03-06T18:53:03.949] [ERROR] error - TypeError: Cannot read property '0' of undefined
+    at ApiRoutine.getOtherRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:163:42)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getOtherRoutine (file:///E:/instr-app/instr-app-back/controllers/routines.js:34:29)
+[2022-03-06T19:31:29.611] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:92:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:48:31)
+[2022-03-06T19:32:58.993] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:92:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:48:31)
+[2022-03-06T19:34:25.124] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:92:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:48:31)

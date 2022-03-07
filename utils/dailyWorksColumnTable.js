@@ -35,6 +35,8 @@ const createDailyWorkColumns = (plantsForColumnTable, atteliersForColumnTable, t
             title: 'Tipo de mto',
             lookup: manteinancesForColumnTable,
             initialEditValue: '1',
+            defaultGroupOrder:0,
+            defaultGroupSort:'desc'
         },
         {
             field: 'ot',

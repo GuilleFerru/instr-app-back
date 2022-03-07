@@ -43,19 +43,17 @@ export const routineRespDTO = (routine, complete, _id, ot) => ({
 
 
 
-export const routineRespForOthersRoutineDTO = (routine, complete, _id, ot,filePath, nickname) => ({
+export const routineRespForOthersRoutineDTO = (routine, complete, _id, ot,filePath, nickname, checkDay) => ({
     _id: _id,
     routineId: routine._id,
     plant: routine.plant,
     attelier: routine.attelier,
     tag: routine.tag,
-    timeSchedule: routine.timeSchedule,
     ot: ot ? ot : '',
     frecuency: routine.frecuency,
-    manteinance: routine.manteinance,
-    action: routine.action,
+    endDate: checkDay,
     description: routine.description,
-    complete: complete,
+    complete: complete === false ? 'P' : 'C',
     filePath: filePath ? filePath : '',
     nickname: nickname ? nickname : '',
 });

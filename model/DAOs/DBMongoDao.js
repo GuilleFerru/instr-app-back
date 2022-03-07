@@ -452,11 +452,10 @@ export class DBMongoDao {
             loggerError.error(error)
         }
     }
-
+    //VER ESTO Q ESTA MAL
     getOthersRoutineSchedule = async (date) => {
         try {
-            const routineResp = await routineScheduleModel.find({ $and: [{ beginDate: { $lte: date } }, { dueDate: { $gte: date } }, { otherCheckDay: { $ne: null } }] }, { __v: 0, createdAt: 0, updatedAt: 0 });
-
+            const routineResp = await routineScheduleModel.find({ $and: [{ startDate: { $lte: date } }, { dueDate: { $gte: date } }, { otherCheckDay: { $ne: null } }] }, { __v: 0, createdAt: 0, updatedAt: 0 });
             return routineResp;
         } catch (error) {
             console.log(error)
