@@ -1,4 +1,4 @@
-import { formatDate } from '../../utils/formatDate.js';
+import { checkWeekDay } from '../../utils/formatDate.js';
 
 export const saveRoutineDTO = (plant, attelier, tag, timeSchedule, frecuency, manteinance, action, description) => ({
     plant: plant,
@@ -43,7 +43,8 @@ export const routineRespDTO = (routine, complete, _id, ot) => ({
 
 
 
-export const routineRespForOthersRoutineDTO = (routine, complete, _id, ot,filePath, nickname, checkDay) => ({
+
+export const routineRespForOthersRoutineDTO = (routine, complete, _id, ot,filePath, nickname, checkDay,weekCheckDays) => ({
     _id: _id,
     routineId: routine._id,
     plant: routine.plant,
@@ -51,7 +52,7 @@ export const routineRespForOthersRoutineDTO = (routine, complete, _id, ot,filePa
     tag: routine.tag,
     ot: ot ? ot : '',
     frecuency: routine.frecuency,
-    endDate: checkDay,
+    checkDay: checkDay ? checkDay : checkWeekDay(weekCheckDays),
     description: routine.description,
     complete: complete === false ? 'P' : 'C',
     filePath: filePath ? filePath : '',

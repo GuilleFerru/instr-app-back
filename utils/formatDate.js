@@ -22,3 +22,12 @@ export const dateInLocalDate = (date) => {
     const dateResp = parseStringToDate(localDate);
     return dateResp;
 }
+
+export const checkWeekDay = (weekCheckDays) => {
+    const days = ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
+    const dayName = [];
+    weekCheckDays.forEach(day => {
+        dayName.push(days[day]);
+    });
+    return dayName.join(', ');
+    }

@@ -1,7 +1,8 @@
-import { dao } from '../server.js'
+import { dao } from '../server.js';
+import { ApiDailyWork } from './dailyWorks.js';
 import { saveRoutineDTO, routineScheduleDTO, routineRespDTO, routineRespForOthersRoutineDTO } from '../model/DTOs/routine.js';
 import {OthersRoutineColumnTable} from '../utils/otherRoutinesColumnTable.js';
-import { dateInLocalDate, todayInLocalDate } from '../utils/formatDate.js';
+import {formatDate, dateInLocalDate, todayInLocalDate } from '../utils/formatDate.js';
 import { loggerError, loggerInfo } from '../utils/logger.js';
 
 
@@ -79,14 +80,14 @@ const getRoutines = async (routineSchedules, filter) => {
 
     if (routineSchedules !== undefined) {
         routineSchedules.map(element => {
-            routinesId.push({ _id: element._id, routineId: element.routine, complete: element.complete, ot: element.ot, nickname: element.nickname, filePath: element.filePath, checkDay: element.otherCheckDay });
+            routinesId.push({ _id: element._id, routineId: element.routine, complete: element.complete, ot: element.ot, nickname: element.nickname, filePath: element.filePath, checkDay: element.otherCheckDay, weekCheckDays : element.checkDays });
         });
     }
     for (const element of routinesId) {
         const routine = await dao.getRoutine(element.routineId);
         // const routineFrecuency = routine[0].frecuency;
         if (filter === 'forRoutines') {
-            const routineRes = routineRespForOthersRoutineDTO(routine[0], element.complete, element._id, element.ot, element.filePath, element.nickname, element.checkDay);
+            const routineRes = routineRespForOthersRoutineDTO(routine[0], element.complete, element._id, element.ot, element.filePath, element.nickname, element.checkDay, element.weekCheckDays);
             routines.push(routineRes);
         } else {
             const routineRes = routineRespDTO(routine[0], element.complete, element._id, element.ot);
@@ -166,7 +167,6 @@ export class ApiRoutine {
             }
             return otherRoutineResp(allRoutines, ...columns);
         } catch (err) {
-            console.log(err);
             loggerError.error(err);
         } finally {
         }
@@ -174,9 +174,17 @@ export class ApiRoutine {
 
     updateRoutineScheduleByCompleteTask = async (data) => {
         try {
-            const routinesSchedules = data.filter(routine => routine.complete === 'C');
-            const updateCompleteRoutine = await dao.updateRoutineScheduleByCompleteTask(routinesSchedules);
-            return updateCompleteRoutine;
+            //actualizo la routineSchedule
+            const updateCompleteRoutine = await dao.updateRoutineScheduleByCompleteTask(data);
+
+            // ahora tengo que crear el dailyWork en el dia que se cerro la routineSchedule
+            const today = formatDate(todayInLocalDate());
+            const apiDailyWork = new ApiDailyWork();
+
+            console.log(today)
+            // const routinesSchedules = data.filter(routine => routine.complete === 'C');
+            // 
+            // return updateCompleteRoutine;
         } catch (err) {
             loggerError.error(err);
         } finally {

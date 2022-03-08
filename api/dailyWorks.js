@@ -15,8 +15,9 @@ const worksResp = (dayWorks, columns) => {
 
 export class ApiDailyWork {
 
-    createDailyWork = async (data) => {
+    createDailyWork = async (data, localDate) => {
         try {
+            console.log(data);
             const dayWorks = saveDailyWorkDTO(data);
             await dao.createDailyWork(dayWorks);
             return dayWorks;
