@@ -11,7 +11,8 @@ export class RouterRoutine {
     start() {
         router.post('/create', this.controllerRoutine.createRoutine);
         router.get('/get', this.controllerRoutine.getRoutine);
-        router.get('/get/:date', this.controllerRoutine.getOtherRoutine);
+        router.get('/get/:date', this.controllerRoutine.getAllRoutine);
+        router.put('/update', this.controllerRoutine.updateRoutineScheduleByCompleteTask);
         return router;
     }
 

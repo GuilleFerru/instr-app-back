@@ -30,3 +30,47 @@
     at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:92:13)
     at processTicksAndRejections (internal/process/task_queues.js:93:5)
     at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:48:31)
+[2022-03-07T22:42:08.120] [ERROR] error - TypeError: routine.find is not a function
+    at file:///E:/instr-app/instr-app-back/api/routines.js:178:36
+    at Array.map (<anonymous>)
+    at ApiRoutine.updateCompleteRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:177:18)
+    at updateCompleteRoutine (file:///E:/instr-app/instr-app-back/controllers/routines.js:45:51)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at E:\instr-app\instr-app-back\node_modules\express\lib\router\index.js:281:22
+    at Function.process_params (E:\instr-app\instr-app-back\node_modules\express\lib\router\index.js:335:12)
+[2022-03-07T22:42:08.124] [ERROR] error - TypeError: routine.find is not a function
+    at file:///E:/instr-app/instr-app-back/api/routines.js:178:36
+    at Array.map (<anonymous>)
+    at ApiRoutine.updateCompleteRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:177:18)
+    at updateCompleteRoutine (file:///E:/instr-app/instr-app-back/controllers/routines.js:45:51)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at E:\instr-app\instr-app-back\node_modules\express\lib\router\index.js:281:22
+    at Function.process_params (E:\instr-app\instr-app-back\node_modules\express\lib\router\index.js:335:12)
+[2022-03-07T22:44:45.773] [ERROR] error - ReferenceError: routine is not defined
+    at ApiRoutine.updateCompleteRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:178:24)
+    at updateCompleteRoutine (file:///E:/instr-app/instr-app-back/controllers/routines.js:45:51)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at E:\instr-app\instr-app-back\node_modules\express\lib\router\index.js:281:22
+    at Function.process_params (E:\instr-app\instr-app-back\node_modules\express\lib\router\index.js:335:12)
+    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\index.js:275:10)
+    at Function.handle (E:\instr-app\instr-app-back\node_modules\express\lib\router\index.js:174:3)
+[2022-03-07T22:44:46.062] [ERROR] error - ReferenceError: routine is not defined
+    at ApiRoutine.updateCompleteRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:178:24)
+    at updateCompleteRoutine (file:///E:/instr-app/instr-app-back/controllers/routines.js:45:51)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at E:\instr-app\instr-app-back\node_modules\express\lib\router\index.js:281:22
+    at Function.process_params (E:\instr-app\instr-app-back\node_modules\express\lib\router\index.js:335:12)
+    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\index.js:275:10)
+    at Function.handle (E:\instr-app\instr-app-back\node_modules\express\lib\router\index.js:174:3)

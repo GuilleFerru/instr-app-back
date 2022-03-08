@@ -28,10 +28,21 @@ export class ControllerRoutine {
         }
     }
 
-    getOtherRoutine = async (req, res) => {
+    getAllRoutine = async (req, res) => {
         try {
             const { date } = req.params;
-            const routine = await this.apiRoutine.getOtherRoutine(date);
+            const routine = await this.apiRoutine.getAllRoutine(date);
+            return res.status(200).json(routine);
+        } catch (err) {
+            console.log(err);
+            return res.status(500).json(err);
+        }
+    }
+
+    updateRoutineScheduleByCompleteTask = async (req, res) => {
+        try {
+            const {data} = req.body;
+            const routine = await this.apiRoutine.updateRoutineScheduleByCompleteTask(data);
             return res.status(200).json(routine);
         } catch (err) {
             console.log(err);

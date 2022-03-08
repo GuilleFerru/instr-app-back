@@ -452,10 +452,11 @@ export class DBMongoDao {
             loggerError.error(error)
         }
     }
-    //VER ESTO Q ESTA MAL
-    getOthersRoutineSchedule = async (date) => {
+
+
+    getAllRoutinesSchedules = async (date) => {
         try {
-            const routineResp = await routineScheduleModel.find({ $and: [{ startDate: { $lte: date } }, { dueDate: { $gte: date } }, { otherCheckDay: { $ne: null } }] }, { __v: 0, createdAt: 0, updatedAt: 0 });
+            const routineResp = await routineScheduleModel.find({ $and: [{ startDate: { $lte: date } }, { dueDate: { $gte: date } }] }, { __v: 0, createdAt: 0, updatedAt: 0 });
             return routineResp;
         } catch (error) {
             console.log(error)
@@ -476,7 +477,7 @@ export class DBMongoDao {
         }
     }
 
-    updateRoutineScheduleComplete = async (dueDate) => {
+    updateRoutineScheduleByDueDate = async (dueDate) => {
         try {
             await routineScheduleModel.updateMany({ "dueDate": dueDate }, {
                 $set: {
@@ -489,6 +490,21 @@ export class DBMongoDao {
             loggerError.error(error)
         }
     }
+
+    //SEGUIR DESDE ACA... VER COMO ACTUALIZAR.
+    updateRoutineScheduleByCompleteTask = async (id) => {
+        try {
+            await routineScheduleModel.updateMany({ "_id": id }, {
+                $set: {
+                    "complete": true,
+                }
+            });
+            return true;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
 
     /*   COLUMNAS DE TABLAS */
 

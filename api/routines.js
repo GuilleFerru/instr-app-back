@@ -73,7 +73,7 @@ const otherRoutineResp = (otherRoutines, columns) => {
     return otherRoutineResp;
 }
 
-const getRoutines = async (routineSchedules) => {
+const getRoutines = async (routineSchedules, filter) => {
     const routinesId = [];
     const routines = []
 
@@ -84,8 +84,8 @@ const getRoutines = async (routineSchedules) => {
     }
     for (const element of routinesId) {
         const routine = await dao.getRoutine(element.routineId);
-        const routineFrecuency = routine[0].frecuency;
-        if (routineFrecuency > 4) {
+        // const routineFrecuency = routine[0].frecuency;
+        if (filter === 'forRoutines') {
             const routineRes = routineRespForOthersRoutineDTO(routine[0], element.complete, element._id, element.ot, element.filePath, element.nickname, element.checkDay);
             routines.push(routineRes);
         } else {
@@ -134,7 +134,7 @@ export class ApiRoutine {
             const dueDate = actualRoutineScheduleDates[0].dueDate;
 
             if (today > dueDate) {
-                const completeRoutineSchedules = await dao.updateRoutineScheduleComplete(dueDate);
+                const completeRoutineSchedules = await dao.updateRoutineScheduleByDueDate(dueDate);
                 for (const routineSchedule of completeRoutineSchedules) {
                     const startDate = addDays(dueDate, 1)
                     const routine = await dao.getRoutine(routineSchedule.routine);
@@ -142,7 +142,7 @@ export class ApiRoutine {
                     await dao.createRoutineSchedule(newRoutineSchedule);
                 }
             }
-            const routines = await getRoutines(actualMonthRoutineSchedule);
+            const routines = await getRoutines(actualMonthRoutineSchedule, 'forDailyWorks');
             return routines
         } catch (err) {
             loggerError.error(err);
@@ -150,12 +150,12 @@ export class ApiRoutine {
         }
     }
 
-    getOtherRoutine = async (date) => {
+    getAllRoutine = async (date) => {
         try {
             const localDate = dateInLocalDate(date);
-            const routinesSchedules = await dao.getOthersRoutineSchedule(localDate)
-            const otherRoutines = await getRoutines(routinesSchedules);
-
+            const routinesSchedules = await dao.getAllRoutinesSchedules(localDate);
+            const allRoutines = await getRoutines(routinesSchedules, 'forRoutines');
+        
             const columns = [];
             const savedColumns = await OthersRoutineColumnTable.getColumns();
             if (savedColumns.length === 0) {
@@ -164,11 +164,23 @@ export class ApiRoutine {
             } else {
                 columns.push(savedColumns[0].columns);
             }
-            return otherRoutineResp(otherRoutines, ...columns);
+            return otherRoutineResp(allRoutines, ...columns);
         } catch (err) {
             console.log(err);
             loggerError.error(err);
         } finally {
+        }
+    }
+
+    updateRoutineScheduleByCompleteTask = async (data) => {
+        try {
+            const routinesSchedules = data.filter(routine => routine.complete === 'C');
+            const updateCompleteRoutine = await dao.updateRoutineScheduleByCompleteTask(routinesSchedules);
+            return updateCompleteRoutine;
+        } catch (err) {
+            loggerError.error(err);
+        } finally {
+            loggerInfo.info('');
         }
     }
 }
