@@ -1,4 +1,4 @@
-import { checkWeekDay } from '../../utils/formatDate.js';
+import { checkWeekDay, formatDate } from '../../utils/formatDate.js';
 
 export const saveRoutineDTO = (plant, attelier, tag, timeSchedule, frecuency, manteinance, action, description) => ({
     plant: plant,
@@ -44,7 +44,7 @@ export const routineRespDTO = (routine, complete, _id, ot) => ({
 
 
 
-export const routineRespForOthersRoutineDTO = (routine, complete, _id, ot,filePath, nickname, checkDay,weekCheckDays) => ({
+export const routineRespForOthersRoutineDTO = (routine, complete, _id, ot, filePath, nickname, checkDay, weekCheckDays) => ({
     _id: _id,
     routineId: routine._id,
     plant: routine.plant,
@@ -58,3 +58,20 @@ export const routineRespForOthersRoutineDTO = (routine, complete, _id, ot,filePa
     filePath: filePath ? filePath : '',
     nickname: nickname ? nickname : '',
 });
+
+
+export const routineSavedAsDailyWorkDTO = (routine, routineSchedule) => ({
+    plant: routine.plant,
+    attelier: routine.attelier,
+    tag: routine.tag,
+    timeSchedule: routine.timeSchedule,
+    manteinance: routine.manteinance,
+    ot: routineSchedule.ot,
+    action: routine.action,
+    description: routine.description,
+    complete: routineSchedule.complete,
+    beginDate: formatDate(new Date()),
+    endDate: formatDate(new Date()),
+    routineScheduleId: routineSchedule._id,
+    sector: "Instrumentos-Sistemas"
+})

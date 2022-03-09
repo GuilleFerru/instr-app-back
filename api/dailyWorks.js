@@ -15,12 +15,19 @@ const worksResp = (dayWorks, columns) => {
 
 export class ApiDailyWork {
 
-    createDailyWork = async (data, localDate) => {
+    createDailyWork = async (data, filter) => {
         try {
-            console.log(data);
-            const dayWorks = saveDailyWorkDTO(data);
-            await dao.createDailyWork(dayWorks);
-            return dayWorks;
+            const dayWorks = [];
+            if (filter !== 'fromRoutine') {
+                dayWorks.push(saveDailyWorkDTO(data))
+
+
+                console.log(dayWorks);
+            } else {
+                dayWorks.push(...data)
+            }
+            await dao.createDailyWork(...dayWorks);
+            // return dayWorks;
         } catch (err) {
             console.log(err);
             loggerError.error(err);
