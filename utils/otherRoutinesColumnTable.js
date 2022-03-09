@@ -30,7 +30,7 @@ const createOthersRoutinesColumns = (plantsForColumnTable, atteliersForColumnTab
             type: 'string',
         },
         {
-            field: 'endDate',
+            field: 'checkDay',
             title: 'Dia de Revisión',
             type: 'date',
             dateSetting: { locale: 'es-AR', format: 'DD.MM.YYYY' },

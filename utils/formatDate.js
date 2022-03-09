@@ -29,5 +29,5 @@ export const checkWeekDay = (weekCheckDays) => {
     weekCheckDays.forEach(day => {
         dayName.push(days[day]);
     });
-    return dayName.join(', ');
+    return dayName.join(' - ');
     }
