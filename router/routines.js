@@ -13,6 +13,7 @@ export class RouterRoutine {
         router.get('/get', this.controllerRoutine.getRoutine);
         router.get('/get/:date', this.controllerRoutine.getAllRoutine);
         router.put('/update', this.controllerRoutine.updateRoutineScheduleByCompleteTask);
+        router.put('/updateOt', this.controllerRoutine.updateRoutineScheduleOT);
         return router;
     }
 

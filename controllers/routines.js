@@ -49,4 +49,15 @@ export class ControllerRoutine {
             return res.status(500).json(err);
         }
     }
+
+    updateRoutineScheduleOT = async (req, res) => {
+        try {
+            const {data} = req.body;
+            const routine = await this.apiRoutine.updateRoutineScheduleOT(data);
+            return res.status(200).json(routine);
+        } catch (err) {
+            console.log(err);
+            return res.status(500).json(err);
+        }
+    }
 }

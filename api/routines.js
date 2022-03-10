@@ -191,7 +191,17 @@ export class ApiRoutine {
             const updateCompleteRoutine = await dao.updateRoutineScheduleByCompleteTask(data);
             return updateCompleteRoutine;
         } catch (err) {
-            console.log(err);
+            loggerError.error(err);
+        } finally {
+            loggerInfo.info('');
+        }
+    }
+
+    updateRoutineScheduleOT = async (routineSchedule) => {
+        try {
+            const updatedRoutineScheduleOT = await dao.updateRoutineScheduleOT(routineSchedule._id, routineSchedule.ot);
+            return updatedRoutineScheduleOT;
+        } catch (err) {
             loggerError.error(err);
         } finally {
             loggerInfo.info('');

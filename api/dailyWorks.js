@@ -20,14 +20,11 @@ export class ApiDailyWork {
             const dayWorks = [];
             if (filter !== 'fromRoutine') {
                 dayWorks.push(saveDailyWorkDTO(data))
-
-
-                console.log(dayWorks);
             } else {
                 dayWorks.push(...data)
             }
             await dao.createDailyWork(...dayWorks);
-            // return dayWorks;
+            return dayWorks;
         } catch (err) {
             console.log(err);
             loggerError.error(err);
@@ -48,8 +45,10 @@ export class ApiDailyWork {
             }
             const dateLocalString = formatDate(date);
             const dayWorks = await dao.getDailyWork(dateLocalString);
+
             if (dayWorks.length === 0) {
                 const routines = await apiRoutine.getRoutine(date);
+                
                 const dayWorks = [];
                 routines.map(routine => { dayWorks.push(saveDailyWorkDTO(routine, dateLocalString)) });
                 const currentMonth = todayInLocalDate().getMonth() + 1;

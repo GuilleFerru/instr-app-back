@@ -316,8 +316,9 @@ export class DBMongoDao {
 
     createDailyWork = async (dailyWork) => {
         try {
-            const dailyWorkResp = await dailyWorkModel.insertMany(dailyWork);
-            return dailyWorkResp;
+            console.log(dailyWork)
+            // const dailyWorkResp = await dailyWorkModel.insertMany(dailyWork);
+            // return dailyWorkResp;
         } catch (error) {
             loggerError.error(error)
         }
