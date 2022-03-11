@@ -2,7 +2,7 @@ import { dao } from '../server.js';
 import { ApiDailyWork } from './dailyWorks.js';
 import { saveRoutineDTO, routineScheduleDTO, routineRespDTO, routineRespForOthersRoutineDTO, routineSavedAsDailyWorkDTO } from '../model/DTOs/routine.js';
 import { OthersRoutineColumnTable } from '../utils/otherRoutinesColumnTable.js';
-import { formatDate, dateInLocalDate, todayInLocalDate } from '../utils/formatDate.js';
+import { parseStringToDate, dateInLocalDate, todayInLocalDate } from '../utils/formatDate.js';
 import { loggerError, loggerInfo } from '../utils/logger.js';
 
 
@@ -35,36 +35,36 @@ const checkDueDate = (lastRoutineId, startDay, checkDays, otherCheckDay, frecuen
     if (checkDays) {
         const otherCheckDay = '';
         const dueDate = new Date((startDate.getMonth() + 1) + '-' + dayInMonth + '-' + startDate.getFullYear());
-        return routineScheduleDTO(lastRoutineId, startDay, ot, dueDate, checkDays, otherCheckDay, false, false, filePath, nickname);
+        return routineScheduleDTO(lastRoutineId, startDay, ot, dueDate, checkDays, otherCheckDay, undefined, false, false, filePath, nickname);
     } else if (otherCheckDay && frecuency === 5) {
         const checkDays = [];
         const dayForDueDate = parseInt(dayInMonth / 2);
         const dueDate = new Date((startDate.getMonth() + 1) + '-' + dayForDueDate + '-' + startDate.getFullYear());
-        return routineScheduleDTO(lastRoutineId, startDay, ot, dueDate, checkDays, checkIfWeekend(otherCheckDay), false, false, filePath, nickname);
+        return routineScheduleDTO(lastRoutineId, startDay, ot, dueDate, checkDays, checkIfWeekend(otherCheckDay), undefined, false, false, filePath, nickname);
     } else if (otherCheckDay && frecuency === 6) {
         const checkDays = [];
         const dueDate = new Date((startDate.getMonth() + 1) + '-' + dayInMonth + '-' + startDate.getFullYear());
-        return routineScheduleDTO(lastRoutineId, startDay, ot, dueDate, checkDays, checkIfWeekend(otherCheckDay), false, false, filePath, nickname);
+        return routineScheduleDTO(lastRoutineId, startDay, ot, dueDate, checkDays, checkIfWeekend(otherCheckDay), undefined, false, false, filePath, nickname);
     } else if (otherCheckDay && frecuency === 7) {
         const checkDays = [];
         const dayInMonth = daysInMonth(startDate.getMonth() + 2, startDate.getFullYear());
         const dueDate = new Date((startDate.getMonth() + 2) + '-' + dayInMonth + '-' + startDate.getFullYear());
-        return routineScheduleDTO(lastRoutineId, startDay, ot, dueDate, checkDays, checkIfWeekend(otherCheckDay), false, false, filePath, nickname);
+        return routineScheduleDTO(lastRoutineId, startDay, ot, dueDate, checkDays, checkIfWeekend(otherCheckDay), undefined, false, false, filePath, nickname);
     } else if (otherCheckDay && frecuency === 8) {
         const checkDays = [];
         const dayInMonth = daysInMonth(startDate.getMonth() + 6, startDate.getFullYear());
         const dueDate = new Date((startDate.getMonth() + 6) + '-' + dayInMonth + '-' + startDate.getFullYear());
-        return routineScheduleDTO(lastRoutineId, startDay, ot, dueDate, checkDays, checkIfWeekend(otherCheckDay), false, false, filePath, nickname);
+        return routineScheduleDTO(lastRoutineId, startDay, ot, dueDate, checkDays, checkIfWeekend(otherCheckDay), undefined, false, false, filePath, nickname);
     } else if (otherCheckDay && frecuency === 9) {
         const checkDays = [];
         const oneYearFromStartDate = new Date((startDate.getMonth() + 1) + '-' + startDate.getDate() + '-' + startDate.getFullYear(startDate.setFullYear(startDate.getFullYear() + 1)));
         const dueDate = new Date(oneYearFromStartDate.setDate(oneYearFromStartDate.getDate() - 1));
-        return routineScheduleDTO(lastRoutineId, startDay, ot, dueDate, checkDays, checkIfWeekend(otherCheckDay), false, false, filePath, nickname);
+        return routineScheduleDTO(lastRoutineId, startDay, ot, dueDate, checkDays, checkIfWeekend(otherCheckDay), undefined, false, false, filePath, nickname);
     } else if (otherCheckDay && frecuency === 10) {
         const checkDays = [];
         const twoYearsFromStartDate = new Date((startDate.getMonth() + 1) + '-' + startDate.getDate() + '-' + startDate.getFullYear(startDate.setFullYear(startDate.getFullYear() + 2)));
         const dueDate = new Date(twoYearsFromStartDate.setDate(twoYearsFromStartDate.getDate() - 1));
-        return routineScheduleDTO(lastRoutineId, startDay, ot, dueDate, checkDays, checkIfWeekend(otherCheckDay), false, false, filePath, nickname);
+        return routineScheduleDTO(lastRoutineId, startDay, ot, dueDate, checkDays, checkIfWeekend(otherCheckDay), undefined, false, false, filePath, nickname);
     }
 
 }
@@ -174,23 +174,25 @@ export class ApiRoutine {
 
     updateRoutineScheduleByCompleteTask = async (data) => {
         try {
-            //actualizo la routineSchedule
 
+            //busco la rutina asociada al schedule de la rutina
             const dataToDailyWork = [];
 
-            for (const routineSchedule of data) {
-                const routine = await dao.getRoutine(routineSchedule.routineId);
-                const routineSavedAsDailyWork = routineSavedAsDailyWorkDTO(routine[0], routineSchedule)
-                dataToDailyWork.push(routineSavedAsDailyWork)
+            for (const routineFromClient of data) {
+                const routine = await dao.getRoutine(routineFromClient.routineId);
+                const routineSavedAsDailyWork = routineSavedAsDailyWorkDTO(routine[0], routineFromClient)
+                dataToDailyWork.push(routineSavedAsDailyWork);
+                const id = routineFromClient._id;
+                const checkedDay = parseStringToDate(routineSavedAsDailyWork.endDate)
+                await dao.updateRoutineScheduleByCompleteTask(id, checkedDay);
             }
-
             // ahora tengo que crear el dailyWork en el dia que se cerro la routineSchedule
             const apiDailyWork = new ApiDailyWork();
             await apiDailyWork.createDailyWork(dataToDailyWork, 'fromRoutine');
             // por ultimo updateo la rutina
-            const updateCompleteRoutine = await dao.updateRoutineScheduleByCompleteTask(data);
-            return updateCompleteRoutine;
+            return true;
         } catch (err) {
+            console.log(err)
             loggerError.error(err);
         } finally {
             loggerInfo.info('');

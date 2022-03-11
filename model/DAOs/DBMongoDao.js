@@ -316,9 +316,8 @@ export class DBMongoDao {
 
     createDailyWork = async (dailyWork) => {
         try {
-            console.log(dailyWork)
-            // const dailyWorkResp = await dailyWorkModel.insertMany(dailyWork);
-            // return dailyWorkResp;
+            const dailyWorkResp = await dailyWorkModel.insertMany(dailyWork);
+            return dailyWorkResp;
         } catch (error) {
             loggerError.error(error)
         }
@@ -492,16 +491,17 @@ export class DBMongoDao {
         }
     }
 
-    //SEGUIR DESDE ACA... VER COMO ACTUALIZAR.
-    updateRoutineScheduleByCompleteTask = async (id) => {
+    updateRoutineScheduleByCompleteTask = async (id, checkedDay) => {
         try {
-            await routineScheduleModel.updateMany({ "_id": id }, {
+            await routineScheduleModel.updateOne({ "_id": id }, {
                 $set: {
                     "complete": true,
+                    "realCheckedDay": checkedDay
                 }
             });
             return true;
         } catch (error) {
+            console.log(error)
             loggerError.error(error)
         }
     }

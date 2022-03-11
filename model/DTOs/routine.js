@@ -12,19 +12,21 @@ export const saveRoutineDTO = (plant, attelier, tag, timeSchedule, frecuency, ma
     sector: 'Instrumentos-Sistemas'
 });
 
-export const routineScheduleDTO = (routine, startDate, ot, dueDate, checkDays, otherCheckDay, isExpired, complete, filePath, nickname) => ({
+export const routineScheduleDTO = (routine, startDate, ot, dueDate, checkDays, realCheckedDay, otherCheckDay, isExpired, complete, filePath, nickname) => ({
     routine: routine,
     startDate: startDate,
     ot: ot,
     dueDate: dueDate,
     checkDays: checkDays,
     otherCheckDay: otherCheckDay ? new Date(otherCheckDay) : '',
+    realCheckedDay: realCheckedDay ? new Date(realCheckedDay) : '',
     isExpired: isExpired,
     complete: complete,
     filePath: filePath ? filePath : '',
     nickname: nickname ? nickname : '',
     sector: 'Instrumentos-Sistemas'
 });
+
 
 export const routineRespDTO = (routine, complete, _id, ot) => ({
     _id: _id,
@@ -40,8 +42,6 @@ export const routineRespDTO = (routine, complete, _id, ot) => ({
     description: routine.description,
     complete: complete
 });
-
-
 
 
 export const routineRespForOthersRoutineDTO = (routine, complete, _id, ot, filePath, nickname, checkDay, weekCheckDays) => ({

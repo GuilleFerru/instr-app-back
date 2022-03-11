@@ -24,6 +24,11 @@ const routineScheduleSchema = new mongoose.Schema({
         type: Date,
         default: undefined
     },
+    realCheckedDay: {
+        type: Date,
+        default: undefined
+
+    },
     isExpired: {
         type: Boolean,
         require: true,

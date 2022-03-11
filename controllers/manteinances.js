@@ -8,7 +8,6 @@ export class ControllerManteinance {
 
     createManteinance = async (req, res) => {
         try {
-            console.log(req.body)
             const manteinance = req.body;
             const mantResp = await this.apiManteinance.createManteinance(manteinance);
             return res.status(200).json({ mantResp });

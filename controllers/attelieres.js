@@ -19,9 +19,7 @@ export class ControllerAttelier {
 
     getAttelieres = async (_req, res) => {
         try {
-            console.log('hola')
             const attelieres = await this.apiAttelier.getAttelieres();
-            console.log(attelieres);
             return res.status(200).json(attelieres);
         } catch (err) {
             console.log(err);

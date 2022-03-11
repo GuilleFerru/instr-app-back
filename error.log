@@ -216,3 +216,92 @@
     at runMicrotasks (<anonymous>)
     at processTicksAndRejections (internal/process/task_queues.js:95:5)
     at async deleteDailyWork (file:///D:/VSCode/instr-app/instr-app-back/controllers/dailyWorks.js:48:31)
+[2022-03-10T21:36:36.647] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:99:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:48:31)
+[2022-03-10T21:36:37.813] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:99:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:48:31)
+[2022-03-10T21:36:38.806] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:99:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:48:31)
+[2022-03-10T21:36:40.611] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:99:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:48:31)
+[2022-03-10T21:36:41.577] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:99:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:48:31)
+[2022-03-10T21:36:43.315] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:99:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:48:31)
+[2022-03-10T21:36:44.144] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:99:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:48:31)
+[2022-03-10T21:36:45.536] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:99:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:48:31)
+[2022-03-10T21:36:46.296] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:99:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:48:31)
+[2022-03-10T21:36:47.708] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:99:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:48:31)
+[2022-03-10T21:36:48.856] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:99:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:48:31)
+[2022-03-10T21:36:50.280] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:99:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:48:31)
+[2022-03-10T21:36:51.049] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:99:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:48:31)
+[2022-03-10T21:36:52.491] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:99:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:48:31)
+[2022-03-10T21:36:53.382] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:99:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:48:31)
+[2022-03-10T21:55:32.300] [ERROR] error - TypeError: routineSchedule is not iterable
+    at ApiRoutine.updateRoutineScheduleByCompleteTask (file:///E:/instr-app/instr-app-back/api/routines.js:185:47)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async updateRoutineScheduleByCompleteTask (file:///E:/instr-app/instr-app-back/controllers/routines.js:45:29)
+[2022-03-10T21:56:05.472] [ERROR] error - TypeError: Cannot read property 'beginDate' of undefined
+    at ApiRoutine.updateRoutineScheduleByCompleteTask (file:///E:/instr-app/instr-app-back/api/routines.js:185:67)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async updateRoutineScheduleByCompleteTask (file:///E:/instr-app/instr-app-back/controllers/routines.js:45:29)
+[2022-03-10T21:56:17.450] [ERROR] error - TypeError: Cannot read property 'beginDate' of undefined
+    at ApiRoutine.updateRoutineScheduleByCompleteTask (file:///E:/instr-app/instr-app-back/api/routines.js:185:67)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async updateRoutineScheduleByCompleteTask (file:///E:/instr-app/instr-app-back/controllers/routines.js:45:29)
+[2022-03-10T21:56:41.241] [ERROR] error - TypeError: Cannot read property 'beginDate' of undefined
+    at ApiRoutine.updateRoutineScheduleByCompleteTask (file:///E:/instr-app/instr-app-back/api/routines.js:186:67)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async updateRoutineScheduleByCompleteTask (file:///E:/instr-app/instr-app-back/controllers/routines.js:45:29)
+[2022-03-10T21:57:01.722] [ERROR] error - TypeError: routineSchedule is not iterable
+    at ApiRoutine.updateRoutineScheduleByCompleteTask (file:///E:/instr-app/instr-app-back/api/routines.js:187:47)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async updateRoutineScheduleByCompleteTask (file:///E:/instr-app/instr-app-back/controllers/routines.js:45:29)
+[2022-03-10T22:13:36.521] [ERROR] error - ReferenceError: realCheckedDay is not defined
+    at DBMongoDao.updateRoutineScheduleByCompleteTask (file:///E:/instr-app/instr-app-back/model/DAOs/DBMongoDao.js:501:38)
+    at ApiRoutine.updateRoutineScheduleByCompleteTask (file:///E:/instr-app/instr-app-back/api/routines.js:194:53)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async updateRoutineScheduleByCompleteTask (file:///E:/instr-app/instr-app-back/controllers/routines.js:45:29)
+[2022-03-10T22:34:40.754] [ERROR] error - ReferenceError: routineSchedule is not defined
+    at ApiRoutine.updateRoutineScheduleByCompleteTask (file:///E:/instr-app/instr-app-back/api/routines.js:187:28)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async updateRoutineScheduleByCompleteTask (file:///E:/instr-app/instr-app-back/controllers/routines.js:45:29)

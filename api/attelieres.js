@@ -44,7 +44,6 @@ export class ApiAttelier {
     getAtteliresByPlant = async (plantName) => {
         try {
             const attelieres = await dao.getAtteliersByPlant(plantName);
-            console.log('attelieres');
             return attelieres;
         } catch (err) {
             loggerError.error(err);
