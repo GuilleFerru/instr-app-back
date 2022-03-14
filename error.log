@@ -305,3 +305,259 @@
     at ApiRoutine.updateRoutineScheduleByCompleteTask (file:///E:/instr-app/instr-app-back/api/routines.js:187:28)
     at processTicksAndRejections (internal/process/task_queues.js:93:5)
     at async updateRoutineScheduleByCompleteTask (file:///E:/instr-app/instr-app-back/controllers/routines.js:45:29)
+[2022-03-11T21:39:44.238] [ERROR] error - ReferenceError: dailyWorkResp is not defined
+    at DBMongoDao.createDailyWork (file:///E:/instr-app/instr-app-back/model/DAOs/DBMongoDao.js:321:13)
+    at ApiDailyWork.createDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:26:23)
+    at ApiRoutine.updateRoutineScheduleByCompleteTask (file:///E:/instr-app/instr-app-back/api/routines.js:191:32)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async updateRoutineScheduleByCompleteTask (file:///E:/instr-app/instr-app-back/controllers/routines.js:45:29)
+[2022-03-11T21:41:04.112] [ERROR] error - ReferenceError: dailyWorkResp is not defined
+    at DBMongoDao.createDailyWork (file:///E:/instr-app/instr-app-back/model/DAOs/DBMongoDao.js:321:13)
+    at ApiDailyWork.createDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:26:23)
+    at ApiRoutine.updateRoutineScheduleByCompleteTask (file:///E:/instr-app/instr-app-back/api/routines.js:192:32)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async updateRoutineScheduleByCompleteTask (file:///E:/instr-app/instr-app-back/controllers/routines.js:45:29)
+[2022-03-11T21:49:09.333] [ERROR] error - ReferenceError: dailyWorkResp is not defined
+    at DBMongoDao.createDailyWork (file:///E:/instr-app/instr-app-back/model/DAOs/DBMongoDao.js:321:13)
+    at ApiDailyWork.createDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:26:23)
+    at ApiRoutine.updateRoutineScheduleByCompleteTask (file:///E:/instr-app/instr-app-back/api/routines.js:194:32)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async updateRoutineScheduleByCompleteTask (file:///E:/instr-app/instr-app-back/controllers/routines.js:45:29)
+[2022-03-11T21:50:23.053] [ERROR] error - ReferenceError: dailyWorkResp is not defined
+    at DBMongoDao.createDailyWork (file:///E:/instr-app/instr-app-back/model/DAOs/DBMongoDao.js:321:13)
+    at ApiDailyWork.createDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:26:23)
+    at ApiRoutine.updateRoutineScheduleByCompleteTask (file:///E:/instr-app/instr-app-back/api/routines.js:195:32)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async updateRoutineScheduleByCompleteTask (file:///E:/instr-app/instr-app-back/controllers/routines.js:45:29)
+[2022-03-11T21:51:58.660] [ERROR] error - ReferenceError: dailyWorkResp is not defined
+    at DBMongoDao.createDailyWork (file:///E:/instr-app/instr-app-back/model/DAOs/DBMongoDao.js:321:13)
+    at ApiDailyWork.createDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:27:23)
+    at ApiRoutine.updateRoutineScheduleByCompleteTask (file:///E:/instr-app/instr-app-back/api/routines.js:193:32)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async updateRoutineScheduleByCompleteTask (file:///E:/instr-app/instr-app-back/controllers/routines.js:45:29)
+[2022-03-11T21:57:36.050] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:100:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:48:31)
+[2022-03-11T21:59:10.428] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:96:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:48:31)
+[2022-03-11T22:00:00.023] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:96:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:48:31)
+[2022-03-11T22:00:01.962] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:96:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:48:31)
+[2022-03-11T22:00:28.766] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:96:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:48:31)
+[2022-03-11T22:00:30.500] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:96:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:48:31)
+[2022-03-11T22:00:33.348] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:96:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:48:31)
+[2022-03-11T22:00:35.083] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:96:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:48:31)
+[2022-03-11T22:00:37.121] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:96:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:48:31)
+[2022-03-11T22:00:38.762] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:96:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:48:31)
+[2022-03-13T12:44:38.108] [ERROR] error - ReferenceError: consoleo is not defined
+    at ApiRoutine.getRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:138:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:52:34)
+    at async getDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:25:31)
+[2022-03-13T12:44:38.118] [ERROR] error - TypeError: Cannot read property 'map' of undefined
+    at ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:54:26)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:25:31)
+[2022-03-13T12:45:24.427] [ERROR] error - ReferenceError: consoleo is not defined
+    at ApiRoutine.getRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:138:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:52:34)
+    at async getDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:25:31)
+[2022-03-13T12:45:24.443] [ERROR] error - TypeError: Cannot read property 'map' of undefined
+    at ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:55:26)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:25:31)
+[2022-03-13T12:46:32.636] [ERROR] error - ReferenceError: consoleo is not defined
+    at ApiRoutine.getRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:138:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:52:34)
+    at async getDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:25:31)
+[2022-03-13T12:46:32.639] [ERROR] error - TypeError: Cannot read property 'map' of undefined
+    at ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:55:26)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:25:31)
+[2022-03-13T12:48:25.767] [ERROR] error - ReferenceError: consoleo is not defined
+    at ApiRoutine.getRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:135:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:52:34)
+    at async getDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:25:31)
+[2022-03-13T12:48:25.770] [ERROR] error - TypeError: Cannot read property 'map' of undefined
+    at ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:55:26)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:25:31)
+[2022-03-13T12:49:51.772] [ERROR] error - ReferenceError: consoleo is not defined
+    at ApiRoutine.getRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:135:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:52:34)
+    at async getDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:25:31)
+[2022-03-13T12:49:51.775] [ERROR] error - TypeError: Cannot read property 'length' of undefined
+    at ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:55:26)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:25:31)
+[2022-03-13T12:51:15.215] [ERROR] error - ReferenceError: consoleo is not defined
+    at ApiRoutine.getRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:135:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:52:34)
+    at async getDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:25:31)
+[2022-03-13T12:51:15.218] [ERROR] error - TypeError: Cannot read property 'length' of undefined
+    at ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:55:26)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:25:31)
+[2022-03-13T12:52:18.309] [ERROR] error - ReferenceError: consoleo is not defined
+    at ApiRoutine.getRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:135:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:52:34)
+    at async getDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:25:31)
+[2022-03-13T12:52:18.318] [ERROR] error - TypeError: Cannot read property 'length' of undefined
+    at ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:55:27)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:25:31)
+[2022-03-13T12:52:38.608] [ERROR] error - ReferenceError: consoleo is not defined
+    at ApiRoutine.getRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:135:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:52:34)
+    at async getDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:25:31)
+[2022-03-13T12:53:17.917] [ERROR] error - ReferenceError: consoleo is not defined
+    at ApiRoutine.getRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:135:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:52:34)
+    at async getDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:25:31)
+[2022-03-13T12:53:20.241] [ERROR] error - ReferenceError: consoleo is not defined
+    at ApiRoutine.getRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:135:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:52:34)
+    at async getDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:25:31)
+[2022-03-13T12:53:26.395] [ERROR] error - ReferenceError: consoleo is not defined
+    at ApiRoutine.getRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:135:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:52:34)
+    at async getDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:25:31)
+[2022-03-13T12:53:37.742] [ERROR] error - ReferenceError: consoleo is not defined
+    at ApiRoutine.getRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:132:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:52:34)
+    at async getDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:25:31)
+[2022-03-13T12:55:04.560] [ERROR] error - ReferenceError: consoleo is not defined
+    at ApiRoutine.getRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:132:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:52:34)
+    at async getDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:25:31)
+[2022-03-13T12:55:27.347] [ERROR] error - ReferenceError: consoleo is not defined
+    at ApiRoutine.getRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:132:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:52:34)
+    at async getDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:25:31)
+[2022-03-13T12:55:42.405] [ERROR] error - ReferenceError: consoleo is not defined
+    at ApiRoutine.getRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:132:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:52:34)
+    at async getDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:25:31)
+[2022-03-13T12:56:11.569] [ERROR] error - ReferenceError: consoleo is not defined
+    at ApiRoutine.getRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:133:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:52:34)
+    at async getDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:25:31)
+[2022-03-13T12:56:26.053] [ERROR] error - ReferenceError: consoleo is not defined
+    at ApiRoutine.getRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:134:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:52:34)
+    at async getDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:25:31)
+[2022-03-13T12:56:49.487] [ERROR] error - ReferenceError: consoleo is not defined
+    at ApiRoutine.getRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:126:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:52:34)
+    at async getDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:25:31)
+[2022-03-13T12:57:03.097] [ERROR] error - ReferenceError: consoleo is not defined
+    at ApiRoutine.getRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:126:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:52:34)
+    at async getDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:25:31)
+[2022-03-13T12:57:44.278] [ERROR] error - ReferenceError: consoleo is not defined
+    at DBMongoDao.getActualMonthRoutineSchedule (file:///E:/instr-app/instr-app-back/model/DAOs/DBMongoDao.js:449:13)
+    at ApiRoutine.getRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:125:58)
+    at ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:52:51)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:25:31)
+[2022-03-13T12:57:44.288] [ERROR] error - ReferenceError: consoleo is not defined
+    at ApiRoutine.getRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:126:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:52:34)
+    at async getDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:25:31)
+[2022-03-13T12:58:00.888] [ERROR] error - ReferenceError: consoleo is not defined
+    at DBMongoDao.getActualMonthRoutineSchedule (file:///E:/instr-app/instr-app-back/model/DAOs/DBMongoDao.js:449:13)
+    at ApiRoutine.getRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:125:58)
+    at ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:52:51)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:25:31)
+[2022-03-13T12:58:03.923] [ERROR] error - ReferenceError: consoleo is not defined
+    at DBMongoDao.getActualMonthRoutineSchedule (file:///E:/instr-app/instr-app-back/model/DAOs/DBMongoDao.js:449:13)
+    at ApiRoutine.getRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:125:58)
+    at ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:52:51)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:25:31)
+[2022-03-13T12:58:22.242] [ERROR] error - ReferenceError: consoleo is not defined
+    at DBMongoDao.getActualMonthRoutineSchedule (file:///E:/instr-app/instr-app-back/model/DAOs/DBMongoDao.js:449:13)
+    at ApiRoutine.getRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:125:58)
+    at ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:52:51)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:25:31)
+[2022-03-13T12:58:55.356] [ERROR] error - ReferenceError: consoleo is not defined
+    at DBMongoDao.getActualMonthRoutineSchedule (file:///E:/instr-app/instr-app-back/model/DAOs/DBMongoDao.js:449:13)
+    at ApiRoutine.getRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:125:58)
+    at ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:52:51)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:25:31)
+[2022-03-13T13:22:50.264] [ERROR] error - TypeError: Cannot read property 'dueDate' of undefined
+    at ApiRoutine.getRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:136:59)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:50:34)
+    at async getDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:25:31)
+[2022-03-13T14:11:09.663] [ERROR] error - ReferenceError: completeRoutineSchedule is not defined
+    at ApiRoutine.getRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:148:21)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:50:34)
+    at async getDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:25:31)
+[2022-03-13T14:46:35.147] [ERROR] error - ReferenceError: otherCheckDay is not defined
+    at ApiRoutine.getRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:146:21)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:50:34)
+    at async getDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:25:31)
+[2022-03-13T18:43:03.585] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:102:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:48:31)
+[2022-03-13T18:55:20.129] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:102:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:48:31)
+[2022-03-13T19:08:20.392] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:102:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:48:31)

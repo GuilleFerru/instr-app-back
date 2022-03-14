@@ -17,14 +17,11 @@ export class ApiDailyWork {
 
     createDailyWork = async (data, filter) => {
         try {
-            const dayWorks = [];
             if (filter !== 'fromRoutine') {
-                dayWorks.push(saveDailyWorkDTO(data))
+                return await dao.createDailyWork(saveDailyWorkDTO(data));
             } else {
-                dayWorks.push(...data)
+                return await dao.createDailyWork(data);
             }
-            await dao.createDailyWork(...dayWorks);
-            return dayWorks;
         } catch (err) {
             console.log(err);
             loggerError.error(err);
@@ -35,6 +32,7 @@ export class ApiDailyWork {
 
     getDailyWork = async (date) => {
         try {
+            // busca la tabla de trabajo diario y guarda las columnas en columns, sino existe la crea.
             const columns = [];
             const savedColumns = await ApiDailyWorksColumnTable.getColumns();
             if (savedColumns.length === 0) {
@@ -43,17 +41,22 @@ export class ApiDailyWork {
             } else {
                 columns.push(savedColumns[0].columns);
             }
+            // busca los trabajos diarios de la fecha que viene en date
             const dateLocalString = formatDate(date);
             const dayWorks = await dao.getDailyWork(dateLocalString);
-
+            /*si no hay trabajos diarios, busca todas las rutinas y las crea como trabajos diarios, 
+            sino va a devolver las rutinas creadas la primera vez y los trabajos diarios */
             if (dayWorks.length === 0) {
                 const routines = await apiRoutine.getRoutine(date);
-                
                 const dayWorks = [];
-                routines.map(routine => { dayWorks.push(saveDailyWorkDTO(routine, dateLocalString)) });
+                routines !== undefined && routines.map(routine => { dayWorks.push(saveDailyWorkDTO(routine, dateLocalString)) });
+                /*como la rutina esta asociada a una rutinaSchedule y tiene una fecha de incio y fin, 
+                creo el dailyWork solo si el mes del date coincide con el mes actual, 
+                sino la traigo y la muestro sin OT y sin guardar en dailyWork */
                 const currentMonth = todayInLocalDate().getMonth() + 1;
                 const dateMonth = dateInLocalDate(date).getMonth() + 1;
                 currentMonth === dateMonth && await dao.createDailyWork(dayWorks);
+                currentMonth !== dateMonth && dayWorks.map(work => { work.ot = '' });
                 return worksResp(dayWorks, ...columns);
             } else {
                 return worksResp(dayWorks, ...columns);

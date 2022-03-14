@@ -12,14 +12,14 @@ export const saveRoutineDTO = (plant, attelier, tag, timeSchedule, frecuency, ma
     sector: 'Instrumentos-Sistemas'
 });
 
-export const routineScheduleDTO = (routine, startDate, ot, dueDate, checkDays, realCheckedDay, otherCheckDay, isExpired, complete, filePath, nickname) => ({
+export const routineScheduleDTO = (routine, startDate, ot, dueDate, checkDays, otherCheckDay, realCheckedDay, isExpired, complete, filePath, nickname) => ({
     routine: routine,
     startDate: startDate,
     ot: ot,
     dueDate: dueDate,
     checkDays: checkDays,
-    otherCheckDay: otherCheckDay ? new Date(otherCheckDay) : '',
-    realCheckedDay: realCheckedDay ? new Date(realCheckedDay) : '',
+    otherCheckDay: otherCheckDay ? new Date(otherCheckDay) : null,
+    realCheckedDay: realCheckedDay ? new Date(realCheckedDay) : null,
     isExpired: isExpired,
     complete: complete,
     filePath: filePath ? filePath : '',
@@ -44,7 +44,7 @@ export const routineRespDTO = (routine, complete, _id, ot) => ({
 });
 
 
-export const routineRespForOthersRoutineDTO = (routine, complete, _id, ot, filePath, nickname, checkDay, weekCheckDays) => ({
+export const routineRespForOthersRoutineDTO = (routine, complete, _id, ot, filePath, nickname, checkDay, weekCheckDays, realCheckedDay) => ({
     _id: _id,
     routineId: routine._id,
     plant: routine.plant,
@@ -52,7 +52,7 @@ export const routineRespForOthersRoutineDTO = (routine, complete, _id, ot, fileP
     tag: routine.tag,
     ot: ot ? ot : '',
     frecuency: routine.frecuency,
-    checkDay: checkDay ? checkDay : checkWeekDay(weekCheckDays),
+    checkDay: realCheckedDay ? realCheckedDay : checkDay ? checkDay : checkWeekDay(weekCheckDays),
     description: routine.description,
     complete: complete === false ? 'P' : 'C',
     filePath: filePath ? filePath : '',

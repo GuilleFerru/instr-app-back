@@ -18,22 +18,26 @@ const createOthersRoutinesColumns = (plantsForColumnTable, atteliersForColumnTab
             field: 'plant',
             title: 'Planta',
             lookup: plantsForColumnTable,
+            editable: 'never',
         },
         {
             field: 'attelier',
             title: 'Attelier',
             lookup: atteliersForColumnTable,
+            hidden: true,
         },
         {
             field: 'tag',
             title: 'TAG',
             type: 'string',
+            editable: 'never',
         },
         {
             field: 'checkDay',
             title: 'Dia de Revisión',
             type: 'date',
             dateSetting: { locale: 'es-AR', format: 'dd-MMM-yyyy' },
+            editable: 'never',
         },
         {
             field: 'ot',
@@ -45,7 +49,8 @@ const createOthersRoutinesColumns = (plantsForColumnTable, atteliersForColumnTab
             field: 'description',
             title: 'Descripción',
             multiline: true,
-            width: '40%'
+            width: '40%',
+            editable: 'never',
         },
         {
             field: 'complete',
@@ -57,6 +62,7 @@ const createOthersRoutinesColumns = (plantsForColumnTable, atteliersForColumnTab
                 'R': 'Demorado',
             },
             initialEditValue: 'P',
+            editable: 'never',
         },
         {
             field: 'filePath',

@@ -464,11 +464,12 @@ export class DBMongoDao {
         }
     }
 
-    updateRoutineScheduleOT = async (id, ot) => {
+    updateRoutineScheduleOT = async (id, ot, filePath) => {
         try {
             await routineScheduleModel.updateOne({ "_id": id }, {
                 $set: {
-                    "ot": ot
+                    "ot": ot,
+                    "filePath": filePath,
                 }
             });
             return true;
@@ -479,7 +480,7 @@ export class DBMongoDao {
 
     updateRoutineScheduleByDueDate = async (dueDate) => {
         try {
-            await routineScheduleModel.updateMany({ "dueDate": dueDate }, {
+            await routineScheduleModel.updateMany({ $and: [{ "dueDate": dueDate }, { "otherCheckDay": { $eq: null } }] }, {
                 $set: {
                     "complete": true
                 }
@@ -487,9 +488,24 @@ export class DBMongoDao {
             const updatedRoutinesSchedules = await routineScheduleModel.find({ "dueDate": dueDate }, { __v: 0, createdAt: 0, updatedAt: 0 });
             return updatedRoutinesSchedules;
         } catch (error) {
+            console.log(error)
             loggerError.error(error)
         }
     }
+
+    updateIsExpiredRoutineSchedule = async (id, flag) => {
+        try {
+            await routineScheduleModel.updateOne({ "_id": id }, {
+                $set: {
+                    "isExpired": flag
+                }
+            });
+            return true;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
 
     updateRoutineScheduleByCompleteTask = async (id, checkedDay) => {
         try {

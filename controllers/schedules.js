@@ -44,6 +44,7 @@ export class ControllerSchedule {
             const { date } = req.params;
             const { newSchedule } = req.body;
             const resultado = await this.apiSchedule.updateSchedule(date, newSchedule);
+            
             if (resultado) {
                 return res.status(200).json(resultado);
             } else {

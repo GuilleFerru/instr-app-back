@@ -29,6 +29,7 @@ const createDailyWorkColumns = (plantsForColumnTable, atteliersForColumnTable, t
             title: 'Horario',
             lookup: timeScheduleForColumnTable,
             initialEditValue: '5',
+            defaultGroupOrder:1,
         },
         {
             field: 'manteinance',

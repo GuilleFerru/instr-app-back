@@ -32,9 +32,9 @@ export class ControllerDailyWork {
 
     updateDailyWork = async (req, res) => {
         try {
-            const {date} = req.params;
-            const {updatedWork} = req.body;
-            const dailyWork = await this.apiDailyWork.updateDailyWork(date, updatedWork);
+            const { date } = req.params;
+            const { newDailyWorks } = req.body;
+            const dailyWork = await this.apiDailyWork.updateDailyWork(date, newDailyWorks);
             res.status(200).send(dailyWork);
         } catch (err) {
             console.log(err);
@@ -42,9 +42,22 @@ export class ControllerDailyWork {
         }
     }
 
+    updateBulkDailyWork = async (req, res) => {
+        try {
+            const { date } = req.params;
+            const { newDailyWorks } = req.body;
+            newDailyWorks.forEach(async (dailyWork) => await this.apiDailyWork.updateDailyWork(date, dailyWork));
+            res.status(200).send(true);
+        } catch (err) {
+            console.log(err);
+            return res.status(500).json(err);
+        }
+    }
+
+
     deleteDailyWork = async (req, res) => {
         try {
-            const {id} = req.body.data;
+            const { id } = req.body.data;
             const dailyWork = await this.apiDailyWork.deleteDailyWork(id);
             res.status(200).send(dailyWork);
         } catch (err) {
