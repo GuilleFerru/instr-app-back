@@ -561,3 +561,23 @@
     at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:102:13)
     at processTicksAndRejections (internal/process/task_queues.js:93:5)
     at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:48:31)
+[2022-03-14T09:24:35.212] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///D:/VSCode/instr-app/instr-app-back/api/dailyWorks.js:102:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async deleteDailyWork (file:///D:/VSCode/instr-app/instr-app-back/controllers/dailyWorks.js:61:31)
+[2022-03-14T09:25:16.660] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///D:/VSCode/instr-app/instr-app-back/api/dailyWorks.js:102:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async deleteDailyWork (file:///D:/VSCode/instr-app/instr-app-back/controllers/dailyWorks.js:61:31)
+[2022-03-14T09:25:49.233] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///D:/VSCode/instr-app/instr-app-back/api/dailyWorks.js:102:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async deleteDailyWork (file:///D:/VSCode/instr-app/instr-app-back/controllers/dailyWorks.js:61:31)
+[2022-03-14T09:26:27.235] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///D:/VSCode/instr-app/instr-app-back/api/dailyWorks.js:102:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async deleteDailyWork (file:///D:/VSCode/instr-app/instr-app-back/controllers/dailyWorks.js:61:31)
