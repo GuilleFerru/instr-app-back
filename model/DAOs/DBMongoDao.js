@@ -332,6 +332,17 @@ export class DBMongoDao {
         }
     }
 
+    getDailyWorkRoutine = async (routineScheduleId) => {
+        try {
+            console.log(routineScheduleId)
+            const dailyWorkResp = await dailyWorkModel.find({ routineScheduleId: routineScheduleId }, { __v: 0, createdAt: 0, updatedAt: 0 });
+            console.log(dailyWorkResp)
+            return dailyWorkResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
     updateDailyWork = async (date, dailyWork) => {
         try {
             await dailyWorkModel.updateOne({ $and: [{ "beginDate": date }, { "_id": dailyWork._id }] }, {

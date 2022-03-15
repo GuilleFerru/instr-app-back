@@ -30,11 +30,24 @@ export class ControllerDailyWork {
         }
     }
 
+    getDailyWorkRoutine = async (req, res) => {
+        try {
+            
+            const { routineScheduleId } = req.params;  
+            const resultado = await this.apiDailyWork.getDailyWorkRoutine(routineScheduleId);
+            console.log(resultado);
+            return res.status(200).json(resultado);
+        } catch (err) {
+            console.log(err);
+            return res.status(500).json(err);
+        }
+    }
+
     updateDailyWork = async (req, res) => {
         try {
-            const { date } = req.params;
             const { updatedWork } = req.body;
-            const dailyWork = await this.apiDailyWork.updateDailyWork(date, updatedWork);
+            console.log(updatedWork);
+            const dailyWork = await this.apiDailyWork.updateDailyWork(updatedWork);
             res.status(200).send(dailyWork);
         } catch (err) {
             console.log(err);

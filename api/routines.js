@@ -100,7 +100,7 @@ const getRoutines = async (routineSchedules, filter) => {
         const routine = await dao.getRoutine(element.routineId);
         // const routineFrecuency = routine[0].frecuency;
         if (filter === 'forRoutines') {
-            const routineRes = routineRespForOthersRoutineDTO(routine[0], element.complete, element._id, element.ot, element.filePath, element.nickname, element.checkDay, element.weekCheckDays, element.realCheckedDay);
+            const routineRes = routineRespForOthersRoutineDTO(routine[0], element.complete, element._id, element.routineId, element.ot, element.filePath, element.nickname, element.checkDay, element.weekCheckDays, element.realCheckedDay);
             routines.push(routineRes);
         } else if (filter === 'forDailyWorks') {
             const routineRes = routineRespDTO(routine[0], element.complete, element._id, element.ot);
@@ -154,14 +154,6 @@ export class ApiRoutine {
             const weekDay = new Date(date).getDay();
             const actualMonthRoutineSchedule = await dao.getActualMonthRoutineSchedule(weekDay);
 
-            //me actualiza la OT cuando 
-            // for (const actualRoutine of actualMonthRoutineSchedule) {
-            //     if (actualRoutine.ot !== '') {
-            //         await dao.updateDailyWorkRoutineOtBySchedRoutineId(actualRoutine.routine, actualRoutine.ot);
-            //         console.log(actualRoutine);
-            //     }
-            // }
-
             // se fija si es un mes nuevo y genera todos los schedules de nuevo
             const checkForNewSchedules = await this.createRoutineScheduleByNewMonth();
             if (checkForNewSchedules) {
@@ -181,7 +173,7 @@ export class ApiRoutine {
             const localDate = dateInLocalDate(date);
             const routinesSchedules = await dao.getAllRoutinesSchedules(localDate);
             const allRoutines = await getRoutines(routinesSchedules, 'forRoutines');
-
+            console.log(allRoutines);
             const columns = [];
             const savedColumns = await OthersRoutineColumnTable.getColumns();
             if (savedColumns.length === 0) {

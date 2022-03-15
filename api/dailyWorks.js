@@ -68,6 +68,18 @@ export class ApiDailyWork {
         }
     }
 
+    getDailyWorkRoutine = async (routineScheduleId) => {
+        try {
+            const dailyWorksRoutines = await dao.getDailyWorkRoutine(routineScheduleId);
+            console.log(dailyWorksRoutines);
+            
+            return dailyWorksRoutines;
+        } catch (err) {
+            console.log(err)
+            loggerError.error(err);
+        } finally {
+        }
+    }
 
     updateDailyWork = async (date, dayWork) => {
         try {
