@@ -35,7 +35,6 @@ export class ControllerDailyWork {
             
             const { routineScheduleId } = req.params;  
             const resultado = await this.apiDailyWork.getDailyWorkRoutine(routineScheduleId);
-            console.log(resultado);
             return res.status(200).json(resultado);
         } catch (err) {
             console.log(err);
@@ -46,7 +45,6 @@ export class ControllerDailyWork {
     updateDailyWork = async (req, res) => {
         try {
             const { updatedWork } = req.body;
-            console.log(updatedWork);
             const dailyWork = await this.apiDailyWork.updateDailyWork(updatedWork);
             res.status(200).send(dailyWork);
         } catch (err) {

@@ -44,9 +44,9 @@ export const routineRespDTO = (routine, complete, _id, ot) => ({
 });
 
 
-export const routineRespForOthersRoutineDTO = (routine, complete, _id,routineId, ot, filePath, nickname, checkDay, weekCheckDays, realCheckedDay) => ({
+export const routineRespForOthersRoutineDTO = (routine, complete, _id, ot, filePath, nickname, checkDay, weekCheckDays, realCheckedDay) => ({
     _id: _id,
-    routineId: routineId,
+    routineId: routine._id,
     plant: routine.plant,
     attelier: routine.attelier,
     tag: routine.tag,
