@@ -44,8 +44,9 @@ export class ControllerDailyWork {
 
     updateDailyWork = async (req, res) => {
         try {
+            const { date } = req.params;
             const { updatedWork } = req.body;
-            const dailyWork = await this.apiDailyWork.updateDailyWork(updatedWork);
+            const dailyWork = await this.apiDailyWork.updateDailyWork(date,updatedWork);
             res.status(200).send(dailyWork);
         } catch (err) {
             console.log(err);

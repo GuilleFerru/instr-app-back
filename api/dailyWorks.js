@@ -23,7 +23,6 @@ export class ApiDailyWork {
                 return await dao.createDailyWork(data);
             }
         } catch (err) {
-            console.log(err);
             loggerError.error(err);
         } finally {
             loggerInfo.info('createDailyWork');
@@ -81,8 +80,9 @@ export class ApiDailyWork {
 
     updateDailyWork = async (date, dayWork) => {
         try {
+
             const dateLocal = formatDate(date);
-            if (dateLocal && dayWork) {
+            if (dateLocal && dayWork) {           
                 const dailyWork = updateDayWorkDTO(dayWork);
                 //si es una rutina y tiene OT guardo la OT en routineSchedule
                 const routineOT = dailyWork.action === 2 && dailyWork.ot != '' ? dailyWork.ot : false;
@@ -92,6 +92,7 @@ export class ApiDailyWork {
                 }
                 const today = formatDate(todayInLocalDate());
                 const dailyWorkToUpdate = completedDailyWorkDTO(dayWork, today)
+                
                 const resultado = await dao.updateDailyWork(dateLocal, dailyWorkToUpdate);
                 if (resultado) {
                     return resultado;

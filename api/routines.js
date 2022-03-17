@@ -190,21 +190,33 @@ export class ApiRoutine {
         try {
 
             //busco la rutina asociada al schedule de la rutina
-            const dataToDailyWork = [];
+            const routine = await dao.getRoutine(data.routineId);
+            //ahora creo el objeto para guardar la rutina como un dailyWork
+            const routineSavedAsDailyWork = routineSavedAsDailyWorkDTO(routine[0], data);
 
-            for (const routineFromClient of data) {
-                const routine = await dao.getRoutine(routineFromClient.routineId);
-                const routineSavedAsDailyWork = routineSavedAsDailyWorkDTO(routine[0], routineFromClient);
-                dataToDailyWork.push(routineSavedAsDailyWork);
-
-                const id = routineFromClient._id;
-                const checkedDay = parseStringToDate(routineSavedAsDailyWork.endDate);
-                await dao.updateRoutineScheduleByCompleteTask(id, checkedDay);
-            }
-            // ahora tengo que crear el dailyWork en el dia que se cerro la routineSchedule
-
+            // update el routineSchedule
+            const id = data._id;
+            const checkedDay = parseStringToDate(routineSavedAsDailyWork.endDate);
+            const updatedDone = await dao.updateRoutineScheduleByCompleteTask(id, checkedDay);
+            // update el dailyWork
+            if(updatedDone){
             const apiDailyWork = new ApiDailyWork();
-            await apiDailyWork.createDailyWork(dataToDailyWork, 'fromRoutine');
+            await apiDailyWork.createDailyWork(routineSavedAsDailyWork, 'fromRoutine');
+            }
+            // const dataToDailyWork = [];
+
+            // for (const routineFromClient of data) {
+            //     const routine = await dao.getRoutine(routineFromClient.routineId);
+            //     const routineSavedAsDailyWork = routineSavedAsDailyWorkDTO(routine[0], routineFromClient);
+            //     dataToDailyWork.push(routineSavedAsDailyWork);
+
+            //     const id = routineFromClient._id;
+            //     const checkedDay = parseStringToDate(routineSavedAsDailyWork.endDate);
+            //     await dao.updateRoutineScheduleByCompleteTask(id, checkedDay);
+            // }
+            // ahora tengo que crear el dailyWork en el dia que se cerro la routineSchedule
+            // const apiDailyWork = new ApiDailyWork();
+            // await apiDailyWork.createDailyWork(dataToDailyWork, 'fromRoutine');
             // por ultimo updateo la rutina
             return true;
         } catch (err) {
