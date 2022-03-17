@@ -5,9 +5,6 @@ import { OthersRoutineColumnTable } from '../utils/otherRoutinesColumnTable.js';
 import { parseStringToDate, dateInLocalDate, todayInLocalDate } from '../utils/formatDate.js';
 import { loggerError, loggerInfo } from '../utils/logger.js';
 
-
-
-
 const daysInMonth = (month, year) => {
     return new Date(year, month, 0).getDate();
 }
