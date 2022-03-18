@@ -31,8 +31,7 @@ export class ControllerDailyWork {
     }
 
     getDailyWorkRoutine = async (req, res) => {
-        try {
-            
+        try {        
             const { routineScheduleId } = req.params;  
             const resultado = await this.apiDailyWork.getDailyWorkRoutine(routineScheduleId);
             return res.status(200).json(resultado);

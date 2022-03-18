@@ -13,6 +13,18 @@ const worksResp = (dayWorks, columns) => {
     return worksResp;
 }
 
+const getDailyWorkTable = async () => {
+    const columns = [];
+    const savedColumns = await ApiDailyWorksColumnTable.getColumns();
+    if (savedColumns.length === 0) {
+        const savedColumns = await ApiDailyWorksColumnTable.createColumns();
+        columns.push(savedColumns[0].columns);
+    } else {
+        columns.push(savedColumns[0].columns);
+    }
+    return columns
+}
+
 export class ApiDailyWork {
 
     createDailyWork = async (data, filter) => {
@@ -32,14 +44,7 @@ export class ApiDailyWork {
     getDailyWork = async (date) => {
         try {
             // busca la tabla de trabajo diario y guarda las columnas en columns, sino existe la crea.
-            const columns = [];
-            const savedColumns = await ApiDailyWorksColumnTable.getColumns();
-            if (savedColumns.length === 0) {
-                const savedColumns = await ApiDailyWorksColumnTable.createColumns();
-                columns.push(savedColumns[0].columns);
-            } else {
-                columns.push(savedColumns[0].columns);
-            }
+            const columns = await getDailyWorkTable();
             // busca los trabajos diarios de la fecha que viene en date
             const dateLocalString = formatDate(date);
             const dayWorks = await dao.getDailyWork(dateLocalString);
@@ -69,8 +74,10 @@ export class ApiDailyWork {
 
     getDailyWorkRoutine = async (routineScheduleId) => {
         try {
+            // busca la tabla de trabajo diario y guarda las columnas en columns, sino existe la crea.
+            const columns = await getDailyWorkTable();
             const dailyWorksRoutines = await dao.getDailyWorkRoutine(routineScheduleId);
-            return dailyWorksRoutines;
+            return worksResp(dailyWorksRoutines, ...columns);
         } catch (err) {
             console.log(err)
             loggerError.error(err);
@@ -82,7 +89,7 @@ export class ApiDailyWork {
         try {
 
             const dateLocal = formatDate(date);
-            if (dateLocal && dayWork) {           
+            if (dateLocal && dayWork) {
                 const dailyWork = updateDayWorkDTO(dayWork);
                 //si es una rutina y tiene OT guardo la OT en routineSchedule
                 const routineOT = dailyWork.action === 2 && dailyWork.ot != '' ? dailyWork.ot : false;
@@ -92,7 +99,7 @@ export class ApiDailyWork {
                 }
                 const today = formatDate(todayInLocalDate());
                 const dailyWorkToUpdate = completedDailyWorkDTO(dayWork, today)
-                
+
                 const resultado = await dao.updateDailyWork(dateLocal, dailyWorkToUpdate);
                 if (resultado) {
                     return resultado;
