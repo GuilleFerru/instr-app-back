@@ -2,6 +2,7 @@ import { dao } from '../server.js';
 import { formatDate, todayInLocalDate, dateInLocalDate } from '../utils/formatDate.js';
 import { ApiRoutine } from './routines.js';
 import { ApiDailyWorksColumnTable } from '../utils/dailyWorksColumnTable.js';
+import {DailyWorksRoutineTable} from '../utils/dailyWorksRoutineTable.js';
 import { saveDailyWorkDTO, updateDayWorkDTO, completedDailyWorkDTO } from '../model/DTOs/dailyWork.js';
 import { loggerError, loggerInfo } from '../utils/logger.js';
 
@@ -13,9 +14,9 @@ const worksResp = (dayWorks, columns) => {
     return worksResp;
 }
 
-const getDailyWorkTable = async () => {
+const getDailyWorkTable = async (filter) => {
     const columns = [];
-    const savedColumns = await ApiDailyWorksColumnTable.getColumns();
+    const savedColumns = filter === 'fromDailyWork' ? await ApiDailyWorksColumnTable.getColumns() : await DailyWorksRoutineTable.getColumns();
     if (savedColumns.length === 0) {
         const savedColumns = await ApiDailyWorksColumnTable.createColumns();
         columns.push(savedColumns[0].columns);
@@ -44,7 +45,7 @@ export class ApiDailyWork {
     getDailyWork = async (date) => {
         try {
             // busca la tabla de trabajo diario y guarda las columnas en columns, sino existe la crea.
-            const columns = await getDailyWorkTable();
+            const columns = await getDailyWorkTable('fromDailyWork');
             // busca los trabajos diarios de la fecha que viene en date
             const dateLocalString = formatDate(date);
             const dayWorks = await dao.getDailyWork(dateLocalString);
@@ -75,8 +76,9 @@ export class ApiDailyWork {
     getDailyWorkRoutine = async (routineScheduleId) => {
         try {
             // busca la tabla de trabajo diario y guarda las columnas en columns, sino existe la crea.
-            const columns = await getDailyWorkTable();
+            const columns = await getDailyWorkTable('fromRoutine');
             const dailyWorksRoutines = await dao.getDailyWorkRoutine(routineScheduleId);
+            console.log(dailyWorksRoutines)
             return worksResp(dailyWorksRoutines, ...columns);
         } catch (err) {
             console.log(err)
