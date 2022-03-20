@@ -4,7 +4,7 @@ export const formatDate = (date) => {
 
 export const parseStringToDate = (stringDate) => {
     const b = stringDate.split(/\D+/);
-    const d = new Date(b[2], b[1] - 1, b[0]);
+    const d = new Date(b[2], b[1] - 1, b[0])
     let year;
     b[2].length === 2 ? year = `20${b[2]}` : year = `${b[2]}`;
     d.setFullYear(year);
@@ -21,6 +21,12 @@ export const dateInLocalDate = (date) => {
     const localDate = new Date(date).toLocaleDateString();
     const dateResp = parseStringToDate(localDate);
     return dateResp;
+}
+
+export const dateInLocalDateString = (date) => {
+    var options = { weekday: 'long'  , year: 'numeric', month: 'long', day: 'numeric' };
+    const localDateString = new Date(date).toLocaleDateString('es-AR',options);
+    return localDateString;
 }
 
 export const checkWeekDay = (weekCheckDays) => {

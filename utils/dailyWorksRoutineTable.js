@@ -1,8 +1,8 @@
 import { dao } from '../server.js';
-import { plantData, attelierData, timeScheduleData, manteinanceData, manteinanceActionData } from './commonLookUpsTables.js';
+import { timeScheduleData } from './commonLookUpsTables.js';
 import { loggerError, loggerInfo } from './logger.js';
 
-const createDailyRoutineColumns = (plantsForColumnTable, atteliersForColumnTable, timeScheduleForColumnTable, manteinancesForColumnTable, manteinanceActionsForColumnTable) => {
+const createDailyWorksRoutineColumns = (timeScheduleForColumnTable) => {
     const columns = [
         {
             field: '_id',
@@ -13,22 +13,29 @@ const createDailyRoutineColumns = (plantsForColumnTable, atteliersForColumnTable
             field: 'tag',
             title: 'TAG',
             type: 'string',
+
         },
         {
             field: 'timeSchedule',
             title: 'Horario',
+
             lookup: timeScheduleForColumnTable,
             initialEditValue: '5',
         },
         {
-            field: 'beginDate',
-            title: 'Fecha inicio',
-            type: 'string',
+            field: 'beginDateToShow',
+            title: 'Fecha de inicio',
+            type: 'date',
+            dateSetting: { locale: 'es-AR', format: 'dd-MMM-yyyy' },
+            editable:'never'
+            
         },
         {
-            field: 'endDate',
-            title: 'Fecha de chequeo',
-            type: 'string',
+            field: 'endDateToShow',
+            title: 'Fecha de realización',
+            type: 'date',
+            dateSetting: { locale: 'es-AR', format: 'dd-MMM-yyyy' },
+            editable:'never'
         },
         {
             field: 'ot',
@@ -61,8 +68,9 @@ export class DailyWorksRoutineTable {
 
     static createColumns = async () => {
         try {
-            const columns = createDailyRoutineColumns(await plantData(),await attelierData(),await timeScheduleData(),await manteinanceData(),await manteinanceActionData());
+            const columns = createDailyWorksRoutineColumns(await timeScheduleData());
             const saveColumns = { columns: columns };
+            console.log(saveColumns);
             const resp = await dao.createDailyWorksRoutineColumns(saveColumns);
             return resp;
         } catch (err) {

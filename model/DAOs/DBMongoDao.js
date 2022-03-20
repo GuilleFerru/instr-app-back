@@ -19,6 +19,7 @@ import { employeeDTO } from '../DTOs/employee.js';
 import { plantsModel } from '../models/Plants.js';
 import { dailyWorkColumnsModel } from '../models/DailyWorksColumns.js';
 import { otherRoutineColumnModel } from '../models/OthersRoutinesColumns.js';
+import { dailyWorkRoutineColumnModel } from '../models/DailyWorkRoutinesColumns.js';
 
 
 const MONGO_URL = config.MONGO_URL;
@@ -587,6 +588,34 @@ export class DBMongoDao {
             loggerError.error(error)
         }
     }
+
+    createDailyWorksRoutineColumns = async (columns) => {
+        try {
+            const dailyWorkRoutineColumns = await dailyWorkRoutineColumnModel.insertMany(columns);
+            return dailyWorkRoutineColumns;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    getDailyWorksRoutineColumns = async () => {
+        try {
+            const dailyWorkRoutineColumns = await dailyWorkRoutineColumnModel.find({}, { _id: 0, __v: 0, createdAt: 0, updatedAt: 0 });
+            return dailyWorkRoutineColumns;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+    deleteDailyWorksRoutineColumns = async (id) => {
+        try {
+            const dailyWorkRoutineColumns = await dailyWorkRoutineColumnModel.deleteMany({ _id: id });
+            return dailyWorkRoutineColumns;
+        } catch (error) {
+            loggerError.error(error)
+        }
+
+    }
+
 
 
 

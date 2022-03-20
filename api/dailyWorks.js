@@ -1,9 +1,9 @@
 import { dao } from '../server.js';
-import { formatDate, todayInLocalDate, dateInLocalDate } from '../utils/formatDate.js';
+import { formatDate, todayInLocalDate, dateInLocalDate, parseStringToDate, dateInLocalDateString } from '../utils/formatDate.js';
 import { ApiRoutine } from './routines.js';
 import { ApiDailyWorksColumnTable } from '../utils/dailyWorksColumnTable.js';
-import {DailyWorksRoutineTable} from '../utils/dailyWorksRoutineTable.js';
-import { saveDailyWorkDTO, updateDayWorkDTO, completedDailyWorkDTO } from '../model/DTOs/dailyWork.js';
+import { DailyWorksRoutineTable } from '../utils/dailyWorksRoutineTable.js';
+import { saveDailyWorkDTO, updateDayWorkDTO, completedDailyWorkDTO,dailyWorkRoutineRespDTO } from '../model/DTOs/dailyWork.js';
 import { loggerError, loggerInfo } from '../utils/logger.js';
 
 
@@ -18,7 +18,7 @@ const getDailyWorkTable = async (filter) => {
     const columns = [];
     const savedColumns = filter === 'fromDailyWork' ? await ApiDailyWorksColumnTable.getColumns() : await DailyWorksRoutineTable.getColumns();
     if (savedColumns.length === 0) {
-        const savedColumns = await ApiDailyWorksColumnTable.createColumns();
+        const savedColumns = await DailyWorksRoutineTable.createColumns();
         columns.push(savedColumns[0].columns);
     } else {
         columns.push(savedColumns[0].columns);
@@ -78,8 +78,14 @@ export class ApiDailyWork {
             // busca la tabla de trabajo diario y guarda las columnas en columns, sino existe la crea.
             const columns = await getDailyWorkTable('fromRoutine');
             const dailyWorksRoutines = await dao.getDailyWorkRoutine(routineScheduleId);
-            console.log(dailyWorksRoutines)
-            return worksResp(dailyWorksRoutines, ...columns);
+            const sortedDailyWorkRoutine = dailyWorksRoutines.sort((a, b) => parseStringToDate(a.beginDate) - parseStringToDate(b.beginDate));
+            const sortedDailyWorkRoutineResp = [];
+
+            sortedDailyWorkRoutine.map(dailyWorkRoutine => {
+                const dailyWorkRoutineResp = dailyWorkRoutineRespDTO(dailyWorkRoutine);
+                sortedDailyWorkRoutineResp.push(dailyWorkRoutineResp);
+            })
+            return worksResp(sortedDailyWorkRoutineResp, ...columns);
         } catch (err) {
             console.log(err)
             loggerError.error(err);
@@ -89,7 +95,6 @@ export class ApiDailyWork {
 
     updateDailyWork = async (date, dayWork) => {
         try {
-
             const dateLocal = formatDate(date);
             if (dateLocal && dayWork) {
                 const dailyWork = updateDayWorkDTO(dayWork);
@@ -101,7 +106,6 @@ export class ApiDailyWork {
                 }
                 const today = formatDate(todayInLocalDate());
                 const dailyWorkToUpdate = completedDailyWorkDTO(dayWork, today)
-
                 const resultado = await dao.updateDailyWork(dateLocal, dailyWorkToUpdate);
                 if (resultado) {
                     return resultado;

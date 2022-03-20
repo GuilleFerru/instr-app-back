@@ -13,6 +13,7 @@ export class RouterDailyWork {
         router.get('/get/:date', this.controllerDailyWork.getDailyWork);
         router.get('/getDailyWorkRoutine/:routineScheduleId', this.controllerDailyWork.getDailyWorkRoutine);
         router.put('/update/:date', this.controllerDailyWork.updateDailyWork);
+        router.put('/updateFromRoutineDetail', this.controllerDailyWork.updateFromRoutineDetail);
         router.put('/updateBulk/:date', this.controllerDailyWork.updateBulkDailyWork);
         router.delete('/delete', this.controllerDailyWork.deleteDailyWork);
         return router;

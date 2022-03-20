@@ -1,4 +1,5 @@
 import { ApiDailyWork } from '../api/dailyWorks.js';
+import { parseStringToDate } from '../utils/formatDate.js';
 
 
 
@@ -31,8 +32,8 @@ export class ControllerDailyWork {
     }
 
     getDailyWorkRoutine = async (req, res) => {
-        try {        
-            const { routineScheduleId } = req.params;  
+        try {
+            const { routineScheduleId } = req.params;
             const resultado = await this.apiDailyWork.getDailyWorkRoutine(routineScheduleId);
             return res.status(200).json(resultado);
         } catch (err) {
@@ -45,8 +46,21 @@ export class ControllerDailyWork {
         try {
             const { date } = req.params;
             const { updatedWork } = req.body;
-            const dailyWork = await this.apiDailyWork.updateDailyWork(date,updatedWork);
+            const dailyWork = await this.apiDailyWork.updateDailyWork(date, updatedWork);
             res.status(200).send(dailyWork);
+        } catch (err) {
+            console.log(err);
+            return res.status(500).json(err);
+        }
+    }
+
+    updateFromRoutineDetail = async (req, res) => {
+        try {
+            const { updatedWork } = req.body;
+            //tuve que parsear la fecha porque viene en string y a la api le tiene que llegar si o si en date.
+            const date = parseStringToDate(updatedWork.beginDate);
+            await this.apiDailyWork.updateDailyWork(date, updatedWork);
+            res.status(200).send(true);
         } catch (err) {
             console.log(err);
             return res.status(500).json(err);

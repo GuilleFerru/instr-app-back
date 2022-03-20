@@ -643,3 +643,170 @@
     at processTicksAndRejections (internal/process/task_queues.js:95:5)
     at async ApiDailyWork.getDailyWork (file:///D:/VSCode/instr-app/instr-app-back/api/dailyWorks.js:54:29)
     at async getDailyWork (file:///D:/VSCode/instr-app/instr-app-back/controllers/dailyWorks.js:25:31)
+[2022-03-18T21:13:13.981] [ERROR] error - TypeError: dao.getDailyWorksRoutineColumns is not a function
+    at Function.getColumns (file:///E:/instr-app/instr-app-back/utils/dailyWorksRoutineTable.js:77:36)
+    at getDailyWorkTable (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:19:130)
+    at ApiDailyWork.getDailyWorkRoutine (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:79:35)
+    at getDailyWorkRoutine (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:36:55)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at E:\instr-app\instr-app-back\node_modules\express\lib\router\index.js:281:22
+    at param (E:\instr-app\instr-app-back\node_modules\express\lib\router\index.js:354:14)
+[2022-03-18T21:13:13.984] [ERROR] error - TypeError: Cannot read property 'length' of undefined
+    at getDailyWorkTable (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:20:22)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiDailyWork.getDailyWorkRoutine (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:79:29)
+    at async getDailyWorkRoutine (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:36:31)
+[2022-03-19T09:14:39.492] [ERROR] error - TypeError: Cannot read property 'length' of undefined
+    at parseStringToDate (file:///E:/instr-app/instr-app-back/utils/formatDate.js:9:10)
+    at dateInLocalDate (file:///E:/instr-app/instr-app-back/utils/formatDate.js:22:22)
+    at file:///E:/instr-app/instr-app-back/api/dailyWorks.js:83:44
+    at Array.map (<anonymous>)
+    at ApiDailyWork.getDailyWorkRoutine (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:81:32)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getDailyWorkRoutine (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:36:31)
+[2022-03-19T09:14:53.689] [ERROR] error - TypeError: Cannot read property 'length' of undefined
+    at parseStringToDate (file:///E:/instr-app/instr-app-back/utils/formatDate.js:9:10)
+    at dateInLocalDate (file:///E:/instr-app/instr-app-back/utils/formatDate.js:22:22)
+    at file:///E:/instr-app/instr-app-back/api/dailyWorks.js:82:46
+    at Array.map (<anonymous>)
+    at ApiDailyWork.getDailyWorkRoutine (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:81:32)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getDailyWorkRoutine (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:36:31)
+[2022-03-19T09:15:08.133] [ERROR] error - TypeError: Cannot read property 'length' of undefined
+    at parseStringToDate (file:///E:/instr-app/instr-app-back/utils/formatDate.js:9:10)
+    at dateInLocalDate (file:///E:/instr-app/instr-app-back/utils/formatDate.js:22:22)
+    at file:///E:/instr-app/instr-app-back/api/dailyWorks.js:82:46
+    at Array.map (<anonymous>)
+    at ApiDailyWork.getDailyWorkRoutine (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:81:32)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getDailyWorkRoutine (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:36:31)
+[2022-03-19T09:16:17.552] [ERROR] error - TypeError: Cannot read property 'length' of undefined
+    at parseStringToDate (file:///E:/instr-app/instr-app-back/utils/formatDate.js:9:10)
+    at file:///E:/instr-app/instr-app-back/api/dailyWorks.js:83:45
+    at Array.map (<anonymous>)
+    at ApiDailyWork.getDailyWorkRoutine (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:81:32)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getDailyWorkRoutine (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:36:31)
+[2022-03-19T09:16:37.930] [ERROR] error - TypeError: Cannot read property 'length' of undefined
+    at parseStringToDate (file:///E:/instr-app/instr-app-back/utils/formatDate.js:9:10)
+    at file:///E:/instr-app/instr-app-back/api/dailyWorks.js:83:45
+    at Array.map (<anonymous>)
+    at ApiDailyWork.getDailyWorkRoutine (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:81:32)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getDailyWorkRoutine (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:36:31)
+[2022-03-19T09:17:22.324] [ERROR] error - TypeError: Cannot read property 'length' of undefined
+    at parseStringToDate (file:///E:/instr-app/instr-app-back/utils/formatDate.js:9:10)
+    at file:///E:/instr-app/instr-app-back/api/dailyWorks.js:83:44
+    at Array.map (<anonymous>)
+    at ApiDailyWork.getDailyWorkRoutine (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:81:32)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getDailyWorkRoutine (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:36:31)
+[2022-03-19T09:54:07.008] [ERROR] error - TypeError: d.setFullYear is not a function
+    at parseStringToDate (file:///E:/instr-app/instr-app-back/utils/formatDate.js:10:7)
+    at file:///E:/instr-app/instr-app-back/api/dailyWorks.js:83:75
+    at Array.map (<anonymous>)
+    at ApiDailyWork.getDailyWorkRoutine (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:82:32)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getDailyWorkRoutine (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:36:31)
+[2022-03-19T12:37:38.739] [ERROR] error - ReferenceError: dayWorkToUpdate is not defined
+    at ApiDailyWork.updateDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:106:29)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async updateFromRoutineDetail (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:60:13)
+[2022-03-19T20:31:24.608] [ERROR] error - TypeError: Cannot read property 'length' of undefined
+    at parseStringToDate (file:///E:/instr-app/instr-app-back/utils/formatDate.js:9:10)
+    at file:///E:/instr-app/instr-app-back/api/dailyWorks.js:84:44
+    at Array.map (<anonymous>)
+    at ApiDailyWork.getDailyWorkRoutine (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:82:36)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getDailyWorkRoutine (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:37:31)
+[2022-03-19T20:32:00.581] [ERROR] error - TypeError: Cannot read property 'length' of undefined
+    at parseStringToDate (file:///E:/instr-app/instr-app-back/utils/formatDate.js:9:10)
+    at file:///E:/instr-app/instr-app-back/api/dailyWorks.js:84:44
+    at Array.map (<anonymous>)
+    at ApiDailyWork.getDailyWorkRoutine (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:82:36)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getDailyWorkRoutine (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:37:31)
+[2022-03-19T20:32:25.141] [ERROR] error - TypeError: Cannot read property 'length' of undefined
+    at parseStringToDate (file:///E:/instr-app/instr-app-back/utils/formatDate.js:9:10)
+    at file:///E:/instr-app/instr-app-back/api/dailyWorks.js:84:44
+    at Array.map (<anonymous>)
+    at ApiDailyWork.getDailyWorkRoutine (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:82:36)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getDailyWorkRoutine (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:37:31)
+[2022-03-19T20:34:49.836] [ERROR] error - TypeError: Cannot read property 'length' of undefined
+    at parseStringToDate (file:///E:/instr-app/instr-app-back/utils/formatDate.js:9:10)
+    at file:///E:/instr-app/instr-app-back/api/dailyWorks.js:84:73
+    at Array.map (<anonymous>)
+    at ApiDailyWork.getDailyWorkRoutine (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:82:36)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getDailyWorkRoutine (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:37:31)
+[2022-03-19T20:46:51.313] [ERROR] error - ReferenceError: newDate is not defined
+    at file:///E:/instr-app/instr-app-back/api/dailyWorks.js:85:63
+    at Array.map (<anonymous>)
+    at ApiDailyWork.getDailyWorkRoutine (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:83:36)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getDailyWorkRoutine (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:37:31)
+[2022-03-19T20:59:34.388] [ERROR] error - TypeError: Object.prototype.toLocaleString called on null or undefined
+    at toLocaleString (<anonymous>)
+    at formatDateToUTC (file:///E:/instr-app/instr-app-back/utils/formatDate.js:6:24)
+    at file:///E:/instr-app/instr-app-back/api/dailyWorks.js:85:75
+    at Array.map (<anonymous>)
+    at ApiDailyWork.getDailyWorkRoutine (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:83:36)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getDailyWorkRoutine (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:37:31)
+[2022-03-19T21:00:00.368] [ERROR] error - TypeError: Object.prototype.toLocaleString called on null or undefined
+    at toLocaleString (<anonymous>)
+    at formatDateToUTC (file:///E:/instr-app/instr-app-back/utils/formatDate.js:6:24)
+    at file:///E:/instr-app/instr-app-back/api/dailyWorks.js:84:29
+    at Array.map (<anonymous>)
+    at ApiDailyWork.getDailyWorkRoutine (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:83:36)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getDailyWorkRoutine (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:37:31)
+[2022-03-19T21:00:22.519] [ERROR] error - TypeError: Object.prototype.toLocaleString called on null or undefined
+    at toLocaleString (<anonymous>)
+    at formatDateToUTC (file:///E:/instr-app/instr-app-back/utils/formatDate.js:6:24)
+    at file:///E:/instr-app/instr-app-back/api/dailyWorks.js:84:29
+    at Array.map (<anonymous>)
+    at ApiDailyWork.getDailyWorkRoutine (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:83:36)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getDailyWorkRoutine (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:37:31)
+[2022-03-19T21:48:09.475] [ERROR] error - RangeError: Value [object Array] out of range for Date.prototype.toLocaleDateString options property weekday
+    at Date.toLocaleDateString (<anonymous>)
+    at dateInLocalDateString (file:///E:/instr-app/instr-app-back/utils/formatDate.js:28:44)
+    at file:///E:/instr-app/instr-app-back/api/dailyWorks.js:84:29
+    at Array.map (<anonymous>)
+    at ApiDailyWork.getDailyWorkRoutine (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:83:36)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getDailyWorkRoutine (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:37:31)
+[2022-03-19T21:48:29.293] [ERROR] error - RangeError: Value [object Array] out of range for Date.prototype.toLocaleDateString options property weekday
+    at Date.toLocaleDateString (<anonymous>)
+    at dateInLocalDateString (file:///E:/instr-app/instr-app-back/utils/formatDate.js:28:44)
+    at file:///E:/instr-app/instr-app-back/api/dailyWorks.js:84:29
+    at Array.map (<anonymous>)
+    at ApiDailyWork.getDailyWorkRoutine (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:83:36)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getDailyWorkRoutine (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:37:31)
+[2022-03-19T21:54:13.227] [ERROR] error - RangeError: Value  out of range for Date.prototype.toLocaleDateString options property weekday
+    at Date.toLocaleDateString (<anonymous>)
+    at dateInLocalDateString (file:///E:/instr-app/instr-app-back/utils/formatDate.js:28:44)
+    at file:///E:/instr-app/instr-app-back/api/dailyWorks.js:84:29
+    at Array.map (<anonymous>)
+    at ApiDailyWork.getDailyWorkRoutine (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:83:36)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getDailyWorkRoutine (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:37:31)
+[2022-03-19T22:09:09.497] [ERROR] error - TypeError: Found non-callable @@iterator
+    at file:///E:/instr-app/instr-app-back/api/dailyWorks.js:87:25
+    at Array.map (<anonymous>)
+    at ApiDailyWork.getDailyWorkRoutine (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:84:36)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getDailyWorkRoutine (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:37:31)
+[2022-03-19T22:13:31.867] [ERROR] error - ReferenceError: dailyWorkRoutineRespDTO is not defined
+    at file:///E:/instr-app/instr-app-back/api/dailyWorks.js:85:46
+    at Array.map (<anonymous>)
+    at ApiDailyWork.getDailyWorkRoutine (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:84:36)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getDailyWorkRoutine (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:37:31)
