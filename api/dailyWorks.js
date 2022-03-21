@@ -105,7 +105,7 @@ export class ApiDailyWork {
                     await dao.updateRoutineScheduleOT(routineScheduleId, routineOT);
                 }
                 const today = formatDate(todayInLocalDate());
-                const dailyWorkToUpdate = completedDailyWorkDTO(dayWork, today)
+                const dailyWorkToUpdate = completedDailyWorkDTO(dayWork, today);
                 const resultado = await dao.updateDailyWork(dateLocal, dailyWorkToUpdate);
                 if (resultado) {
                     return resultado;

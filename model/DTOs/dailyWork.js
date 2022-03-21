@@ -29,7 +29,7 @@ export const completedDailyWorkDTO = (dayWorks, today) => ({
     timeSchedule: dayWorks.timeSchedule,
     manteinance: dayWorks.manteinance,
     ot: dayWorks.ot === undefined ? '' : dayWorks.ot,
-    action: dayWorks.action,
+    action: dayWorks.action ? dayWorks.action : 1,
     description: dayWorks.description === undefined ? '' : dayWorks.description,
     complete: dayWorks.complete,
     beginDate: dayWorks.beginDate,
