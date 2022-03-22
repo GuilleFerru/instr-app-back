@@ -235,6 +235,36 @@ export class DBMongoDao {
         }
     }
 
+    getAttelieresGroupByPlant = async () => {
+        try {
+            const attelierResp = await attelierModel.aggregate([
+                {
+                    $group: {
+                        _id: '$plant',
+
+                        atteliers: {
+                            $push: {
+                                name: '$name',
+                                id: '$id',
+                            }
+                        }
+                    },
+                },
+                {
+                    $lookup: {
+                        from: 'plants',
+                        localField: 'plant',
+                        foreignField: 'id',
+                        as: 'plant'
+                    }
+                }
+            ]);
+            return attelierResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
     getAttelieresByPlant = async (plant) => {
         try {
             const attelierResp = await attelierModel.find({ plant: plant }, { _id: 0, __v: 0, createdAt: 0, updatedAt: 0 });

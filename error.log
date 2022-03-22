@@ -810,3 +810,232 @@
     at ApiDailyWork.getDailyWorkRoutine (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:84:36)
     at processTicksAndRejections (internal/process/task_queues.js:93:5)
     at async getDailyWorkRoutine (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:37:31)
+[2022-03-21T22:00:10.912] [ERROR] error - MongoServerError: The field 'name' must be an accumulator object
+    at MessageStream.messageHandler (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connection.js:467:30)
+    at MessageStream.emit (events.js:315:20)
+    at processIncomingData (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\message_stream.js:108:16)
+    at MessageStream._write (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\message_stream.js:28:9)
+    at writeOrBuffer (internal/streams/writable.js:358:12)
+    at MessageStream.Writable.write (internal/streams/writable.js:303:10)
+    at TLSSocket.ondata (internal/streams/readable.js:719:22)
+    at TLSSocket.emit (events.js:315:20)
+    at addChunk (internal/streams/readable.js:309:12)
+    at readableAddChunk (internal/streams/readable.js:284:9) {
+  ok: 0,
+  code: 40234,
+  codeName: 'Location40234',
+  '$clusterTime': {
+    clusterTime: new Timestamp({ t: 1647910810, i: 1 }),
+    signature: {
+      hash: new Binary(Buffer.from("7aa013c655dc0c95f8d29684e28794b25fef4701", "hex"), 0),
+      keyId: new Long("7055723500220186628")
+    }
+  },
+  operationTime: new Timestamp({ t: 1647910810, i: 1 })
+}
+[2022-03-21T22:00:13.037] [ERROR] error - MongoServerError: The field 'name' must be an accumulator object
+    at MessageStream.messageHandler (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connection.js:467:30)
+    at MessageStream.emit (events.js:315:20)
+    at processIncomingData (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\message_stream.js:108:16)
+    at MessageStream._write (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\message_stream.js:28:9)
+    at writeOrBuffer (internal/streams/writable.js:358:12)
+    at MessageStream.Writable.write (internal/streams/writable.js:303:10)
+    at TLSSocket.ondata (internal/streams/readable.js:719:22)
+    at TLSSocket.emit (events.js:315:20)
+    at addChunk (internal/streams/readable.js:309:12)
+    at readableAddChunk (internal/streams/readable.js:284:9) {
+  ok: 0,
+  code: 40234,
+  codeName: 'Location40234',
+  '$clusterTime': {
+    clusterTime: new Timestamp({ t: 1647910812, i: 1 }),
+    signature: {
+      hash: new Binary(Buffer.from("3321b01cb7f9d1771a548852496d6e4035a6c968", "hex"), 0),
+      keyId: new Long("7055723500220186628")
+    }
+  },
+  operationTime: new Timestamp({ t: 1647910812, i: 1 })
+}
+[2022-03-21T22:00:28.300] [ERROR] error - MongoServerError: The field 'name' must be an accumulator object
+    at MessageStream.messageHandler (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connection.js:467:30)
+    at MessageStream.emit (events.js:315:20)
+    at processIncomingData (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\message_stream.js:108:16)
+    at MessageStream._write (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\message_stream.js:28:9)
+    at writeOrBuffer (internal/streams/writable.js:358:12)
+    at MessageStream.Writable.write (internal/streams/writable.js:303:10)
+    at TLSSocket.ondata (internal/streams/readable.js:719:22)
+    at TLSSocket.emit (events.js:315:20)
+    at addChunk (internal/streams/readable.js:309:12)
+    at readableAddChunk (internal/streams/readable.js:284:9) {
+  ok: 0,
+  code: 40234,
+  codeName: 'Location40234',
+  '$clusterTime': {
+    clusterTime: new Timestamp({ t: 1647910828, i: 1 }),
+    signature: {
+      hash: new Binary(Buffer.from("47ef30f2de9aa526076119603f10e112b3202e49", "hex"), 0),
+      keyId: new Long("7055723500220186628")
+    }
+  },
+  operationTime: new Timestamp({ t: 1647910828, i: 1 })
+}
+[2022-03-21T22:00:44.489] [ERROR] error - MongoServerError: The field 'id' must be an accumulator object
+    at MessageStream.messageHandler (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connection.js:467:30)
+    at MessageStream.emit (events.js:315:20)
+    at processIncomingData (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\message_stream.js:108:16)
+    at MessageStream._write (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\message_stream.js:28:9)
+    at writeOrBuffer (internal/streams/writable.js:358:12)
+    at MessageStream.Writable.write (internal/streams/writable.js:303:10)
+    at TLSSocket.ondata (internal/streams/readable.js:719:22)
+    at TLSSocket.emit (events.js:315:20)
+    at addChunk (internal/streams/readable.js:309:12)
+    at readableAddChunk (internal/streams/readable.js:284:9) {
+  ok: 0,
+  code: 40234,
+  codeName: 'Location40234',
+  '$clusterTime': {
+    clusterTime: new Timestamp({ t: 1647910843, i: 1 }),
+    signature: {
+      hash: new Binary(Buffer.from("a7447af45f348c0f132d572685e7bf4f45f50691", "hex"), 0),
+      keyId: new Long("7055723500220186628")
+    }
+  },
+  operationTime: new Timestamp({ t: 1647910843, i: 1 })
+}
+[2022-03-21T22:00:53.037] [ERROR] error - MongoServerError: The field 'name' must be an accumulator object
+    at MessageStream.messageHandler (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connection.js:467:30)
+    at MessageStream.emit (events.js:315:20)
+    at processIncomingData (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\message_stream.js:108:16)
+    at MessageStream._write (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\message_stream.js:28:9)
+    at writeOrBuffer (internal/streams/writable.js:358:12)
+    at MessageStream.Writable.write (internal/streams/writable.js:303:10)
+    at TLSSocket.ondata (internal/streams/readable.js:719:22)
+    at TLSSocket.emit (events.js:315:20)
+    at addChunk (internal/streams/readable.js:309:12)
+    at readableAddChunk (internal/streams/readable.js:284:9) {
+  ok: 0,
+  code: 40234,
+  codeName: 'Location40234',
+  '$clusterTime': {
+    clusterTime: new Timestamp({ t: 1647910852, i: 1 }),
+    signature: {
+      hash: new Binary(Buffer.from("5f95350898f05be878de779faad5b23ffa0704cd", "hex"), 0),
+      keyId: new Long("7055723500220186628")
+    }
+  },
+  operationTime: new Timestamp({ t: 1647910852, i: 1 })
+}
+[2022-03-21T22:00:55.499] [ERROR] error - MongoServerError: The field 'name' must be an accumulator object
+    at MessageStream.messageHandler (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connection.js:467:30)
+    at MessageStream.emit (events.js:315:20)
+    at processIncomingData (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\message_stream.js:108:16)
+    at MessageStream._write (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\message_stream.js:28:9)
+    at writeOrBuffer (internal/streams/writable.js:358:12)
+    at MessageStream.Writable.write (internal/streams/writable.js:303:10)
+    at TLSSocket.ondata (internal/streams/readable.js:719:22)
+    at TLSSocket.emit (events.js:315:20)
+    at addChunk (internal/streams/readable.js:309:12)
+    at readableAddChunk (internal/streams/readable.js:284:9) {
+  ok: 0,
+  code: 40234,
+  codeName: 'Location40234',
+  '$clusterTime': {
+    clusterTime: new Timestamp({ t: 1647910855, i: 1 }),
+    signature: {
+      hash: new Binary(Buffer.from("28857348ea532939b83df926b94234411ccfe7dd", "hex"), 0),
+      keyId: new Long("7055723500220186628")
+    }
+  },
+  operationTime: new Timestamp({ t: 1647910855, i: 1 })
+}
+[2022-03-21T22:01:04.436] [ERROR] error - MongoServerError: The field 'id' must be an accumulator object
+    at MessageStream.messageHandler (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connection.js:467:30)
+    at MessageStream.emit (events.js:315:20)
+    at processIncomingData (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\message_stream.js:108:16)
+    at MessageStream._write (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\message_stream.js:28:9)
+    at writeOrBuffer (internal/streams/writable.js:358:12)
+    at MessageStream.Writable.write (internal/streams/writable.js:303:10)
+    at TLSSocket.ondata (internal/streams/readable.js:719:22)
+    at TLSSocket.emit (events.js:315:20)
+    at addChunk (internal/streams/readable.js:309:12)
+    at readableAddChunk (internal/streams/readable.js:284:9) {
+  ok: 0,
+  code: 40234,
+  codeName: 'Location40234',
+  '$clusterTime': {
+    clusterTime: new Timestamp({ t: 1647910864, i: 1 }),
+    signature: {
+      hash: new Binary(Buffer.from("ecc2fea4033dbe3fb3a296f8b50bad63e9149a65", "hex"), 0),
+      keyId: new Long("7055723500220186628")
+    }
+  },
+  operationTime: new Timestamp({ t: 1647910864, i: 1 })
+}
+[2022-03-21T22:26:02.609] [ERROR] error - MongoServerError: The field 'name' must be an accumulator object
+    at MessageStream.messageHandler (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connection.js:467:30)
+    at MessageStream.emit (events.js:315:20)
+    at processIncomingData (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\message_stream.js:108:16)
+    at MessageStream._write (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\message_stream.js:28:9)
+    at writeOrBuffer (internal/streams/writable.js:358:12)
+    at MessageStream.Writable.write (internal/streams/writable.js:303:10)
+    at TLSSocket.ondata (internal/streams/readable.js:719:22)
+    at TLSSocket.emit (events.js:315:20)
+    at addChunk (internal/streams/readable.js:309:12)
+    at readableAddChunk (internal/streams/readable.js:284:9) {
+  ok: 0,
+  code: 40234,
+  codeName: 'Location40234',
+  '$clusterTime': {
+    clusterTime: new Timestamp({ t: 1647912362, i: 2 }),
+    signature: {
+      hash: new Binary(Buffer.from("363a0657d75d2f75b6fbd311dad86fe80cce7998", "hex"), 0),
+      keyId: new Long("7055723500220186628")
+    }
+  },
+  operationTime: new Timestamp({ t: 1647912362, i: 2 })
+}
+[2022-03-21T22:26:04.134] [ERROR] error - MongoServerError: The field 'name' must be an accumulator object
+    at MessageStream.messageHandler (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connection.js:467:30)
+    at MessageStream.emit (events.js:315:20)
+    at processIncomingData (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\message_stream.js:108:16)
+    at MessageStream._write (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\message_stream.js:28:9)
+    at writeOrBuffer (internal/streams/writable.js:358:12)
+    at MessageStream.Writable.write (internal/streams/writable.js:303:10)
+    at TLSSocket.ondata (internal/streams/readable.js:719:22)
+    at TLSSocket.emit (events.js:315:20)
+    at addChunk (internal/streams/readable.js:309:12)
+    at readableAddChunk (internal/streams/readable.js:284:9) {
+  ok: 0,
+  code: 40234,
+  codeName: 'Location40234',
+  '$clusterTime': {
+    clusterTime: new Timestamp({ t: 1647912363, i: 1 }),
+    signature: {
+      hash: new Binary(Buffer.from("619ce1caa56a86ed2fef7b22391fd94f165c3957", "hex"), 0),
+      keyId: new Long("7055723500220186628")
+    }
+  },
+  operationTime: new Timestamp({ t: 1647912363, i: 1 })
+}
+[2022-03-21T22:30:38.809] [ERROR] error - Error: Arguments must be aggregate pipeline operators
+    at Aggregate.append (E:\instr-app\instr-app-back\node_modules\mongoose\lib\aggregate.js:145:11)
+    at new Aggregate (E:\instr-app\instr-app-back\node_modules\mongoose\lib\aggregate.js:58:17)
+    at Function.aggregate (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:4163:21)
+    at DBMongoDao.getAttelieresGroupByPlant (file:///E:/instr-app/instr-app-back/model/DAOs/DBMongoDao.js:240:54)
+    at ApiAttelier.getAttelieres (file:///E:/instr-app/instr-app-back/api/attelieres.js:25:42)
+    at getAttelieres (file:///E:/instr-app/instr-app-back/controllers/attelieres.js:22:55)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+[2022-03-21T22:30:41.212] [ERROR] error - Error: Arguments must be aggregate pipeline operators
+    at Aggregate.append (E:\instr-app\instr-app-back\node_modules\mongoose\lib\aggregate.js:145:11)
+    at new Aggregate (E:\instr-app\instr-app-back\node_modules\mongoose\lib\aggregate.js:58:17)
+    at Function.aggregate (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:4163:21)
+    at DBMongoDao.getAttelieresGroupByPlant (file:///E:/instr-app/instr-app-back/model/DAOs/DBMongoDao.js:240:54)
+    at ApiAttelier.getAttelieres (file:///E:/instr-app/instr-app-back/api/attelieres.js:25:42)
+    at getAttelieres (file:///E:/instr-app/instr-app-back/controllers/attelieres.js:22:55)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
