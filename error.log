@@ -1039,3 +1039,344 @@
     at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:137:13)
     at Route.dispatch (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:112:3)
     at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+[2022-03-22T21:02:03.242] [ERROR] error - TypeError: attelieresReduce.unshift is not a function
+    at ApiAttelier.getAttelieres (file:///E:/instr-app/instr-app-back/api/attelieres.js:29:30)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getAttelieres (file:///E:/instr-app/instr-app-back/controllers/attelieres.js:22:32)
+[2022-03-22T21:02:22.870] [ERROR] error - TypeError: attelieresReduce.unshift is not a function
+    at ApiAttelier.getAttelieres (file:///E:/instr-app/instr-app-back/api/attelieres.js:29:30)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getAttelieres (file:///E:/instr-app/instr-app-back/controllers/attelieres.js:22:32)
+[2022-03-22T21:07:11.321] [ERROR] error - Error: Arguments must be aggregate pipeline operators
+    at Aggregate.append (E:\instr-app\instr-app-back\node_modules\mongoose\lib\aggregate.js:145:11)
+    at new Aggregate (E:\instr-app\instr-app-back\node_modules\mongoose\lib\aggregate.js:58:17)
+    at Function.aggregate (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:4163:21)
+    at DBMongoDao.getAttelieresGroupByPlant (file:///E:/instr-app/instr-app-back/model/DAOs/DBMongoDao.js:240:54)
+    at ApiAttelier.getAttelieres (file:///E:/instr-app/instr-app-back/api/attelieres.js:25:42)
+    at getAttelieres (file:///E:/instr-app/instr-app-back/controllers/attelieres.js:22:55)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+[2022-03-22T21:07:13.817] [ERROR] error - Error: Arguments must be aggregate pipeline operators
+    at Aggregate.append (E:\instr-app\instr-app-back\node_modules\mongoose\lib\aggregate.js:145:11)
+    at new Aggregate (E:\instr-app\instr-app-back\node_modules\mongoose\lib\aggregate.js:58:17)
+    at Function.aggregate (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:4163:21)
+    at DBMongoDao.getAttelieresGroupByPlant (file:///E:/instr-app/instr-app-back/model/DAOs/DBMongoDao.js:240:54)
+    at ApiAttelier.getAttelieres (file:///E:/instr-app/instr-app-back/api/attelieres.js:25:42)
+    at getAttelieres (file:///E:/instr-app/instr-app-back/controllers/attelieres.js:22:55)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+[2022-03-22T21:07:28.675] [ERROR] error - Error: Arguments must be aggregate pipeline operators
+    at Aggregate.append (E:\instr-app\instr-app-back\node_modules\mongoose\lib\aggregate.js:145:11)
+    at new Aggregate (E:\instr-app\instr-app-back\node_modules\mongoose\lib\aggregate.js:58:17)
+    at Function.aggregate (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:4163:21)
+    at DBMongoDao.getAttelieresGroupByPlant (file:///E:/instr-app/instr-app-back/model/DAOs/DBMongoDao.js:240:54)
+    at ApiAttelier.getAttelieres (file:///E:/instr-app/instr-app-back/api/attelieres.js:25:42)
+    at getAttelieres (file:///E:/instr-app/instr-app-back/controllers/attelieres.js:22:55)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+[2022-03-22T21:07:42.525] [ERROR] error - Error: Arguments must be aggregate pipeline operators
+    at Aggregate.append (E:\instr-app\instr-app-back\node_modules\mongoose\lib\aggregate.js:145:11)
+    at new Aggregate (E:\instr-app\instr-app-back\node_modules\mongoose\lib\aggregate.js:58:17)
+    at Function.aggregate (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:4163:21)
+    at DBMongoDao.getAttelieresGroupByPlant (file:///E:/instr-app/instr-app-back/model/DAOs/DBMongoDao.js:240:54)
+    at ApiAttelier.getAttelieres (file:///E:/instr-app/instr-app-back/api/attelieres.js:25:42)
+    at getAttelieres (file:///E:/instr-app/instr-app-back/controllers/attelieres.js:22:55)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+[2022-03-22T21:09:17.642] [ERROR] error - Error: Arguments must be aggregate pipeline operators
+    at Aggregate.append (E:\instr-app\instr-app-back\node_modules\mongoose\lib\aggregate.js:145:11)
+    at new Aggregate (E:\instr-app\instr-app-back\node_modules\mongoose\lib\aggregate.js:58:17)
+    at Function.aggregate (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:4163:21)
+    at DBMongoDao.getAttelieresGroupByPlant (file:///E:/instr-app/instr-app-back/model/DAOs/DBMongoDao.js:240:54)
+    at ApiAttelier.getAttelieres (file:///E:/instr-app/instr-app-back/api/attelieres.js:25:42)
+    at getAttelieres (file:///E:/instr-app/instr-app-back/controllers/attelieres.js:22:55)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+[2022-03-22T21:09:18.910] [ERROR] error - Error: Arguments must be aggregate pipeline operators
+    at Aggregate.append (E:\instr-app\instr-app-back\node_modules\mongoose\lib\aggregate.js:145:11)
+    at new Aggregate (E:\instr-app\instr-app-back\node_modules\mongoose\lib\aggregate.js:58:17)
+    at Function.aggregate (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:4163:21)
+    at DBMongoDao.getAttelieresGroupByPlant (file:///E:/instr-app/instr-app-back/model/DAOs/DBMongoDao.js:240:54)
+    at ApiAttelier.getAttelieres (file:///E:/instr-app/instr-app-back/api/attelieres.js:25:42)
+    at getAttelieres (file:///E:/instr-app/instr-app-back/controllers/attelieres.js:22:55)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+[2022-03-22T21:16:12.222] [ERROR] error - TypeError: Cannot read property 'substring' of undefined
+    at file:///E:/instr-app/instr-app-back/api/attelieres.js:28:49
+    at Array.map (<anonymous>)
+    at ApiAttelier.getAttelieres (file:///E:/instr-app/instr-app-back/api/attelieres.js:27:24)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getAttelieres (file:///E:/instr-app/instr-app-back/controllers/attelieres.js:22:32)
+[2022-03-22T21:16:20.111] [ERROR] error - TypeError: Cannot read property 'substring' of undefined
+    at file:///E:/instr-app/instr-app-back/api/attelieres.js:28:49
+    at Array.map (<anonymous>)
+    at ApiAttelier.getAttelieres (file:///E:/instr-app/instr-app-back/api/attelieres.js:27:24)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getAttelieres (file:///E:/instr-app/instr-app-back/controllers/attelieres.js:22:32)
+[2022-03-22T21:16:34.799] [ERROR] error - TypeError: Cannot read property 'substring' of undefined
+    at file:///E:/instr-app/instr-app-back/api/attelieres.js:28:49
+    at Array.map (<anonymous>)
+    at ApiAttelier.getAttelieres (file:///E:/instr-app/instr-app-back/api/attelieres.js:27:24)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getAttelieres (file:///E:/instr-app/instr-app-back/controllers/attelieres.js:22:32)
+[2022-03-22T21:17:50.471] [ERROR] error - MongoServerError: The field 'id' must be an accumulator object
+    at MessageStream.messageHandler (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connection.js:467:30)
+    at MessageStream.emit (events.js:315:20)
+    at processIncomingData (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\message_stream.js:108:16)
+    at MessageStream._write (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\message_stream.js:28:9)
+    at writeOrBuffer (internal/streams/writable.js:358:12)
+    at MessageStream.Writable.write (internal/streams/writable.js:303:10)
+    at TLSSocket.ondata (internal/streams/readable.js:719:22)
+    at TLSSocket.emit (events.js:315:20)
+    at addChunk (internal/streams/readable.js:309:12)
+    at readableAddChunk (internal/streams/readable.js:284:9) {
+  ok: 0,
+  code: 40234,
+  codeName: 'Location40234',
+  '$clusterTime': {
+    clusterTime: new Timestamp({ t: 1647994670, i: 1 }),
+    signature: {
+      hash: new Binary(Buffer.from("a353a980da954b5bcacf7b91bd54557b30b048a9", "hex"), 0),
+      keyId: new Long("7055723500220186628")
+    }
+  },
+  operationTime: new Timestamp({ t: 1647994670, i: 1 })
+}
+[2022-03-22T21:17:51.547] [ERROR] error - MongoServerError: The field 'id' must be an accumulator object
+    at MessageStream.messageHandler (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connection.js:467:30)
+    at MessageStream.emit (events.js:315:20)
+    at processIncomingData (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\message_stream.js:108:16)
+    at MessageStream._write (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\message_stream.js:28:9)
+    at writeOrBuffer (internal/streams/writable.js:358:12)
+    at MessageStream.Writable.write (internal/streams/writable.js:303:10)
+    at TLSSocket.ondata (internal/streams/readable.js:719:22)
+    at TLSSocket.emit (events.js:315:20)
+    at addChunk (internal/streams/readable.js:309:12)
+    at readableAddChunk (internal/streams/readable.js:284:9) {
+  ok: 0,
+  code: 40234,
+  codeName: 'Location40234',
+  '$clusterTime': {
+    clusterTime: new Timestamp({ t: 1647994671, i: 1 }),
+    signature: {
+      hash: new Binary(Buffer.from("148ab32f26b3cfae6b9cc3a484c13d3923670bde", "hex"), 0),
+      keyId: new Long("7055723500220186628")
+    }
+  },
+  operationTime: new Timestamp({ t: 1647994671, i: 1 })
+}
+[2022-03-22T21:23:17.549] [ERROR] error - MongoServerError: The field 'atteliers' must be an accumulator object
+    at MessageStream.messageHandler (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connection.js:467:30)
+    at MessageStream.emit (events.js:315:20)
+    at processIncomingData (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\message_stream.js:108:16)
+    at MessageStream._write (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\message_stream.js:28:9)
+    at writeOrBuffer (internal/streams/writable.js:358:12)
+    at MessageStream.Writable.write (internal/streams/writable.js:303:10)
+    at TLSSocket.ondata (internal/streams/readable.js:719:22)
+    at TLSSocket.emit (events.js:315:20)
+    at addChunk (internal/streams/readable.js:309:12)
+    at readableAddChunk (internal/streams/readable.js:284:9) {
+  ok: 0,
+  code: 40234,
+  codeName: 'Location40234',
+  '$clusterTime': {
+    clusterTime: new Timestamp({ t: 1647994997, i: 1 }),
+    signature: {
+      hash: new Binary(Buffer.from("7768b94eca9ac3b50242c8c1e5d0fca28a990935", "hex"), 0),
+      keyId: new Long("7055723500220186628")
+    }
+  },
+  operationTime: new Timestamp({ t: 1647994997, i: 1 })
+}
+[2022-03-22T21:23:17.552] [ERROR] error - TypeError: Cannot read property 'map' of undefined
+    at ApiAttelier.getAttelieres (file:///E:/instr-app/instr-app-back/api/attelieres.js:27:24)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getAttelieres (file:///E:/instr-app/instr-app-back/controllers/attelieres.js:22:32)
+[2022-03-22T21:23:19.266] [ERROR] error - MongoServerError: The field 'atteliers' must be an accumulator object
+    at MessageStream.messageHandler (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connection.js:467:30)
+    at MessageStream.emit (events.js:315:20)
+    at processIncomingData (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\message_stream.js:108:16)
+    at MessageStream._write (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\message_stream.js:28:9)
+    at writeOrBuffer (internal/streams/writable.js:358:12)
+    at MessageStream.Writable.write (internal/streams/writable.js:303:10)
+    at TLSSocket.ondata (internal/streams/readable.js:719:22)
+    at TLSSocket.emit (events.js:315:20)
+    at addChunk (internal/streams/readable.js:309:12)
+    at readableAddChunk (internal/streams/readable.js:284:9) {
+  ok: 0,
+  code: 40234,
+  codeName: 'Location40234',
+  '$clusterTime': {
+    clusterTime: new Timestamp({ t: 1647994999, i: 1 }),
+    signature: {
+      hash: new Binary(Buffer.from("dd19f83d9c9bc8097ce6ffbf5a869df3b67d46c3", "hex"), 0),
+      keyId: new Long("7055723500220186628")
+    }
+  },
+  operationTime: new Timestamp({ t: 1647994999, i: 1 })
+}
+[2022-03-22T21:23:19.269] [ERROR] error - TypeError: Cannot read property 'map' of undefined
+    at ApiAttelier.getAttelieres (file:///E:/instr-app/instr-app-back/api/attelieres.js:27:24)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getAttelieres (file:///E:/instr-app/instr-app-back/controllers/attelieres.js:22:32)
+[2022-03-22T21:23:29.075] [ERROR] error - MongoServerError: The field 'atteliers' must be an accumulator object
+    at MessageStream.messageHandler (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connection.js:467:30)
+    at MessageStream.emit (events.js:315:20)
+    at processIncomingData (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\message_stream.js:108:16)
+    at MessageStream._write (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\message_stream.js:28:9)
+    at writeOrBuffer (internal/streams/writable.js:358:12)
+    at MessageStream.Writable.write (internal/streams/writable.js:303:10)
+    at TLSSocket.ondata (internal/streams/readable.js:719:22)
+    at TLSSocket.emit (events.js:315:20)
+    at addChunk (internal/streams/readable.js:309:12)
+    at readableAddChunk (internal/streams/readable.js:284:9) {
+  ok: 0,
+  code: 40234,
+  codeName: 'Location40234',
+  '$clusterTime': {
+    clusterTime: new Timestamp({ t: 1647995009, i: 1 }),
+    signature: {
+      hash: new Binary(Buffer.from("da5045b17d4e009046d5101d219fbaa6b996790c", "hex"), 0),
+      keyId: new Long("7055723500220186628")
+    }
+  },
+  operationTime: new Timestamp({ t: 1647995009, i: 1 })
+}
+[2022-03-22T21:23:30.046] [ERROR] error - MongoServerError: The field 'atteliers' must be an accumulator object
+    at MessageStream.messageHandler (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connection.js:467:30)
+    at MessageStream.emit (events.js:315:20)
+    at processIncomingData (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\message_stream.js:108:16)
+    at MessageStream._write (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\message_stream.js:28:9)
+    at writeOrBuffer (internal/streams/writable.js:358:12)
+    at MessageStream.Writable.write (internal/streams/writable.js:303:10)
+    at TLSSocket.ondata (internal/streams/readable.js:719:22)
+    at TLSSocket.emit (events.js:315:20)
+    at addChunk (internal/streams/readable.js:309:12)
+    at readableAddChunk (internal/streams/readable.js:284:9) {
+  ok: 0,
+  code: 40234,
+  codeName: 'Location40234',
+  '$clusterTime': {
+    clusterTime: new Timestamp({ t: 1647995009, i: 1 }),
+    signature: {
+      hash: new Binary(Buffer.from("da5045b17d4e009046d5101d219fbaa6b996790c", "hex"), 0),
+      keyId: new Long("7055723500220186628")
+    }
+  },
+  operationTime: new Timestamp({ t: 1647995009, i: 1 })
+}
+[2022-03-22T21:24:15.070] [ERROR] error - MongoServerError: The field 'atteliers' must be an accumulator object
+    at MessageStream.messageHandler (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connection.js:467:30)
+    at MessageStream.emit (events.js:315:20)
+    at processIncomingData (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\message_stream.js:108:16)
+    at MessageStream._write (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\message_stream.js:28:9)
+    at writeOrBuffer (internal/streams/writable.js:358:12)
+    at MessageStream.Writable.write (internal/streams/writable.js:303:10)
+    at TLSSocket.ondata (internal/streams/readable.js:719:22)
+    at TLSSocket.emit (events.js:315:20)
+    at addChunk (internal/streams/readable.js:309:12)
+    at readableAddChunk (internal/streams/readable.js:284:9) {
+  ok: 0,
+  code: 40234,
+  codeName: 'Location40234',
+  '$clusterTime': {
+    clusterTime: new Timestamp({ t: 1647995055, i: 1 }),
+    signature: {
+      hash: new Binary(Buffer.from("cc944017b59ac4de933842ba621d13136beef68c", "hex"), 0),
+      keyId: new Long("7055723500220186628")
+    }
+  },
+  operationTime: new Timestamp({ t: 1647995055, i: 1 })
+}
+[2022-03-22T21:24:15.078] [ERROR] error - TypeError: Cannot read property 'map' of undefined
+    at ApiAttelier.getAttelieres (file:///E:/instr-app/instr-app-back/api/attelieres.js:27:24)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getAttelieres (file:///E:/instr-app/instr-app-back/controllers/attelieres.js:22:32)
+[2022-03-22T21:26:21.864] [ERROR] error - Error: Arguments must be aggregate pipeline operators
+    at Aggregate.append (E:\instr-app\instr-app-back\node_modules\mongoose\lib\aggregate.js:145:11)
+    at new Aggregate (E:\instr-app\instr-app-back\node_modules\mongoose\lib\aggregate.js:58:17)
+    at Function.aggregate (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:4163:21)
+    at DBMongoDao.getAttelieresGroupByPlant (file:///E:/instr-app/instr-app-back/model/DAOs/DBMongoDao.js:240:54)
+    at ApiAttelier.getAttelieres (file:///E:/instr-app/instr-app-back/api/attelieres.js:25:42)
+    at getAttelieres (file:///E:/instr-app/instr-app-back/controllers/attelieres.js:22:55)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+[2022-03-22T21:26:21.865] [ERROR] error - TypeError: Cannot read property 'map' of undefined
+    at ApiAttelier.getAttelieres (file:///E:/instr-app/instr-app-back/api/attelieres.js:27:24)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getAttelieres (file:///E:/instr-app/instr-app-back/controllers/attelieres.js:22:32)
+[2022-03-22T21:26:56.509] [ERROR] error - Error: Arguments must be aggregate pipeline operators
+    at Aggregate.append (E:\instr-app\instr-app-back\node_modules\mongoose\lib\aggregate.js:145:11)
+    at new Aggregate (E:\instr-app\instr-app-back\node_modules\mongoose\lib\aggregate.js:58:17)
+    at Function.aggregate (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:4163:21)
+    at DBMongoDao.getAttelieresGroupByPlant (file:///E:/instr-app/instr-app-back/model/DAOs/DBMongoDao.js:240:54)
+    at ApiAttelier.getAttelieres (file:///E:/instr-app/instr-app-back/api/attelieres.js:25:42)
+    at getAttelieres (file:///E:/instr-app/instr-app-back/controllers/attelieres.js:22:55)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+[2022-03-22T21:26:56.510] [ERROR] error - TypeError: Cannot read property 'map' of undefined
+    at ApiAttelier.getAttelieres (file:///E:/instr-app/instr-app-back/api/attelieres.js:27:24)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getAttelieres (file:///E:/instr-app/instr-app-back/controllers/attelieres.js:22:32)
+[2022-03-22T21:41:42.559] [ERROR] error - TypeError: arrayToReduce.push is not a function
+    at file:///E:/instr-app/instr-app-back/api/attelieres.js:29:31
+    at Array.map (<anonymous>)
+    at ApiAttelier.getAttelieres (file:///E:/instr-app/instr-app-back/api/attelieres.js:28:24)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getAttelieres (file:///E:/instr-app/instr-app-back/controllers/attelieres.js:22:32)
+[2022-03-22T21:44:26.595] [ERROR] error - TypeError: Cannot read property 'map' of undefined
+    at file:///E:/instr-app/instr-app-back/api/attelieres.js:35:37
+    at Array.map (<anonymous>)
+    at ApiAttelier.getAttelieres (file:///E:/instr-app/instr-app-back/api/attelieres.js:28:24)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getAttelieres (file:///E:/instr-app/instr-app-back/controllers/attelieres.js:22:32)
+[2022-03-22T21:54:03.058] [ERROR] error - MongoInvalidArgumentError: Method "collection.aggregate()" accepts at most two arguments
+    at Collection.aggregate (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\collection.js:367:19)
+    at NativeCollection.<computed> [as aggregate] (E:\instr-app\instr-app-back\node_modules\mongoose\lib\drivers\node-mongodb-native\collection.js:200:33)
+    at NativeCollection.Collection.doQueue (E:\instr-app\instr-app-back\node_modules\mongoose\lib\collection.js:135:23)
+    at E:\instr-app\instr-app-back\node_modules\mongoose\lib\collection.js:82:24
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+[2022-03-22T21:54:03.061] [ERROR] error - TypeError: Cannot read property 'map' of undefined
+    at ApiAttelier.getAttelieres (file:///E:/instr-app/instr-app-back/api/attelieres.js:28:24)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getAttelieres (file:///E:/instr-app/instr-app-back/controllers/attelieres.js:22:32)
+[2022-03-22T22:09:55.812] [ERROR] error - MongoInvalidArgumentError: Method "collection.aggregate()" accepts at most two arguments
+    at Collection.aggregate (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\collection.js:367:19)
+    at NativeCollection.<computed> [as aggregate] (E:\instr-app\instr-app-back\node_modules\mongoose\lib\drivers\node-mongodb-native\collection.js:200:33)
+    at NativeCollection.Collection.doQueue (E:\instr-app\instr-app-back\node_modules\mongoose\lib\collection.js:135:23)
+    at E:\instr-app\instr-app-back\node_modules\mongoose\lib\collection.js:82:24
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+[2022-03-22T22:09:55.816] [ERROR] error - TypeError: Cannot read property 'map' of undefined
+    at ApiAttelier.getAttelieres (file:///E:/instr-app/instr-app-back/api/attelieres.js:29:24)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getAttelieres (file:///E:/instr-app/instr-app-back/controllers/attelieres.js:22:32)
+[2022-03-22T22:10:00.506] [ERROR] error - MongoInvalidArgumentError: Method "collection.aggregate()" accepts at most two arguments
+    at Collection.aggregate (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\collection.js:367:19)
+    at NativeCollection.<computed> [as aggregate] (E:\instr-app\instr-app-back\node_modules\mongoose\lib\drivers\node-mongodb-native\collection.js:200:33)
+    at NativeCollection.Collection.doQueue (E:\instr-app\instr-app-back\node_modules\mongoose\lib\collection.js:135:23)
+    at E:\instr-app\instr-app-back\node_modules\mongoose\lib\collection.js:82:24
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+[2022-03-22T22:10:00.508] [ERROR] error - TypeError: Cannot read property 'map' of undefined
+    at ApiAttelier.getAttelieres (file:///E:/instr-app/instr-app-back/api/attelieres.js:29:24)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getAttelieres (file:///E:/instr-app/instr-app-back/controllers/attelieres.js:22:32)
+[2022-03-22T22:12:02.457] [ERROR] error - ReferenceError: arr is not defined
+    at ApiAttelier.getAttelieres (file:///E:/instr-app/instr-app-back/api/attelieres.js:44:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getAttelieres (file:///E:/instr-app/instr-app-back/controllers/attelieres.js:22:32)

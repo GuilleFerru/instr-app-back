@@ -241,7 +241,6 @@ export class DBMongoDao {
                 {
                     $group: {
                         _id: '$plant',
-
                         atteliers: {
                             $push: {
                                 name: '$name',
@@ -249,18 +248,15 @@ export class DBMongoDao {
                             }
                         }
                     },
+
                 },
                 {
-                    $lookup: {
-                        from: 'plants',
-                        localField: 'plant',
-                        foreignField: 'id',
-                        as: 'plant'
-                    }
+                    $sort: { _id: -1 }
                 }
             ]);
             return attelierResp;
         } catch (error) {
+            console.log(error)
             loggerError.error(error)
         }
     }
