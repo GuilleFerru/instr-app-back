@@ -70,7 +70,6 @@ export class DailyWorksRoutineTable {
         try {
             const columns = createDailyWorksRoutineColumns(await timeScheduleData());
             const saveColumns = { columns: columns };
-            console.log(saveColumns);
             const resp = await dao.createDailyWorksRoutineColumns(saveColumns);
             return resp;
         } catch (err) {

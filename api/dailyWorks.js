@@ -3,7 +3,7 @@ import { formatDate, todayInLocalDate, dateInLocalDate, parseStringToDate, dateI
 import { ApiRoutine } from './routines.js';
 import { ApiDailyWorksColumnTable } from '../utils/dailyWorksColumnTable.js';
 import { DailyWorksRoutineTable } from '../utils/dailyWorksRoutineTable.js';
-import { saveDailyWorkDTO, updateDayWorkDTO, completedDailyWorkDTO,dailyWorkRoutineRespDTO } from '../model/DTOs/dailyWork.js';
+import { saveDailyWorkDTO, updateDayWorkDTO, completedDailyWorkDTO, dailyWorkRoutineRespDTO } from '../model/DTOs/dailyWork.js';
 import { loggerError, loggerInfo } from '../utils/logger.js';
 
 
@@ -18,7 +18,7 @@ const getDailyWorkTable = async (filter) => {
     const columns = [];
     const savedColumns = filter === 'fromDailyWork' ? await ApiDailyWorksColumnTable.getColumns() : await DailyWorksRoutineTable.getColumns();
     if (savedColumns.length === 0) {
-        const savedColumns = await DailyWorksRoutineTable.createColumns();
+        const savedColumns = filter === 'fromDailyWork' ? ApiDailyWorksColumnTable.createColumns() : await DailyWorksRoutineTable.createColumns();
         columns.push(savedColumns[0].columns);
     } else {
         columns.push(savedColumns[0].columns);
@@ -92,6 +92,21 @@ export class ApiDailyWork {
         } finally {
         }
     }
+
+    getDailyWorkSearchBy = async (value) => {
+        try {
+            const columns = await getDailyWorkTable('fromDailyWork');
+            columns[0][1].hidden = false;
+            delete columns[0][6].defaultGroupOrder
+            
+            const dayWorks = await dao.getDailyWorkSearchBy(value);
+            return worksResp(dayWorks, ...columns);
+        } catch (err) {
+            loggerError.error(err);
+        } finally {
+        }
+    }
+
 
     updateDailyWork = async (date, dayWork) => {
         try {

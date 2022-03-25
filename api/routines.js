@@ -229,7 +229,6 @@ export class ApiRoutine {
 
     updateRoutineScheduleOT = async (routineSchedule) => {
         try {
-            console.log(routineSchedule)
             const updatedRoutineScheduleOT = await dao.updateRoutineScheduleOT(routineSchedule._id, routineSchedule.ot, routineSchedule.filePath);
             return updatedRoutineScheduleOT;
         } catch (err) {

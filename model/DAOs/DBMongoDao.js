@@ -368,6 +368,23 @@ export class DBMongoDao {
         }
     }
 
+    getDailyWorkSearchBy = async (value) => {
+        try {
+            const dailyWorkResp = await dailyWorkModel.find({
+                $or: [
+                    { "tag": { $regex: value, $options: 'i' } },
+                    { "ot": { $regex: value, $options: 'i' } },
+                    { "description": { $regex: value, $options: 'i' } }
+                ]
+            }, { __v: 0, createdAt: 0, updatedAt: 0 }).sort({ createdAt: -1 });
+            return dailyWorkResp;
+        } catch (error) {
+            console.log(error)
+            loggerError.error(error)
+        }
+
+    }
+
     updateDailyWork = async (date, dailyWork) => {
         try {
             await dailyWorkModel.updateOne({ $and: [{ "beginDate": date }, { "_id": dailyWork._id }] }, {

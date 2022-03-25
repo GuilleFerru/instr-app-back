@@ -42,6 +42,17 @@ export class ControllerDailyWork {
         }
     }
 
+    getDailyWorkSearchBy = async (req, res) => {
+        try {
+            const { value } = req.params;
+            const resultado = await this.apiDailyWork.getDailyWorkSearchBy(value);
+            return res.status(200).json(resultado);
+        } catch (err) {
+            console.log(err);
+            return res.status(500).json(err);
+        }
+    }
+
     updateDailyWork = async (req, res) => {
         try {
             const { date } = req.params;

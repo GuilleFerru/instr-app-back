@@ -10,6 +10,11 @@ const createDailyWorkColumns = (plantsForColumnTable, atteliersForColumnTable, t
             hidden: true,
         },
         {
+            field: 'beginDate',
+            title: 'Fecha de inicio',
+            hidden: true,
+        },
+        {
             field: 'plant',
             title: 'Planta',
             lookup: plantsForColumnTable,
@@ -29,15 +34,15 @@ const createDailyWorkColumns = (plantsForColumnTable, atteliersForColumnTable, t
             title: 'Horario',
             lookup: timeScheduleForColumnTable,
             initialEditValue: '5',
-            defaultGroupOrder:1,
+            // defaultGroupOrder: 1,
         },
         {
             field: 'manteinance',
             title: 'Tipo de mto',
             lookup: manteinancesForColumnTable,
             initialEditValue: '1',
-            defaultGroupOrder:0,
-            defaultGroupSort:'desc'
+            defaultGroupOrder: 0,
+            defaultGroupSort: 'desc'
         },
         {
             field: 'ot',
@@ -76,7 +81,7 @@ export class ApiDailyWorksColumnTable {
 
     static createColumns = async () => {
         try {
-            const columns = createDailyWorkColumns(await plantData(),await attelierData(),await timeScheduleData(),await manteinanceData(),await manteinanceActionData());
+            const columns = createDailyWorkColumns(await plantData(), await attelierData(), await timeScheduleData(), await manteinanceData(), await manteinanceActionData());
             const saveColumns = { columns: columns };
             const resp = await dao.createDailyWorksColumns(saveColumns);
             return resp;

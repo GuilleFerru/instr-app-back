@@ -1380,3 +1380,396 @@
     at ApiAttelier.getAttelieres (file:///E:/instr-app/instr-app-back/api/attelieres.js:44:13)
     at processTicksAndRejections (internal/process/task_queues.js:93:5)
     at async getAttelieres (file:///E:/instr-app/instr-app-back/controllers/attelieres.js:22:32)
+[2022-03-24T13:21:13.542] [ERROR] error - CastError: Cast to Number failed for value "ae2902" (type string) at path "attelier" for model "dailyworks"
+    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"ae2902"',
+  kind: 'Number',
+  value: 'ae2902',
+  path: 'attelier',
+  reason: AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(!isNaN(val))
+  
+      at castNumber (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast\number.js:28:10)
+      at SchemaNumber.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\number.js:378:12)
+      at SchemaNumber.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
+      at SchemaNumber.SchemaType._castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1553:15)
+      at SchemaNumber.castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\number.js:432:14)
+      at SchemaNumber.SchemaType.castForQueryWrapper (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1520:20)
+      at cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast.js:338:32)
+      at cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast.js:75:18)
+      at model.Query.Query.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4963:12)
+      at model.Query.Query._castConditions (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:2055:10) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '=='
+  },
+  valueType: 'string'
+}
+[2022-03-24T13:22:23.828] [ERROR] error - CastError: Cast to Number failed for value "ae2902" (type string) at path "attelier" for model "dailyworks"
+    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"ae2902"',
+  kind: 'Number',
+  value: 'ae2902',
+  path: 'attelier',
+  reason: AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(!isNaN(val))
+  
+      at castNumber (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast\number.js:28:10)
+      at SchemaNumber.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\number.js:378:12)
+      at SchemaNumber.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
+      at SchemaNumber.SchemaType._castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1553:15)
+      at SchemaNumber.castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\number.js:432:14)
+      at SchemaNumber.SchemaType.castForQueryWrapper (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1520:20)
+      at cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast.js:338:32)
+      at cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast.js:75:18)
+      at model.Query.Query.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4963:12)
+      at model.Query.Query._castConditions (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:2055:10) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '=='
+  },
+  valueType: 'string'
+}
+[2022-03-24T13:22:36.642] [ERROR] error - CastError: Cast to Number failed for value "TDI" (type string) at path "attelier" for model "dailyworks"
+    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"TDI"',
+  kind: 'Number',
+  value: 'TDI',
+  path: 'attelier',
+  reason: AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(!isNaN(val))
+  
+      at castNumber (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast\number.js:28:10)
+      at SchemaNumber.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\number.js:378:12)
+      at SchemaNumber.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
+      at SchemaNumber.SchemaType._castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1553:15)
+      at SchemaNumber.castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\number.js:432:14)
+      at SchemaNumber.SchemaType.castForQueryWrapper (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1520:20)
+      at cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast.js:338:32)
+      at cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast.js:75:18)
+      at model.Query.Query.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4963:12)
+      at model.Query.Query._castConditions (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:2055:10) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '=='
+  },
+  valueType: 'string'
+}
+[2022-03-24T13:22:43.192] [ERROR] error - CastError: Cast to Number failed for value "TDI" (type string) at path "attelier" for model "dailyworks"
+    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"TDI"',
+  kind: 'Number',
+  value: 'TDI',
+  path: 'attelier',
+  reason: AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(!isNaN(val))
+  
+      at castNumber (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast\number.js:28:10)
+      at SchemaNumber.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\number.js:378:12)
+      at SchemaNumber.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
+      at SchemaNumber.SchemaType._castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1553:15)
+      at SchemaNumber.castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\number.js:432:14)
+      at SchemaNumber.SchemaType.castForQueryWrapper (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1520:20)
+      at cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast.js:338:32)
+      at cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast.js:75:18)
+      at model.Query.Query.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4963:12)
+      at model.Query.Query._castConditions (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:2055:10) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '=='
+  },
+  valueType: 'string'
+}
+[2022-03-24T13:23:36.938] [ERROR] error - CastError: Cast to Number failed for value "AE2902" (type string) at path "attelier" for model "dailyworks"
+    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"AE2902"',
+  kind: 'Number',
+  value: 'AE2902',
+  path: 'attelier',
+  reason: AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(!isNaN(val))
+  
+      at castNumber (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast\number.js:28:10)
+      at SchemaNumber.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\number.js:378:12)
+      at SchemaNumber.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
+      at SchemaNumber.SchemaType._castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1553:15)
+      at SchemaNumber.castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\number.js:432:14)
+      at SchemaNumber.SchemaType.castForQueryWrapper (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1520:20)
+      at cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast.js:338:32)
+      at cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast.js:75:18)
+      at model.Query.Query.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4963:12)
+      at model.Query.Query._castConditions (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:2055:10) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '=='
+  },
+  valueType: 'string'
+}
+[2022-03-24T13:23:40.938] [ERROR] error - CastError: Cast to Number failed for value "AE2902" (type string) at path "attelier" for model "dailyworks"
+    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"AE2902"',
+  kind: 'Number',
+  value: 'AE2902',
+  path: 'attelier',
+  reason: AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(!isNaN(val))
+  
+      at castNumber (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast\number.js:28:10)
+      at SchemaNumber.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\number.js:378:12)
+      at SchemaNumber.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
+      at SchemaNumber.SchemaType._castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1553:15)
+      at SchemaNumber.castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\number.js:432:14)
+      at SchemaNumber.SchemaType.castForQueryWrapper (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1520:20)
+      at cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast.js:338:32)
+      at cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast.js:75:18)
+      at model.Query.Query.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4963:12)
+      at model.Query.Query._castConditions (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:2055:10) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '=='
+  },
+  valueType: 'string'
+}
+[2022-03-24T13:24:05.969] [ERROR] error - CastError: Cast to Number failed for value "AE2902" (type string) at path "attelier" for model "dailyworks"
+    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"AE2902"',
+  kind: 'Number',
+  value: 'AE2902',
+  path: 'attelier',
+  reason: AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(!isNaN(val))
+  
+      at castNumber (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast\number.js:28:10)
+      at SchemaNumber.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\number.js:378:12)
+      at SchemaNumber.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
+      at SchemaNumber.SchemaType._castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1553:15)
+      at SchemaNumber.castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\number.js:432:14)
+      at SchemaNumber.SchemaType.castForQueryWrapper (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1520:20)
+      at cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast.js:338:32)
+      at cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast.js:75:18)
+      at model.Query.Query.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4963:12)
+      at model.Query.Query._castConditions (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:2055:10) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '=='
+  },
+  valueType: 'string'
+}
+[2022-03-24T14:33:34.232] [ERROR] error - TypeError: Cannot read property 'columns' of undefined
+    at getDailyWorkTable (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:22:38)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:48:29)
+    at async getDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:26:31)
+[2022-03-24T14:35:20.871] [ERROR] error - TypeError: Cannot read property 'columns' of undefined
+    at getDailyWorkTable (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:22:38)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:48:29)
+    at async getDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:26:31)
+[2022-03-24T14:46:46.586] [ERROR] error - ReferenceError: defaultGroupOrder is not defined
+    at ApiDailyWork.getDailyWorkSearchBy (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:100:34)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getDailyWorkSearchBy (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:48:31)
+[2022-03-24T14:47:34.165] [ERROR] error - ReferenceError: defaultGroupOrder is not defined
+    at ApiDailyWork.getDailyWorkSearchBy (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:102:39)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getDailyWorkSearchBy (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:48:31)
+[2022-03-24T14:47:36.267] [ERROR] error - ReferenceError: defaultGroupOrder is not defined
+    at ApiDailyWork.getDailyWorkSearchBy (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:102:39)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getDailyWorkSearchBy (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:48:31)
+[2022-03-24T21:20:00.943] [ERROR] error - MongooseServerSelectionError: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://docs.atlas.mongodb.com/security-whitelist/
+    at Function.Model.$wrapCallback (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:4931:32)
+    at E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4557:21
+    at E:\instr-app\instr-app-back\node_modules\mongoose\lib\helpers\promiseOrCallback.js:32:5
+    at new Promise (<anonymous>)
+    at promiseOrCallback (E:\instr-app\instr-app-back\node_modules\mongoose\lib\helpers\promiseOrCallback.js:31:10)
+    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4556:10)
+    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  reason: TopologyDescription {
+    type: 'ReplicaSetNoPrimary',
+    servers: Map(3) {
+      'instrumentosdb-shard-00-01.hwfi6.mongodb.net:27017' => [ServerDescription],
+      'instrumentosdb-shard-00-00.hwfi6.mongodb.net:27017' => [ServerDescription],
+      'instrumentosdb-shard-00-02.hwfi6.mongodb.net:27017' => [ServerDescription]
+    },
+    stale: false,
+    compatible: true,
+    heartbeatFrequencyMS: 10000,
+    localThresholdMS: 15,
+    setName: 'atlas-fnts21-shard-0',
+    maxSetVersion: 2,
+    maxElectionId: new ObjectId("7fffffff0000000000000007"),
+    commonWireVersion: 13,
+    logicalSessionTimeoutMinutes: undefined
+  }
+}
+[2022-03-24T21:20:15.015] [ERROR] error - MongooseServerSelectionError: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://docs.atlas.mongodb.com/security-whitelist/
+    at Function.Model.$wrapCallback (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:4931:32)
+    at E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4557:21
+    at E:\instr-app\instr-app-back\node_modules\mongoose\lib\helpers\promiseOrCallback.js:32:5
+    at new Promise (<anonymous>)
+    at promiseOrCallback (E:\instr-app\instr-app-back\node_modules\mongoose\lib\helpers\promiseOrCallback.js:31:10)
+    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4556:10)
+    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  reason: TopologyDescription {
+    type: 'ReplicaSetNoPrimary',
+    servers: Map(3) {
+      'instrumentosdb-shard-00-01.hwfi6.mongodb.net:27017' => [ServerDescription],
+      'instrumentosdb-shard-00-00.hwfi6.mongodb.net:27017' => [ServerDescription],
+      'instrumentosdb-shard-00-02.hwfi6.mongodb.net:27017' => [ServerDescription]
+    },
+    stale: false,
+    compatible: true,
+    heartbeatFrequencyMS: 10000,
+    localThresholdMS: 15,
+    setName: 'atlas-fnts21-shard-0',
+    maxSetVersion: 2,
+    maxElectionId: new ObjectId("7fffffff0000000000000007"),
+    commonWireVersion: 13,
+    logicalSessionTimeoutMinutes: undefined
+  }
+}
+[2022-03-24T21:20:15.020] [ERROR] error - TypeError: Cannot read property 'length' of undefined
+    at getDailyWorkTable (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:20:22)
+    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:48:29)
+    at async getDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:26:31)
+[2022-03-24T21:20:21.698] [ERROR] error - MongooseServerSelectionError: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://docs.atlas.mongodb.com/security-whitelist/
+    at Function.Model.$wrapCallback (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:4931:32)
+    at E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4557:21
+    at E:\instr-app\instr-app-back\node_modules\mongoose\lib\helpers\promiseOrCallback.js:32:5
+    at new Promise (<anonymous>)
+    at promiseOrCallback (E:\instr-app\instr-app-back\node_modules\mongoose\lib\helpers\promiseOrCallback.js:31:10)
+    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4556:10)
+    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  reason: TopologyDescription {
+    type: 'ReplicaSetNoPrimary',
+    servers: Map(3) {
+      'instrumentosdb-shard-00-01.hwfi6.mongodb.net:27017' => [ServerDescription],
+      'instrumentosdb-shard-00-00.hwfi6.mongodb.net:27017' => [ServerDescription],
+      'instrumentosdb-shard-00-02.hwfi6.mongodb.net:27017' => [ServerDescription]
+    },
+    stale: false,
+    compatible: true,
+    heartbeatFrequencyMS: 10000,
+    localThresholdMS: 15,
+    setName: 'atlas-fnts21-shard-0',
+    maxSetVersion: 2,
+    maxElectionId: new ObjectId("7fffffff0000000000000007"),
+    commonWireVersion: 13,
+    logicalSessionTimeoutMinutes: undefined
+  }
+}
+[2022-03-24T21:20:21.702] [ERROR] error - TypeError: Cannot read property 'length' of undefined
+    at getDailyWorkTable (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:20:22)
+    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:48:29)
+    at async getDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:26:31)
+[2022-03-24T21:20:30.954] [ERROR] error - MongooseServerSelectionError: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://docs.atlas.mongodb.com/security-whitelist/
+    at Function.Model.$wrapCallback (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:4931:32)
+    at E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4557:21
+    at E:\instr-app\instr-app-back\node_modules\mongoose\lib\helpers\promiseOrCallback.js:32:5
+    at new Promise (<anonymous>)
+    at promiseOrCallback (E:\instr-app\instr-app-back\node_modules\mongoose\lib\helpers\promiseOrCallback.js:31:10)
+    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4556:10)
+    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15) {
+  reason: TopologyDescription {
+    type: 'ReplicaSetNoPrimary',
+    servers: Map(3) {
+      'instrumentosdb-shard-00-01.hwfi6.mongodb.net:27017' => [ServerDescription],
+      'instrumentosdb-shard-00-00.hwfi6.mongodb.net:27017' => [ServerDescription],
+      'instrumentosdb-shard-00-02.hwfi6.mongodb.net:27017' => [ServerDescription]
+    },
+    stale: false,
+    compatible: true,
+    heartbeatFrequencyMS: 10000,
+    localThresholdMS: 15,
+    setName: 'atlas-fnts21-shard-0',
+    maxSetVersion: 2,
+    maxElectionId: new ObjectId("7fffffff0000000000000007"),
+    commonWireVersion: 13,
+    logicalSessionTimeoutMinutes: undefined
+  }
+}
+[2022-03-24T21:20:30.958] [ERROR] error - TypeError: Cannot read property '0' of undefined
+    at getDayShift (file:///E:/instr-app/instr-app-back/api/schedules.js:18:33)
+    at async ApiSchedule.createSchedule (file:///E:/instr-app/instr-app-back/api/schedules.js:66:30)
+    at async getSchedule (file:///E:/instr-app/instr-app-back/controllers/schedules.js:27:33)
+[2022-03-24T21:21:34.068] [ERROR] error - MongooseServerSelectionError: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://docs.atlas.mongodb.com/security-whitelist/
+    at Function.Model.$wrapCallback (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:4931:32)
+    at E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4557:21
+    at E:\instr-app\instr-app-back\node_modules\mongoose\lib\helpers\promiseOrCallback.js:32:5
+    at new Promise (<anonymous>)
+    at promiseOrCallback (E:\instr-app\instr-app-back\node_modules\mongoose\lib\helpers\promiseOrCallback.js:31:10)
+    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4556:10)
+    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  reason: TopologyDescription {
+    type: 'ReplicaSetNoPrimary',
+    servers: Map(3) {
+      'instrumentosdb-shard-00-01.hwfi6.mongodb.net:27017' => [ServerDescription],
+      'instrumentosdb-shard-00-00.hwfi6.mongodb.net:27017' => [ServerDescription],
+      'instrumentosdb-shard-00-02.hwfi6.mongodb.net:27017' => [ServerDescription]
+    },
+    stale: false,
+    compatible: true,
+    heartbeatFrequencyMS: 10000,
+    localThresholdMS: 15,
+    setName: 'atlas-fnts21-shard-0',
+    maxSetVersion: 2,
+    maxElectionId: new ObjectId("7fffffff0000000000000007"),
+    commonWireVersion: 13,
+    logicalSessionTimeoutMinutes: undefined
+  }
+}
+[2022-03-24T21:21:34.074] [ERROR] error - TypeError: Cannot read property 'length' of undefined
+    at getDailyWorkTable (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:20:22)
+    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:48:29)
+    at async getDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:26:31)

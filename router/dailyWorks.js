@@ -12,6 +12,7 @@ export class RouterDailyWork {
         router.post('/create', this.controllerDailyWork.createDailyWork);
         router.get('/get/:date', this.controllerDailyWork.getDailyWork);
         router.get('/getDailyWorkRoutine/:routineScheduleId', this.controllerDailyWork.getDailyWorkRoutine);
+        router.get('/searchBy/:value', this.controllerDailyWork.getDailyWorkSearchBy);
         router.put('/update/:date', this.controllerDailyWork.updateDailyWork);
         router.put('/updateFromRoutineDetail', this.controllerDailyWork.updateFromRoutineDetail);
         router.put('/updateBulk/:date', this.controllerDailyWork.updateBulkDailyWork);
