@@ -98,7 +98,7 @@ export class ApiDailyWork {
             const columns = await getDailyWorkTable('fromDailyWork');
             columns[0][1].hidden = false;
             delete columns[0][6].defaultGroupOrder
-            
+
             const dayWorks = await dao.getDailyWorkSearchBy(value);
             return worksResp(dayWorks, ...columns);
         } catch (err) {
@@ -113,6 +113,7 @@ export class ApiDailyWork {
             const dateLocal = formatDate(date);
             if (dateLocal && dayWork) {
                 const dailyWork = updateDayWorkDTO(dayWork);
+                
                 //si es una rutina y tiene OT guardo la OT en routineSchedule
                 const routineOT = dailyWork.action === 2 && dailyWork.ot != '' ? dailyWork.ot : false;
                 if (routineOT) {
@@ -121,7 +122,11 @@ export class ApiDailyWork {
                 }
                 const today = formatDate(todayInLocalDate());
                 const dailyWorkToUpdate = completedDailyWorkDTO(dayWork, today);
-                const resultado = await dao.updateDailyWork(dateLocal, dailyWorkToUpdate);
+
+                //me fijo si actualiza usando la fecha que viene desde el calendario o si actualiza usando la fecha que se obtiene de la barra de busqueda
+                //PROBAR CAMBIOOOOOO 28/3/2022
+                const dailyWorkBeginDate = dailyWorkToUpdate.beginDate;
+                const resultado = dateLocal === dailyWorkBeginDate ? await dao.updateDailyWork(dateLocal, dailyWorkToUpdate) : await dao.updateDailyWork(dailyWorkBeginDate, dailyWorkToUpdate);
                 if (resultado) {
                     return resultado;
                 } else {

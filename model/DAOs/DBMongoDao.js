@@ -387,6 +387,7 @@ export class DBMongoDao {
 
     updateDailyWork = async (date, dailyWork) => {
         try {
+            
             await dailyWorkModel.updateOne({ $and: [{ "beginDate": date }, { "_id": dailyWork._id }] }, {
                 $set: {
                     "plant": dailyWork.plant,
