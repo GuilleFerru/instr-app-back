@@ -8,16 +8,19 @@ const UserSchema = new mongoose.Schema({
         max: 20,
         unique: true
     },
-    email: {
-        type: String,
-        require: true,
-        max: 50,
-        unique: true
-    },
     password: {
         type: String,
         require: true,
         min: 4
+    },
+    legajo: {
+        type: Number,
+        require: true,
+        unique: true
+    },
+    sector: {
+        type: String,
+        require: true,
     },
     isAdmin: {
         type: Boolean,
@@ -27,4 +30,4 @@ const UserSchema = new mongoose.Schema({
     { timestamps: true }
 );
 
-export const usuarios = mongoose.model("PRIIusers", UserSchema);
+export const userModel = mongoose.model("users", UserSchema);

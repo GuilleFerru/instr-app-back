@@ -1,37 +1,40 @@
 import express, { json } from "express";
+import passport from 'passport';
+import session from "express-session";
+import URL from "./config.js";
+import compression from 'compression';
 import { config } from "dotenv";
+import schedule from "node-schedule";
 import helmet from "helmet";
 import morgan from "morgan";
 import DaoFactory from "./model/DAOs/DaoFactory.js";
 import cors from "cors";
 import * as router from "./utils/routersInstances.js";
-import { loggerError, loggerInfo, loggerWarn } from "./utils/logger.js";
+import { loggerError, loggerInfo } from "./utils/logger.js";
+import cookieParser from "cookie-parser";
+import MongoStore from "connect-mongo";
 
-const app = express();
+export const app = express();
+
 const port = process.env.PORT || 8080;
-app.listen(port, () => {
-  loggerInfo.info(`Servidor listo en el puerto ${port}`);
-});
-
-app.on("error", (error) => {
-  loggerError.error(error);
-});
+app.listen(port, () => { loggerInfo.info(`Servidor listo en el puerto ${port}`); });
+app.on("error", (error) => { loggerError.error(error); });
 
 config();
-
-app.use(json());
-app.use(express.urlencoded({ extended: true }));
-
 const daoInstance = DaoFactory.getInstance();
 export const dao = daoInstance.get("mongo");
 
 //middleware
+app.use(compression());
+app.use(json());
+app.use(express.urlencoded({ extended: true }));
 app.use(json());
 app.use(helmet());
 app.use(morgan("common"));
 app.use(cors());
 
 // endpoints
+
 app.use("/api/shift", router.routerShift.start());
 app.use("/api/emp", router.routerEmployee.start());
 app.use("/api/schedule", router.routerSchedule.start());
@@ -44,10 +47,43 @@ app.use("/api/tag", router.routerTag.start());
 app.use("/api/routine", router.routerRoutine.start());
 app.use("/api/manteinance", router.routerManteinance.start());
 app.use("/api/manteinanceAction", router.routerManteinanceAction.start());
+app.use("/api/user", router.routerUser.start());
+app.use("/api", router.routerLogin.start());
+
+const MONGO_URL = URL.MONGO_URL;
+app.use(cookieParser())
+app.use(session({
+  store: MongoStore.create({
+    //En Atlas connect App: Make sure to change the node version to 2.2.12:
+    mongoUrl: MONGO_URL,
+    //mongoOptions: { useNewUrlParser: true, useUnifiedTopology: true },
+    ttl: 3600
+  }),
+  secret: 'secretin',
+  resave: false,
+  saveUninitialized: false,
+  rolling: true,
+  cookie: {
+    maxAge: 1_000 * 3600
+  }
+}));
+
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 app.get("/", (req, res) => {
   res.send("Home Page");
 });
+
+import { ApiRoutine } from './api/routines.js';
+const apiRoutine = new ApiRoutine();
+//me crea todas las rutinas del mes, todos los meses a las 0:00 horas
+schedule.scheduleJob("0 0 0 1 */1 *", () => {
+  apiRoutine.createRoutineScheduleByNewMonth();
+})
+
 
 // const io = new SocketIO.Server(server)
 // const empDailyScheduleData = [];

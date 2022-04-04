@@ -1773,3 +1773,123 @@
     at getDailyWorkTable (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:20:22)
     at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:48:29)
     at async getDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:26:31)
+[2022-04-01T21:24:38.639] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:146:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:97:31)
+[2022-04-01T21:24:39.459] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:146:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:97:31)
+[2022-04-01T21:24:40.873] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:146:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:97:31)
+[2022-04-01T21:24:42.486] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:146:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:97:31)
+[2022-04-01T21:24:43.784] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:146:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:97:31)
+[2022-04-01T21:24:45.088] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:146:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:97:31)
+[2022-04-01T21:24:46.388] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:146:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:97:31)
+[2022-04-01T21:24:47.606] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:146:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:97:31)
+[2022-04-01T21:24:48.902] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:146:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:97:31)
+[2022-04-01T21:25:09.445] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:146:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:97:31)
+[2022-04-01T21:25:13.700] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:146:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:97:31)
+[2022-04-01T21:25:16.967] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:146:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:97:31)
+[2022-04-01T21:25:19.409] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:146:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:97:31)
+[2022-04-01T21:25:22.053] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:146:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:97:31)
+[2022-04-01T21:25:23.589] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:146:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:97:31)
+[2022-04-01T21:25:24.948] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:146:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:97:31)
+[2022-04-01T21:25:26.166] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:146:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:97:31)
+[2022-04-01T21:25:27.256] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:146:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:97:31)
+[2022-04-01T21:45:23.794] [ERROR] error - ReferenceError: schedule is not defined
+    at ApiRoutine.getRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:155:25)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:55:34)
+    at async getDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:26:31)
+[2022-04-01T21:45:39.904] [ERROR] error - ReferenceError: schedule is not defined
+    at ApiRoutine.getRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:155:25)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:55:34)
+    at async getDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:26:31)
+[2022-04-01T21:47:19.156] [ERROR] error - ReferenceError: schedule is not defined
+    at ApiRoutine.getRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:155:25)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:55:34)
+    at async getDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:26:31)
+[2022-04-01T21:48:31.010] [ERROR] error - ReferenceError: schedule is not defined
+    at ApiRoutine.getRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:155:25)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:55:34)
+    at async getDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:26:31)
+[2022-04-01T21:48:56.735] [ERROR] error - ReferenceError: schedule is not defined
+    at ApiRoutine.getRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:155:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:55:34)
+    at async getDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:26:31)
+[2022-04-01T21:49:06.918] [ERROR] error - ReferenceError: schedule is not defined
+    at ApiRoutine.getRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:155:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:55:34)
+    at async getDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:26:31)
