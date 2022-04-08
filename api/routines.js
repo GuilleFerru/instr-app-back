@@ -128,7 +128,8 @@ export class ApiRoutine {
 
     createRoutineScheduleByNewMonth = async () => {
         const today = todayInLocalDate();
-        const dueDate = new Date(today.getMonth() + 1 + '-' + daysInMonth(today.getMonth() + 1, today.getFullYear()) + '-' + today.getFullYear());
+        const dueDate = new Date(today.getMonth()  + '-' + daysInMonth(today.getMonth() + 1, today.getFullYear()) + '-' + today.getFullYear());
+        console.log(dueDate , ' ', today);
         if (today > dueDate) {
             const completeRoutineSchedules = await dao.updateRoutineScheduleByDueDate(dueDate);
             for (const routineSchedule of completeRoutineSchedules) {
@@ -150,7 +151,7 @@ export class ApiRoutine {
             //busca las rutinas que se deben realizar dentro de la semana.
             const weekDay = new Date(date).getDay();
             const actualMonthRoutineSchedule = await dao.getActualMonthRoutineSchedule(weekDay);
-
+            
             // se fija si es un mes nuevo y genera todos los schedules de nuevo
             const checkForNewSchedules = await this.createRoutineScheduleByNewMonth();
             if (checkForNewSchedules) {
@@ -160,6 +161,7 @@ export class ApiRoutine {
                 return await getRoutines(actualMonthRoutineSchedule, 'forDailyWorks');
             }
         } catch (err) {
+            console.log(err);
             loggerError.error(err);
         } finally {
         }

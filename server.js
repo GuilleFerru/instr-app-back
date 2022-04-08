@@ -8,7 +8,7 @@ import * as router from "./utils/routersInstances.js";
 import { loggerError, loggerInfo, loggerWarn } from "./utils/logger.js";
 
 const app = express();
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 3001;
 app.listen(port, () => {
   loggerInfo.info(`Servidor listo en el puerto ${port}`);
 });

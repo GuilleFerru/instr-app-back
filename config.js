@@ -15,7 +15,7 @@ export default {
     NODE_ENV: process.env.NODE_ENV || 'development',
     NODE_TLS_REJECT: process.env.NODE_TLS_REJECT_UNAUTHORIZED || '0',
     HOST: process.env.HOST || '127.0.0.1',
-    PORT: process.env.PORT || 8080,
+    PORT: process.env.PORT || 3001,
     MONGO_URL: process.env.MONGO_URL,
 }
 
