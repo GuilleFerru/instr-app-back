@@ -13,6 +13,16 @@ const UserSchema = new mongoose.Schema({
         require: true,
         min: 4
     },
+    name:{
+        type: String,
+        require: true,
+        min: 3,
+    },
+    lastname:{
+        type: String,
+        require: true,
+        min: 3,
+    },
     legajo: {
         type: Number,
         require: true,

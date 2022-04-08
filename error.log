@@ -1893,3 +1893,8 @@
     at processTicksAndRejections (internal/process/task_queues.js:93:5)
     at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:55:34)
     at async getDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:26:31)
+[2022-04-05T21:42:20.265] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:146:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:97:31)

@@ -16,6 +16,7 @@ passport.use(signUpStrategyName, new LocalStrategy(
     },
     (req, username, password, done) => {
         userModel.findOne({ username: username }, (err, user) => {
+            
             if (err) {
                 return done(err);
             }
@@ -25,6 +26,8 @@ passport.use(signUpStrategyName, new LocalStrategy(
             const newUser = new userModel();
             newUser.username = username;
             newUser.password = createHash(password);
+            newUser.name = req.body.name;
+            newUser.lastname = req.body.lastname;
             newUser.legajo = req.body.legajo;
             newUser.sector = req.body.sector;
             newUser.isAdmin = req.body.isAdmin;
@@ -58,7 +61,8 @@ export class RouterUser {
     }
 
     start() {
-        router.post('/register', passport.authenticate(signUpStrategyName, { failureRedirect: '/failsignup' }), this.controllerUser.createUser);
+        router.post('/register', passport.authenticate(signUpStrategyName, { failureRedirect: '/failregister' }), this.controllerUser.createUser);
+        router.get('/failregister', this.controllerUser.failRegister);
         return router;
     }
 

@@ -52,7 +52,8 @@ export class RouterLogin {
     }
 
     start() {
-        router.post('/login', passport.authenticate(loginStrategyName, { failureRedirect: '/faillogin' }), this.controllerLogin.login);
+        router.post('/login', passport.authenticate(loginStrategyName, { failureRedirect: '/api/faillogin' }), this.controllerLogin.login);
+        router.get('/faillogin',  this.controllerLogin.failLogin);
         return router;
     }
 
