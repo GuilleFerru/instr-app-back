@@ -5,6 +5,7 @@ import { OthersRoutineColumnTable } from '../utils/otherRoutinesColumnTable.js';
 import { parseStringToDate, dateInLocalDate, todayInLocalDate } from '../utils/formatDate.js';
 import { loggerError, loggerInfo } from '../utils/logger.js';
 
+
 const daysInMonth = (month, year) => {
     return new Date(year, month, 0).getDate();
 }
@@ -128,22 +129,15 @@ export class ApiRoutine {
 
     createRoutineScheduleByNewMonth = async () => {
         const today = todayInLocalDate();
-        const dueDate = new Date(today.getMonth()  + '-' + daysInMonth(today.getMonth() + 1, today.getFullYear()) + '-' + today.getFullYear());
-        console.log(dueDate , ' ', today);
-        if (today > dueDate) {
-            const completeRoutineSchedules = await dao.updateRoutineScheduleByDueDate(dueDate);
-            for (const routineSchedule of completeRoutineSchedules) {
-                const startDate = addDays(dueDate, 1)
-                const routine = await dao.getRoutine(routineSchedule.routine);
-                const newRoutineSchedule = checkDueDate(routineSchedule.routine, startDate, routineSchedule.checkDays, routineSchedule.otherCheckDay, routine[0].frecuency, '', routineSchedule.nickname);
-                routineSchedule.complete === false && await dao.updateIsExpiredRoutineSchedule(routineSchedule._id, true);
-                await dao.createRoutineSchedule(newRoutineSchedule);
-            }
-            return true
-        } else {
-            return false;
+        const dueDate = addDays(today, -1);
+        const completeRoutineSchedules = await dao.updateRoutineScheduleByDueDate(dueDate);
+        for (const routineSchedule of completeRoutineSchedules) {
+            const startDate = addDays(dueDate, 1)
+            const routine = await dao.getRoutine(routineSchedule.routine);
+            const newRoutineSchedule = checkDueDate(routineSchedule.routine, startDate, routineSchedule.checkDays, routineSchedule.otherCheckDay, routine[0].frecuency, '', routineSchedule.nickname);
+            routineSchedule.complete === false && await dao.updateIsExpiredRoutineSchedule(routineSchedule._id, true);
+            await dao.createRoutineSchedule(newRoutineSchedule);
         }
-
     }
 
     getRoutine = async (date) => {
@@ -151,6 +145,7 @@ export class ApiRoutine {
             //busca las rutinas que se deben realizar dentro de la semana.
             const weekDay = new Date(date).getDay();
             const actualMonthRoutineSchedule = await dao.getActualMonthRoutineSchedule(weekDay);
+<<<<<<< HEAD
             
             // se fija si es un mes nuevo y genera todos los schedules de nuevo
             const checkForNewSchedules = await this.createRoutineScheduleByNewMonth();
@@ -162,6 +157,11 @@ export class ApiRoutine {
             }
         } catch (err) {
             console.log(err);
+=======
+            return await getRoutines(actualMonthRoutineSchedule, 'forDailyWorks');
+        } catch (err) {
+            console.log(err)
+>>>>>>> 8453d37385bf027c101b8270568670a8c875e7a2
             loggerError.error(err);
         } finally {
         }
@@ -172,7 +172,7 @@ export class ApiRoutine {
             const localDate = dateInLocalDate(date);
             const routinesSchedules = await dao.getAllRoutinesSchedules(localDate);
             const allRoutines = await getRoutines(routinesSchedules, 'forRoutines');
-            
+
             const columns = [];
             const savedColumns = await OthersRoutineColumnTable.getColumns();
             if (savedColumns.length === 0) {
@@ -201,9 +201,9 @@ export class ApiRoutine {
             const checkedDay = parseStringToDate(routineSavedAsDailyWork.endDate);
             const updatedDone = await dao.updateRoutineScheduleByCompleteTask(id, checkedDay);
             // update el dailyWork
-            if(updatedDone){
-            const apiDailyWork = new ApiDailyWork();
-            await apiDailyWork.createDailyWork(routineSavedAsDailyWork, 'fromRoutine');
+            if (updatedDone) {
+                const apiDailyWork = new ApiDailyWork();
+                await apiDailyWork.createDailyWork(routineSavedAsDailyWork, 'fromRoutine');
             }
             // const dataToDailyWork = [];
 
