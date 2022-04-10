@@ -5,6 +5,10 @@ import { userExtractor } from '../utils/userExtractor.js';
 
 const router = express.Router();
 
+
+function haltOnTimedout(req, res, next) {
+    if (!req.timedout) next()
+}
 export class RouterRoutine {
     constructor() {
         this.controllerRoutine = new ControllerRoutine();
@@ -13,10 +17,13 @@ export class RouterRoutine {
     start() {
         router.post('/create', userExtractor, this.controllerRoutine.createRoutine);
         router.get('/get', userExtractor, this.controllerRoutine.getRoutine);
-        router.get('/getAllRoutines/:date', userExtractor, timeout('50s'), this.controllerRoutine.getAllRoutine);
+        router.get('/getAllRoutines/:date', userExtractor, timeout('50s'), haltOnTimedout, this.controllerRoutine.getAllRoutine);
         router.put('/update', userExtractor, this.controllerRoutine.updateRoutineScheduleByCompleteTask);
         router.put('/updateOt', userExtractor, this.controllerRoutine.updateRoutineScheduleOT);
         return router;
     }
 
+
+
 }
+
