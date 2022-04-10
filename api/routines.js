@@ -156,11 +156,10 @@ export class ApiRoutine {
     getAllRoutine = async (date) => {
         try {
             const localDate = dateInLocalDate(date);
-            
             const routinesSchedules = await dao.getAllRoutinesSchedules(localDate);
             const allRoutines = await getRoutines(routinesSchedules, 'forRoutines');
-
             const columns = [];
+
             const savedColumns = await OthersRoutineColumnTable.getColumns();
             if (savedColumns.length === 0) {
                 const savedColumns = await OthersRoutineColumnTable.createColumns();
@@ -168,7 +167,9 @@ export class ApiRoutine {
             } else {
                 columns.push(savedColumns[0].columns);
             }
-            return otherRoutineResp(allRoutines, ...columns);
+            if (allRoutines.length > 0) {
+                return otherRoutineResp(allRoutines, ...columns);
+            }
         } catch (err) {
             loggerError.error(err);
         } finally {
