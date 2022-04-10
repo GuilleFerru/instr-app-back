@@ -157,7 +157,7 @@ export class ApiRoutine {
         try {
             
             const localDate = dateInLocalDate(date);
-            console.log(localDate, 'localDate');
+            console.log(localDate, 'localDate',date,'date');
             const monthAndYear = (localDate.getMonth() +1) + '-' + localDate.getFullYear();
             console.log(monthAndYear, 'monthAndYear');
             const routinesSchedules = await dao.getAllRoutinesSchedules(monthAndYear);
