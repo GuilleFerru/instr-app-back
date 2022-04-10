@@ -155,10 +155,10 @@ export class ApiRoutine {
 
     getAllRoutine = async (date) => {
         try {
-            console.log(date, 'date')
+            
             const localDate = dateInLocalDate(date);
             console.log(localDate, 'localDate');
-            const monthAndYear = (date.getMonth() +1) + '-' + date.getFullYear();
+            const monthAndYear = (localDate.getMonth() +1) + '-' + localDate.getFullYear();
             console.log(monthAndYear, 'monthAndYear');
             const routinesSchedules = await dao.getAllRoutinesSchedules(monthAndYear);
             const allRoutines = await getRoutines(routinesSchedules, 'forRoutines');
@@ -177,6 +177,7 @@ export class ApiRoutine {
                 return otherRoutineResp(allRoutines, ...columns);
             }
         } catch (err) {
+            console.log(err)
             loggerError.error(err);
         } finally {
         }

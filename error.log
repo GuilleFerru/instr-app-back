@@ -1898,3 +1898,47 @@
     at runMicrotasks (<anonymous>)
     at processTicksAndRejections (internal/process/task_queues.js:93:5)
     at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:97:31)
+[2022-04-10T20:09:39.621] [ERROR] error - TypeError: date.getMonth is not a function
+    at ApiRoutine.getAllRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:161:40)
+    at getAllRoutine (file:///E:/instr-app/instr-app-back/controllers/routines.js:34:51)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:137:13)
+    at haltOnTimedout (file:///E:/instr-app/instr-app-back/router/routines.js:10:24)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:137:13)
+    at E:\instr-app\instr-app-back\node_modules\connect-timeout\index.js:70:5
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:137:13)
+[2022-04-10T20:10:26.446] [ERROR] error - TypeError: date.getMonth is not a function
+    at ApiRoutine.getAllRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:158:30)
+    at getAllRoutine (file:///E:/instr-app/instr-app-back/controllers/routines.js:34:51)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:137:13)
+    at haltOnTimedout (file:///E:/instr-app/instr-app-back/router/routines.js:10:24)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:137:13)
+    at E:\instr-app\instr-app-back\node_modules\connect-timeout\index.js:70:5
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:137:13)
+[2022-04-10T20:10:35.086] [ERROR] error - TypeError: date.getMonth is not a function
+    at ApiRoutine.getAllRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:158:30)
+    at getAllRoutine (file:///E:/instr-app/instr-app-back/controllers/routines.js:34:51)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:137:13)
+    at haltOnTimedout (file:///E:/instr-app/instr-app-back/router/routines.js:10:24)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:137:13)
+    at E:\instr-app\instr-app-back\node_modules\connect-timeout\index.js:70:5
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:137:13)
+[2022-04-10T20:11:26.465] [ERROR] error - TypeError: date.getMonth is not a function
+    at ApiRoutine.getAllRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:158:30)
+    at getAllRoutine (file:///E:/instr-app/instr-app-back/controllers/routines.js:34:51)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:137:13)
+    at haltOnTimedout (file:///E:/instr-app/instr-app-back/router/routines.js:10:24)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:137:13)
+    at E:\instr-app\instr-app-back\node_modules\connect-timeout\index.js:70:5
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:137:13)
