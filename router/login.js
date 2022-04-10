@@ -41,9 +41,6 @@ passport.deserializeUser((user, done) => {
     });
 })
 
-
-
-
 const router = express.Router();
 
 export class RouterLogin {
