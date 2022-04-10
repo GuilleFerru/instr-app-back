@@ -510,7 +510,6 @@ export class DBMongoDao {
 
     getAllRoutinesSchedules = async (monthAndYear) => {
         try {
-            console.log(monthAndYear)
             // const routineResp = await routineScheduleModel.find({ $and: [{ startDate: { $lte: date } }, { dueDate: { $gte: date } }] }, { __v: 0, createdAt: 0, updatedAt: 0 });
             const routineResp = await routineScheduleModel.find({ "showMonthAndYear": monthAndYear }, { __v: 0, createdAt: 0, updatedAt: 0 });
             return routineResp;
