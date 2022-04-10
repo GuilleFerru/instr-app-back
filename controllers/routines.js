@@ -30,11 +30,11 @@ export class ControllerRoutine {
 
     getAllRoutine = async (req, res) => {
         try {
-            // const date = new Date();
-            // console.log(date);
             const { date } = req.params;
             const routine = await this.apiRoutine.getAllRoutine(date);
-            return res.status(200).json(routine);
+            if (routine) {
+                return res.status(200).json(routine);
+            }
         } catch (err) {
             console.log(err);
             return res.status(500).json(err);
@@ -43,7 +43,7 @@ export class ControllerRoutine {
 
     updateRoutineScheduleByCompleteTask = async (req, res) => {
         try {
-            const {data} = req.body;
+            const { data } = req.body;
             const routine = await this.apiRoutine.updateRoutineScheduleByCompleteTask(data);
             return res.status(200).json(routine);
         } catch (err) {
@@ -54,7 +54,7 @@ export class ControllerRoutine {
 
     updateRoutineScheduleOT = async (req, res) => {
         try {
-            const {data} = req.body;
+            const { data } = req.body;
             const routine = await this.apiRoutine.updateRoutineScheduleOT(data);
             return res.status(200).json(routine);
         } catch (err) {
