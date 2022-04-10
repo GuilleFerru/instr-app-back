@@ -12,7 +12,7 @@ export class RouterRoutine {
     start() {
         router.post('/create', userExtractor, this.controllerRoutine.createRoutine);
         router.get('/get', userExtractor, this.controllerRoutine.getRoutine);
-        router.get('/get/:date', userExtractor, this.controllerRoutine.getAllRoutine);
+        router.get('/getAllRoutines/:date', userExtractor, this.controllerRoutine.getAllRoutine);
         router.put('/update', userExtractor, this.controllerRoutine.updateRoutineScheduleByCompleteTask);
         router.put('/updateOt', userExtractor, this.controllerRoutine.updateRoutineScheduleOT);
         return router;
