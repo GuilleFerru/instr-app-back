@@ -27,7 +27,6 @@ app.use(json());
 app.use(express.urlencoded({ extended: true }));
 app.use(json());
 app.use(timeout('2 * 60000'))
-app.use(haltOnTimedout)
 // app.use(helmet());
 // app.use(morgan("common"));
 app.use(cors());
@@ -66,9 +65,6 @@ schedule.scheduleJob("0 0 0 1 */1 *", () => {
 })
 
 
-function haltOnTimedout (req, res, next) {
-  if (!req.timedout) next()
-}
 // const io = new SocketIO.Server(server)
 // const empDailyScheduleData = [];
 
