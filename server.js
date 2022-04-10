@@ -26,7 +26,7 @@ app.use(json());
 app.use(express.urlencoded({ extended: true }));
 app.use(json());
 // app.use(helmet());
-app.use(morgan("common"));
+// app.use(morgan("common"));
 app.use(cors());
 
 // endpoints
