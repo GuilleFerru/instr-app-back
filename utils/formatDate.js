@@ -18,7 +18,7 @@ export const todayInLocalDate = () => {
 }
 
 export const dateInLocalDate = (date) => {
-    const localDate = new Date(date).toLocaleDateString();
+    const localDate = new Date(date).toLocaleDateString('es-AR');
     const dateResp = parseStringToDate(localDate);
     return dateResp;
 }
