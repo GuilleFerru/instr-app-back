@@ -156,7 +156,8 @@ export class ApiRoutine {
     getAllRoutine = async (date) => {
         try {
             const localDate = dateInLocalDate(date);
-            const routinesSchedules = await dao.getAllRoutinesSchedules(localDate);
+            const monthAndYear = (localDate.getMonth() +1) + '-' + localDate.getFullYear();
+            const routinesSchedules = await dao.getAllRoutinesSchedules(monthAndYear);
             const allRoutines = await getRoutines(routinesSchedules, 'forRoutines');
             
             const columns = [];

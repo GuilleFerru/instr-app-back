@@ -15,7 +15,6 @@ const routineScheduleSchema = new mongoose.Schema({
     },
     dueDate: {
         type: Date,
-
     },
     checkDays: {
         type: Array
@@ -27,7 +26,10 @@ const routineScheduleSchema = new mongoose.Schema({
     realCheckedDay: {
         type: Date,
         default: undefined
-
+    },
+    showMonthAndYear: {
+        type: String,
+        default: undefined
     },
     isExpired: {
         type: Boolean,
