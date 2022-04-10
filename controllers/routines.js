@@ -32,6 +32,7 @@ export class ControllerRoutine {
         try {
             const { date } = req.params;
             const routine = await this.apiRoutine.getAllRoutine(date);
+            console.log(routine);
             if (routine) {
                 return res.status(200).json(routine);
             }

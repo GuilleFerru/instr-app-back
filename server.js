@@ -2,6 +2,7 @@ import express, { json } from "express";
 import compression from 'compression';
 import { config } from "dotenv";
 import schedule from "node-schedule";
+import timeout from "connect-timeout";
 import helmet from "helmet";
 import morgan from "morgan";
 import DaoFactory from "./model/DAOs/DaoFactory.js";
@@ -25,6 +26,7 @@ app.use(compression());
 app.use(json());
 app.use(express.urlencoded({ extended: true }));
 app.use(json());
+app.use(timeout('1m'))
 // app.use(helmet());
 // app.use(morgan("common"));
 app.use(cors());
