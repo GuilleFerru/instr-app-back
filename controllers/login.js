@@ -9,7 +9,7 @@ export class ControllerLogin {
                 id: req.user._id,
                 username: req.user.username,
             }
-            const token = jwt.sign(userForToken, config.SECRET_KEY, { expiresIn: '1h' });
+            const token = jwt.sign(userForToken, config.SECRET_KEY, { expiresIn: '7d' });
             const user = {
                 username: req.user.username,
                 name: req.user.name,
