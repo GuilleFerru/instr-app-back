@@ -12,7 +12,7 @@ export const parseStringToDate = (stringDate) => {
 }
 
 export const todayInLocalDate = () => {
-    const localToday = new Date().toLocaleDateString();
+    const localToday = new Date().toLocaleDateString('es-AR');
     const today = parseStringToDate(localToday);
     return today;
 }
