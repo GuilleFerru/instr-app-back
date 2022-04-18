@@ -1,8 +1,8 @@
 import { dao } from '../server.js'
 import { ApiShift } from './shifts.js';
 import { ApiEmployee } from './employees.js';
-import {reduceForLookUp} from '../utils/reduceForLookup.js';
-import {formatDate, dateInLocalDate} from '../utils/formatDate.js';
+import { reduceForLookUp } from '../utils/reduceForLookup.js';
+import { formatDate, dateInLocalDate } from '../utils/formatDate.js';
 import { scheduleDTO, saveScheduleDTO, returnScheduleDTO, updateScheduleDTO } from '../model/DTOs/schedule.js';
 import { getForScheduleEmployeesDTO } from '../model/DTOs/employee.js';
 import { timeScheduleForScheduleDTO } from '../model/DTOs/timeSchedule.js';
@@ -59,6 +59,40 @@ const createScheduleColumns = (timeSchedule, employeesForSchedule) => {
 
 export class ApiSchedule {
 
+    handleSocket = async (...data) => {
+
+        try {
+            const { date, socket, action, newSchedule, roomId, newColumns } = data[0];
+            
+            if (action === 'getSchedule') {
+                const data = await this.getSchedule(date);
+                socket.emit('getSchedule', data);
+            } else if (action === 'updateSchedule') {
+                console.log('updateSchedule', action,roomId)
+                await this.updateSchedule(date, newSchedule, roomId);
+                socket.to(roomId).emit('updateSchedule', newSchedule);
+            } else if (action === 'updateScheduleColumns') {
+                const data = await this.updateScheduleColumns(roomId, date, newColumns);
+                data === true && socket.emit('updateScheduleColumns', newColumns);
+                // socket.emit('updateScheduleColumns', data);
+            }
+        } catch (error) {
+            loggerError.error(error);
+        }
+    }
+
+
+    // switch (action) {
+    //     case 'getSchedule':
+    //         const schedule = await this.getSchedule(date);
+    //         socket.emit('getSchedule', schedule);
+    //     case 'updateSchedule':
+    //         const updatedSchedule = await this.updateSchedule(date, newSchedule, roomId);
+    //         updatedSchedule && socket.in(roomId).emit('updateSchedule', newSchedule);
+    //     default:
+    //         return null;
+
+
     createSchedule = async (date) => {
         try {
             // llamadas a las bases de datos para buscar información
@@ -96,19 +130,22 @@ export class ApiSchedule {
     }
 
     getSchedule = async (date) => {
-        try {       
+        try {
             const dateLocalDate = dateInLocalDate(date);
-            if (dateLocalDate >=  new Date('2022-01-01')) {
+            if (dateLocalDate >= new Date('2022-01-01')) {
                 const dateLocal = formatDate(date);
                 const resultado = await dao.getSchedule(dateLocal);
-                if (resultado.length > 0) {
+                if (resultado.length === 0) {
+                    const schedule = await this.createSchedule(date);
+                    return schedule;
+                } else if (resultado.length > 0) {
                     const aditionals = await dao.getAditionals();
-                    const returnSchedule = returnScheduleDTO(resultado[0].date, resultado[0].schedule, resultado[0].columns ,reduceForLookUp(aditionals));
+                    const returnSchedule = returnScheduleDTO(resultado[0].date, resultado[0].schedule, resultado[0].columns, reduceForLookUp(aditionals), resultado[0]._id);
                     return returnSchedule;
                 } else {
                     return false;
                 }
-            }else {
+            } else {
                 return [''];
             }
         } catch (error) {

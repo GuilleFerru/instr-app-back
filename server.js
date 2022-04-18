@@ -1,23 +1,26 @@
 import express, { json } from "express";
+import http from "http";
+import { Server as WebSocketServer } from "socket.io";
+import Sockets from './sockets.js'
 import compression from 'compression';
 import { config } from "dotenv";
 import schedule from "node-schedule";
-
 import helmet from "helmet";
 import morgan from "morgan";
-import DaoFactory from "./model/DAOs/DaoFactory.js";
 import cors from "cors";
+import DaoFactory from "./model/DAOs/DaoFactory.js";
 import * as router from "./utils/routersInstances.js";
 import { loggerError, loggerInfo } from "./utils/logger.js";
 
-
 export const app = express();
-
+const server = http.createServer(app);
 const port = process.env.PORT || 8080;
-app.listen(port, () => { loggerInfo.info(`Servidor listo en el puerto ${port}`); });
-app.on("error", (error) => { loggerError.error(error); });
+const httpServer = server.listen(port, () => { loggerInfo.info(`Servidor listo en el puerto ${port}`); });
+server.on("error", (error) => { loggerError.error(error); });
 
 config();
+export const io = new WebSocketServer(httpServer);
+Sockets(io);
 const daoInstance = DaoFactory.getInstance();
 export const dao = daoInstance.get("mongo");
 
@@ -27,7 +30,7 @@ app.use(json());
 app.use(express.urlencoded({ extended: true }));
 app.use(json());
 app.use(helmet());
-// app.use(morgan("common"));
+app.use(morgan("common"));
 app.use(cors());
 
 // endpoints
@@ -53,7 +56,7 @@ app.use("/api", router.routerLogin.start());
 
 
 app.get("/", (req, res) => {
-  res.send("Home Page");
+  res.send("");
 });
 
 import { ApiRoutine } from './api/routines.js';
