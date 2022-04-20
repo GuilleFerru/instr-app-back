@@ -15,7 +15,7 @@ import { loggerError, loggerInfo } from "./utils/logger.js";
 export const app = express();
 const server = http.createServer(app);
 const port = process.env.PORT || 8080;
-const httpServer = server.listen(port, () => { loggerInfo.info(`Servidor listo en el puerto ${port}`); });
+export const httpServer = server.listen(port, () => { loggerInfo.info(`Servidor listo en el puerto ${port}`); });
 server.on("error", (error) => { loggerError.error(error); });
 
 config();

@@ -1,11 +1,12 @@
-import { v4 as uuid } from 'uuid';
+// import { v4 as uuid } from 'uuid';
 import { ApiSchedule } from './api/schedules.js';
-import { ControllerSchedule } from './controllers/schedules.js';
+import {ApiDailyWork} from './api/dailyWorks.js';
 import { loggerError, loggerInfo } from "./utils/logger.js";
 
 
 const apiSchedule = new ApiSchedule();
-const controllerSchedule = new ControllerSchedule();
+const apiDailyWork = new ApiDailyWork();
+// const controllerSchedule = new ControllerSchedule();
 
 export default (io) => {
 
@@ -30,11 +31,11 @@ export default (io) => {
             socket.to(id).emit("leaveScheduleRoom", id);
             loggerInfo.info(`Socket ${socket.id} left room ${id}`);
         })
-        // socket.on("updateSchedule", ( date, newSchedule, roomId) => apiSchedule.updateSchedule(date, newSchedule, roomId, socket));
         socket.on("updateSchedule", (date, newSchedule, roomId) => apiSchedule.handleSocket({ date, socket, action: "updateSchedule", newSchedule, roomId }));
-        socket.on("updateScheduleColumns", (roomId, date, newColumns) => apiSchedule.updateScheduleColumns(roomId, date, newColumns, socket));
+        socket.on("updateScheduleColumns", (date, newColumns, roomId, aditionalCount) => apiSchedule.handleSocket({ date, socket, action: "updateScheduleColumns", newColumns, roomId, io, aditionalCount }));
 
-
+        // DAILY WORKS
+        socket.on("getDailyWorks", (date) => apiDailyWork.handleSocket({ date, socket, action: "getDailyWorks" }));
 
 
 

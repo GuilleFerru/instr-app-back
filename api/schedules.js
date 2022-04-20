@@ -60,37 +60,24 @@ const createScheduleColumns = (timeSchedule, employeesForSchedule) => {
 export class ApiSchedule {
 
     handleSocket = async (...data) => {
-
         try {
-            const { date, socket, action, newSchedule, roomId, newColumns } = data[0];
-            
+            const { date, socket, action, newSchedule, roomId, newColumns, io, aditionalCount } = data[0];
             if (action === 'getSchedule') {
                 const data = await this.getSchedule(date);
-                socket.emit('getSchedule', data);
+                data && socket.emit('getSchedule', data);
             } else if (action === 'updateSchedule') {
-                console.log('updateSchedule', action,roomId)
                 await this.updateSchedule(date, newSchedule, roomId);
                 socket.to(roomId).emit('updateSchedule', newSchedule);
             } else if (action === 'updateScheduleColumns') {
-                const data = await this.updateScheduleColumns(roomId, date, newColumns);
-                data === true && socket.emit('updateScheduleColumns', newColumns);
+                await this.updateScheduleColumns(date, newColumns);
+                await io.to(roomId).emit('updateScheduleColumns', newColumns,aditionalCount);
                 // socket.emit('updateScheduleColumns', data);
             }
         } catch (error) {
+            console.error(error);
             loggerError.error(error);
         }
     }
-
-
-    // switch (action) {
-    //     case 'getSchedule':
-    //         const schedule = await this.getSchedule(date);
-    //         socket.emit('getSchedule', schedule);
-    //     case 'updateSchedule':
-    //         const updatedSchedule = await this.updateSchedule(date, newSchedule, roomId);
-    //         updatedSchedule && socket.in(roomId).emit('updateSchedule', newSchedule);
-    //     default:
-    //         return null;
 
 
     createSchedule = async (date) => {
@@ -118,9 +105,10 @@ export class ApiSchedule {
             const columns = createScheduleColumns(timeScheduleForScheduleDTO(timeSchedule), getForScheduleEmployeesDTO(employees));
 
             const saveSchedule = saveScheduleDTO(dateLocal, schedule, columns);
-            await dao.createSchedule(saveSchedule);
-
-            const returnSchedule = returnScheduleDTO(dateLocal, schedule, columns, reduceForLookUp(aditionals));
+            const result = await dao.createSchedule(saveSchedule);
+            const _id = result[0]._id
+            
+            const returnSchedule = returnScheduleDTO(dateLocal, schedule, columns, reduceForLookUp(aditionals), _id);
             return returnSchedule;
         } catch (err) {
             loggerError.error(err);

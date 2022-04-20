@@ -28,6 +28,29 @@ const getDailyWorkTable = async (filter) => {
 
 export class ApiDailyWork {
 
+
+    handleSocket = async (...data) => {
+        try {
+            const { date, socket, action, newSchedule, roomId, newColumns, io, aditionalCount } = data[0];
+            if (action === 'getDailyWorks') {
+                const data = await this.getDailyWork(date);
+                data && socket.emit('getDailyWorks', data);
+            } else if (action === 'updateSchedule') {
+                await this.updateSchedule(date, newSchedule, roomId);
+                socket.to(roomId).emit('updateSchedule', newSchedule);
+            } else if (action === 'updateScheduleColumns') {
+                await this.updateScheduleColumns(date, newColumns);
+                await io.to(roomId).emit('updateScheduleColumns', newColumns,aditionalCount);
+                // socket.emit('updateScheduleColumns', data);
+            }
+        } catch (error) {
+            console.error(error);
+            loggerError.error(error);
+        }
+    }
+
+
+
     createDailyWork = async (data, filter) => {
         try {
             if (filter !== 'fromRoutine') {

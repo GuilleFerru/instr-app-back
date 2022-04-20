@@ -259,3 +259,9 @@
     at hasBinary (E:\instr-app\instr-app-back\node_modules\socket.io-parser\dist\is-binary.js:49:63)
     at hasBinary (E:\instr-app\instr-app-back\node_modules\socket.io-parser\dist\is-binary.js:49:63)
     at hasBinary (E:\instr-app\instr-app-back\node_modules\socket.io-parser\dist\is-binary.js:49:63)
+[2022-04-18T22:43:29.415] [ERROR] error - TypeError: Cannot read property 'emit' of undefined
+    at ApiSchedule.handleSocket (file:///E:/instr-app/instr-app-back/api/schedules.js:74:43)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+[2022-04-18T22:46:32.623] [ERROR] error - ReferenceError: io is not defined
+    at ApiSchedule.handleSocket (file:///E:/instr-app/instr-app-back/api/schedules.js:74:17)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
