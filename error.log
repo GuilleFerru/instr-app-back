@@ -265,3 +265,24 @@
 [2022-04-18T22:46:32.623] [ERROR] error - ReferenceError: io is not defined
     at ApiSchedule.handleSocket (file:///E:/instr-app/instr-app-back/api/schedules.js:74:17)
     at processTicksAndRejections (internal/process/task_queues.js:93:5)
+[2022-04-20T21:10:02.649] [ERROR] error - ReferenceError: newSchedule is not defined
+    at ApiDailyWork.handleSocket (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:44:50)
+    at Socket.<anonymous> (file:///E:/instr-app/instr-app-back/sockets.js:39:77)
+    at Socket.emit (events.js:315:20)
+    at Socket.emitUntyped (E:\instr-app\instr-app-back\node_modules\socket.io\dist\typed-events.js:69:22)
+    at E:\instr-app\instr-app-back\node_modules\socket.io\dist\socket.js:428:39
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+[2022-04-21T21:32:35.961] [ERROR] error - ReferenceError: newDayWork is not defined
+    at ApiDailyWork.handleSocket (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:44:91)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+[2022-04-21T22:09:35.946] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:173:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiDailyWork.handleSocket (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:49:30)
+[2022-04-21T22:10:25.739] [ERROR] error - ReferenceError: dayWorks is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:174:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiDailyWork.handleSocket (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:49:30)
+[2022-04-21T22:13:19.714] [ERROR] error - ReferenceError: io is not defined
+    at ApiDailyWork.handleSocket (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:51:25)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
