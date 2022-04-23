@@ -21,19 +21,19 @@ export default (io) => {
         });
 
         // SCHEDULES
-        socket.on("getSchedule", (date) => apiSchedule.handleSocket({ date, socket, action: "getSchedule" }));
-        socket.on("scheduleRoom", (id) => {
+        socket.on("get_schedule", (date) => apiSchedule.handleSocket({ date, socket, action: "get_schedule" }));
+        socket.on("schedule_join_room", (id) => {
             socket.join(id)
             loggerInfo.info(`Socket ${socket.id} joined Schedules room ${id}`);
             loggerInfo.info(io.sockets.adapter.rooms.get(id));
         })
-        socket.on("leaveScheduleRoom", (id) => {
+        socket.on("schedule_leave_room", (id) => {
             socket.leave(id)
-            socket.to(id).emit("leaveScheduleRoom", id);
-            loggerInfo.info(`Socket ${socket.id} left room ${id}`);
+            socket.to(id).emit("schedule_leave_room", id);
+            loggerInfo.info(`Socket ${socket.id} left Schedules room ${id}`);
         })
-        socket.on("updateSchedule", (date, newSchedule, roomId) => apiSchedule.handleSocket({ date, socket, action: "updateSchedule", newSchedule, roomId }));
-        socket.on("updateScheduleColumns", (date, newColumns, roomId, aditionalCount) => apiSchedule.handleSocket({ date, socket, action: "updateScheduleColumns", newColumns, roomId, io, aditionalCount }));
+        socket.on("update_schedule", (date, scheduleData, roomId) => apiSchedule.handleSocket({ date, socket, action: "update_schedule", scheduleData, roomId }));
+        socket.on("update_schedule_columns", (date, scheduleData, roomId) => apiSchedule.handleSocket({ date, socket, action: "update_schedule_columns", scheduleData, roomId, io }));
 
         // DAILY WORKS
         socket.on("get_daily_works", (date) => apiDailyWork.handleSocket({ date, socket, action: "get_daily_works" }));

@@ -47,7 +47,6 @@ export class ApiDailyWork {
                 socket.to(roomId).emit('get_daily_works', await this.getDailyWork(date));
             } else if (action === 'delete_daily_work') {
                 const data = await this.deleteDailyWork(dailyWorkData);
-                console.log(data);
                 data && io.to(roomId).emit('get_daily_works', await this.getDailyWork(date));
             }
         } catch (error) {

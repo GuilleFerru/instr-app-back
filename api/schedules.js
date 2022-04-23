@@ -61,16 +61,17 @@ export class ApiSchedule {
 
     handleSocket = async (...data) => {
         try {
-            const { date, socket, action, newSchedule, roomId, newColumns, io, aditionalCount } = data[0];
-            if (action === 'getSchedule') {
+            const { date, socket, action, scheduleData, roomId, io } = data[0];
+
+            if (action === 'get_schedule') {
                 const data = await this.getSchedule(date);
-                data && socket.emit('getSchedule', data);
-            } else if (action === 'updateSchedule') {
-                await this.updateSchedule(date, newSchedule, roomId);
-                socket.to(roomId).emit('updateSchedule', newSchedule);
-            } else if (action === 'updateScheduleColumns') {
-                await this.updateScheduleColumns(date, newColumns);
-                await io.to(roomId).emit('updateScheduleColumns', newColumns,aditionalCount);
+                data && socket.emit('get_schedule', data);
+            } else if (action === 'update_schedule') {
+                await this.updateSchedule(date, scheduleData, roomId);
+                socket.to(roomId).emit('get_schedule', await this.getSchedule(date));
+            } else if (action === 'update_schedule_columns') {
+                await this.updateScheduleColumns(date, scheduleData);
+                await io.to(roomId).emit('get_schedule', await this.getSchedule(date));
                 // socket.emit('updateScheduleColumns', data);
             }
         } catch (error) {
@@ -107,7 +108,7 @@ export class ApiSchedule {
             const saveSchedule = saveScheduleDTO(dateLocal, schedule, columns);
             const result = await dao.createSchedule(saveSchedule);
             const _id = result[0]._id
-            
+
             const returnSchedule = returnScheduleDTO(dateLocal, schedule, columns, reduceForLookUp(aditionals), _id);
             return returnSchedule;
         } catch (err) {
