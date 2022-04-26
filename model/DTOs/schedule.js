@@ -6,11 +6,12 @@ export const scheduleDTO = (employee, currentTimeSchedule, workedHours) => ({
     workedHours: workedHours
 });
 
-export const returnScheduleDTO = (date, schedule, columns, aditionals) => ({
+export const returnScheduleDTO = (date, schedule, columns, aditionals, id) => ({
     date: date,
     schedule: schedule,
     columns: columns,
     aditionals: aditionals,
+    id: id
 });
 
 

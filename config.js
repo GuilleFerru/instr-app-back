@@ -17,6 +17,7 @@ export default {
     HOST: process.env.HOST || '127.0.0.1',
     PORT: process.env.PORT || 3001,
     MONGO_URL: process.env.MONGO_URL,
+    MONGO_URL_DEV: process.env.MONGO_URL_DEV,
     SECRET_KEY: process.env.SECRET_KEY,
 }
 

@@ -1,5 +1,6 @@
 import { ApiSchedule } from '../api/schedules.js';
 import { loggerError } from '../utils/logger.js';
+import { io } from '../server.js';
 
 
 
@@ -21,7 +22,6 @@ export class ControllerSchedule {
 
     getSchedule = async (req, res) => {
         try {
-            
             const { date } = req.params;
             const resultado = await this.apiSchedule.getSchedule(date);
             if (!resultado) {
@@ -45,7 +45,6 @@ export class ControllerSchedule {
             const { date } = req.params;
             const { newSchedule } = req.body;
             const resultado = await this.apiSchedule.updateSchedule(date, newSchedule);
-            
             if (resultado) {
                 return res.status(200).json(resultado);
             } else {
@@ -65,7 +64,7 @@ export class ControllerSchedule {
 
 
     updateScheduleColumns = async (req, res) => {
-        try {           
+        try {
             const { date } = req.params;
             const { newColumns } = req.body;
             const resultado = await this.apiSchedule.updateScheduleColumns(date, newColumns);

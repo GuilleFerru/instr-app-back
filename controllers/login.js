@@ -1,6 +1,9 @@
 
 import jwt from "jsonwebtoken";
 import config from "../config.js";
+import Sockets from '../sockets.js'
+import { io } from "../server.js";
+
 export class ControllerLogin {
 
     login = async (req, res) => {

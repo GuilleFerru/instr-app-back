@@ -28,6 +28,35 @@ const getDailyWorkTable = async (filter) => {
 
 export class ApiDailyWork {
 
+
+    handleSocket = async (...data) => {
+        try {
+            const { date, socket, action, dailyWorkData, roomId, io } = data[0];
+
+            if (action === 'get_daily_works') {
+                const data = await this.getDailyWork(date);
+                data && socket.emit('get_daily_works', data);
+            } else if (action === 'create_daily_work') {
+                const data = await this.createDailyWork(dailyWorkData, '');
+                data && socket.to(roomId).emit('get_daily_works', await this.getDailyWork(dailyWorkData.beginDate));
+            } else if (action === 'update_daily_work') {
+                const data = await this.updateDailyWork(date, dailyWorkData);
+                data && socket.to(roomId).emit('get_daily_works', await this.getDailyWork(date));
+            } else if (action === 'bulk_update_daily_work') {
+                dailyWorkData.forEach(async (dailyWork) => await this.updateDailyWork(date, dailyWork));
+                socket.to(roomId).emit('get_daily_works', await this.getDailyWork(date));
+            } else if (action === 'delete_daily_work') {
+                const data = await this.deleteDailyWork(dailyWorkData);
+                data && io.to(roomId).emit('get_daily_works', await this.getDailyWork(date));
+            }
+        } catch (error) {
+            console.log(error);
+            loggerError.error(error);
+        }
+    }
+
+
+
     createDailyWork = async (data, filter) => {
         try {
             if (filter !== 'fromRoutine') {
@@ -107,13 +136,11 @@ export class ApiDailyWork {
         }
     }
 
-
     updateDailyWork = async (date, dayWork) => {
         try {
             const dateLocal = formatDate(date);
             if (dateLocal && dayWork) {
                 const dailyWork = updateDayWorkDTO(dayWork);
-                
                 //si es una rutina y tiene OT guardo la OT en routineSchedule
                 const routineOT = dailyWork.action === 2 && dailyWork.ot != '' ? dailyWork.ot : false;
                 if (routineOT) {
@@ -142,7 +169,7 @@ export class ApiDailyWork {
 
     deleteDailyWork = async (id) => {
         try {
-            await dao.deleteDailyWork(id);
+            const dayWorks = await dao.deleteDailyWork(id);
             return dayWorks;
         } catch (err) {
             loggerError.error(err);
