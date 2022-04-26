@@ -387,7 +387,7 @@ export class DBMongoDao {
 
     updateDailyWork = async (date, dailyWork) => {
         try {
-            
+
             await dailyWorkModel.updateOne({ $and: [{ "beginDate": date }, { "_id": dailyWork._id }] }, {
                 $set: {
                     "plant": dailyWork.plant,
@@ -511,6 +511,7 @@ export class DBMongoDao {
     getAllRoutinesSchedules = async (date) => {
         try {
             const routineResp = await routineScheduleModel.find({ $and: [{ startDate: { $lte: date } }, { dueDate: { $gte: date } }] }, { __v: 0, createdAt: 0, updatedAt: 0 });
+            //const routineResp = await routineScheduleModel.find({ "showMonthAndYear": monthAndYear }, { __v: 0, createdAt: 0, updatedAt: 0 });
             return routineResp;
         } catch (error) {
             loggerError.error(error)

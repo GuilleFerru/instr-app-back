@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [2022-03-06T18:52:50.943] [ERROR] error - ReferenceError: string is not defined
     at createOthersRoutinesColumns (file:///E:/instr-app/instr-app-back/utils/otherRoutinesColumnTable.js:34:36)
     at Function.createColumns (file:///E:/instr-app/instr-app-back/utils/otherRoutinesColumnTable.js:71:29)
@@ -2097,3 +2098,5 @@
     at processTicksAndRejections (internal/process/task_queues.js:93:5)
     at async deleteDailyWork (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:97:31)
 >>>>>>> 8453d37385bf027c101b8270568670a8c875e7a2
+=======
+>>>>>>> a22832bc411b499c6045a10e28b7bfd39f8df6f0

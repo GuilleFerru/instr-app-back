@@ -21,6 +21,7 @@ export class ControllerSchedule {
 
     getSchedule = async (req, res) => {
         try {
+            
             const { date } = req.params;
             const resultado = await this.apiSchedule.getSchedule(date);
             if (!resultado) {

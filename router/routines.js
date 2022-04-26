@@ -1,5 +1,6 @@
 import express from 'express';
 import { ControllerRoutine } from '../controllers/routines.js';
+import { userExtractor } from '../utils/userExtractor.js';
 
 const router = express.Router();
 
@@ -9,12 +10,15 @@ export class RouterRoutine {
     }
 
     start() {
-        router.post('/create', this.controllerRoutine.createRoutine);
-        router.get('/get', this.controllerRoutine.getRoutine);
-        router.get('/get/:date', this.controllerRoutine.getAllRoutine);
-        router.put('/update', this.controllerRoutine.updateRoutineScheduleByCompleteTask);
-        router.put('/updateOt', this.controllerRoutine.updateRoutineScheduleOT);
+        router.post('/create', userExtractor, this.controllerRoutine.createRoutine);
+        router.get('/get', userExtractor, this.controllerRoutine.getRoutine);
+        router.get('/getAllRoutines/:date', userExtractor, this.controllerRoutine.getAllRoutine);
+        router.put('/update', userExtractor, this.controllerRoutine.updateRoutineScheduleByCompleteTask);
+        router.put('/updateOt', userExtractor, this.controllerRoutine.updateRoutineScheduleOT);
         return router;
     }
 
+
+
 }
+
