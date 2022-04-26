@@ -9,6 +9,7 @@ import helmet from "helmet";
 import morgan from "morgan";
 import cors from "cors";
 import DaoFactory from "./model/DAOs/DaoFactory.js";
+import { userExtractor } from "./utils/userExtractor.js";
 import * as router from "./utils/routersInstances.js";
 import { loggerError, loggerInfo } from "./utils/logger.js";
 

@@ -22,7 +22,7 @@ import { otherRoutineColumnModel } from '../models/OthersRoutinesColumns.js';
 import { dailyWorkRoutineColumnModel } from '../models/DailyWorkRoutinesColumns.js';
 
 
-const MONGO_URL = config.MONGO_URL_DEV;
+const MONGO_URL = config.MONGO_URL;
 
 export class DBMongoDao {
 

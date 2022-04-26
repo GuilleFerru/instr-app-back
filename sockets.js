@@ -1,6 +1,7 @@
 // import { v4 as uuid } from 'uuid';
 import { ApiSchedule } from './api/schedules.js';
 import { ApiDailyWork } from './api/dailyWorks.js';
+// import { userExtractorForSocket } from './utils/userExtractor.js';
 import { formatDate } from './utils/formatDate.js';
 import { loggerError, loggerInfo } from "./utils/logger.js";
 
@@ -15,6 +16,28 @@ export default (io) => {
         loggerInfo.info(`Socket ${socket.id} connected`);
 
         const sockets = await io.fetchSockets()
+
+        // const req = { headers: { authorization: sockets[0].handshake.auth.token }, user: {} };
+        
+        // const wrap = middleware => (socket, next) => middleware(socket.request, {}, next);
+
+
+
+        // // console.log(wrap(userExtractor(req), ''))
+        // io.use(wrap(userExtractorForSocket(req)))
+
+        // io.use((socket, next) => {
+        //     console.log(socket.request.user)
+            
+        //     if (socket.request.user) {
+        //         next();
+        //     } else {
+        //         console.log('No user found');
+        //         next(new Error('unauthorized'))
+        //     }
+        // });
+
+
         console.log('List of connected sockets:')
         sockets.forEach(socket => {
             console.log(socket.id)
