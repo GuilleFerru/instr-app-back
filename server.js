@@ -12,7 +12,7 @@ import { loggerError, loggerInfo } from "./utils/logger.js";
 
 export const app = express();
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 3001;
 app.listen(port, () => { loggerInfo.info(`Servidor listo en el puerto ${port}`); });
 app.on("error", (error) => { loggerError.error(error); });
 
