@@ -5,7 +5,7 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "set NODE_ENV=development&& node server.js",
+    "start": "set NODE_ENV=development&& pm2-runtime start server.js",
     
     "dev": "set NODE_ENV=development&& nodemon start server.js"
   },
