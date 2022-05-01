@@ -1,15 +1,18 @@
 import express, { json } from "express";
+import passport from "passport";
 import http from "http";
 import { Server as WebSocketServer } from "socket.io";
+import * as jwtAuth from 'socketio-jwt-auth';
+import { userModel } from './model/models/Users.js';
 import Sockets from './sockets.js'
 import compression from 'compression';
-import { config } from "dotenv";
+import { config as dotEnvConfig } from "dotenv";
+import config from "./config.js";
 import schedule from "node-schedule";
 import helmet from "helmet";
-import morgan from "morgan";
+// import morgan from "morgan";
 import cors from "cors";
 import DaoFactory from "./model/DAOs/DaoFactory.js";
-import { userExtractor } from "./utils/userExtractor.js";
 import * as router from "./utils/routersInstances.js";
 import { loggerError, loggerInfo } from "./utils/logger.js";
 
@@ -19,19 +22,53 @@ const port = process.env.PORT || 8080;
 export const httpServer = server.listen(port, () => { loggerInfo.info(`Servidor listo en el puerto ${port}`); });
 server.on("error", (error) => { loggerError.error(error); });
 
-config();
-export const io = new WebSocketServer(httpServer);
+dotEnvConfig();
+
+export const io = new WebSocketServer(httpServer, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"],
+    allowedHeaders: ["x-auth-token"],
+    credentials: true
+  }
+});
+
+io.use(jwtAuth.default.authenticate({
+  secret: config.SECRET_KEY,
+  algorithm: 'HS256',
+}, (payload, done) => {
+  if (payload) {
+    userModel.findOne({ _id: payload.id }, (err, user) => {
+      if (err) {
+        // return error
+        return done(err);
+      }
+      if (!user) {
+        // return fail with an error message
+        return done(null, false, 'user does not exist');
+      }
+      // return success with a user info
+      return done(null, user);
+    });
+  } else {
+    return done()
+  }
+}
+))
+
 Sockets(io);
+
+
 const daoInstance = DaoFactory.getInstance();
 export const dao = daoInstance.get("mongo");
 
 //middleware
+app.use(passport.initialize());
 app.use(compression());
 app.use(json());
 app.use(express.urlencoded({ extended: true }));
-app.use(json());
 app.use(helmet());
-// app.use(morgan("common"));
+// app.use(morgan("dev"));
 app.use(cors());
 
 // endpoints
@@ -52,11 +89,7 @@ app.use("/api/user", router.routerUser.start());
 app.use("/api", router.routerLogin.start());
 
 
-// app.use(passport.initialize());
-// app.use(passport.session());
-
-
-app.get("/", (req, res) => {
+app.get("/", (_req, res) => {
   res.send("");
 });
 
@@ -68,14 +101,6 @@ schedule.scheduleJob("0 0 0 1 */1 *", () => {
 })
 
 
-// const io = new SocketIO.Server(server)
-// const empDailyScheduleData = [];
-
-// /* Socket para datos de personal */
-
-// io.on('connection', socket => {
-//     socket.emit('empDailyScheduleData', empDailyScheduleData);
-// });
 
 // /*  LECTURA DEL ARCHIVO DEL PERONAL POR DIA    */
 

@@ -1,8 +1,25 @@
 
 import jwt from "jsonwebtoken";
 import config from "../config.js";
-import Sockets from '../sockets.js'
-import { io } from "../server.js";
+// import { app } from "../server.js";
+// import passport from 'passport';
+// import cookieParser from "cookie-parser";
+// import session from "express-session";
+
+
+// app.use(cookieParser());
+
+// app.use(session({
+//     secret: config.SECRET_KEY,
+//     resave: false,
+//     saveUninitialized: false,
+//     cookie: {
+//         maxAge: 1000 * 60 * 60 * 24 * 7
+//     }
+// }));
+
+
+// app.use(passport.session());
 
 export class ControllerLogin {
 
@@ -22,7 +39,8 @@ export class ControllerLogin {
                 token
             }
             if (user) {
-                return res.status(200).json(user);
+                // res.cookie('token', token)
+                res.cookie('token', token).status(200).json(user);
             } else {
                 return res.status(500).json(user);
             }

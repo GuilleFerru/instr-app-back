@@ -5,9 +5,36 @@ import passport from "passport";
 import { Strategy as LocalStrategy } from 'passport-local';
 import bcrypt from 'bcrypt';
 
+
 const loginStrategyName = 'login';
 
 const isValidPassword = (user, password) => bcrypt.compareSync(password, user.password);
+
+
+// passport.use(new JWTStrategy({
+//     jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
+//     jsonWebTokenOptions: {
+//         ignoreExpiration: false
+//     },
+//     secretOrKey: config.SECRET_KEY,
+//     algoithms: ['HS256'],
+// }, (jwtPayload, done) => {
+//     userModel.findOne({ _id: jwtPayload.id }, (err, user) => {
+//         if (err) {
+//             return done(err, false);
+//         }
+//         if (user) {
+//             return done(null, user);
+//         } else {
+//             return done(null, false);
+//         }
+//     });
+// }))
+
+// const wrapMiddlewareForSocketIo = middleware => (socket, next) => middleware(socket.request, {}, next);
+// io.use(wrapMiddlewareForSocketIo(passport.initialize()));
+// io.use(wrapMiddlewareForSocketIo(passport.authenticate(['jwt'])));
+
 
 passport.use(
     loginStrategyName,
@@ -32,7 +59,7 @@ passport.use(
     ));
 
 passport.serializeUser((user, done) => {
-    done(null, user._id);
+    if (user) done(null, user._id);
 });
 
 passport.deserializeUser((user, done) => {
@@ -50,7 +77,7 @@ export class RouterLogin {
 
     start() {
         router.post('/login', passport.authenticate(loginStrategyName, { failureRedirect: '/api/faillogin' }), this.controllerLogin.login);
-        router.get('/faillogin',  this.controllerLogin.failLogin);
+        router.get('/faillogin', this.controllerLogin.failLogin);
         return router;
     }
 

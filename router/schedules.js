@@ -1,6 +1,7 @@
 import express from 'express';
 import { userExtractor } from '../utils/userExtractor.js';
 import { ControllerSchedule } from '../controllers/schedules.js';
+import passport from 'passport';
 
 const router = express.Router();
 
