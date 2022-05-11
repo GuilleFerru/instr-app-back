@@ -3,7 +3,7 @@ import { formatDate, todayInLocalDate, dateInLocalDate, parseStringToDate, dateI
 import { ApiRoutine } from './routines.js';
 import { ApiDailyWorksColumnTable } from '../utils/dailyWorksColumnTable.js';
 import { DailyWorksRoutineTable } from '../utils/dailyWorksRoutineTable.js';
-import { saveDailyWorkDTO, updateDayWorkDTO, completedDailyWorkDTO, dailyWorkRoutineRespDTO } from '../model/DTOs/dailyWork.js';
+import { saveDailyWorkDTO, updateDayWorkDTO, completedDailyWorkDTO, dailyWorkRoutineRespDTO, changeIDForViewDTO } from '../model/DTOs/dailyWork.js';
 import { loggerError, loggerInfo } from '../utils/logger.js';
 
 
@@ -38,13 +38,13 @@ export class ApiDailyWork {
                 data && socket.emit('get_daily_works', data);
             } else if (action === 'create_daily_work') {
                 const data = await this.createDailyWork(dailyWorkData, '');
-                data && socket.to(roomId).emit('get_daily_works', await this.getDailyWork(dailyWorkData.beginDate));
+                data && io.to(roomId).emit('get_daily_works', await this.getDailyWork(dailyWorkData.beginDate));
             } else if (action === 'update_daily_work') {
                 const data = await this.updateDailyWork(date, dailyWorkData);
-                data && socket.to(roomId).emit('get_daily_works', await this.getDailyWork(date));
+                data && io.to(roomId).emit('get_daily_works', await this.getDailyWork(date));
             } else if (action === 'bulk_update_daily_work') {
                 dailyWorkData.forEach(async (dailyWork) => await this.updateDailyWork(date, dailyWork));
-                socket.to(roomId).emit('get_daily_works', await this.getDailyWork(date));
+                io.to(roomId).emit('get_daily_works', await this.getDailyWork(date));
             } else if (action === 'delete_daily_work') {
                 const data = await this.deleteDailyWork(dailyWorkData);
                 data && io.to(roomId).emit('get_daily_works', await this.getDailyWork(date));
@@ -73,16 +73,17 @@ export class ApiDailyWork {
 
     getDailyWork = async (date) => {
         try {
+            const dayWorks = [];
             // busca la tabla de trabajo diario y guarda las columnas en columns, sino existe la crea.
             const columns = await getDailyWorkTable('fromDailyWork');
             // busca los trabajos diarios de la fecha que viene en date
             const dateLocalString = formatDate(date);
-            const dayWorks = await dao.getDailyWork(dateLocalString);
+            const rawWorks = await dao.getDailyWork(dateLocalString);
+            rawWorks.map((work) => { dayWorks.push(changeIDForViewDTO(work)) });
             /*si no hay trabajos diarios, busca todas las rutinas y las crea como trabajos diarios, 
             sino va a devolver las rutinas creadas la primera vez y los trabajos diarios */
             if (dayWorks.length === 0) {
                 const routines = await apiRoutine.getRoutine(date);
-                const dayWorks = [];
                 routines !== undefined && routines.map(routine => { dayWorks.push(saveDailyWorkDTO(routine, dateLocalString)) });
                 /*como la rutina esta asociada a una rutinaSchedule y tiene una fecha de incio y fin, 
                 creo el dailyWork solo si el mes del date coincide con el mes actual, 
@@ -149,7 +150,6 @@ export class ApiDailyWork {
                 }
                 const today = formatDate(todayInLocalDate());
                 const dailyWorkToUpdate = completedDailyWorkDTO(dayWork, today);
-
                 //me fijo si actualiza usando la fecha que viene desde el calendario o si actualiza usando la fecha que se obtiene de la barra de busqueda
                 //PROBAR CAMBIOOOOOO 28/3/2022
                 const dailyWorkBeginDate = dailyWorkToUpdate.beginDate;

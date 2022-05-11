@@ -62,7 +62,6 @@ export class ApiSchedule {
     handleSocket = async (...data) => {
         try {
             const { date, socket, action, scheduleData, roomId, io } = data[0];
-
             if (action === 'get_schedule') {
                 const data = await this.getSchedule(date);
                 data && socket.emit('get_schedule', data);
@@ -73,6 +72,10 @@ export class ApiSchedule {
                 await this.updateScheduleColumns(date, scheduleData);
                 await io.to(roomId).emit('get_schedule', await this.getSchedule(date));
                 // socket.emit('updateScheduleColumns', data);
+            } else if (action === 'delete_schedule') {
+                await this.deleteSchedule(scheduleData);
+                //este emit no me anda y no se porque ... 6-5-22
+                await io.to(roomId).emit('get_schedule', await this.getSchedule(date));
             }
         } catch (error) {
             console.error(error);
@@ -176,4 +179,20 @@ export class ApiSchedule {
             console.log(error);
         }
     }
+
+    deleteSchedule = async (data) => {
+        try {
+
+            const { date, dataDelete } = data;
+            const schedule = await dao.deleteSchedule(formatDate(date), dataDelete);
+            return schedule;
+        } catch (err) {
+            console.log(err);
+            loggerError.error(err);
+        } finally {
+            loggerInfo.info('deleteSchedule');
+        }
+    }
 }
+
+

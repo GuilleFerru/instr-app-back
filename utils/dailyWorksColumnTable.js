@@ -13,16 +13,19 @@ const createDailyWorkColumns = (plantsForColumnTable, atteliersForColumnTable, t
             field: 'beginDate',
             title: 'Fecha de inicio',
             hidden: true,
+            type: 'string',
         },
         {
             field: 'plant',
             title: 'Planta',
             lookup: plantsForColumnTable,
+            "initialEditValue" : "0"
         },
         {
             field: 'attelier',
             title: 'Attelier',
             lookup: atteliersForColumnTable,
+            "initialEditValue" : "0"
         },
         {
             field: 'tag',
@@ -34,6 +37,7 @@ const createDailyWorkColumns = (plantsForColumnTable, atteliersForColumnTable, t
             title: 'Horario',
             lookup: timeScheduleForColumnTable,
             initialEditValue: '5',
+            // defaultGroupOrder: 0,
             // defaultGroupOrder: 1,
         },
         {
@@ -41,8 +45,7 @@ const createDailyWorkColumns = (plantsForColumnTable, atteliersForColumnTable, t
             title: 'Tipo de mto',
             lookup: manteinancesForColumnTable,
             initialEditValue: '1',
-            defaultGroupOrder: 0,
-            defaultGroupSort: 'desc'
+            // defaultGroupSort: 'desc'
         },
         {
             field: 'ot',
@@ -54,7 +57,7 @@ const createDailyWorkColumns = (plantsForColumnTable, atteliersForColumnTable, t
             field: 'action',
             title: 'Acción',
             lookup: manteinanceActionsForColumnTable,
-            initialEditValue: 1
+            initialEditValue: "1"
         },
         {
             field: 'description',
@@ -70,6 +73,7 @@ const createDailyWorkColumns = (plantsForColumnTable, atteliersForColumnTable, t
                 'P': 'Pendiente',
                 'C': 'Completado',
                 'R': 'Demorado',
+                'PP': 'Paro de planta',
             },
             initialEditValue: 'C',
         }

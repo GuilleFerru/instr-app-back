@@ -155,16 +155,16 @@ export class ApiRoutine {
 
     getAllRoutine = async (date) => {
         try {
-            
+
             const localDate = dateInLocalDate(date);
-            
-            const monthAndYear = (localDate.getMonth() +1) + '-' + localDate.getFullYear();
-            
+
+            //const monthAndYear = (localDate.getMonth() +1) + '-' + localDate.getFullYear();
+
             const routinesSchedules = await dao.getAllRoutinesSchedules(localDate);
             const allRoutines = await getRoutines(routinesSchedules, 'forRoutines');
-            
+
             const columns = [];
-            
+
             const savedColumns = await OthersRoutineColumnTable.getColumns();
             if (savedColumns.length === 0) {
                 const savedColumns = await OthersRoutineColumnTable.createColumns();
@@ -173,7 +173,6 @@ export class ApiRoutine {
                 columns.push(savedColumns[0].columns);
             }
             if (allRoutines.length > 0) {
-                
                 return otherRoutineResp(allRoutines, ...columns);
             }
         } catch (err) {
@@ -185,14 +184,12 @@ export class ApiRoutine {
 
     updateRoutineScheduleByCompleteTask = async (data) => {
         try {
-
             //busco la rutina asociada al schedule de la rutina
             const routine = await dao.getRoutine(data.routineId);
             //ahora creo el objeto para guardar la rutina como un dailyWork
             const routineSavedAsDailyWork = routineSavedAsDailyWorkDTO(routine[0], data);
-
             // update el routineSchedule
-            const id = data._id;
+            const id = data.id;
             const checkedDay = parseStringToDate(routineSavedAsDailyWork.endDate);
             const updatedDone = await dao.updateRoutineScheduleByCompleteTask(id, checkedDay);
             // update el dailyWork
@@ -226,7 +223,7 @@ export class ApiRoutine {
 
     updateRoutineScheduleOT = async (routineSchedule) => {
         try {
-            const updatedRoutineScheduleOT = await dao.updateRoutineScheduleOT(routineSchedule._id, routineSchedule.ot, routineSchedule.filePath);
+            const updatedRoutineScheduleOT = await dao.updateRoutineScheduleOT(routineSchedule.id, routineSchedule.ot, routineSchedule.filePath);
             return updatedRoutineScheduleOT;
         } catch (err) {
             loggerError.error(err);

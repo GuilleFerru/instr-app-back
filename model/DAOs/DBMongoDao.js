@@ -22,6 +22,7 @@ import { otherRoutineColumnModel } from '../models/OthersRoutinesColumns.js';
 import { dailyWorkRoutineColumnModel } from '../models/DailyWorkRoutinesColumns.js';
 
 
+//const MONGO_URL = config.MONGO_URL_DEV;
 const MONGO_URL = config.MONGO_URL;
 
 export class DBMongoDao {
@@ -151,6 +152,16 @@ export class DBMongoDao {
         }
     }
 
+    deleteSchedule = async (date, schedule) => {
+        try {
+            const scheduleResp = await scheduleModel.updateMany({ date: date }, { $set: { schedule } });
+            return scheduleResp;
+        } catch (error) {
+            console.log(error)
+            loggerError.error(error)
+        }
+    }
+
     createTimeSchedule = async (timeSchedule) => {
         try {
 
@@ -205,7 +216,7 @@ export class DBMongoDao {
 
     getPlants = async () => {
         try {
-            const plantResp = await plantsModel.find({}, { _id: 0, __v: 0, createdAt: 0, updatedAt: 0 });
+            const plantResp = await plantsModel.find({}, { _id: 0, __v: 0, createdAt: 0, updatedAt: 0 }).sort({ id: 1 });
             return plantResp;
         } catch (error) {
             loggerError.error(error)
@@ -228,7 +239,7 @@ export class DBMongoDao {
 
     getAttelieres = async () => {
         try {
-            const attelierResp = await attelierModel.find({}, { _id: 0, __v: 0, createdAt: 0, updatedAt: 0 });
+            const attelierResp = await attelierModel.find({}, { _id: 0, __v: 0, createdAt: 0, updatedAt: 0 }).sort({ id: 1 });
             return attelierResp;
         } catch (error) {
             loggerError.error(error)
@@ -387,8 +398,7 @@ export class DBMongoDao {
 
     updateDailyWork = async (date, dailyWork) => {
         try {
-
-            await dailyWorkModel.updateOne({ $and: [{ "beginDate": date }, { "_id": dailyWork._id }] }, {
+            const updated = await dailyWorkModel.updateOne({ $and: [{ "beginDate": date }, { "_id": dailyWork._id }] }, {
                 $set: {
                     "plant": dailyWork.plant,
                     "attelier": dailyWork.attelier,

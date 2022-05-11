@@ -18,9 +18,8 @@ const createDailyWorksRoutineColumns = (timeScheduleForColumnTable) => {
         {
             field: 'timeSchedule',
             title: 'Horario',
-
             lookup: timeScheduleForColumnTable,
-            initialEditValue: '5',
+            initialEditValue: 5,
         },
         {
             field: 'beginDateToShow',

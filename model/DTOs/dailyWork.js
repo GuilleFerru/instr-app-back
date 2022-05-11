@@ -1,6 +1,7 @@
 import { formatDate, dateInLocalDateString, parseStringToDate } from '../../utils/formatDate.js';
 
 export const saveDailyWorkDTO = (data, dateLocal) => ({
+    id: data._id,
     plant: data.plant,
     attelier: data.attelier,
     tag: data.tag,
@@ -16,13 +17,32 @@ export const saveDailyWorkDTO = (data, dateLocal) => ({
     sector: 'Instrumentos-Sistemas'
 });
 
+export const changeIDForViewDTO = (data) => ({
+    id: data._id,
+    plant: data.plant,
+    attelier: data.attelier,
+    tag: data.tag,
+    timeSchedule: data.timeSchedule,
+    manteinance: data.manteinance,
+    ot: data.ot,
+    action: data.action,
+    description: data.description,
+    complete: data.complete,
+    beginDate: data.beginDate,
+    endDate: data.endDate,
+    routineScheduleId: data.routineScheduleId,
+    sector: data.sector
+});
+
+
+
 export const updateDayWorkDTO = (dayWorks) => {
     const { tableData, beginDateToShow, endDateToShow, ...scheduleRest } = dayWorks;
     return scheduleRest;
 }
 
 export const completedDailyWorkDTO = (dayWorks, today) => ({
-    _id: dayWorks._id,
+    _id: dayWorks.id,
     plant: dayWorks.plant,
     attelier: dayWorks.attelier,
     tag: dayWorks.tag ? dayWorks.tag : '',
@@ -33,13 +53,14 @@ export const completedDailyWorkDTO = (dayWorks, today) => ({
     description: dayWorks.description === undefined ? '' : dayWorks.description,
     complete: dayWorks.complete,
     beginDate: dayWorks.beginDate,
-    endDate: dayWorks.endDate ? dayWorks.endDate : dayWorks.complete === 'C' ? today : '',
+    //endDate: dayWorks.endDate ? dayWorks.endDate : dayWorks.complete === 'C' ? today : '',
+    endDate: dayWorks.endDate && dayWorks.complete === 'C' ? dayWorks.endDate : dayWorks.complete === 'C' ? today : '',
     routineScheduleId: dayWorks.routineScheduleId === undefined ? '' : dayWorks.routineScheduleId,
     sector: 'Instrumentos-Sistemas'
 })
 
 export const dailyWorkRoutineRespDTO = (dailyWorkRoutine) => ({
-    _id: dailyWorkRoutine._id,
+    id: dailyWorkRoutine._id,
     plant: dailyWorkRoutine.plant,
     attelier: dailyWorkRoutine.attelier,
     tag: dailyWorkRoutine.tag,
