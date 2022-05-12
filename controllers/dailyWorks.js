@@ -67,12 +67,11 @@ export class ControllerDailyWork {
 
     updateFromRoutineDetail = async (req, res) => {
         try {
-            console.log(req.body)
             const { updatedWork } = req.body;
             //tuve que parsear la fecha porque viene en string y a la api le tiene que llegar si o si en date.
             const date = parseStringToDate(updatedWork.beginDate);
-            await this.apiDailyWork.updateDailyWork(date, updatedWork);
-            res.status(200).send(true);
+            const updateResp = await this.apiDailyWork.updateDailyWork(date, updatedWork);
+            res.status(200).send(updateResp);
         } catch (err) {
             console.log(err);
             return res.status(500).json(err);

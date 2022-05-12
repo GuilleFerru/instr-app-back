@@ -60,6 +60,7 @@ const createOthersRoutinesColumns = (plantsForColumnTable, atteliersForColumnTab
                 'P': 'Pendiente',
                 'C': 'Completado',
                 'R': 'Demorado',
+                'PP': 'Paro de planta',
             },
             initialEditValue: 'P',
             editable: 'never',

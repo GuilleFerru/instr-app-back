@@ -139,6 +139,7 @@ export class ApiDailyWork {
 
     updateDailyWork = async (date, dayWork) => {
         try {
+
             const dateLocal = formatDate(date);
             if (dateLocal && dayWork) {
                 const dailyWork = updateDayWorkDTO(dayWork);
@@ -155,7 +156,8 @@ export class ApiDailyWork {
                 const dailyWorkBeginDate = dailyWorkToUpdate.beginDate;
                 const resultado = dateLocal === dailyWorkBeginDate ? await dao.updateDailyWork(dateLocal, dailyWorkToUpdate) : await dao.updateDailyWork(dailyWorkBeginDate, dailyWorkToUpdate);
                 if (resultado) {
-                    return resultado;
+                    const updateResp = this.getDailyWorkRoutine(dayWork.routineScheduleId)
+                    return updateResp;
                 } else {
                     return false;
                 }

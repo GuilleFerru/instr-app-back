@@ -76,6 +76,7 @@ const createDailyWorkColumns = (plantsForColumnTable, atteliersForColumnTable, t
                 'PP': 'Paro de planta',
             },
             initialEditValue: 'C',
+            align: 'left',
         }
     ];
     return columns;

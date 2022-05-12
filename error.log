@@ -236,3 +236,8 @@
       at model.Query.Query._castConditions (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:2055:10),
   valueType: 'string'
 }
+[2022-05-11T21:48:25.228] [ERROR] error - TypeError: Cannot read property 'columns' of undefined
+    at getDailyWorkTable (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:22:38)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:78:29)
+    at async ApiDailyWork.handleSocket (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:37:30)

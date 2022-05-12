@@ -259,7 +259,6 @@ export class DBMongoDao {
                             }
                         }
                     },
-
                 },
                 {
                     $sort: { _id: -1 }
