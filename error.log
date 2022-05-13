@@ -241,3 +241,13 @@
     at processTicksAndRejections (internal/process/task_queues.js:93:5)
     at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:78:29)
     at async ApiDailyWork.handleSocket (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:37:30)
+[2022-05-12T21:11:25.034] [ERROR] error - TypeError: Cannot read property 'columns' of undefined
+    at getDailyWorkTable (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:22:38)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:78:29)
+    at async ApiDailyWork.handleSocket (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:37:30)
+[2022-05-12T21:13:45.943] [ERROR] error - TypeError: Cannot read property 'columns' of undefined
+    at getDailyWorkTable (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:22:38)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:78:29)
+    at async ApiDailyWork.handleSocket (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:37:30)

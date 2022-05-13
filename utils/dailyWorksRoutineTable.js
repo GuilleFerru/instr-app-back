@@ -13,6 +13,7 @@ const createDailyWorksRoutineColumns = (timeScheduleForColumnTable) => {
             field: 'tag',
             title: 'TAG',
             type: 'string',
+            width : "10%"
 
         },
         {
@@ -20,13 +21,15 @@ const createDailyWorksRoutineColumns = (timeScheduleForColumnTable) => {
             title: 'Horario',
             lookup: timeScheduleForColumnTable,
             initialEditValue: 5,
+            width : "10%"
         },
         {
             field: 'beginDateToShow',
             title: 'Fecha de inicio',
             type: 'date',
             dateSetting: { locale: 'es-AR', format: 'dd-MMM-yyyy' },
-            editable:'never'
+            editable:'never',
+            width : "15%"
             
         },
         {
@@ -34,13 +37,15 @@ const createDailyWorksRoutineColumns = (timeScheduleForColumnTable) => {
             title: 'Fecha de realización',
             type: 'date',
             dateSetting: { locale: 'es-AR', format: 'dd-MMM-yyyy' },
-            editable:'never'
+            editable:'never',
+            width : "15%"
         },
         {
             field: 'ot',
             title: 'OT',
             type: 'string',
             align: 'left',
+            width : "5%"
         },
         {
             field: 'description',
@@ -59,6 +64,7 @@ const createDailyWorksRoutineColumns = (timeScheduleForColumnTable) => {
                 'PP': 'Paro de planta',
             },
             initialEditValue: 'C',
+            width : "5%"
         }
     ];
     return columns;

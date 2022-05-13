@@ -2,7 +2,7 @@ import { dao } from '../server.js';
 import { plantData, attelierData, timeScheduleData, manteinanceData, manteinanceActionData } from './commonLookUpsTables.js';
 import { loggerError, loggerInfo } from './logger.js';
 
-const createOthersRoutinesColumns = (plantsForColumnTable, atteliersForColumnTable ) => {
+const createOthersRoutinesColumns = (plantsForColumnTable, atteliersForColumnTable) => {
     const columns = [
         {
             field: '_id',
@@ -12,13 +12,14 @@ const createOthersRoutinesColumns = (plantsForColumnTable, atteliersForColumnTab
         {
             field: 'nickname',
             title: 'Nombre',
-            defaultGroupOrder:0,
+            defaultGroupOrder: 0,
         },
         {
             field: 'plant',
             title: 'Planta',
             lookup: plantsForColumnTable,
             editable: 'never',
+            width: "10%"
         },
         {
             field: 'attelier',
@@ -31,6 +32,7 @@ const createOthersRoutinesColumns = (plantsForColumnTable, atteliersForColumnTab
             title: 'TAG',
             type: 'string',
             editable: 'never',
+            width: "10%"
         },
         {
             field: 'checkDay',
@@ -38,19 +40,21 @@ const createOthersRoutinesColumns = (plantsForColumnTable, atteliersForColumnTab
             type: 'date',
             dateSetting: { locale: 'es-AR', format: 'dd-MMM-yyyy' },
             editable: 'never',
+            width: "30%"
         },
         {
             field: 'ot',
             title: 'OT',
             type: 'string',
             align: 'left',
+            width: "10%"
         },
         {
             field: 'description',
             title: 'Descripción',
             multiline: true,
-            width: '40%',
             editable: 'never',
+            width: '20%',
         },
         {
             field: 'complete',
@@ -64,10 +68,12 @@ const createOthersRoutinesColumns = (plantsForColumnTable, atteliersForColumnTab
             },
             initialEditValue: 'P',
             editable: 'never',
+            width: '10%',
         },
         {
             field: 'filePath',
-            title: 'Adjuntar archivo'
+            title: 'Adjuntar archivo',
+            width: '10%',
         }
     ];
     return columns;
