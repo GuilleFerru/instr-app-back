@@ -14,33 +14,34 @@ const createDailyWorkColumns = (plantsForColumnTable, atteliersForColumnTable, t
             title: 'Fecha de inicio',
             hidden: true,
             type: 'string',
+            width: "10%"
         },
         {
             field: 'plant',
             title: 'Planta',
             lookup: plantsForColumnTable,
-            "initialEditValue" : "0",
-            width : "10%"
+            "initialEditValue": "0",
+            width: "10%"
         },
         {
             field: 'attelier',
             title: 'Attelier',
             lookup: atteliersForColumnTable,
-            "initialEditValue" : "0",
-            width : "5%"
+            "initialEditValue": "0",
+            width: "5%"
         },
         {
             field: 'tag',
             title: 'TAG',
             type: 'string',
-            width : "10%"
+            width: "10%"
         },
         {
             field: 'timeSchedule',
             title: 'Horario',
             lookup: timeScheduleForColumnTable,
             initialEditValue: '5',
-            width : "5%"
+            width: "5%"
             // defaultGroupOrder: 0,
             // defaultGroupOrder: 1,
         },
@@ -49,7 +50,7 @@ const createDailyWorkColumns = (plantsForColumnTable, atteliersForColumnTable, t
             title: 'Tipo de mto',
             lookup: manteinancesForColumnTable,
             initialEditValue: '1',
-            width : "10%"
+            width: "10%"
             // defaultGroupSort: 'desc'
         },
         {
@@ -57,19 +58,20 @@ const createDailyWorkColumns = (plantsForColumnTable, atteliersForColumnTable, t
             title: 'OT',
             type: 'string',
             align: 'left',
-            width : "5%"
+            width: "5%"
         },
         {
             field: 'action',
             title: 'Acción',
             lookup: manteinanceActionsForColumnTable,
             initialEditValue: "1",
-            width : "15%"
+            width: "15%"
         },
         {
             field: 'description',
             title: 'Descripción',
             multiline: true,
+            align : "justify",
             width: '30%'
         },
         {
@@ -83,8 +85,7 @@ const createDailyWorkColumns = (plantsForColumnTable, atteliersForColumnTable, t
                 'PP': 'Paro de planta',
             },
             initialEditValue: 'C',
-            align: 'left',
-            width : "10%"
+            width: "10%"
         }
     ];
     return columns;

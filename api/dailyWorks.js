@@ -127,7 +127,9 @@ export class ApiDailyWork {
         try {
             const columns = await getDailyWorkTable('fromDailyWork');
             columns[0][1].hidden = false;
-            delete columns[0][6].defaultGroupOrder
+            columns[0][8].width = '10%';
+            columns[0][9].width = '25%';
+            //delete columns[0][6].defaultGroupOrder
 
             const dayWorks = await dao.getDailyWorkSearchBy(value);
             return worksResp(dayWorks, ...columns);
