@@ -45,7 +45,12 @@ export class ControllerRoutine {
         try {
             const { data } = req.body;
             const routine = await this.apiRoutine.updateRoutineScheduleByCompleteTask(data);
-            return res.status(200).json(routine);
+            if (routine) {
+                const date = new Date();
+                res.status(200).json(await this.apiRoutine.getAllRoutine(date));
+            } else {
+                res.status(500).json(false);
+            }
         } catch (err) {
             console.log(err);
             return res.status(500).json(err);

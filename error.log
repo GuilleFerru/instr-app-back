@@ -1,263 +1,60 @@
-[2022-04-26T22:23:23.171] [ERROR] error - Error: listen EADDRINUSE: address already in use :::8080
-    at Server.setupListenHandle [as _listen2] (net.js:1318:16)
-    at listenInCluster (net.js:1366:12)
-    at Server.listen (net.js:1452:7)
-    at file:///E:/instr-app/instr-app-back/server.js:19:34
-    at ModuleJob.run (internal/modules/esm/module_job.js:152:23)
-    at async Loader.import (internal/modules/esm/loader.js:166:24) {
-  code: 'EADDRINUSE',
-  errno: -4091,
-  syscall: 'listen',
-  address: '::',
-  port: 8080
-}
-[2022-04-26T22:24:10.654] [ERROR] error - Error: listen EADDRINUSE: address already in use :::8080
-    at Server.setupListenHandle [as _listen2] (net.js:1318:16)
-    at listenInCluster (net.js:1366:12)
-    at Server.listen (net.js:1452:7)
-    at file:///E:/instr-app/instr-app-back/server.js:19:34
-    at ModuleJob.run (internal/modules/esm/module_job.js:152:23)
-    at async Loader.import (internal/modules/esm/loader.js:166:24) {
-  code: 'EADDRINUSE',
-  errno: -4091,
-  syscall: 'listen',
-  address: '::',
-  port: 8080
-}
-[2022-05-02T21:09:50.090] [ERROR] error - TypeError: Cannot read property 'columns' of undefined
-    at getDailyWorkTable (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:22:38)
-    at processTicksAndRejections (internal/process/task_queues.js:93:5)
-    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:77:29)
-    at async ApiDailyWork.handleSocket (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:37:30)
-[2022-05-03T21:57:24.024] [ERROR] error - TypeError: Cannot read property 'columns' of undefined
-    at getDailyWorkTable (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:22:38)
-    at processTicksAndRejections (internal/process/task_queues.js:93:5)
-    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:77:29)
-    at async ApiDailyWork.handleSocket (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:37:30)
-[2022-05-03T22:00:45.171] [ERROR] error - TypeError: Cannot read property 'columns' of undefined
-    at getDailyWorkTable (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:22:38)
-    at processTicksAndRejections (internal/process/task_queues.js:93:5)
-    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:77:29)
-    at async ApiDailyWork.handleSocket (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:37:30)
-[2022-05-05T21:10:43.028] [ERROR] error - CastError: Cast to ObjectId failed for value "" (type string) at path "_id" for model "dailyworks"
-    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4540:21)
-    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
-    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
-  messageFormat: undefined,
-  stringValue: '""',
-  kind: 'ObjectId',
-  value: '',
-  path: '_id',
-  reason: TypeError: Argument passed in must be a Buffer or string of 12 bytes or a string of 24 hex characters
-      at new ObjectId (E:\instr-app\instr-app-back\node_modules\bson\lib\objectid.js:61:23)
-      at castObjectId (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast\objectid.js:25:12)
-      at ObjectId.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\objectid.js:246:12)
-      at ObjectId.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
-      at ObjectId.SchemaType._castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1553:15)
-      at ObjectId.SchemaType.castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1543:15)
-      at ObjectId.SchemaType.castForQueryWrapper (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1520:20)
-      at cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast.js:338:32)
-      at cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast.js:75:18)
-      at model.Query.Query.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4963:12),
-  valueType: 'string'
-}
-[2022-05-05T22:26:16.047] [ERROR] error - TypeError: data is not iterable
-    at ApiSchedule.deleteSchedule (file:///E:/instr-app/instr-app-back/api/schedules.js:184:31)
-    at ApiSchedule.handleSocket (file:///E:/instr-app/instr-app-back/api/schedules.js:76:41)
-    at Socket.<anonymous> (file:///E:/instr-app/instr-app-back/sockets.js:36:82)
+[2022-05-15T15:31:01.229] [ERROR] error - MongoServerError: Transaction numbers are only allowed on a replica set member or mongos
+    at MessageStream.messageHandler (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connection.js:467:30)
+    at MessageStream.emit (events.js:315:20)
+    at processIncomingData (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\message_stream.js:108:16)
+    at MessageStream._write (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\message_stream.js:28:9)
+    at writeOrBuffer (internal/streams/writable.js:358:12)
+    at MessageStream.Writable.write (internal/streams/writable.js:303:10)
+    at Socket.ondata (internal/streams/readable.js:719:22)
     at Socket.emit (events.js:315:20)
-    at Socket.emitUntyped (E:\instr-app\instr-app-back\node_modules\socket.io\dist\typed-events.js:69:22)
-    at E:\instr-app\instr-app-back\node_modules\socket.io\dist\socket.js:428:39
-    at processTicksAndRejections (internal/process/task_queues.js:75:11)
-[2022-05-05T22:26:57.958] [ERROR] error - ReferenceError: _id is not defined
-    at ApiSchedule.deleteSchedule (file:///E:/instr-app/instr-app-back/api/schedules.js:186:55)
-    at ApiSchedule.handleSocket (file:///E:/instr-app/instr-app-back/api/schedules.js:76:41)
-    at Socket.<anonymous> (file:///E:/instr-app/instr-app-back/sockets.js:36:82)
+    at addChunk (internal/streams/readable.js:309:12)
+    at readableAddChunk (internal/streams/readable.js:284:9) {
+  ok: 0,
+  code: 20,
+  codeName: 'IllegalOperation'
+}
+[2022-05-15T15:31:01.229] [ERROR] error - TypeError: Cannot read property '0' of undefined
+    at DBMongoDao.deleteDailyWork (file:///E:/instr-app/instr-app-back/model/DAOs/DBMongoDao.js:457:55)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:178:31)
+    at async ApiDailyWork.handleSocket (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:49:30)
+[2022-05-15T15:31:18.301] [ERROR] error - MongoServerError: Transaction numbers are only allowed on a replica set member or mongos
+    at MessageStream.messageHandler (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connection.js:467:30)
+    at MessageStream.emit (events.js:315:20)
+    at processIncomingData (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\message_stream.js:108:16)
+    at MessageStream._write (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\message_stream.js:28:9)
+    at writeOrBuffer (internal/streams/writable.js:358:12)
+    at MessageStream.Writable.write (internal/streams/writable.js:303:10)
+    at Socket.ondata (internal/streams/readable.js:719:22)
     at Socket.emit (events.js:315:20)
-    at Socket.emitUntyped (E:\instr-app\instr-app-back\node_modules\socket.io\dist\typed-events.js:69:22)
-    at E:\instr-app\instr-app-back\node_modules\socket.io\dist\socket.js:428:39
-    at processTicksAndRejections (internal/process/task_queues.js:75:11)
-[2022-05-06T18:49:49.745] [ERROR] error - ReferenceError: dataDelete is not defined
-    at DBMongoDao.deleteSchedule (file:///E:/instr-app/instr-app-back/model/DAOs/DBMongoDao.js:156:25)
-    at ApiSchedule.deleteSchedule (file:///E:/instr-app/instr-app-back/api/schedules.js:186:40)
-    at ApiSchedule.handleSocket (file:///E:/instr-app/instr-app-back/api/schedules.js:76:41)
-    at Socket.<anonymous> (file:///E:/instr-app/instr-app-back/sockets.js:36:82)
+    at addChunk (internal/streams/readable.js:309:12)
+    at readableAddChunk (internal/streams/readable.js:284:9) {
+  ok: 0,
+  code: 20,
+  codeName: 'IllegalOperation'
+}
+[2022-05-15T15:31:18.304] [ERROR] error - TypeError: Cannot read property '0' of undefined
+    at DBMongoDao.deleteDailyWork (file:///E:/instr-app/instr-app-back/model/DAOs/DBMongoDao.js:457:55)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:178:31)
+    at async ApiDailyWork.handleSocket (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:49:30)
+[2022-05-15T15:31:26.082] [ERROR] error - MongoServerError: Transaction numbers are only allowed on a replica set member or mongos
+    at MessageStream.messageHandler (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connection.js:467:30)
+    at MessageStream.emit (events.js:315:20)
+    at processIncomingData (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\message_stream.js:108:16)
+    at MessageStream._write (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\message_stream.js:28:9)
+    at writeOrBuffer (internal/streams/writable.js:358:12)
+    at MessageStream.Writable.write (internal/streams/writable.js:303:10)
+    at Socket.ondata (internal/streams/readable.js:719:22)
     at Socket.emit (events.js:315:20)
-    at Socket.emitUntyped (E:\instr-app\instr-app-back\node_modules\socket.io\dist\typed-events.js:69:22)
-    at E:\instr-app\instr-app-back\node_modules\socket.io\dist\socket.js:428:39
-    at processTicksAndRejections (internal/process/task_queues.js:75:11)
-[2022-05-06T18:50:16.815] [ERROR] error - ReferenceError: date is not defined
-    at DBMongoDao.deleteSchedule (file:///E:/instr-app/instr-app-back/model/DAOs/DBMongoDao.js:158:73)
-    at ApiSchedule.deleteSchedule (file:///E:/instr-app/instr-app-back/api/schedules.js:186:40)
-    at ApiSchedule.handleSocket (file:///E:/instr-app/instr-app-back/api/schedules.js:76:41)
-    at Socket.<anonymous> (file:///E:/instr-app/instr-app-back/sockets.js:36:82)
-    at Socket.emit (events.js:315:20)
-    at Socket.emitUntyped (E:\instr-app\instr-app-back\node_modules\socket.io\dist\typed-events.js:69:22)
-    at E:\instr-app\instr-app-back\node_modules\socket.io\dist\socket.js:428:39
-    at processTicksAndRejections (internal/process/task_queues.js:75:11)
-[2022-05-07T10:56:56.175] [ERROR] error - TypeError: Cannot read property 'columns' of undefined
-    at getDailyWorkTable (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:22:38)
-    at processTicksAndRejections (internal/process/task_queues.js:93:5)
-    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:77:29)
-    at async ApiDailyWork.handleSocket (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:37:30)
-[2022-05-07T11:47:20.157] [ERROR] error - TypeError: Cannot read property 'columns' of undefined
-    at getDailyWorkTable (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:22:38)
-    at processTicksAndRejections (internal/process/task_queues.js:93:5)
-    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:78:29)
-    at async ApiDailyWork.handleSocket (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:37:30)
-[2022-05-07T16:28:12.615] [ERROR] error - TypeError: Cannot read property 'columns' of undefined
-    at getDailyWorkTable (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:22:38)
-    at processTicksAndRejections (internal/process/task_queues.js:93:5)
-    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:78:29)
-    at async ApiDailyWork.handleSocket (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:37:30)
-[2022-05-07T16:31:45.563] [ERROR] error - TypeError: Cannot read property 'columns' of undefined
-    at getDailyWorkTable (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:22:38)
-    at runMicrotasks (<anonymous>)
-    at processTicksAndRejections (internal/process/task_queues.js:93:5)
-    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:78:29)
-    at async ApiDailyWork.handleSocket (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:37:30)
-[2022-05-07T16:36:32.939] [ERROR] error - TypeError: Cannot read property 'columns' of undefined
-    at getDailyWorkTable (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:22:38)
-    at runMicrotasks (<anonymous>)
-    at processTicksAndRejections (internal/process/task_queues.js:93:5)
-    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:78:29)
-    at async ApiDailyWork.handleSocket (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:37:30)
-[2022-05-07T16:42:56.864] [ERROR] error - TypeError: Cannot read property 'columns' of undefined
-    at getDailyWorkTable (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:22:38)
-    at processTicksAndRejections (internal/process/task_queues.js:93:5)
-    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:78:29)
-    at async ApiDailyWork.handleSocket (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:37:30)
-[2022-05-08T16:57:20.224] [ERROR] error - TypeError: Cannot read property 'columns' of undefined
-    at getDailyWorkTable (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:22:38)
-    at processTicksAndRejections (internal/process/task_queues.js:93:5)
-    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:78:29)
-    at async ApiDailyWork.handleSocket (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:37:30)
-[2022-05-08T18:34:45.416] [ERROR] error - CastError: Cast to ObjectId failed for value "" (type string) at path "_id" for model "dailyworks"
-    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4540:21)
-    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
-    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
-  messageFormat: undefined,
-  stringValue: '""',
-  kind: 'ObjectId',
-  value: '',
-  path: '_id',
-  reason: TypeError: Argument passed in must be a Buffer or string of 12 bytes or a string of 24 hex characters
-      at new ObjectId (E:\instr-app\instr-app-back\node_modules\bson\lib\objectid.js:61:23)
-      at castObjectId (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast\objectid.js:25:12)
-      at ObjectId.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\objectid.js:246:12)
-      at ObjectId.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
-      at ObjectId.SchemaType._castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1553:15)
-      at ObjectId.SchemaType.castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1543:15)
-      at ObjectId.SchemaType.castForQueryWrapper (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1520:20)
-      at cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast.js:338:32)
-      at cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast.js:75:18)
-      at model.Query.Query.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4963:12),
-  valueType: 'string'
+    at addChunk (internal/streams/readable.js:309:12)
+    at readableAddChunk (internal/streams/readable.js:284:9) {
+  ok: 0,
+  code: 20,
+  codeName: 'IllegalOperation'
 }
-[2022-05-08T18:39:47.832] [ERROR] error - TypeError: Cannot read property 'emit' of undefined
-    at ApiDailyWork.handleSocket (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:38:28)
+[2022-05-15T15:31:26.083] [ERROR] error - TypeError: Cannot read property '0' of undefined
+    at DBMongoDao.deleteDailyWork (file:///E:/instr-app/instr-app-back/model/DAOs/DBMongoDao.js:457:55)
     at processTicksAndRejections (internal/process/task_queues.js:93:5)
-[2022-05-08T18:39:53.692] [ERROR] error - TypeError: Cannot read property 'emit' of undefined
-    at ApiDailyWork.handleSocket (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:38:28)
-    at processTicksAndRejections (internal/process/task_queues.js:93:5)
-[2022-05-08T18:41:25.489] [ERROR] error - TypeError: Cannot read property 'to' of undefined
-    at ApiDailyWork.handleSocket (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:38:28)
-    at processTicksAndRejections (internal/process/task_queues.js:93:5)
-[2022-05-08T18:41:28.986] [ERROR] error - TypeError: Cannot read property 'to' of undefined
-    at ApiDailyWork.handleSocket (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:38:28)
-    at processTicksAndRejections (internal/process/task_queues.js:93:5)
-[2022-05-08T18:42:12.580] [ERROR] error - TypeError: Cannot read property 'to' of undefined
-    at ApiDailyWork.handleSocket (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:38:28)
-    at processTicksAndRejections (internal/process/task_queues.js:93:5)
-[2022-05-08T19:05:57.402] [ERROR] error - CastError: Cast to ObjectId failed for value "" (type string) at path "_id" for model "dailyworks"
-    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4540:21)
-    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
-    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
-  messageFormat: undefined,
-  stringValue: '""',
-  kind: 'ObjectId',
-  value: '',
-  path: '_id',
-  reason: TypeError: Argument passed in must be a Buffer or string of 12 bytes or a string of 24 hex characters
-      at new ObjectId (E:\instr-app\instr-app-back\node_modules\bson\lib\objectid.js:61:23)
-      at castObjectId (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast\objectid.js:25:12)
-      at ObjectId.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\objectid.js:246:12)
-      at ObjectId.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
-      at ObjectId.SchemaType._castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1553:15)
-      at ObjectId.SchemaType.castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1543:15)
-      at ObjectId.SchemaType.castForQueryWrapper (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1520:20)
-      at cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast.js:338:32)
-      at cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast.js:75:18)
-      at model.Query.Query.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4963:12),
-  valueType: 'string'
-}
-[2022-05-08T19:06:25.061] [ERROR] error - CastError: Cast to ObjectId failed for value "" (type string) at path "_id" for model "dailyworks"
-    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4540:21)
-    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
-    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
-  messageFormat: undefined,
-  stringValue: '""',
-  kind: 'ObjectId',
-  value: '',
-  path: '_id',
-  reason: TypeError: Argument passed in must be a Buffer or string of 12 bytes or a string of 24 hex characters
-      at new ObjectId (E:\instr-app\instr-app-back\node_modules\bson\lib\objectid.js:61:23)
-      at castObjectId (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast\objectid.js:25:12)
-      at ObjectId.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\objectid.js:246:12)
-      at ObjectId.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
-      at ObjectId.SchemaType._castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1553:15)
-      at ObjectId.SchemaType.castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1543:15)
-      at ObjectId.SchemaType.castForQueryWrapper (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1520:20)
-      at cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast.js:338:32)
-      at cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast.js:75:18)
-      at model.Query.Query.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4963:12),
-  valueType: 'string'
-}
-[2022-05-10T21:57:50.865] [ERROR] error - CastError: Cast to ObjectId failed for value "" (type string) at path "_id" for model "routinesschedules"
-    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4540:21)
-    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
-    at runMicrotasks (<anonymous>)
-    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
-  messageFormat: undefined,
-  stringValue: '""',
-  kind: 'ObjectId',
-  value: '',
-  path: '_id',
-  reason: TypeError: Argument passed in must be a Buffer or string of 12 bytes or a string of 24 hex characters
-      at new ObjectId (E:\instr-app\instr-app-back\node_modules\bson\lib\objectid.js:61:23)
-      at castObjectId (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast\objectid.js:25:12)
-      at ObjectId.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\objectid.js:246:12)
-      at ObjectId.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
-      at ObjectId.SchemaType._castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1553:15)
-      at ObjectId.SchemaType.castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1543:15)
-      at ObjectId.SchemaType.castForQueryWrapper (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1520:20)
-      at cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast.js:338:32)
-      at model.Query.Query.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4963:12)
-      at model.Query.Query._castConditions (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:2055:10),
-  valueType: 'string'
-}
-[2022-05-11T21:48:25.228] [ERROR] error - TypeError: Cannot read property 'columns' of undefined
-    at getDailyWorkTable (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:22:38)
-    at processTicksAndRejections (internal/process/task_queues.js:93:5)
-    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:78:29)
-    at async ApiDailyWork.handleSocket (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:37:30)
-[2022-05-12T21:11:25.034] [ERROR] error - TypeError: Cannot read property 'columns' of undefined
-    at getDailyWorkTable (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:22:38)
-    at processTicksAndRejections (internal/process/task_queues.js:93:5)
-    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:78:29)
-    at async ApiDailyWork.handleSocket (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:37:30)
-[2022-05-12T21:13:45.943] [ERROR] error - TypeError: Cannot read property 'columns' of undefined
-    at getDailyWorkTable (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:22:38)
-    at processTicksAndRejections (internal/process/task_queues.js:93:5)
-    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:78:29)
-    at async ApiDailyWork.handleSocket (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:37:30)
-[2022-05-12T21:56:06.423] [ERROR] error - TypeError: Cannot read property 'columns' of undefined
-    at getDailyWorkTable (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:22:38)
-    at processTicksAndRejections (internal/process/task_queues.js:93:5)
-    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:78:29)
-    at async ApiDailyWork.handleSocket (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:37:30)
-[2022-05-12T21:57:44.865] [ERROR] error - TypeError: Cannot read property 'columns' of undefined
-    at getDailyWorkTable (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:22:38)
-    at processTicksAndRejections (internal/process/task_queues.js:93:5)
-    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:78:29)
-    at async ApiDailyWork.handleSocket (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:37:30)
+    at async ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:178:31)
+    at async ApiDailyWork.handleSocket (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:49:30)

@@ -31,9 +31,12 @@ export class DBMongoDao {
         (async () => {
             loggerInfo.info("Contectando a la Base de datos...");
             this.connection = await mongoose.connect(MONGO_URL);
+            this.conn = mongoose.connection;
+
             loggerInfo.info("Base de datos conectada", this.connection.connection.host);
         })();
     }
+
 
     /* TURNOS   */
 
@@ -369,6 +372,15 @@ export class DBMongoDao {
         }
     }
 
+    getDailyWorkById = async (id) => {
+        try {
+            const dailyWorkResp = await dailyWorkModel.find({ _id: id }, { __v: 0, createdAt: 0, updatedAt: 0 });
+            return dailyWorkResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
     getDailyWorkRoutine = async (routineScheduleId) => {
         try {
             const dailyWorkResp = await dailyWorkModel.find({ routineScheduleId: routineScheduleId }, { __v: 0, createdAt: 0, updatedAt: 0 }).sort({ createdAt: 1 });
@@ -433,14 +445,29 @@ export class DBMongoDao {
             loggerError.error(error)
         }
     }
-
-    deleteDailyWork = async (id) => {
+    // lo hago como una transaccion
+    deleteDailyWork = async (dailyWork) => {
+        const session = await this.conn.startSession();
         try {
-            const dailyWorkResp = await dailyWorkModel.deleteMany({ _id: id });
+            session.startTransaction();
+            const { id, routineScheduleId, action } = dailyWork;
+            if (routineScheduleId !== "" && action === 2) {
+                // si es una rutina y tiene realCheckedDay, tengo que actualizar el routineSchedule para que me permita volver a completarla.
+                const routineSchedule = await this.getRoutineScheduleById(routineScheduleId, session);
+                const realCheckedDay = routineSchedule[0].realCheckedDay;
+                if (realCheckedDay !== null) {
+                    await this.updateRoutineScheduleIfDeleteDayWork(routineScheduleId, session);
+                }
+            }
+            const dailyWorkResp = await dailyWorkModel.deleteMany({ _id: id }, { session });
+            await session.commitTransaction();
             return dailyWorkResp;
         } catch (error) {
-            loggerError.error(error)
+            console.log(error)
+            loggerError.error(error);
+            await session.abortTransaction();
         }
+        session.endSession();
     }
 
     /*          */
@@ -473,7 +500,15 @@ export class DBMongoDao {
         } catch (error) {
             loggerError.error(error)
         }
+    }
 
+    getRoutineScheduleById = async (id, session = null) => {
+        try {
+            const routineResp = await routineScheduleModel.find({ _id: id }, { __v: 0, createdAt: 0, updatedAt: 0 }, { session });
+            return routineResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
     }
 
 
@@ -581,6 +616,20 @@ export class DBMongoDao {
             return true;
         } catch (error) {
             console.log(error)
+            loggerError.error(error)
+        }
+    }
+
+    updateRoutineScheduleIfDeleteDayWork = async (id, session = null) => {
+        try {
+            await routineScheduleModel.updateOne({ "_id": id }, {
+                $set: {
+                    "complete": false,
+                    "realCheckedDay": null
+                }
+            }, { session });
+            return true;
+        } catch (error) {
             loggerError.error(error)
         }
     }

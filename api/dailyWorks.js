@@ -157,12 +157,13 @@ export class ApiDailyWork {
                 //PROBAR CAMBIOOOOOO 28/3/2022
                 const dailyWorkBeginDate = dailyWorkToUpdate.beginDate;
                 const resultado = dateLocal === dailyWorkBeginDate ? await dao.updateDailyWork(dateLocal, dailyWorkToUpdate) : await dao.updateDailyWork(dailyWorkBeginDate, dailyWorkToUpdate);
-                if (resultado) {
-                    const updateResp = this.getDailyWorkRoutine(dayWork.routineScheduleId)
-                    return updateResp;
-                } else {
-                    return false;
-                }
+                // if (resultado) {
+                //     const updateResp = this.getDailyWorkRoutine(dayWork.routineScheduleId)
+                //     return updateResp;
+                // } else {
+                //     return false;
+                // }
+                return resultado;
             }
         } catch (err) {
             console.log(err)
@@ -171,11 +172,13 @@ export class ApiDailyWork {
         }
     }
 
-    deleteDailyWork = async (id) => {
+    // lo ejecuto como transaccion, hago todo el Dao de Mongo
+    deleteDailyWork = async (dailyWork) => {
         try {
-            const dayWorks = await dao.deleteDailyWork(id);
-            return dayWorks;
+            const resultado = await dao.deleteDailyWork(dailyWork);
+            return resultado;
         } catch (err) {
+            console.log(err)
             loggerError.error(err);
         } finally {
             loggerInfo.info('deleteDailyWork');
