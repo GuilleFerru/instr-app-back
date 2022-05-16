@@ -15,6 +15,7 @@ export class RouterRoutine {
         router.get('/getAllRoutines/:date', userExtractor, this.controllerRoutine.getAllRoutine);
         router.put('/update', userExtractor, this.controllerRoutine.updateRoutineScheduleByCompleteTask);
         router.put('/updateOt', userExtractor, this.controllerRoutine.updateRoutineScheduleOT);
+        router.get('/qtyOverdueRoutines', this.controllerRoutine.getQtyOverdueRoutines);
         return router;
     }
 

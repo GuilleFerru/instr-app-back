@@ -24,8 +24,8 @@ export const dateInLocalDate = (date) => {
 }
 
 export const dateInLocalDateString = (date) => {
-    var options = { weekday: 'long'  , year: 'numeric', month: 'long', day: 'numeric' };
-    const localDateString = new Date(date).toLocaleDateString('es-AR',options);
+    var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    const localDateString = new Date(date).toLocaleDateString('es-AR', options);
     return localDateString;
 }
 
@@ -36,4 +36,12 @@ export const checkWeekDay = (weekCheckDays) => {
         dayName.push(days[day]);
     });
     return dayName.join(' - ');
-    }
+}
+
+export const monthAndYearString = (date) => {
+    const months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+    const month = date.getMonth();
+    const year = date.getFullYear();
+    const monthAndYear = `${months[month]} ${year}`;
+    return monthAndYear;
+}

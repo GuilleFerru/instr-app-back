@@ -67,4 +67,14 @@ export class ControllerRoutine {
             return res.status(500).json(err);
         }
     }
+
+    getQtyOverdueRoutines = async (_req, res) => {
+        try {
+            const qtyOverdueRoutines = await this.apiRoutine.getQtyOverdueRoutines();
+            return res.status(200).json(qtyOverdueRoutines);
+        } catch (err) {
+            console.log(err);
+            return res.status(500).json(err);
+        }
+    }
 }

@@ -1,60 +1,39 @@
-[2022-05-15T15:31:01.229] [ERROR] error - MongoServerError: Transaction numbers are only allowed on a replica set member or mongos
-    at MessageStream.messageHandler (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connection.js:467:30)
-    at MessageStream.emit (events.js:315:20)
-    at processIncomingData (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\message_stream.js:108:16)
-    at MessageStream._write (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\message_stream.js:28:9)
-    at writeOrBuffer (internal/streams/writable.js:358:12)
-    at MessageStream.Writable.write (internal/streams/writable.js:303:10)
-    at Socket.ondata (internal/streams/readable.js:719:22)
-    at Socket.emit (events.js:315:20)
-    at addChunk (internal/streams/readable.js:309:12)
-    at readableAddChunk (internal/streams/readable.js:284:9) {
-  ok: 0,
-  code: 20,
-  codeName: 'IllegalOperation'
-}
-[2022-05-15T15:31:01.229] [ERROR] error - TypeError: Cannot read property '0' of undefined
-    at DBMongoDao.deleteDailyWork (file:///E:/instr-app/instr-app-back/model/DAOs/DBMongoDao.js:457:55)
+[2022-05-15T19:12:17.533] [ERROR] error - TypeError: date.getMonth is not a function
+    at ApiRoutine.getAllRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:158:30)
+    at getAllRoutine (file:///E:/instr-app/instr-app-back/controllers/routines.js:34:51)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:137:13)
+    at file:///E:/instr-app/instr-app-back/utils/userExtractor.js:16:13
+    at E:\instr-app\instr-app-back\node_modules\jsonwebtoken\verify.js:223:12
+    at getSecret (E:\instr-app\instr-app-back\node_modules\jsonwebtoken\verify.js:90:14)
+    at Object.module.exports [as verify] (E:\instr-app\instr-app-back\node_modules\jsonwebtoken\verify.js:94:10)
+    at userExtractor (file:///E:/instr-app/instr-app-back/utils/userExtractor.js:11:13)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+[2022-05-15T22:20:25.821] [ERROR] error - TypeError: dao.getOverdueRoutineSchedules is not a function
+    at ApiRoutine.getOverdueRoutines (file:///E:/instr-app/instr-app-back/api/routines.js:184:49)
+    at ApiRoutine.getAllRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:159:30)
+    at getAllRoutine (file:///E:/instr-app/instr-app-back/controllers/routines.js:34:51)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:137:13)
+    at file:///E:/instr-app/instr-app-back/utils/userExtractor.js:16:13
+    at E:\instr-app\instr-app-back\node_modules\jsonwebtoken\verify.js:223:12
+    at getSecret (E:\instr-app\instr-app-back\node_modules\jsonwebtoken\verify.js:90:14)
+    at Object.module.exports [as verify] (E:\instr-app\instr-app-back\node_modules\jsonwebtoken\verify.js:94:10)
+    at userExtractor (file:///E:/instr-app/instr-app-back/utils/userExtractor.js:11:13)
+[2022-05-15T22:24:34.190] [ERROR] error - TypeError: routineResp.count is not a function
+    at DBMongoDao.getOverdueRoutines (file:///E:/instr-app/instr-app-back/model/DAOs/DBMongoDao.js:643:25)
     at processTicksAndRejections (internal/process/task_queues.js:93:5)
-    at async ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:178:31)
-    at async ApiDailyWork.handleSocket (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:49:30)
-[2022-05-15T15:31:18.301] [ERROR] error - MongoServerError: Transaction numbers are only allowed on a replica set member or mongos
-    at MessageStream.messageHandler (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connection.js:467:30)
-    at MessageStream.emit (events.js:315:20)
-    at processIncomingData (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\message_stream.js:108:16)
-    at MessageStream._write (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\message_stream.js:28:9)
-    at writeOrBuffer (internal/streams/writable.js:358:12)
-    at MessageStream.Writable.write (internal/streams/writable.js:303:10)
-    at Socket.ondata (internal/streams/readable.js:719:22)
-    at Socket.emit (events.js:315:20)
-    at addChunk (internal/streams/readable.js:309:12)
-    at readableAddChunk (internal/streams/readable.js:284:9) {
-  ok: 0,
-  code: 20,
-  codeName: 'IllegalOperation'
-}
-[2022-05-15T15:31:18.304] [ERROR] error - TypeError: Cannot read property '0' of undefined
-    at DBMongoDao.deleteDailyWork (file:///E:/instr-app/instr-app-back/model/DAOs/DBMongoDao.js:457:55)
-    at processTicksAndRejections (internal/process/task_queues.js:93:5)
-    at async ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:178:31)
-    at async ApiDailyWork.handleSocket (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:49:30)
-[2022-05-15T15:31:26.082] [ERROR] error - MongoServerError: Transaction numbers are only allowed on a replica set member or mongos
-    at MessageStream.messageHandler (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connection.js:467:30)
-    at MessageStream.emit (events.js:315:20)
-    at processIncomingData (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\message_stream.js:108:16)
-    at MessageStream._write (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\message_stream.js:28:9)
-    at writeOrBuffer (internal/streams/writable.js:358:12)
-    at MessageStream.Writable.write (internal/streams/writable.js:303:10)
-    at Socket.ondata (internal/streams/readable.js:719:22)
-    at Socket.emit (events.js:315:20)
-    at addChunk (internal/streams/readable.js:309:12)
-    at readableAddChunk (internal/streams/readable.js:284:9) {
-  ok: 0,
-  code: 20,
-  codeName: 'IllegalOperation'
-}
-[2022-05-15T15:31:26.083] [ERROR] error - TypeError: Cannot read property '0' of undefined
-    at DBMongoDao.deleteDailyWork (file:///E:/instr-app/instr-app-back/model/DAOs/DBMongoDao.js:457:55)
-    at processTicksAndRejections (internal/process/task_queues.js:93:5)
-    at async ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:178:31)
-    at async ApiDailyWork.handleSocket (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:49:30)
+    at async ApiRoutine.getOverdueRoutines (file:///E:/instr-app/instr-app-back/api/routines.js:184:37)
+    at async ApiRoutine.getAllRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:159:25)
+    at async getAllRoutine (file:///E:/instr-app/instr-app-back/controllers/routines.js:34:29)
+[2022-05-15T22:27:25.315] [ERROR] error - TypeError: dao.getOverdueRoutines is not a function
+    at ApiRoutine.getOverdueRoutines (file:///E:/instr-app/instr-app-back/api/routines.js:184:47)
+    at ApiRoutine.getAllRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:159:36)
+    at getAllRoutine (file:///E:/instr-app/instr-app-back/controllers/routines.js:34:51)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:137:13)
+    at file:///E:/instr-app/instr-app-back/utils/userExtractor.js:16:13
+    at E:\instr-app\instr-app-back\node_modules\jsonwebtoken\verify.js:223:12
+    at getSecret (E:\instr-app\instr-app-back\node_modules\jsonwebtoken\verify.js:90:14)
+    at Object.module.exports [as verify] (E:\instr-app\instr-app-back\node_modules\jsonwebtoken\verify.js:94:10)
+    at userExtractor (file:///E:/instr-app/instr-app-back/utils/userExtractor.js:11:13)

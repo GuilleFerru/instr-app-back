@@ -2,7 +2,7 @@ import { dao } from '../server.js';
 import { ApiDailyWork } from './dailyWorks.js';
 import { saveRoutineDTO, routineScheduleDTO, routineRespDTO, routineRespForOthersRoutineDTO, routineSavedAsDailyWorkDTO } from '../model/DTOs/routine.js';
 import { OthersRoutineColumnTable } from '../utils/otherRoutinesColumnTable.js';
-import { parseStringToDate, dateInLocalDate, todayInLocalDate } from '../utils/formatDate.js';
+import { parseStringToDate, dateInLocalDate, todayInLocalDate, monthAndYearString } from '../utils/formatDate.js';
 import { loggerError, loggerInfo } from '../utils/logger.js';
 
 
@@ -80,8 +80,8 @@ const checkDueDate = (lastRoutineId, startDay, checkDays, otherCheckDay, frecuen
 
 }
 
-const otherRoutineResp = (otherRoutines, columns) => {
-    const otherRoutineResp = { otherRoutines, columns };
+const otherRoutineResp = (otherRoutines, columns, date) => {
+    const otherRoutineResp = { otherRoutines, columns, date };
     return otherRoutineResp;
 }
 
@@ -159,7 +159,6 @@ export class ApiRoutine {
             const routinesSchedules = await dao.getAllRoutinesSchedules(localDate);
             const allRoutines = await getRoutines(routinesSchedules, 'forRoutines');
             const columns = [];
-
             const savedColumns = await OthersRoutineColumnTable.getColumns();
             if (savedColumns.length === 0) {
                 const savedColumns = await OthersRoutineColumnTable.createColumns();
@@ -168,8 +167,20 @@ export class ApiRoutine {
                 columns.push(savedColumns[0].columns);
             }
             if (allRoutines.length > 0) {
-                return otherRoutineResp(allRoutines, ...columns);
+                const monthAndYear = monthAndYearString(localDate);
+                return otherRoutineResp(allRoutines, ...columns, monthAndYear);
             }
+        } catch (err) {
+            console.log(err)
+            loggerError.error(err);
+        } finally {
+        }
+    }
+
+    getQtyOverdueRoutines = async () => {
+        try {
+            const overdueRoutines = await dao.getQtyOverdueRoutines();
+            return overdueRoutines;
         } catch (err) {
             console.log(err)
             loggerError.error(err);

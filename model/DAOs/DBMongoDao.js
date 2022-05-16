@@ -22,8 +22,8 @@ import { otherRoutineColumnModel } from '../models/OthersRoutinesColumns.js';
 import { dailyWorkRoutineColumnModel } from '../models/DailyWorkRoutinesColumns.js';
 
 
-//const MONGO_URL = config.MONGO_URL_DEV;
-const MONGO_URL = config.MONGO_URL;
+const MONGO_URL = config.MONGO_URL_DEV;
+//const MONGO_URL = config.MONGO_URL;
 
 export class DBMongoDao {
 
@@ -610,7 +610,8 @@ export class DBMongoDao {
             await routineScheduleModel.updateOne({ "_id": id }, {
                 $set: {
                     "complete": true,
-                    "realCheckedDay": checkedDay
+                    "realCheckedDay": checkedDay,
+                    "isExpired": false
                 }
             });
             return true;
@@ -629,6 +630,18 @@ export class DBMongoDao {
                 }
             }, { session });
             return true;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    getQtyOverdueRoutines = async () => {
+        try {
+            const routineResp = await routineScheduleModel.countDocuments({ $and: [{ isExpired: true }, { complete: false }] });
+
+            
+    
+            return routineResp;
         } catch (error) {
             loggerError.error(error)
         }

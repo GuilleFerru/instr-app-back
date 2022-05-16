@@ -44,7 +44,7 @@ export class ApiDailyWork {
                 data && io.to(roomId).emit('get_daily_works', await this.getDailyWork(date));
             } else if (action === 'bulk_update_daily_work') {
                 dailyWorkData.forEach(async (dailyWork) => await this.updateDailyWork(date, dailyWork));
-                io.to(roomId).emit('get_daily_works', await this.getDailyWork(date));
+                socket.to(roomId).emit('get_daily_works', await this.getDailyWork(date));
             } else if (action === 'delete_daily_work') {
                 const data = await this.deleteDailyWork(dailyWorkData);
                 data && io.to(roomId).emit('get_daily_works', await this.getDailyWork(date));
