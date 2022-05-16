@@ -637,7 +637,7 @@ export class DBMongoDao {
 
     getQtyOverdueRoutines = async () => {
         try {
-            const routineResp = await routineScheduleModel.countDocuments({ $and: [{ isExpired: true }, { complete: false }] });
+            const routineResp = await routineScheduleModel.countDocuments({ $and: [{ isExpired: true }, { complete: true }] });
 
             
     
