@@ -456,14 +456,16 @@ export class DBMongoDao {
                 const routineSchedule = await this.getRoutineScheduleById(routineScheduleId, session);
                 const realCheckedDay = routineSchedule[0].realCheckedDay;
                 if (realCheckedDay !== null) {
-                    await this.updateRoutineScheduleIfDeleteDayWork(routineScheduleId, session);
+                    // controlo que este expirada la rutina
+                    const today = new Date();
+                    const isExpired = today > routineSchedule[0].dueDate;
+                    await this.updateRoutineScheduleIfDeleteDayWork(routineScheduleId, session, isExpired);
                 }
             }
             const dailyWorkResp = await dailyWorkModel.deleteMany({ _id: id }, { session });
             await session.commitTransaction();
             return dailyWorkResp;
         } catch (error) {
-            console.log(error)
             loggerError.error(error);
             await session.abortTransaction();
         }
@@ -621,26 +623,25 @@ export class DBMongoDao {
         }
     }
 
-    updateRoutineScheduleIfDeleteDayWork = async (id, session = null) => {
+    updateRoutineScheduleIfDeleteDayWork = async (id, session = null, isExpired) => {
         try {
             await routineScheduleModel.updateOne({ "_id": id }, {
                 $set: {
                     "complete": false,
-                    "realCheckedDay": null
+                    "realCheckedDay": null,
+                    "isExpired": isExpired
                 }
             }, { session });
             return true;
         } catch (error) {
+            console.log(error);
             loggerError.error(error)
         }
     }
 
     getQtyOverdueRoutines = async () => {
         try {
-            const routineResp = await routineScheduleModel.countDocuments({ $and: [{ isExpired: true }, { complete: true }] });
-
-            
-    
+            const routineResp = await routineScheduleModel.countDocuments({ $and: [{ isExpired: true }, { complete: false }] });
             return routineResp;
         } catch (error) {
             loggerError.error(error)

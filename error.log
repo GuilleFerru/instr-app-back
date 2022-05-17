@@ -1,39 +1,11 @@
-[2022-05-15T19:12:17.533] [ERROR] error - TypeError: date.getMonth is not a function
-    at ApiRoutine.getAllRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:158:30)
-    at getAllRoutine (file:///E:/instr-app/instr-app-back/controllers/routines.js:34:51)
-    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
-    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:137:13)
-    at file:///E:/instr-app/instr-app-back/utils/userExtractor.js:16:13
-    at E:\instr-app\instr-app-back\node_modules\jsonwebtoken\verify.js:223:12
-    at getSecret (E:\instr-app\instr-app-back\node_modules\jsonwebtoken\verify.js:90:14)
-    at Object.module.exports [as verify] (E:\instr-app\instr-app-back\node_modules\jsonwebtoken\verify.js:94:10)
-    at userExtractor (file:///E:/instr-app/instr-app-back/utils/userExtractor.js:11:13)
-    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
-[2022-05-15T22:20:25.821] [ERROR] error - TypeError: dao.getOverdueRoutineSchedules is not a function
-    at ApiRoutine.getOverdueRoutines (file:///E:/instr-app/instr-app-back/api/routines.js:184:49)
-    at ApiRoutine.getAllRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:159:30)
-    at getAllRoutine (file:///E:/instr-app/instr-app-back/controllers/routines.js:34:51)
-    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
-    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:137:13)
-    at file:///E:/instr-app/instr-app-back/utils/userExtractor.js:16:13
-    at E:\instr-app\instr-app-back\node_modules\jsonwebtoken\verify.js:223:12
-    at getSecret (E:\instr-app\instr-app-back\node_modules\jsonwebtoken\verify.js:90:14)
-    at Object.module.exports [as verify] (E:\instr-app\instr-app-back\node_modules\jsonwebtoken\verify.js:94:10)
-    at userExtractor (file:///E:/instr-app/instr-app-back/utils/userExtractor.js:11:13)
-[2022-05-15T22:24:34.190] [ERROR] error - TypeError: routineResp.count is not a function
-    at DBMongoDao.getOverdueRoutines (file:///E:/instr-app/instr-app-back/model/DAOs/DBMongoDao.js:643:25)
-    at processTicksAndRejections (internal/process/task_queues.js:93:5)
-    at async ApiRoutine.getOverdueRoutines (file:///E:/instr-app/instr-app-back/api/routines.js:184:37)
-    at async ApiRoutine.getAllRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:159:25)
-    at async getAllRoutine (file:///E:/instr-app/instr-app-back/controllers/routines.js:34:29)
-[2022-05-15T22:27:25.315] [ERROR] error - TypeError: dao.getOverdueRoutines is not a function
-    at ApiRoutine.getOverdueRoutines (file:///E:/instr-app/instr-app-back/api/routines.js:184:47)
-    at ApiRoutine.getAllRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:159:36)
-    at getAllRoutine (file:///E:/instr-app/instr-app-back/controllers/routines.js:34:51)
-    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
-    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:137:13)
-    at file:///E:/instr-app/instr-app-back/utils/userExtractor.js:16:13
-    at E:\instr-app\instr-app-back\node_modules\jsonwebtoken\verify.js:223:12
-    at getSecret (E:\instr-app\instr-app-back\node_modules\jsonwebtoken\verify.js:90:14)
-    at Object.module.exports [as verify] (E:\instr-app\instr-app-back\node_modules\jsonwebtoken\verify.js:94:10)
-    at userExtractor (file:///E:/instr-app/instr-app-back/utils/userExtractor.js:11:13)
+[2022-05-16T21:58:34.623] [ERROR] error - TypeError: session.inTransaction is not a function
+    at Object.resolveOptions (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\utils.js:858:69)
+    at Collection.updateOne (E:\instr-app\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\collection.js:170:142)
+    at NativeCollection.<computed> [as updateOne] (E:\instr-app\instr-app-back\node_modules\mongoose\lib\drivers\node-mongodb-native\collection.js:200:33)
+    at NodeCollection.updateOne (E:\instr-app\instr-app-back\node_modules\mquery\lib\collection\node.js:80:19)
+    at model.Query._updateThunk (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:3976:23)
+    at model.Query.<anonymous> (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4036:23)
+    at model.Query._wrappedThunk [as _updateOne] (E:\instr-app\instr-app-back\node_modules\mongoose\lib\helpers\query\wrapThunk.js:27:8)
+    at E:\instr-app\instr-app-back\node_modules\kareem\index.js:279:20
+    at _next (E:\instr-app\instr-app-back\node_modules\kareem\index.js:103:16)
+    at E:\instr-app\instr-app-back\node_modules\kareem\index.js:508:38
