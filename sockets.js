@@ -1,10 +1,12 @@
 import { ApiSchedule } from './api/schedules.js';
 import { ApiDailyWork } from './api/dailyWorks.js';
+import { ApiRoutine } from './api/routines.js';
 import { formatDate } from './utils/formatDate.js';
 import { loggerInfo } from "./utils/logger.js";
 
 const apiSchedule = new ApiSchedule();
 const apiDailyWork = new ApiDailyWork();
+const apiRoutine = new ApiRoutine();
 
 
 export default (io) => {
@@ -54,6 +56,9 @@ export default (io) => {
         socket.on("bulk_update_daily_work", (date, dailyWorkData, roomId) => apiDailyWork.handleSocket({ date, socket, action: "bulk_update_daily_work", dailyWorkData, roomId: formatDate(roomId), io }));
         socket.on("delete_daily_work", (date, dailyWorkData, roomId) => apiDailyWork.handleSocket({ date, socket, action: "delete_daily_work", dailyWorkData, roomId: formatDate(roomId), io }));
 
+
+        //ROUTINES
+        socket.on("get_qtyOverDueRoutines", () => apiRoutine.handleSocket({ socket, action: "get_qtyOverDueRoutines", io }));
 
         socket.on("disconnect", () => {
             loggerInfo.info(`Socket ${socket.id} disconnected`);

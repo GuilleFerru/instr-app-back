@@ -111,6 +111,20 @@ const getRoutines = async (routineSchedules, filter) => {
 
 export class ApiRoutine {
 
+    handleSocket = async (...data) => {
+        try {
+            const { date, socket, action, routineData, io } = data[0];
+
+            if (action === 'get_qtyOverDueRoutines') {
+                const data = await this.getQtyOverdueRoutines();
+                data && io.emit('get_qtyOverDueRoutines', data);
+            }
+        } catch (error) {
+            console.log(error);
+            loggerError.error(error);
+        }
+    }
+
     createRoutine = async (routine) => {
         try {
             const { plant, attelier, tag, timeSchedule, frecuency, manteinance, action, description, checkDays, otherCheckDay, startDay, filePath, nickname } = routine;

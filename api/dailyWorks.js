@@ -1,5 +1,5 @@
-import { dao } from '../server.js';
-import { formatDate, todayInLocalDate, dateInLocalDate, parseStringToDate, dateInLocalDateString } from '../utils/formatDate.js';
+import { dao, io } from '../server.js';
+import { formatDate, todayInLocalDate, dateInLocalDate, parseStringToDate } from '../utils/formatDate.js';
 import { ApiRoutine } from './routines.js';
 import { ApiDailyWorksColumnTable } from '../utils/dailyWorksColumnTable.js';
 import { DailyWorksRoutineTable } from '../utils/dailyWorksRoutineTable.js';
@@ -46,8 +46,8 @@ export class ApiDailyWork {
                 dailyWorkData.forEach(async (dailyWork) => await this.updateDailyWork(date, dailyWork));
                 socket.to(roomId).emit('get_daily_works', await this.getDailyWork(date));
             } else if (action === 'delete_daily_work') {
-                const data = await this.deleteDailyWork(dailyWorkData);
-                data && io.to(roomId).emit('get_daily_works', await this.getDailyWork(date));
+                await this.deleteDailyWork(dailyWorkData, socket);
+                io.to(roomId).emit('get_daily_works', await this.getDailyWork(date));
             }
         } catch (error) {
             console.log(error);
@@ -173,9 +173,10 @@ export class ApiDailyWork {
     }
 
     // lo ejecuto como transaccion, hago todo el Dao de Mongo
-    deleteDailyWork = async (dailyWork) => {
+    deleteDailyWork = async (dailyWork, socket) => {
         try {
             const resultado = await dao.deleteDailyWork(dailyWork);
+            resultado && await apiRoutine.handleSocket({ socket, action: "get_qtyOverDueRoutines", io });
             return resultado;
         } catch (err) {
             console.log(err)

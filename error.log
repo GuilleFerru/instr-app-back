@@ -9,3 +9,18 @@
     at E:\instr-app\instr-app-back\node_modules\kareem\index.js:279:20
     at _next (E:\instr-app\instr-app-back\node_modules\kareem\index.js:103:16)
     at E:\instr-app\instr-app-back\node_modules\kareem\index.js:508:38
+[2022-05-17T21:36:47.727] [ERROR] error - ReferenceError: get_qtyOverDueRoutines is not defined
+    at ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:179:56)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiDailyWork.handleSocket (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:49:30)
+[2022-05-17T22:42:18.905] [ERROR] error - TypeError: Cannot read property 'emit' of undefined
+    at ApiRoutine.handleSocket (file:///E:/instr-app/instr-app-back/api/routines.js:120:28)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+[2022-05-17T22:42:22.194] [ERROR] error - TypeError: Cannot read property 'emit' of undefined
+    at ApiRoutine.handleSocket (file:///E:/instr-app/instr-app-back/api/routines.js:120:28)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+[2022-05-17T22:42:46.791] [ERROR] error - TypeError: Cannot read property 'emit' of undefined
+    at ApiRoutine.handleSocket (file:///E:/instr-app/instr-app-back/api/routines.js:120:28)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:179:26)
+    at async ApiDailyWork.handleSocket (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:49:30)
