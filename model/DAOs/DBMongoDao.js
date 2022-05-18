@@ -447,32 +447,32 @@ export class DBMongoDao {
     }
     // lo hago como una transaccion
     deleteDailyWork = async (dailyWork) => {
-        // const session = await this.conn.startSession();
+        const session = await this.conn.startSession();
         try {
             let executeSocketInApi = false;
-            //session.startTransaction();
+            session.startTransaction();
             const { id, routineScheduleId, action } = dailyWork;
             if (routineScheduleId !== "" && action === 2) {
                 // si es una rutina y tiene realCheckedDay, tengo que actualizar el routineSchedule para que me permita volver a completarla.
-                const routineSchedule = await this.getRoutineScheduleById(routineScheduleId, /*session*/);
+                const routineSchedule = await this.getRoutineScheduleById(routineScheduleId, session);
                 const realCheckedDay = routineSchedule[0].realCheckedDay;
                 if (realCheckedDay !== null) {
                     // controlo que este expirada la rutina
                     const today = new Date();
                     const isExpired = today > routineSchedule[0].dueDate;
-                    await this.updateRoutineScheduleIfDeleteDayWork(routineScheduleId,'', /*session,*/ isExpired);
+                    await this.updateRoutineScheduleIfDeleteDayWork(routineScheduleId, session, isExpired);
                     executeSocketInApi = isExpired ? true : false;
                 }
             }
-            await dailyWorkModel.deleteMany({ _id: id }, /*{ session }*/);
-            // await session.commitTransaction();
+            await dailyWorkModel.deleteMany({ _id: id }, { session });
+            await session.commitTransaction();
             return executeSocketInApi;
         } catch (error) {
             loggerError.error(error);
-            //await session.abortTransaction();
+            await session.abortTransaction();
             return false;
         } finally {
-            // session.endSession();
+            session.endSession();
         }
     }
 
@@ -510,7 +510,7 @@ export class DBMongoDao {
 
     getRoutineScheduleById = async (id, session = null) => {
         try {
-            const routineResp = await routineScheduleModel.find({ _id: id }, { __v: 0, createdAt: 0, updatedAt: 0 },/* { session }*/);
+            const routineResp = await routineScheduleModel.find({ _id: id }, { __v: 0, createdAt: 0, updatedAt: 0 }, { session });
             return routineResp;
         } catch (error) {
             loggerError.error(error)
@@ -635,7 +635,7 @@ export class DBMongoDao {
                     "realCheckedDay": null,
                     "isExpired": isExpired
                 }
-            });
+            },{session});
             return true;
         } catch (error) {
             console.log(error);
