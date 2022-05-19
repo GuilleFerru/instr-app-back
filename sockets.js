@@ -60,6 +60,9 @@ export default (io) => {
         //ROUTINES
         socket.on("get_qtyOverDueRoutines", () => apiRoutine.handleSocket({ socket, action: "get_qtyOverDueRoutines", io }));
 
+        //PLANTSHUTDOWNS
+        socket.on("get_plant_shutdowns", () => apiRoutine.handleSocket({ socket, action: "get_plant_shutdowns" }));
+
         socket.on("disconnect", () => {
             loggerInfo.info(`Socket ${socket.id} disconnected`);
         });

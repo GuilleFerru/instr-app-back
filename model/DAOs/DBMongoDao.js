@@ -20,10 +20,11 @@ import { plantsModel } from '../models/Plants.js';
 import { dailyWorkColumnsModel } from '../models/DailyWorksColumns.js';
 import { otherRoutineColumnModel } from '../models/OthersRoutinesColumns.js';
 import { dailyWorkRoutineColumnModel } from '../models/DailyWorkRoutinesColumns.js';
+import { plantShutdownsColumnsSchemaModel } from '../models/PlantShutdownsColumns.js';
+import { plantShutdownModel } from '../models/PlantShutdowns.js';
 
-
-//const MONGO_URL = config.MONGO_URL_DEV;
-const MONGO_URL = config.MONGO_URL;
+const MONGO_URL = config.MONGO_URL_DEV;
+//const MONGO_URL = config.MONGO_URL;
 
 export class DBMongoDao {
 
@@ -447,32 +448,32 @@ export class DBMongoDao {
     }
     // lo hago como una transaccion
     deleteDailyWork = async (dailyWork) => {
-        const session = await this.conn.startSession();
+        //const session = await this.conn.startSession();
         try {
             let executeSocketInApi = false;
-            session.startTransaction();
+            //session.startTransaction();
             const { id, routineScheduleId, action } = dailyWork;
             if (routineScheduleId !== "" && action === 2) {
                 // si es una rutina y tiene realCheckedDay, tengo que actualizar el routineSchedule para que me permita volver a completarla.
-                const routineSchedule = await this.getRoutineScheduleById(routineScheduleId, session);
+                const routineSchedule = await this.getRoutineScheduleById(routineScheduleId, /*session*/);
                 const realCheckedDay = routineSchedule[0].realCheckedDay;
                 if (realCheckedDay !== null) {
                     // controlo que este expirada la rutina
                     const today = new Date();
                     const isExpired = today > routineSchedule[0].dueDate;
-                    await this.updateRoutineScheduleIfDeleteDayWork(routineScheduleId, session, isExpired);
+                    await this.updateRoutineScheduleIfDeleteDayWork(routineScheduleId, isExpired, /*session*/);
                     executeSocketInApi = isExpired ? true : false;
                 }
             }
-            await dailyWorkModel.deleteMany({ _id: id }, { session });
-            await session.commitTransaction();
+            await dailyWorkModel.deleteMany({ _id: id }, /*{ session }*/);
+            //await session.commitTransaction();
             return executeSocketInApi;
         } catch (error) {
             loggerError.error(error);
-            await session.abortTransaction();
+            //await session.abortTransaction();
             return false;
         } finally {
-            session.endSession();
+            //session.endSession();
         }
     }
 
@@ -510,7 +511,7 @@ export class DBMongoDao {
 
     getRoutineScheduleById = async (id, session = null) => {
         try {
-            const routineResp = await routineScheduleModel.find({ _id: id }, { __v: 0, createdAt: 0, updatedAt: 0 }, { session });
+            const routineResp = await routineScheduleModel.find({ _id: id }, { __v: 0, createdAt: 0, updatedAt: 0 },/* { session }*/);
             return routineResp;
         } catch (error) {
             loggerError.error(error)
@@ -627,7 +628,7 @@ export class DBMongoDao {
         }
     }
 
-    updateRoutineScheduleIfDeleteDayWork = async (id, session = null, isExpired) => {
+    updateRoutineScheduleIfDeleteDayWork = async (id, isExpired, session = null) => {
         try {
             await routineScheduleModel.updateOne({ "_id": id }, {
                 $set: {
@@ -635,7 +636,9 @@ export class DBMongoDao {
                     "realCheckedDay": null,
                     "isExpired": isExpired
                 }
-            },{session});
+            },
+                /*{session}*/
+            );
             return true;
         } catch (error) {
             console.log(error);
@@ -652,6 +655,27 @@ export class DBMongoDao {
             loggerError.error(error)
         }
     }
+
+    /* PLANT_SHUTDOWNS */
+
+    getPlantShutdowns = async () => {
+        try {
+            const plantShutdownsResp = await plantShutdownModel.find({}, { __v: 0, createdAt: 0, updatedAt: 0 });
+            return plantShutdownsResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    createPlantShutdown = async (plantShutdown) => {
+        try {
+            const plantShutdownResp = await plantShutdownModel.insertMany(plantShutdown);
+            return plantShutdownResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
 
 
     /*   COLUMNAS DE TABLAS */
@@ -735,13 +759,38 @@ export class DBMongoDao {
         } catch (error) {
             loggerError.error(error)
         }
+    }
 
+    createPlantShutdownsColumns = async (columns) => {
+        try {
+            const plantShutdownsColumns = await plantShutdownsColumnsSchemaModel.insertMany(columns);
+            return plantShutdownsColumns;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    getPlantShutdownsColumns = async () => {
+        try {
+            const plantShutdownsColumns = await plantShutdownsColumnsSchemaModel.find({}, { _id: 0, __v: 0, createdAt: 0, updatedAt: 0 });
+            return plantShutdownsColumns;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    deletePlantShutdownsColumns = async (id) => {
+        try {
+            const plantShutdownsColumns = await plantShutdownsColumnsSchemaModel.deleteMany({ _id: id });
+            return plantShutdownsColumns;
+        } catch (error) {
+            loggerError.error(error)
+        }
     }
 
 
-
-
     /*          */
+
 
 
 

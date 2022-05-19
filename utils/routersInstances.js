@@ -26,6 +26,8 @@ import { RouterUser } from "../router/users.js";
 const routerUser = new RouterUser();
 import { RouterLogin } from "../router/login.js";
 const routerLogin = new RouterLogin();
+import { RouterPlantShutdown } from "../router/plantShutdowns.js";
+const routerPlantShutdown = new RouterPlantShutdown();
 
 export {
     routerShift,
@@ -41,5 +43,6 @@ export {
     routerManteinance,
     routerManteinanceAction,
     routerUser,
-    routerLogin
+    routerLogin,
+    routerPlantShutdown
 }

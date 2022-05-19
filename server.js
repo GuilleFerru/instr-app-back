@@ -87,6 +87,7 @@ app.use("/api/manteinance", router.routerManteinance.start());
 app.use("/api/manteinanceAction", router.routerManteinanceAction.start());
 app.use("/api/user", router.routerUser.start());
 app.use("/api", router.routerLogin.start());
+app.use("/api/plantShutdown", router.routerPlantShutdown.start());
 
 
 app.get("/", (_req, res) => {
