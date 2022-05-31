@@ -14,6 +14,8 @@ export const saveDailyWorkDTO = (data, dateLocal) => ({
     beginDate: data.beginDate ? formatDate(data.beginDate) : dateLocal,
     endDate: data.complete === 'C' ? formatDate(new Date()) : '',
     routineScheduleId: data._id ? data._id : '',
+    plantShutdownId: data.complete === 'PP' ? '1' : data.plantShutdownId ? data.plantShutdownId : null,
+    //plantShutdownWorkId: data.plantShutdownWorkId ? data.plantShutdownWorkId : null,
     sector: 'Instrumentos-Sistemas'
 });
 
@@ -31,6 +33,7 @@ export const changeIDForViewDTO = (data) => ({
     beginDate: data.beginDate,
     endDate: data.endDate,
     routineScheduleId: data.routineScheduleId,
+    plantShutdownId: data.plantShutdownId,
     sector: data.sector
 });
 
@@ -56,6 +59,7 @@ export const completedDailyWorkDTO = (dayWorks, today) => ({
     //endDate: dayWorks.endDate ? dayWorks.endDate : dayWorks.complete === 'C' ? today : '',
     endDate: dayWorks.endDate && dayWorks.complete === 'C' ? dayWorks.endDate : dayWorks.complete === 'C' ? today : '',
     routineScheduleId: dayWorks.routineScheduleId === undefined ? '' : dayWorks.routineScheduleId,
+    plantShutdownId: dayWorks.complete === 'PP' ? '1' : null,
     sector: 'Instrumentos-Sistemas'
 })
 

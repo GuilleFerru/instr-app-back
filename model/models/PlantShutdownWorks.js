@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const DailyWorksSchema = new mongoose.Schema({
+const PlantShutdownWorksSchema = new mongoose.Schema({
     plant: {
         type: Number,
         require: true,
@@ -28,25 +28,33 @@ const DailyWorksSchema = new mongoose.Schema({
         type: Number,
         require: true,
     },
+    workToDo: {
+        type: String,
+    },
     description: {
         type: String,
         default: '',
     },
     complete: {
         type: String,
-        default: 'P',
     },
     beginDate: {
-        type: String,
+        type: Date,
+
     },
     endDate: {
-        type: String,
+        type: Date,
+        default: null,
     },
     routineScheduleId: {
         type: String,
     },
     plantShutdownId: {
         type: String,
+    },
+    dailyWorkId: {
+        type: Array,
+        default: [],
     },
     sector: {
         type: String,
@@ -57,4 +65,4 @@ const DailyWorksSchema = new mongoose.Schema({
     { timestamps: true }
 );
 
-export const dailyWorkModel = mongoose.model("dailyworks", DailyWorksSchema);
+export const plantShutdownWorkModel = mongoose.model("plantshutdownworks", PlantShutdownWorksSchema);

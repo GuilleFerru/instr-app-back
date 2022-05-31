@@ -1,8 +1,8 @@
 import { dao } from '../server.js';
-import { plantData, attelierData, timeScheduleData, manteinanceData, manteinanceActionData } from './commonLookUpsTables.js';
+import { plantData, attelierData, timeScheduleData, manteinanceActionData } from './commonLookUpsTables.js';
 import { loggerError, loggerInfo } from './logger.js';
 
-const createDailyWorkColumns = (plantsForColumnTable, atteliersForColumnTable, timeScheduleForColumnTable, manteinancesForColumnTable, manteinanceActionsForColumnTable) => {
+const createplantShutdownWorksColumns = (plantsForColumnTable, atteliersForColumnTable, timeScheduleForColumnTable, manteinanceActionsForColumnTable) => {
     const columns = [
         {
             field: 'id',
@@ -10,31 +10,22 @@ const createDailyWorkColumns = (plantsForColumnTable, atteliersForColumnTable, t
             hidden: true,
         },
         {
-            field: 'beginDate',
-            title: 'Fecha de inicio',
-            hidden: true,
-            type: 'string',
-            width: "10%"
-        },
-        {
             field: 'plant',
             title: 'Planta',
             lookup: plantsForColumnTable,
-            "initialEditValue": "0",
-            width: "10%"
+            width: "10%",
         },
         {
             field: 'attelier',
             title: 'Attelier',
             lookup: atteliersForColumnTable,
-            "initialEditValue": "0",
             width: "5%"
         },
         {
             field: 'tag',
             title: 'TAG',
             type: 'string',
-            width: "10%"
+            width: "5%"
         },
         {
             field: 'timeSchedule',
@@ -44,18 +35,9 @@ const createDailyWorkColumns = (plantsForColumnTable, atteliersForColumnTable, t
             width: "5%"
         },
         {
-            field: 'manteinance',
-            title: 'Tipo de mto',
-            lookup: manteinancesForColumnTable,
-            initialEditValue: '1',
-            width: "10%"
-            // defaultGroupSort: 'desc'
-        },
-        {
             field: 'ot',
             title: 'OT',
             type: 'string',
-            align: 'left',
             width: "5%"
         },
         {
@@ -63,14 +45,21 @@ const createDailyWorkColumns = (plantsForColumnTable, atteliersForColumnTable, t
             title: 'Acción',
             lookup: manteinanceActionsForColumnTable,
             initialEditValue: "1",
-            width: "15%"
+            width: "10%"
+        },
+        {
+            field: 'workToDo',
+            title: 'Trabajo a realizar',
+            multiline: true,
+            align: "justify",
+            width: '25%'
         },
         {
             field: 'description',
-            title: 'Descripción',
+            title: 'Trabajo realizado',
             multiline: true,
-            align : "justify",
-            width: '30%'
+            align: "justify",
+            width: '25%'
         },
         {
             field: 'complete',
@@ -80,22 +69,20 @@ const createDailyWorkColumns = (plantsForColumnTable, atteliersForColumnTable, t
                 'P': 'Pendiente',
                 'C': 'Completado',
                 'R': 'Demorado',
-                'PP': 'Paro de planta',
             },
-            initialEditValue: 'C',
             width: "10%"
         }
     ];
     return columns;
 }
 
-export class ApiDailyWorksColumnTable {
+export class PlantShutdownWorksColumnTable {
 
     static createColumns = async () => {
         try {
-            const columns = createDailyWorkColumns(await plantData(), await attelierData(), await timeScheduleData(), await manteinanceData(), await manteinanceActionData());
+            const columns = createplantShutdownWorksColumns(await plantData(), await attelierData(), await timeScheduleData(), await manteinanceActionData());
             const saveColumns = { columns: columns };
-            const resp = await dao.createDailyWorksColumns(saveColumns);
+            const resp = await dao.createPlantShutdownWorksColumns(saveColumns);
             return resp;
         } catch (err) {
             loggerError.error(err);
@@ -106,7 +93,7 @@ export class ApiDailyWorksColumnTable {
 
     static getColumns = async () => {
         try {
-            const resp = await dao.getDailyWorksColumns();
+            const resp = await dao.getPlantShutdownWorksColumns();
             return resp;
         } catch (err) {
             loggerError.error(err);
@@ -114,19 +101,9 @@ export class ApiDailyWorksColumnTable {
         }
     }
 
-    static getColumnsId = async () => {
+    static deleteColumns = async () => {
         try {
-            const resp = await dao.getIdDailyWorkColumns();
-            return resp;
-        } catch (err) {
-            loggerError.error(err);
-        } finally {
-        }
-    }
-
-    static deleteColumns = async (id) => {
-        try {
-            const resp = await dao.deleteDailyWorksColumns(id);
+            const resp = await dao.deletePlantShutdownWorksColumns();
             return resp;
         } catch (err) {
             loggerError.error(err);

@@ -53,6 +53,16 @@ export class ControllerDailyWork {
         }
     }
 
+    getDailyWorkForPlantShutdown = async (_req, res) => {
+        try {
+            const resultado = await this.apiDailyWork.getDailyWorkForPlantShutdown();
+            return res.status(200).json(resultado);
+        } catch (err) {
+            console.log(err);
+            return res.status(500).json(err);
+        }
+    }
+
     updateDailyWork = async (req, res) => {
         try {
             const { date } = req.params;

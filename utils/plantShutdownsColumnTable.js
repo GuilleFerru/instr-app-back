@@ -1,25 +1,27 @@
 import { dao } from '../server.js';
+import { timeScheduleData } from './commonLookUpsTables.js';
 import { loggerError, loggerInfo } from './logger.js';
 
-const createPlantShutdownsColumns = () => {
+const createPlantShutdownsColumns = (timeScheduleForColumnTable) => {
     const columns = [
         {
             field: '_id',
             title: 'Numero',
             hidden: true,
+            // width: '10%',
         },
         {
             field: "name",
             title: "Nombre",
             type: "string",
-            width : "20%"
+            width: "15%"
         },
         {
             field: 'beginDate',
             title: 'Fecha de inicio',
             type: 'date',
             dateSetting: { locale: 'es-AR', format: 'dd-MMM-yyyy' },
-            editable: 'never',
+            defaultSort: 'asc',
             width: "15%"
 
         },
@@ -28,14 +30,20 @@ const createPlantShutdownsColumns = () => {
             title: 'Fecha de finalización',
             type: 'date',
             dateSetting: { locale: 'es-AR', format: 'dd-MMM-yyyy' },
-            editable: 'never',
+            width: "15%"
+        },
+        {
+            field: 'timeSchedule',
+            title: 'Horario de trabajo',
+            lookup: timeScheduleForColumnTable,
+            initialEditValue: '5',
             width: "15%"
         },
         {
             field: 'description',
             title: 'Descripción',
             multiline: true,
-            width: '40%'
+            width: '30%'
         },
         {
             field: 'complete',
@@ -46,7 +54,7 @@ const createPlantShutdownsColumns = () => {
                 'C': 'Completado',
                 'RE': 'Reprogramado',
             },
-            initialEditValue: 'C',
+            initialEditValue: 'P',
             width: "10%"
         }
     ];
@@ -57,7 +65,7 @@ export class PlantShutdownTable {
 
     static createColumns = async () => {
         try {
-            const columns = createPlantShutdownsColumns();
+            const columns = createPlantShutdownsColumns(await timeScheduleData());
             const saveColumns = { columns: columns };
             const resp = await dao.createPlantShutdownsColumns(saveColumns);
             return resp;

@@ -21,10 +21,13 @@ import { dailyWorkColumnsModel } from '../models/DailyWorksColumns.js';
 import { otherRoutineColumnModel } from '../models/OthersRoutinesColumns.js';
 import { dailyWorkRoutineColumnModel } from '../models/DailyWorkRoutinesColumns.js';
 import { plantShutdownsColumnsSchemaModel } from '../models/PlantShutdownsColumns.js';
+import { plantShutdownWorksToDoColumnsSchemaModel } from '../models/PlantShutdownWorkToDoColumns.js';
 import { plantShutdownModel } from '../models/PlantShutdowns.js';
+import { plantShutdownWorkModel } from '../models/PlantShutdownWorks.js';
+import { plantShutdownWorksColumnsSchemaModel } from '../models/PlantShutdownWorksColumns.js';
 
-const MONGO_URL = config.MONGO_URL_DEV;
-//const MONGO_URL = config.MONGO_URL;
+//const MONGO_URL = config.MONGO_URL_DEV;
+const MONGO_URL = config.MONGO_URL;
 
 export class DBMongoDao {
 
@@ -402,15 +405,23 @@ export class DBMongoDao {
             }, { __v: 0, createdAt: 0, updatedAt: 0 }).sort({ createdAt: -1 });
             return dailyWorkResp;
         } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    getDailyWorkForPlantShutdown = async () => {
+        try {
+            const dailyWorkResp = await dailyWorkModel.find({ $and: [{ complete: 'PP' }, { "plantShutdownId": { $eq: 1 } }] }, { __v: 0, createdAt: 0, updatedAt: 0 }).sort({ createdAt: 1 });
+            return dailyWorkResp;
+        } catch (error) {
             console.log(error)
             loggerError.error(error)
         }
-
     }
 
     updateDailyWork = async (date, dailyWork) => {
         try {
-            const updated = await dailyWorkModel.updateOne({ $and: [{ "beginDate": date }, { "_id": dailyWork._id }] }, {
+            await dailyWorkModel.updateOne({ $and: [{ "beginDate": date }, { "_id": dailyWork._id }] }, {
                 $set: {
                     "plant": dailyWork.plant,
                     "attelier": dailyWork.attelier,
@@ -424,6 +435,7 @@ export class DBMongoDao {
                     "beginDate": dailyWork.beginDate,
                     "endDate": dailyWork.endDate,
                     "routineScheduleId": dailyWork.routineScheduleId,
+                    "plantShutdownId": dailyWork.plantShutdownId,
                     "sector": dailyWork.sector,
                 }
             });
@@ -446,6 +458,21 @@ export class DBMongoDao {
             loggerError.error(error)
         }
     }
+
+    updateDailyWorkByShutdownId = async (id, plantShutdownId) => {
+        try {
+            await dailyWorkModel.updateOne({ _id: id }, {
+                $set: {
+                    plantShutdownId: plantShutdownId,
+                }
+            });
+            return true;
+        } catch (error) {
+            console.log(error)
+            loggerError.error(error)
+        }
+    }
+
     // lo hago como una transaccion
     deleteDailyWork = async (dailyWork) => {
         //const session = await this.conn.startSession();
@@ -658,9 +685,27 @@ export class DBMongoDao {
 
     /* PLANT_SHUTDOWNS */
 
-    getPlantShutdowns = async () => {
+    getPlantShutdowns = async (year) => {
         try {
-            const plantShutdownsResp = await plantShutdownModel.find({}, { __v: 0, createdAt: 0, updatedAt: 0 });
+            const plantShutdownsResp = await plantShutdownModel.find({ $expr: { $eq: [{ "$year": "$beginDate" }, year] } }, { __v: 0, createdAt: 0, updatedAt: 0 });
+            return plantShutdownsResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    getPlantShutdownsUnfinished = async () => {
+        try {
+            const plantShutdownsResp = await plantShutdownModel.find({ $or: [{ "endDate": { $eq: null } }, { "complete": { $ne: "C" } }] }, { __v: 0, createdAt: 0, updatedAt: 0 });
+            return plantShutdownsResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    getPlantShutdownById = async (id) => {
+        try {
+            const plantShutdownsResp = await plantShutdownModel.find({ _id: id }, { __v: 0, createdAt: 0, updatedAt: 0 });
             return plantShutdownsResp;
         } catch (error) {
             loggerError.error(error)
@@ -672,9 +717,94 @@ export class DBMongoDao {
             const plantShutdownResp = await plantShutdownModel.insertMany(plantShutdown);
             return plantShutdownResp;
         } catch (error) {
+            console.log(error)
             loggerError.error(error)
         }
     }
+
+    updatePlantShutdown = async (plantShutdown) => {
+        try {
+            await plantShutdownModel.updateOne({ "_id": plantShutdown._id }, {
+                $set: {
+                    "name": plantShutdown.name,
+                    "beginDate": plantShutdown.beginDate,
+                    "endDate": plantShutdown.endDate,
+                    "timeSchedule": plantShutdown.timeSchedule,
+                    "description": plantShutdown.description,
+                    "complete": plantShutdown.complete,
+                }
+            });
+            return true;
+        } catch (error) {
+            console.log(error)
+            loggerError.error(error)
+        }
+    }
+
+    deletePlantShutdown = async (plantShutdown) => {
+        try {
+            await plantShutdownModel.deleteOne({ "_id": plantShutdown._id });
+            return true;
+        } catch (error) {
+            console.log(error)
+            loggerError.error(error)
+        }
+    }
+
+    /* PLANT_SHUTDOWNS_WORKS */
+
+    createPlantShutdownWork = async (plantShutdownWork) => {
+        try {
+            const plantShutdownWorkResp = await plantShutdownWorkModel.insertMany(plantShutdownWork);
+            return plantShutdownWorkResp;
+        } catch (error) {
+            console.log(error)
+            loggerError.error(error)
+        }
+    }
+
+    getPlantShutdownWorksByPlantShutdownId = async (plantShutdownId) => {
+        try {
+            const plantShutdownWorksResp = await plantShutdownWorkModel.find({ "plantShutdownId": plantShutdownId }, { __v: 0, createdAt: 0, updatedAt: 0 });
+            return plantShutdownWorksResp;
+        } catch (error) {
+            console.log(error)
+            loggerError.error(error)
+        }
+    }
+
+    updatePlantShutdownWork = async (plantShutdownWork) => {
+        try {
+            await plantShutdownWorkModel.updateOne({ "_id": plantShutdownWork._id }, {
+                $set: {
+                    "plant": plantShutdownWork.plant,
+                    "attelier": plantShutdownWork.attelier,
+                    "tag": plantShutdownWork.tag,
+                    "ot": plantShutdownWork.ot,
+                    "action": plantShutdownWork.action,
+                    "workToDo": plantShutdownWork.workToDo,
+                    "description": plantShutdownWork.description,
+                    "complete": plantShutdownWork.complete,
+                    "dailyWorkId": plantShutdownWork.dailyWorkId,
+                }
+            });
+            return true;
+        } catch (error) {
+            console.log(error)
+            loggerError.error(error)
+        }
+    }
+
+    deletePlantShutdownWork = async (plantShutdownWork) => {
+        try {
+            await plantShutdownWorkModel.deleteOne({ "_id": plantShutdownWork._id });
+            return true;
+        } catch (error) {
+            console.log(error)
+            loggerError.error(error)
+        }
+    }
+
 
 
 
@@ -787,6 +917,64 @@ export class DBMongoDao {
             loggerError.error(error)
         }
     }
+
+
+    createPlantShutdownWorksToDoColumns = async (columns) => {
+        try {
+            const plantShutdownWorkToDoColumns = await plantShutdownWorksToDoColumnsSchemaModel.insertMany(columns);
+            return plantShutdownWorkToDoColumns;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    getPlantShutdownWorksToDoColumns = async () => {
+        try {
+            const plantShutdownWorkToDoColumns = await plantShutdownWorksToDoColumnsSchemaModel.find({}, { _id: 0, __v: 0, createdAt: 0, updatedAt: 0 });
+            return plantShutdownWorkToDoColumns;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    deletePlantShutdownWorksToDoColumns = async () => {
+        try {
+            const plantShutdownWorkToDoColumns = await plantShutdownWorksToDoColumnsSchemaModel.deleteMany({});
+            return plantShutdownWorkToDoColumns;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    createPlantShutdownWorksColumns = async (columns) => {
+        try {
+            const plantShutdownWorkColumns = await plantShutdownWorksColumnsSchemaModel.insertMany(columns);
+            return plantShutdownWorkColumns;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    getPlantShutdownWorksColumns = async () => {
+        try {
+            const plantShutdownWorkColumns = await plantShutdownWorksColumnsSchemaModel.find({}, { _id: 0, __v: 0, createdAt: 0, updatedAt: 0 });
+            return plantShutdownWorkColumns;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    deletePlantShutdownWorksColumns = async () => {
+        try {
+            const plantShutdownWorkColumns = await plantShutdownWorksColumnsSchemaModel.deleteMany({});
+            return plantShutdownWorkColumns;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+
+
 
 
     /*          */

@@ -11,7 +11,7 @@ export class RouterPlantShutdown {
 
     start() {
         router.post('/create', userExtractor, this.controllerPlantShutdown.createPlantShutdown);
-        router.get('/get', userExtractor, this.controllerPlantShutdown.getPlantShutdowns);;
+        router.get('/get', userExtractor, this.controllerPlantShutdown.getPlantShutdowns);
         return router;
     }
 

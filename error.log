@@ -24,3 +24,1447 @@
     at processTicksAndRejections (internal/process/task_queues.js:93:5)
     at async ApiDailyWork.deleteDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:179:26)
     at async ApiDailyWork.handleSocket (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:49:30)
+[2022-05-20T21:05:06.033] [ERROR] error - ReferenceError: date is not defined
+    at plantShutdownResp (file:///E:/instr-app/instr-app-back/api/plantShutdowns.js:7:58)
+    at ApiPlantShutdown.getPlantShutdowns (file:///E:/instr-app/instr-app-back/api/plantShutdowns.js:58:20)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiPlantShutdown.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdowns.js:20:30)
+[2022-05-20T21:11:22.944] [ERROR] error - ReferenceError: date is not defined
+    at plantShutdownResp (file:///E:/instr-app/instr-app-back/api/plantShutdowns.js:7:58)
+    at ApiPlantShutdown.getPlantShutdowns (file:///E:/instr-app/instr-app-back/api/plantShutdowns.js:58:20)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiPlantShutdown.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdowns.js:20:30)
+[2022-05-20T21:11:46.806] [ERROR] error - ReferenceError: date is not defined
+    at plantShutdownResp (file:///E:/instr-app/instr-app-back/api/plantShutdowns.js:7:58)
+    at ApiPlantShutdown.getPlantShutdowns (file:///E:/instr-app/instr-app-back/api/plantShutdowns.js:58:20)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiPlantShutdown.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdowns.js:20:30)
+[2022-05-20T21:12:38.420] [ERROR] error - ReferenceError: date is not defined
+    at plantShutdownResp (file:///E:/instr-app/instr-app-back/api/plantShutdowns.js:7:58)
+    at ApiPlantShutdown.getPlantShutdowns (file:///E:/instr-app/instr-app-back/api/plantShutdowns.js:58:20)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiPlantShutdown.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdowns.js:20:30)
+[2022-05-20T21:12:42.377] [ERROR] error - ReferenceError: date is not defined
+    at plantShutdownResp (file:///E:/instr-app/instr-app-back/api/plantShutdowns.js:7:58)
+    at ApiPlantShutdown.getPlantShutdowns (file:///E:/instr-app/instr-app-back/api/plantShutdowns.js:58:20)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiPlantShutdown.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdowns.js:20:30)
+[2022-05-20T21:14:48.305] [ERROR] error - ReferenceError: date is not defined
+    at plantShutdownResp (file:///E:/instr-app/instr-app-back/api/plantShutdowns.js:7:58)
+    at ApiPlantShutdown.getPlantShutdowns (file:///E:/instr-app/instr-app-back/api/plantShutdowns.js:59:20)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiPlantShutdown.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdowns.js:20:30)
+[2022-05-20T21:15:18.199] [ERROR] error - ReferenceError: date is not defined
+    at plantShutdownResp (file:///E:/instr-app/instr-app-back/api/plantShutdowns.js:7:58)
+    at ApiPlantShutdown.getPlantShutdowns (file:///E:/instr-app/instr-app-back/api/plantShutdowns.js:60:20)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiPlantShutdown.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdowns.js:20:30)
+[2022-05-20T21:15:38.878] [ERROR] error - ReferenceError: date is not defined
+    at plantShutdownResp (file:///E:/instr-app/instr-app-back/api/plantShutdowns.js:7:58)
+    at ApiPlantShutdown.getPlantShutdowns (file:///E:/instr-app/instr-app-back/api/plantShutdowns.js:59:25)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiPlantShutdown.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdowns.js:20:30)
+[2022-05-20T21:43:45.336] [ERROR] error - TypeError: Cannot read property 'to' of undefined
+    at ApiPlantShutdown.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdowns.js:26:28)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+[2022-05-20T22:02:02.489] [ERROR] error - TypeError: date.year is not a function
+    at ApiPlantShutdown.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdowns.js:15:30)
+    at Socket.<anonymous> (file:///E:/instr-app/instr-app-back/sockets.js:66:69)
+    at Socket.emit (events.js:315:20)
+    at Socket.emitUntyped (E:\instr-app\instr-app-back\node_modules\socket.io\dist\typed-events.js:69:22)
+    at E:\instr-app\instr-app-back\node_modules\socket.io\dist\socket.js:428:39
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+[2022-05-20T22:03:07.184] [ERROR] error - TypeError: date.getFullYear is not a function
+    at ApiPlantShutdown.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdowns.js:15:30)
+    at Socket.<anonymous> (file:///E:/instr-app/instr-app-back/sockets.js:66:69)
+    at Socket.emit (events.js:315:20)
+    at Socket.emitUntyped (E:\instr-app\instr-app-back\node_modules\socket.io\dist\typed-events.js:69:22)
+    at E:\instr-app\instr-app-back\node_modules\socket.io\dist\socket.js:428:39
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+[2022-05-20T22:19:29.732] [ERROR] error - TypeError: Cannot read property 'length' of undefined
+    at parseStringToDate (file:///E:/instr-app/instr-app-back/utils/formatDate.js:9:10)
+    at dateInLocalDate (file:///E:/instr-app/instr-app-back/utils/formatDate.js:22:22)
+    at ApiPlantShutdown.getPlantShutdowns (file:///E:/instr-app/instr-app-back/api/plantShutdowns.js:47:26)
+    at ApiPlantShutdown.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdowns.js:25:78)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+[2022-05-20T22:40:56.050] [ERROR] error - Error: plantshutdowns validation failed: _id: Cast to ObjectId failed for value "0" (type number) at path "_id"
+    at ValidationError.inspect (E:\instr-app\instr-app-back\node_modules\mongoose\lib\error\validation.js:48:26)
+    at internal/per_context/primordials.js:23:32
+    at formatValue (internal/util/inspect.js:783:19)
+    at inspect (internal/util/inspect.js:337:10)
+    at formatWithOptionsInternal (internal/util/inspect.js:2016:40)
+    at Object.format (internal/util/inspect.js:1890:10)
+    at basicLayout (E:\instr-app\instr-app-back\node_modules\log4js\lib\layouts.js:63:57)
+    at app (E:\instr-app\instr-app-back\node_modules\log4js\lib\appenders\file.js:73:23)
+    at E:\instr-app\instr-app-back\node_modules\log4js\lib\log4js.js:43:5
+    at Array.forEach (<anonymous>) {
+  errors: {
+    _id: CastError: Cast to ObjectId failed for value "0" (type number) at path "_id"
+        at ObjectId.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\objectid.js:248:11)
+        at ObjectId.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
+        at model.$set (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:1380:20)
+        at model.$set (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:1122:16)
+        at model.Document (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:150:12)
+        at model.Model (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:106:12)
+        at new model (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:4752:15)
+        at Array.<anonymous> (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:3318:17)
+        at _start (E:\instr-app\instr-app-back\node_modules\mongoose\lib\helpers\parallelLimit.js:27:37)
+        at parallelLimit (E:\instr-app\instr-app-back\node_modules\mongoose\lib\helpers\parallelLimit.js:23:5) {
+      stringValue: '"0"',
+      messageFormat: undefined,
+      kind: 'ObjectId',
+      value: 0,
+      path: '_id',
+      reason: TypeError: Argument passed in must be a Buffer or string of 12 bytes or a string of 24 hex characters
+          at new ObjectId (E:\instr-app\instr-app-back\node_modules\bson\lib\objectid.js:61:23)
+          at castObjectId (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast\objectid.js:25:12)
+          at ObjectId.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\objectid.js:246:12)
+          at ObjectId.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
+          at model.$set (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:1380:20)
+          at model.$set (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:1122:16)
+          at model.Document (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:150:12)
+          at model.Model (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:106:12)
+          at new model (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:4752:15)
+          at Array.<anonymous> (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:3318:17),
+      valueType: 'number'
+    }
+  },
+  _message: 'plantshutdowns validation failed'
+}
+[2022-05-20T22:41:12.550] [ERROR] error - Error: plantshutdowns validation failed: _id: Cast to ObjectId failed for value "0" (type number) at path "_id"
+    at ValidationError.inspect (E:\instr-app\instr-app-back\node_modules\mongoose\lib\error\validation.js:48:26)
+    at internal/per_context/primordials.js:23:32
+    at formatValue (internal/util/inspect.js:783:19)
+    at inspect (internal/util/inspect.js:337:10)
+    at formatWithOptionsInternal (internal/util/inspect.js:2016:40)
+    at Object.format (internal/util/inspect.js:1890:10)
+    at basicLayout (E:\instr-app\instr-app-back\node_modules\log4js\lib\layouts.js:63:57)
+    at app (E:\instr-app\instr-app-back\node_modules\log4js\lib\appenders\file.js:73:23)
+    at E:\instr-app\instr-app-back\node_modules\log4js\lib\log4js.js:43:5
+    at Array.forEach (<anonymous>) {
+  errors: {
+    _id: CastError: Cast to ObjectId failed for value "0" (type number) at path "_id"
+        at ObjectId.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\objectid.js:248:11)
+        at ObjectId.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
+        at model.$set (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:1380:20)
+        at model.$set (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:1122:16)
+        at model.Document (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:150:12)
+        at model.Model (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:106:12)
+        at new model (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:4752:15)
+        at Array.<anonymous> (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:3318:17)
+        at _start (E:\instr-app\instr-app-back\node_modules\mongoose\lib\helpers\parallelLimit.js:27:37)
+        at parallelLimit (E:\instr-app\instr-app-back\node_modules\mongoose\lib\helpers\parallelLimit.js:23:5) {
+      stringValue: '"0"',
+      messageFormat: undefined,
+      kind: 'ObjectId',
+      value: 0,
+      path: '_id',
+      reason: TypeError: Argument passed in must be a Buffer or string of 12 bytes or a string of 24 hex characters
+          at new ObjectId (E:\instr-app\instr-app-back\node_modules\bson\lib\objectid.js:61:23)
+          at castObjectId (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast\objectid.js:25:12)
+          at ObjectId.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\objectid.js:246:12)
+          at ObjectId.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
+          at model.$set (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:1380:20)
+          at model.$set (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:1122:16)
+          at model.Document (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:150:12)
+          at model.Model (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:106:12)
+          at new model (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:4752:15)
+          at Array.<anonymous> (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:3318:17),
+      valueType: 'number'
+    }
+  },
+  _message: 'plantshutdowns validation failed'
+}
+[2022-05-21T12:18:46.935] [ERROR] error - Error: plantshutdowns validation failed: _id: Cast to ObjectId failed for value "0" (type number) at path "_id"
+    at ValidationError.inspect (E:\instr-app\instr-app-back\node_modules\mongoose\lib\error\validation.js:48:26)
+    at internal/per_context/primordials.js:23:32
+    at formatValue (internal/util/inspect.js:783:19)
+    at inspect (internal/util/inspect.js:337:10)
+    at formatWithOptionsInternal (internal/util/inspect.js:2016:40)
+    at Object.format (internal/util/inspect.js:1890:10)
+    at basicLayout (E:\instr-app\instr-app-back\node_modules\log4js\lib\layouts.js:63:57)
+    at app (E:\instr-app\instr-app-back\node_modules\log4js\lib\appenders\file.js:73:23)
+    at E:\instr-app\instr-app-back\node_modules\log4js\lib\log4js.js:43:5
+    at Array.forEach (<anonymous>) {
+  errors: {
+    _id: CastError: Cast to ObjectId failed for value "0" (type number) at path "_id"
+        at ObjectId.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\objectid.js:248:11)
+        at ObjectId.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
+        at model.$set (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:1380:20)
+        at model.$set (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:1122:16)
+        at model.Document (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:150:12)
+        at model.Model (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:106:12)
+        at new model (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:4752:15)
+        at Array.<anonymous> (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:3318:17)
+        at _start (E:\instr-app\instr-app-back\node_modules\mongoose\lib\helpers\parallelLimit.js:27:37)
+        at parallelLimit (E:\instr-app\instr-app-back\node_modules\mongoose\lib\helpers\parallelLimit.js:23:5) {
+      stringValue: '"0"',
+      messageFormat: undefined,
+      kind: 'ObjectId',
+      value: 0,
+      path: '_id',
+      reason: TypeError: Argument passed in must be a Buffer or string of 12 bytes or a string of 24 hex characters
+          at new ObjectId (E:\instr-app\instr-app-back\node_modules\bson\lib\objectid.js:61:23)
+          at castObjectId (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast\objectid.js:25:12)
+          at ObjectId.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\objectid.js:246:12)
+          at ObjectId.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
+          at model.$set (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:1380:20)
+          at model.$set (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:1122:16)
+          at model.Document (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:150:12)
+          at model.Model (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:106:12)
+          at new model (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:4752:15)
+          at Array.<anonymous> (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:3318:17),
+      valueType: 'number'
+    }
+  },
+  _message: 'plantshutdowns validation failed'
+}
+[2022-05-21T12:19:36.799] [ERROR] error - Error: plantshutdowns validation failed: _id: Cast to ObjectId failed for value "0" (type number) at path "_id"
+    at ValidationError.inspect (E:\instr-app\instr-app-back\node_modules\mongoose\lib\error\validation.js:48:26)
+    at internal/per_context/primordials.js:23:32
+    at formatValue (internal/util/inspect.js:783:19)
+    at inspect (internal/util/inspect.js:337:10)
+    at formatWithOptionsInternal (internal/util/inspect.js:2016:40)
+    at Object.format (internal/util/inspect.js:1890:10)
+    at basicLayout (E:\instr-app\instr-app-back\node_modules\log4js\lib\layouts.js:63:57)
+    at app (E:\instr-app\instr-app-back\node_modules\log4js\lib\appenders\file.js:73:23)
+    at E:\instr-app\instr-app-back\node_modules\log4js\lib\log4js.js:43:5
+    at Array.forEach (<anonymous>) {
+  errors: {
+    _id: CastError: Cast to ObjectId failed for value "0" (type number) at path "_id"
+        at ObjectId.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\objectid.js:248:11)
+        at ObjectId.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
+        at model.$set (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:1380:20)
+        at model.$set (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:1122:16)
+        at model.Document (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:150:12)
+        at model.Model (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:106:12)
+        at new model (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:4752:15)
+        at Array.<anonymous> (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:3318:17)
+        at _start (E:\instr-app\instr-app-back\node_modules\mongoose\lib\helpers\parallelLimit.js:27:37)
+        at parallelLimit (E:\instr-app\instr-app-back\node_modules\mongoose\lib\helpers\parallelLimit.js:23:5) {
+      stringValue: '"0"',
+      messageFormat: undefined,
+      kind: 'ObjectId',
+      value: 0,
+      path: '_id',
+      reason: TypeError: Argument passed in must be a Buffer or string of 12 bytes or a string of 24 hex characters
+          at new ObjectId (E:\instr-app\instr-app-back\node_modules\bson\lib\objectid.js:61:23)
+          at castObjectId (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast\objectid.js:25:12)
+          at ObjectId.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\objectid.js:246:12)
+          at ObjectId.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
+          at model.$set (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:1380:20)
+          at model.$set (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:1122:16)
+          at model.Document (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:150:12)
+          at model.Model (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:106:12)
+          at new model (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:4752:15)
+          at Array.<anonymous> (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:3318:17),
+      valueType: 'number'
+    }
+  },
+  _message: 'plantshutdowns validation failed'
+}
+[2022-05-21T12:20:41.661] [ERROR] error - Error: plantshutdowns validation failed: _id: Cast to ObjectId failed for value "0" (type number) at path "_id"
+    at ValidationError.inspect (E:\instr-app\instr-app-back\node_modules\mongoose\lib\error\validation.js:48:26)
+    at internal/per_context/primordials.js:23:32
+    at formatValue (internal/util/inspect.js:783:19)
+    at inspect (internal/util/inspect.js:337:10)
+    at formatWithOptionsInternal (internal/util/inspect.js:2016:40)
+    at Object.format (internal/util/inspect.js:1890:10)
+    at basicLayout (E:\instr-app\instr-app-back\node_modules\log4js\lib\layouts.js:63:57)
+    at app (E:\instr-app\instr-app-back\node_modules\log4js\lib\appenders\file.js:73:23)
+    at E:\instr-app\instr-app-back\node_modules\log4js\lib\log4js.js:43:5
+    at Array.forEach (<anonymous>) {
+  errors: {
+    _id: CastError: Cast to ObjectId failed for value "0" (type number) at path "_id"
+        at ObjectId.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\objectid.js:248:11)
+        at ObjectId.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
+        at model.$set (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:1380:20)
+        at model.$set (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:1122:16)
+        at model.Document (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:150:12)
+        at model.Model (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:106:12)
+        at new model (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:4752:15)
+        at Array.<anonymous> (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:3318:17)
+        at _start (E:\instr-app\instr-app-back\node_modules\mongoose\lib\helpers\parallelLimit.js:27:37)
+        at parallelLimit (E:\instr-app\instr-app-back\node_modules\mongoose\lib\helpers\parallelLimit.js:23:5) {
+      stringValue: '"0"',
+      messageFormat: undefined,
+      kind: 'ObjectId',
+      value: 0,
+      path: '_id',
+      reason: TypeError: Argument passed in must be a Buffer or string of 12 bytes or a string of 24 hex characters
+          at new ObjectId (E:\instr-app\instr-app-back\node_modules\bson\lib\objectid.js:61:23)
+          at castObjectId (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast\objectid.js:25:12)
+          at ObjectId.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\objectid.js:246:12)
+          at ObjectId.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
+          at model.$set (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:1380:20)
+          at model.$set (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:1122:16)
+          at model.Document (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:150:12)
+          at model.Model (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:106:12)
+          at new model (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:4752:15)
+          at Array.<anonymous> (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:3318:17),
+      valueType: 'number'
+    }
+  },
+  _message: 'plantshutdowns validation failed'
+}
+[2022-05-21T12:21:19.588] [ERROR] error - Error: plantshutdowns validation failed: _id: Cast to ObjectId failed for value "0" (type number) at path "_id"
+    at ValidationError.inspect (E:\instr-app\instr-app-back\node_modules\mongoose\lib\error\validation.js:48:26)
+    at internal/per_context/primordials.js:23:32
+    at formatValue (internal/util/inspect.js:783:19)
+    at inspect (internal/util/inspect.js:337:10)
+    at formatWithOptionsInternal (internal/util/inspect.js:2016:40)
+    at Object.format (internal/util/inspect.js:1890:10)
+    at basicLayout (E:\instr-app\instr-app-back\node_modules\log4js\lib\layouts.js:63:57)
+    at app (E:\instr-app\instr-app-back\node_modules\log4js\lib\appenders\file.js:73:23)
+    at E:\instr-app\instr-app-back\node_modules\log4js\lib\log4js.js:43:5
+    at Array.forEach (<anonymous>) {
+  errors: {
+    _id: CastError: Cast to ObjectId failed for value "0" (type number) at path "_id"
+        at ObjectId.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\objectid.js:248:11)
+        at ObjectId.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
+        at model.$set (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:1380:20)
+        at model.$set (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:1122:16)
+        at model.Document (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:150:12)
+        at model.Model (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:106:12)
+        at new model (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:4752:15)
+        at Array.<anonymous> (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:3318:17)
+        at _start (E:\instr-app\instr-app-back\node_modules\mongoose\lib\helpers\parallelLimit.js:27:37)
+        at parallelLimit (E:\instr-app\instr-app-back\node_modules\mongoose\lib\helpers\parallelLimit.js:23:5) {
+      stringValue: '"0"',
+      messageFormat: undefined,
+      kind: 'ObjectId',
+      value: 0,
+      path: '_id',
+      reason: TypeError: Argument passed in must be a Buffer or string of 12 bytes or a string of 24 hex characters
+          at new ObjectId (E:\instr-app\instr-app-back\node_modules\bson\lib\objectid.js:61:23)
+          at castObjectId (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast\objectid.js:25:12)
+          at ObjectId.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\objectid.js:246:12)
+          at ObjectId.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
+          at model.$set (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:1380:20)
+          at model.$set (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:1122:16)
+          at model.Document (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:150:12)
+          at model.Model (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:106:12)
+          at new model (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:4752:15)
+          at Array.<anonymous> (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:3318:17),
+      valueType: 'number'
+    }
+  },
+  _message: 'plantshutdowns validation failed'
+}
+[2022-05-21T12:21:35.806] [ERROR] error - TypeError: Cannot read property 'length' of undefined
+    at parseStringToDate (file:///E:/instr-app/instr-app-back/utils/formatDate.js:9:10)
+    at dateInLocalDate (file:///E:/instr-app/instr-app-back/utils/formatDate.js:22:22)
+    at ApiPlantShutdown.getPlantShutdowns (file:///E:/instr-app/instr-app-back/api/plantShutdowns.js:44:26)
+    at ApiPlantShutdown.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdowns.js:22:67)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+[2022-05-21T12:23:50.321] [ERROR] error - TypeError: Cannot read property 'length' of undefined
+    at parseStringToDate (file:///E:/instr-app/instr-app-back/utils/formatDate.js:9:10)
+    at dateInLocalDate (file:///E:/instr-app/instr-app-back/utils/formatDate.js:22:22)
+    at ApiPlantShutdown.getPlantShutdowns (file:///E:/instr-app/instr-app-back/api/plantShutdowns.js:43:26)
+    at ApiPlantShutdown.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdowns.js:22:67)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+[2022-05-21T12:31:03.919] [ERROR] error - TypeError: Cannot read property 'length' of undefined
+    at parseStringToDate (file:///E:/instr-app/instr-app-back/utils/formatDate.js:9:10)
+    at dateInLocalDate (file:///E:/instr-app/instr-app-back/utils/formatDate.js:22:22)
+    at ApiPlantShutdown.getPlantShutdowns (file:///E:/instr-app/instr-app-back/api/plantShutdowns.js:43:26)
+    at ApiPlantShutdown.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdowns.js:22:59)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+[2022-05-21T12:32:09.147] [ERROR] error - TypeError: Cannot read property 'length' of undefined
+    at parseStringToDate (file:///E:/instr-app/instr-app-back/utils/formatDate.js:9:10)
+    at dateInLocalDate (file:///E:/instr-app/instr-app-back/utils/formatDate.js:22:22)
+    at ApiPlantShutdown.getPlantShutdowns (file:///E:/instr-app/instr-app-back/api/plantShutdowns.js:43:26)
+    at ApiPlantShutdown.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdowns.js:22:63)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+[2022-05-21T12:34:14.546] [ERROR] error - Error: plantshutdowns validation failed: _id: Cast to ObjectId failed for value "new date" (type string) at path "_id"
+    at ValidationError.inspect (E:\instr-app\instr-app-back\node_modules\mongoose\lib\error\validation.js:48:26)
+    at internal/per_context/primordials.js:23:32
+    at formatValue (internal/util/inspect.js:783:19)
+    at inspect (internal/util/inspect.js:337:10)
+    at formatWithOptionsInternal (internal/util/inspect.js:2016:40)
+    at Object.format (internal/util/inspect.js:1890:10)
+    at basicLayout (E:\instr-app\instr-app-back\node_modules\log4js\lib\layouts.js:63:57)
+    at app (E:\instr-app\instr-app-back\node_modules\log4js\lib\appenders\file.js:73:23)
+    at E:\instr-app\instr-app-back\node_modules\log4js\lib\log4js.js:43:5
+    at Array.forEach (<anonymous>) {
+  errors: {
+    _id: CastError: Cast to ObjectId failed for value "new date" (type string) at path "_id"
+        at ObjectId.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\objectid.js:248:11)
+        at ObjectId.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
+        at model.$set (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:1380:20)
+        at model.$set (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:1122:16)
+        at model.Document (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:150:12)
+        at model.Model (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:106:12)
+        at new model (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:4752:15)
+        at Array.<anonymous> (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:3318:17)
+        at _start (E:\instr-app\instr-app-back\node_modules\mongoose\lib\helpers\parallelLimit.js:27:37)
+        at parallelLimit (E:\instr-app\instr-app-back\node_modules\mongoose\lib\helpers\parallelLimit.js:23:5) {
+      stringValue: '"new date"',
+      messageFormat: undefined,
+      kind: 'ObjectId',
+      value: 'new date',
+      path: '_id',
+      reason: TypeError: Argument passed in must be a Buffer or string of 12 bytes or a string of 24 hex characters
+          at new ObjectId (E:\instr-app\instr-app-back\node_modules\bson\lib\objectid.js:61:23)
+          at castObjectId (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast\objectid.js:25:12)
+          at ObjectId.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\objectid.js:246:12)
+          at ObjectId.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
+          at model.$set (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:1380:20)
+          at model.$set (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:1122:16)
+          at model.Document (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:150:12)
+          at model.Model (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:106:12)
+          at new model (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:4752:15)
+          at Array.<anonymous> (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:3318:17),
+      valueType: 'string'
+    }
+  },
+  _message: 'plantshutdowns validation failed'
+}
+[2022-05-21T12:35:19.681] [ERROR] error - Error: plantshutdowns validation failed: _id: Cast to ObjectId failed for value "prueba 2000" (type string) at path "_id"
+    at ValidationError.inspect (E:\instr-app\instr-app-back\node_modules\mongoose\lib\error\validation.js:48:26)
+    at internal/per_context/primordials.js:23:32
+    at formatValue (internal/util/inspect.js:783:19)
+    at inspect (internal/util/inspect.js:337:10)
+    at formatWithOptionsInternal (internal/util/inspect.js:2016:40)
+    at Object.format (internal/util/inspect.js:1890:10)
+    at basicLayout (E:\instr-app\instr-app-back\node_modules\log4js\lib\layouts.js:63:57)
+    at app (E:\instr-app\instr-app-back\node_modules\log4js\lib\appenders\file.js:73:23)
+    at E:\instr-app\instr-app-back\node_modules\log4js\lib\log4js.js:43:5
+    at Array.forEach (<anonymous>) {
+  errors: {
+    _id: CastError: Cast to ObjectId failed for value "prueba 2000" (type string) at path "_id"
+        at ObjectId.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\objectid.js:248:11)
+        at ObjectId.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
+        at model.$set (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:1380:20)
+        at model.$set (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:1122:16)
+        at model.Document (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:150:12)
+        at model.Model (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:106:12)
+        at new model (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:4752:15)
+        at Array.<anonymous> (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:3318:17)
+        at _start (E:\instr-app\instr-app-back\node_modules\mongoose\lib\helpers\parallelLimit.js:27:37)
+        at parallelLimit (E:\instr-app\instr-app-back\node_modules\mongoose\lib\helpers\parallelLimit.js:23:5) {
+      stringValue: '"prueba 2000"',
+      messageFormat: undefined,
+      kind: 'ObjectId',
+      value: 'prueba 2000',
+      path: '_id',
+      reason: TypeError: Argument passed in must be a Buffer or string of 12 bytes or a string of 24 hex characters
+          at new ObjectId (E:\instr-app\instr-app-back\node_modules\bson\lib\objectid.js:61:23)
+          at castObjectId (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast\objectid.js:25:12)
+          at ObjectId.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\objectid.js:246:12)
+          at ObjectId.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
+          at model.$set (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:1380:20)
+          at model.$set (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:1122:16)
+          at model.Document (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:150:12)
+          at model.Model (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:106:12)
+          at new model (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:4752:15)
+          at Array.<anonymous> (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:3318:17),
+      valueType: 'string'
+    }
+  },
+  _message: 'plantshutdowns validation failed'
+}
+[2022-05-22T14:23:34.534] [ERROR] error - TypeError: this.deletePlantShutdown is not a function
+    at ApiPlantShutdown.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdowns.js:27:28)
+    at Socket.<anonymous> (file:///E:/instr-app/instr-app-back/sockets.js:69:84)
+    at Socket.emit (events.js:315:20)
+    at Socket.emitUntyped (E:\instr-app\instr-app-back\node_modules\socket.io\dist\typed-events.js:69:22)
+    at E:\instr-app\instr-app-back\node_modules\socket.io\dist\socket.js:428:39
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+[2022-05-22T20:20:09.270] [ERROR] error - TypeError: savedColumns[0].columns is not iterable (cannot read property undefined)
+    at getDailyWorkTable (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:36:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiDailyWork.getDailyWork (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:96:29)
+    at async ApiDailyWork.handleSocket (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:57:30)
+[2022-05-22T20:22:14.799] [ERROR] error - TypeError: Cannot read property 'columns' of undefined
+    at getDailyWorkTable (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:35:34)
+    at ApiDailyWork.getDailyWorkForPlantShutdown (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:160:35)
+    at getDailyWorkForPlantShutdown (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:58:55)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at E:\instr-app\instr-app-back\node_modules\express\lib\router\index.js:281:22
+    at Function.process_params (E:\instr-app\instr-app-back\node_modules\express\lib\router\index.js:335:12)
+    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\index.js:275:10)
+[2022-05-22T20:48:38.338] [ERROR] error - TypeError: Cannot read property 'columns' of undefined
+    at getDailyWorkTable (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:37:34)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiDailyWork.getDailyWorkForPlantShutdown (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:162:29)
+    at async getDailyWorkForPlantShutdown (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:58:31)
+[2022-05-23T21:23:58.108] [ERROR] error - TypeError: Cannot read property '_id' of undefined
+    at DBMongoDao.updatePlantShutdown (file:///E:/instr-app/instr-app-back/model/DAOs/DBMongoDao.js:700:71)
+    at ApiPlantShutdown.updatePlantShutdown (file:///E:/instr-app/instr-app-back/api/plantShutdowns.js:91:45)
+    at ApiPlantShutdown.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdowns.js:26:28)
+    at Socket.<anonymous> (file:///E:/instr-app/instr-app-back/sockets.js:68:90)
+    at Socket.emit (events.js:315:20)
+    at Socket.emitUntyped (E:\instr-app\instr-app-back\node_modules\socket.io\dist\typed-events.js:69:22)
+    at E:\instr-app\instr-app-back\node_modules\socket.io\dist\socket.js:428:39
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+[2022-05-23T21:23:58.110] [ERROR] error - TypeError: Cannot read property 'length' of undefined
+    at parseStringToDate (file:///E:/instr-app/instr-app-back/utils/formatDate.js:9:10)
+    at dateInLocalDate (file:///E:/instr-app/instr-app-back/utils/formatDate.js:22:22)
+    at ApiPlantShutdown.getPlantShutdowns (file:///E:/instr-app/instr-app-back/api/plantShutdowns.js:54:26)
+    at ApiPlantShutdown.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdowns.js:27:63)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+[2022-05-24T22:22:22.136] [ERROR] error - TypeError: this.apiPlantShutdown is not a function
+    at ApiPlantShutdownWork.createPlantShutdownWork (file:///E:/instr-app/instr-app-back/api/ApiPlantShutdownWorks.js:43:50)
+    at ApiPlantShutdownWork.handleSocket (file:///E:/instr-app/instr-app-back/api/ApiPlantShutdownWorks.js:24:41)
+    at Socket.<anonymous> (file:///E:/instr-app/instr-app-back/sockets.js:72:97)
+    at Socket.emit (events.js:315:20)
+    at Socket.emitUntyped (E:\instr-app\instr-app-back\node_modules\socket.io\dist\typed-events.js:69:22)
+    at E:\instr-app\instr-app-back\node_modules\socket.io\dist\socket.js:428:39
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+[2022-05-24T22:24:25.170] [ERROR] error - TypeError: apiPlantShutdown is not a function
+    at ApiPlantShutdownWork.createPlantShutdownWork (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:43:45)
+    at ApiPlantShutdownWork.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:24:41)
+    at Socket.<anonymous> (file:///E:/instr-app/instr-app-back/sockets.js:72:97)
+    at Socket.emit (events.js:315:20)
+    at Socket.emitUntyped (E:\instr-app\instr-app-back\node_modules\socket.io\dist\typed-events.js:69:22)
+    at E:\instr-app\instr-app-back\node_modules\socket.io\dist\socket.js:428:39
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+[2022-05-24T22:35:50.268] [ERROR] error - ObjectParameterError: Parameter "obj" to Document() must be an object, got class PlantShutdownTable {
+
+    static createColumns = async () => {
+        try {
+            const columns = createPlantShutdownsColumns();
+            const saveColumns = { columns: columns };
+            const resp = await dao.createPlantShutdownsColumns(saveColumns);
+            return resp;
+        } catch (err) {
+            loggerError.error(err);
+        } finally {
+            loggerInfo.info('createColumns');
+        }
+    }
+
+    static getColumns = async () => {
+        try {
+            const resp = await dao.getPlantShutdownsColumns();
+            return resp;
+        } catch (err) {
+            loggerError.error(err);
+        } finally {
+        }
+    }
+
+    // static getColumnsId = async () => {
+    //     try {
+    //         const resp = await dao.getIdDailyWorkRoutineColumns();
+    //         return resp;
+    //     } catch (err) {
+    //         loggerError.error(err);
+    //     } finally {
+    //     }
+    // }
+
+    static deleteColumns = async (id) => {
+        try {
+            const resp = await dao.deletePlantShutdownsColumns(id);
+            return resp;
+        } catch (err) {
+            loggerError.error(err);
+        } finally {
+        }
+    }
+
+}
+    at model.Document (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:102:11)
+    at model.Model (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:106:12)
+    at new model (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:4752:15)
+    at Array.<anonymous> (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:3318:17)
+    at _start (E:\instr-app\instr-app-back\node_modules\mongoose\lib\helpers\parallelLimit.js:27:37)
+    at parallelLimit (E:\instr-app\instr-app-back\node_modules\mongoose\lib\helpers\parallelLimit.js:23:5)
+    at Function.Model.$__insertMany (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:3348:3)
+    at E:\instr-app\instr-app-back\node_modules\kareem\index.js:370:33
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+[2022-05-24T22:37:39.867] [ERROR] error - ObjectParameterError: Parameter "obj" to Document() must be an object, got class PlantShutdownTable {
+
+    static createColumns = async () => {
+        try {
+            const columns = createPlantShutdownsColumns();
+            const saveColumns = { columns: columns };
+            const resp = await dao.createPlantShutdownsColumns(saveColumns);
+            return resp;
+        } catch (err) {
+            loggerError.error(err);
+        } finally {
+            loggerInfo.info('createColumns');
+        }
+    }
+
+    static getColumns = async () => {
+        try {
+            const resp = await dao.getPlantShutdownsColumns();
+            return resp;
+        } catch (err) {
+            loggerError.error(err);
+        } finally {
+        }
+    }
+
+    // static getColumnsId = async () => {
+    //     try {
+    //         const resp = await dao.getIdDailyWorkRoutineColumns();
+    //         return resp;
+    //     } catch (err) {
+    //         loggerError.error(err);
+    //     } finally {
+    //     }
+    // }
+
+    static deleteColumns = async (id) => {
+        try {
+            const resp = await dao.deletePlantShutdownsColumns(id);
+            return resp;
+        } catch (err) {
+            loggerError.error(err);
+        } finally {
+        }
+    }
+
+}
+    at model.Document (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:102:11)
+    at model.Model (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:106:12)
+    at new model (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:4752:15)
+    at Array.<anonymous> (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:3318:17)
+    at _start (E:\instr-app\instr-app-back\node_modules\mongoose\lib\helpers\parallelLimit.js:27:37)
+    at parallelLimit (E:\instr-app\instr-app-back\node_modules\mongoose\lib\helpers\parallelLimit.js:23:5)
+    at Function.Model.$__insertMany (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:3348:3)
+    at E:\instr-app\instr-app-back\node_modules\kareem\index.js:370:33
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+[2022-05-24T22:38:13.245] [ERROR] error - ReferenceError: dailyWorkData is not defined
+    at ApiPlantShutdownWork.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:26:96)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+[2022-05-25T12:06:23.650] [ERROR] error - TypeError: plantShutdownWorkModel.insertOne is not a function
+    at DBMongoDao.createPlantShutdownWork (file:///E:/instr-app/instr-app-back/model/DAOs/DBMongoDao.js:754:72)
+    at ApiPlantShutdownWork.createPlantShutdownWorkFromWorkToDo (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:52:53)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiPlantShutdownWork.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:27:30)
+[2022-05-25T12:08:17.587] [ERROR] error - TypeError: plantShutdownWorkModel.insertOne is not a function
+    at DBMongoDao.createPlantShutdownWork (file:///E:/instr-app/instr-app-back/model/DAOs/DBMongoDao.js:755:72)
+    at ApiPlantShutdownWork.createPlantShutdownWorkFromWorkToDo (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:52:53)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiPlantShutdownWork.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:27:30)
+[2022-05-25T12:21:37.885] [ERROR] error - ReferenceError: result is not defined
+    at DBMongoDao.updateDailyWorkByShutdownId (file:///E:/instr-app/instr-app-back/model/DAOs/DBMongoDao.js:468:25)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiDailyWork.updateDailyWorkByShutdownId (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:198:31)
+    at async ApiPlantShutdownWork.createPlantShutdownWorkFromWorkToDo (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:55:60)
+    at async ApiPlantShutdownWork.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:27:30)
+[2022-05-25T16:25:56.378] [ERROR] error - CastError: Cast to ObjectId failed for value "1" (type string) at path "_id" for model "plantshutdowns"
+    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"1"',
+  kind: 'ObjectId',
+  value: '1',
+  path: '_id',
+  reason: TypeError: Argument passed in must be a Buffer or string of 12 bytes or a string of 24 hex characters
+      at new ObjectId (E:\instr-app\instr-app-back\node_modules\bson\lib\objectid.js:61:23)
+      at castObjectId (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast\objectid.js:25:12)
+      at ObjectId.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\objectid.js:246:12)
+      at ObjectId.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
+      at ObjectId.SchemaType._castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1553:15)
+      at ObjectId.SchemaType.castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1543:15)
+      at ObjectId.SchemaType.castForQueryWrapper (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1520:20)
+      at cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast.js:338:32)
+      at model.Query.Query.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4963:12)
+      at model.Query.Query._castConditions (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:2055:10),
+  valueType: 'string'
+}
+[2022-05-25T16:25:56.380] [ERROR] error - CastError: Cast to ObjectId failed for value "1" (type string) at path "_id" for model "plantshutdowns"
+    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"1"',
+  kind: 'ObjectId',
+  value: '1',
+  path: '_id',
+  reason: TypeError: Argument passed in must be a Buffer or string of 12 bytes or a string of 24 hex characters
+      at new ObjectId (E:\instr-app\instr-app-back\node_modules\bson\lib\objectid.js:61:23)
+      at castObjectId (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast\objectid.js:25:12)
+      at ObjectId.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\objectid.js:246:12)
+      at ObjectId.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
+      at ObjectId.SchemaType._castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1553:15)
+      at ObjectId.SchemaType.castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1543:15)
+      at ObjectId.SchemaType.castForQueryWrapper (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1520:20)
+      at cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast.js:338:32)
+      at model.Query.Query.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4963:12)
+      at model.Query.Query._castConditions (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:2055:10),
+  valueType: 'string'
+}
+[2022-05-25T16:25:56.381] [ERROR] error - TypeError: Cannot read property 'beginDate' of undefined
+    at ApiPlantShutdownWork.createPlantShutdownWorkFromWorkToDo (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:47:62)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:29:80
+[2022-05-25T16:25:56.381] [ERROR] error - TypeError: Cannot read property 'beginDate' of undefined
+    at ApiPlantShutdownWork.createPlantShutdownWorkFromWorkToDo (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:47:62)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:29:80
+[2022-05-25T16:27:03.080] [ERROR] error - CastError: Cast to ObjectId failed for value "1" (type string) at path "_id" for model "plantshutdowns"
+    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"1"',
+  kind: 'ObjectId',
+  value: '1',
+  path: '_id',
+  reason: TypeError: Argument passed in must be a Buffer or string of 12 bytes or a string of 24 hex characters
+      at new ObjectId (E:\instr-app\instr-app-back\node_modules\bson\lib\objectid.js:61:23)
+      at castObjectId (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast\objectid.js:25:12)
+      at ObjectId.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\objectid.js:246:12)
+      at ObjectId.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
+      at ObjectId.SchemaType._castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1553:15)
+      at ObjectId.SchemaType.castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1543:15)
+      at ObjectId.SchemaType.castForQueryWrapper (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1520:20)
+      at cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast.js:338:32)
+      at model.Query.Query.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4963:12)
+      at model.Query.Query._castConditions (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:2055:10),
+  valueType: 'string'
+}
+[2022-05-25T16:27:03.081] [ERROR] error - CastError: Cast to ObjectId failed for value "1" (type string) at path "_id" for model "plantshutdowns"
+    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"1"',
+  kind: 'ObjectId',
+  value: '1',
+  path: '_id',
+  reason: TypeError: Argument passed in must be a Buffer or string of 12 bytes or a string of 24 hex characters
+      at new ObjectId (E:\instr-app\instr-app-back\node_modules\bson\lib\objectid.js:61:23)
+      at castObjectId (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast\objectid.js:25:12)
+      at ObjectId.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\objectid.js:246:12)
+      at ObjectId.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
+      at ObjectId.SchemaType._castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1553:15)
+      at ObjectId.SchemaType.castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1543:15)
+      at ObjectId.SchemaType.castForQueryWrapper (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1520:20)
+      at cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast.js:338:32)
+      at model.Query.Query.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4963:12)
+      at model.Query.Query._castConditions (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:2055:10),
+  valueType: 'string'
+}
+[2022-05-25T16:27:03.082] [ERROR] error - TypeError: Cannot read property 'beginDate' of undefined
+    at ApiPlantShutdownWork.createPlantShutdownWorkFromWorkToDo (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:47:62)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:29:80
+[2022-05-25T16:27:03.083] [ERROR] error - TypeError: Cannot read property 'beginDate' of undefined
+    at ApiPlantShutdownWork.createPlantShutdownWorkFromWorkToDo (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:47:62)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:29:80
+[2022-05-25T16:27:38.001] [ERROR] error - CastError: Cast to ObjectId failed for value "1" (type string) at path "_id" for model "plantshutdowns"
+    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"1"',
+  kind: 'ObjectId',
+  value: '1',
+  path: '_id',
+  reason: TypeError: Argument passed in must be a Buffer or string of 12 bytes or a string of 24 hex characters
+      at new ObjectId (E:\instr-app\instr-app-back\node_modules\bson\lib\objectid.js:61:23)
+      at castObjectId (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast\objectid.js:25:12)
+      at ObjectId.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\objectid.js:246:12)
+      at ObjectId.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
+      at ObjectId.SchemaType._castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1553:15)
+      at ObjectId.SchemaType.castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1543:15)
+      at ObjectId.SchemaType.castForQueryWrapper (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1520:20)
+      at cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast.js:338:32)
+      at model.Query.Query.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4963:12)
+      at model.Query.Query._castConditions (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:2055:10),
+  valueType: 'string'
+}
+[2022-05-25T16:27:38.003] [ERROR] error - CastError: Cast to ObjectId failed for value "1" (type string) at path "_id" for model "plantshutdowns"
+    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"1"',
+  kind: 'ObjectId',
+  value: '1',
+  path: '_id',
+  reason: TypeError: Argument passed in must be a Buffer or string of 12 bytes or a string of 24 hex characters
+      at new ObjectId (E:\instr-app\instr-app-back\node_modules\bson\lib\objectid.js:61:23)
+      at castObjectId (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast\objectid.js:25:12)
+      at ObjectId.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\objectid.js:246:12)
+      at ObjectId.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
+      at ObjectId.SchemaType._castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1553:15)
+      at ObjectId.SchemaType.castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1543:15)
+      at ObjectId.SchemaType.castForQueryWrapper (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1520:20)
+      at cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast.js:338:32)
+      at model.Query.Query.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4963:12)
+      at model.Query.Query._castConditions (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:2055:10),
+  valueType: 'string'
+}
+[2022-05-25T16:27:38.003] [ERROR] error - TypeError: Cannot read property 'beginDate' of undefined
+    at ApiPlantShutdownWork.createPlantShutdownWorkFromWorkToDo (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:48:62)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:30:80
+[2022-05-25T16:27:38.004] [ERROR] error - TypeError: Cannot read property 'beginDate' of undefined
+    at ApiPlantShutdownWork.createPlantShutdownWorkFromWorkToDo (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:48:62)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:30:80
+[2022-05-25T16:28:09.310] [ERROR] error - CastError: Cast to ObjectId failed for value "1" (type string) at path "_id" for model "plantshutdowns"
+    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"1"',
+  kind: 'ObjectId',
+  value: '1',
+  path: '_id',
+  reason: TypeError: Argument passed in must be a Buffer or string of 12 bytes or a string of 24 hex characters
+      at new ObjectId (E:\instr-app\instr-app-back\node_modules\bson\lib\objectid.js:61:23)
+      at castObjectId (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast\objectid.js:25:12)
+      at ObjectId.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\objectid.js:246:12)
+      at ObjectId.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
+      at ObjectId.SchemaType._castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1553:15)
+      at ObjectId.SchemaType.castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1543:15)
+      at ObjectId.SchemaType.castForQueryWrapper (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1520:20)
+      at cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast.js:338:32)
+      at model.Query.Query.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4963:12)
+      at model.Query.Query._castConditions (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:2055:10),
+  valueType: 'string'
+}
+[2022-05-25T16:28:09.311] [ERROR] error - CastError: Cast to ObjectId failed for value "1" (type string) at path "_id" for model "plantshutdowns"
+    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"1"',
+  kind: 'ObjectId',
+  value: '1',
+  path: '_id',
+  reason: TypeError: Argument passed in must be a Buffer or string of 12 bytes or a string of 24 hex characters
+      at new ObjectId (E:\instr-app\instr-app-back\node_modules\bson\lib\objectid.js:61:23)
+      at castObjectId (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast\objectid.js:25:12)
+      at ObjectId.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\objectid.js:246:12)
+      at ObjectId.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
+      at ObjectId.SchemaType._castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1553:15)
+      at ObjectId.SchemaType.castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1543:15)
+      at ObjectId.SchemaType.castForQueryWrapper (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1520:20)
+      at cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast.js:338:32)
+      at model.Query.Query.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4963:12)
+      at model.Query.Query._castConditions (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:2055:10),
+  valueType: 'string'
+}
+[2022-05-25T16:28:09.313] [ERROR] error - TypeError: Cannot read property 'beginDate' of undefined
+    at ApiPlantShutdownWork.createPlantShutdownWorkFromWorkToDo (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:48:62)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:30:80
+[2022-05-25T16:28:09.315] [ERROR] error - TypeError: Cannot read property 'beginDate' of undefined
+    at ApiPlantShutdownWork.createPlantShutdownWorkFromWorkToDo (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:48:62)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:30:80
+[2022-05-25T16:30:10.795] [ERROR] error - CastError: Cast to ObjectId failed for value "1" (type string) at path "_id" for model "plantshutdowns"
+    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"1"',
+  kind: 'ObjectId',
+  value: '1',
+  path: '_id',
+  reason: TypeError: Argument passed in must be a Buffer or string of 12 bytes or a string of 24 hex characters
+      at new ObjectId (E:\instr-app\instr-app-back\node_modules\bson\lib\objectid.js:61:23)
+      at castObjectId (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast\objectid.js:25:12)
+      at ObjectId.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\objectid.js:246:12)
+      at ObjectId.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
+      at ObjectId.SchemaType._castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1553:15)
+      at ObjectId.SchemaType.castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1543:15)
+      at ObjectId.SchemaType.castForQueryWrapper (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1520:20)
+      at cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast.js:338:32)
+      at model.Query.Query.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4963:12)
+      at model.Query.Query._castConditions (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:2055:10),
+  valueType: 'string'
+}
+[2022-05-25T16:30:10.798] [ERROR] error - CastError: Cast to ObjectId failed for value "1" (type string) at path "_id" for model "plantshutdowns"
+    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"1"',
+  kind: 'ObjectId',
+  value: '1',
+  path: '_id',
+  reason: TypeError: Argument passed in must be a Buffer or string of 12 bytes or a string of 24 hex characters
+      at new ObjectId (E:\instr-app\instr-app-back\node_modules\bson\lib\objectid.js:61:23)
+      at castObjectId (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast\objectid.js:25:12)
+      at ObjectId.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\objectid.js:246:12)
+      at ObjectId.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
+      at ObjectId.SchemaType._castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1553:15)
+      at ObjectId.SchemaType.castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1543:15)
+      at ObjectId.SchemaType.castForQueryWrapper (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1520:20)
+      at cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast.js:338:32)
+      at model.Query.Query.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4963:12)
+      at model.Query.Query._castConditions (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:2055:10),
+  valueType: 'string'
+}
+[2022-05-25T16:30:10.800] [ERROR] error - TypeError: Cannot read property 'beginDate' of undefined
+    at ApiPlantShutdownWork.createPlantShutdownWorkFromWorkToDo (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:48:62)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:30:80
+[2022-05-25T16:30:10.801] [ERROR] error - TypeError: Cannot read property 'beginDate' of undefined
+    at ApiPlantShutdownWork.createPlantShutdownWorkFromWorkToDo (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:48:62)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:30:80
+[2022-05-25T16:31:09.683] [ERROR] error - CastError: Cast to ObjectId failed for value "1" (type string) at path "_id" for model "plantshutdowns"
+    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"1"',
+  kind: 'ObjectId',
+  value: '1',
+  path: '_id',
+  reason: TypeError: Argument passed in must be a Buffer or string of 12 bytes or a string of 24 hex characters
+      at new ObjectId (E:\instr-app\instr-app-back\node_modules\bson\lib\objectid.js:61:23)
+      at castObjectId (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast\objectid.js:25:12)
+      at ObjectId.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\objectid.js:246:12)
+      at ObjectId.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
+      at ObjectId.SchemaType._castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1553:15)
+      at ObjectId.SchemaType.castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1543:15)
+      at ObjectId.SchemaType.castForQueryWrapper (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1520:20)
+      at cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast.js:338:32)
+      at model.Query.Query.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4963:12)
+      at model.Query.Query._castConditions (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:2055:10),
+  valueType: 'string'
+}
+[2022-05-25T16:31:09.684] [ERROR] error - CastError: Cast to ObjectId failed for value "1" (type string) at path "_id" for model "plantshutdowns"
+    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"1"',
+  kind: 'ObjectId',
+  value: '1',
+  path: '_id',
+  reason: TypeError: Argument passed in must be a Buffer or string of 12 bytes or a string of 24 hex characters
+      at new ObjectId (E:\instr-app\instr-app-back\node_modules\bson\lib\objectid.js:61:23)
+      at castObjectId (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast\objectid.js:25:12)
+      at ObjectId.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\objectid.js:246:12)
+      at ObjectId.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
+      at ObjectId.SchemaType._castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1553:15)
+      at ObjectId.SchemaType.castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1543:15)
+      at ObjectId.SchemaType.castForQueryWrapper (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1520:20)
+      at cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast.js:338:32)
+      at model.Query.Query.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4963:12)
+      at model.Query.Query._castConditions (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:2055:10),
+  valueType: 'string'
+}
+[2022-05-25T16:31:09.686] [ERROR] error - TypeError: Cannot read property 'beginDate' of undefined
+    at ApiPlantShutdownWork.createPlantShutdownWorkFromWorkToDo (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:48:62)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:29:63
+[2022-05-25T16:31:09.687] [ERROR] error - TypeError: Cannot read property 'beginDate' of undefined
+    at ApiPlantShutdownWork.createPlantShutdownWorkFromWorkToDo (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:48:62)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:29:63
+[2022-05-25T16:34:58.607] [ERROR] error - CastError: Cast to ObjectId failed for value "1" (type string) at path "_id" for model "plantshutdowns"
+    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"1"',
+  kind: 'ObjectId',
+  value: '1',
+  path: '_id',
+  reason: TypeError: Argument passed in must be a Buffer or string of 12 bytes or a string of 24 hex characters
+      at new ObjectId (E:\instr-app\instr-app-back\node_modules\bson\lib\objectid.js:61:23)
+      at castObjectId (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast\objectid.js:25:12)
+      at ObjectId.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\objectid.js:246:12)
+      at ObjectId.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
+      at ObjectId.SchemaType._castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1553:15)
+      at ObjectId.SchemaType.castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1543:15)
+      at ObjectId.SchemaType.castForQueryWrapper (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1520:20)
+      at cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast.js:338:32)
+      at model.Query.Query.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4963:12)
+      at model.Query.Query._castConditions (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:2055:10),
+  valueType: 'string'
+}
+[2022-05-25T16:34:58.607] [ERROR] error - CastError: Cast to ObjectId failed for value "1" (type string) at path "_id" for model "plantshutdowns"
+    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"1"',
+  kind: 'ObjectId',
+  value: '1',
+  path: '_id',
+  reason: TypeError: Argument passed in must be a Buffer or string of 12 bytes or a string of 24 hex characters
+      at new ObjectId (E:\instr-app\instr-app-back\node_modules\bson\lib\objectid.js:61:23)
+      at castObjectId (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast\objectid.js:25:12)
+      at ObjectId.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\objectid.js:246:12)
+      at ObjectId.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
+      at ObjectId.SchemaType._castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1553:15)
+      at ObjectId.SchemaType.castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1543:15)
+      at ObjectId.SchemaType.castForQueryWrapper (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1520:20)
+      at cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast.js:338:32)
+      at model.Query.Query.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4963:12)
+      at model.Query.Query._castConditions (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:2055:10),
+  valueType: 'string'
+}
+[2022-05-25T16:34:58.608] [ERROR] error - TypeError: Cannot read property 'beginDate' of undefined
+    at ApiPlantShutdownWork.createPlantShutdownWorkFromWorkToDo (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:48:62)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:29:63
+[2022-05-25T16:34:58.610] [ERROR] error - TypeError: Cannot read property 'beginDate' of undefined
+    at ApiPlantShutdownWork.createPlantShutdownWorkFromWorkToDo (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:48:62)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:29:63
+[2022-05-25T16:35:54.081] [ERROR] error - CastError: Cast to ObjectId failed for value "1" (type string) at path "_id" for model "plantshutdowns"
+    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"1"',
+  kind: 'ObjectId',
+  value: '1',
+  path: '_id',
+  reason: TypeError: Argument passed in must be a Buffer or string of 12 bytes or a string of 24 hex characters
+      at new ObjectId (E:\instr-app\instr-app-back\node_modules\bson\lib\objectid.js:61:23)
+      at castObjectId (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast\objectid.js:25:12)
+      at ObjectId.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\objectid.js:246:12)
+      at ObjectId.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
+      at ObjectId.SchemaType._castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1553:15)
+      at ObjectId.SchemaType.castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1543:15)
+      at ObjectId.SchemaType.castForQueryWrapper (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1520:20)
+      at cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast.js:338:32)
+      at model.Query.Query.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4963:12)
+      at model.Query.Query._castConditions (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:2055:10),
+  valueType: 'string'
+}
+[2022-05-25T16:35:54.081] [ERROR] error - CastError: Cast to ObjectId failed for value "1" (type string) at path "_id" for model "plantshutdowns"
+    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"1"',
+  kind: 'ObjectId',
+  value: '1',
+  path: '_id',
+  reason: TypeError: Argument passed in must be a Buffer or string of 12 bytes or a string of 24 hex characters
+      at new ObjectId (E:\instr-app\instr-app-back\node_modules\bson\lib\objectid.js:61:23)
+      at castObjectId (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast\objectid.js:25:12)
+      at ObjectId.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\objectid.js:246:12)
+      at ObjectId.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
+      at ObjectId.SchemaType._castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1553:15)
+      at ObjectId.SchemaType.castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1543:15)
+      at ObjectId.SchemaType.castForQueryWrapper (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1520:20)
+      at cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast.js:338:32)
+      at model.Query.Query.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4963:12)
+      at model.Query.Query._castConditions (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:2055:10),
+  valueType: 'string'
+}
+[2022-05-25T16:35:54.082] [ERROR] error - TypeError: Cannot read property 'beginDate' of undefined
+    at ApiPlantShutdownWork.createPlantShutdownWorkFromWorkToDo (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:48:62)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:29:63
+[2022-05-25T16:35:54.083] [ERROR] error - TypeError: Cannot read property 'beginDate' of undefined
+    at ApiPlantShutdownWork.createPlantShutdownWorkFromWorkToDo (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:48:62)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:29:63
+[2022-05-25T16:36:32.570] [ERROR] error - CastError: Cast to ObjectId failed for value "1" (type string) at path "_id" for model "plantshutdowns"
+    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"1"',
+  kind: 'ObjectId',
+  value: '1',
+  path: '_id',
+  reason: TypeError: Argument passed in must be a Buffer or string of 12 bytes or a string of 24 hex characters
+      at new ObjectId (E:\instr-app\instr-app-back\node_modules\bson\lib\objectid.js:61:23)
+      at castObjectId (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast\objectid.js:25:12)
+      at ObjectId.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\objectid.js:246:12)
+      at ObjectId.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
+      at ObjectId.SchemaType._castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1553:15)
+      at ObjectId.SchemaType.castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1543:15)
+      at ObjectId.SchemaType.castForQueryWrapper (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1520:20)
+      at cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast.js:338:32)
+      at model.Query.Query.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4963:12)
+      at model.Query.Query._castConditions (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:2055:10),
+  valueType: 'string'
+}
+[2022-05-25T16:36:32.571] [ERROR] error - CastError: Cast to ObjectId failed for value "1" (type string) at path "_id" for model "plantshutdowns"
+    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"1"',
+  kind: 'ObjectId',
+  value: '1',
+  path: '_id',
+  reason: TypeError: Argument passed in must be a Buffer or string of 12 bytes or a string of 24 hex characters
+      at new ObjectId (E:\instr-app\instr-app-back\node_modules\bson\lib\objectid.js:61:23)
+      at castObjectId (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast\objectid.js:25:12)
+      at ObjectId.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\objectid.js:246:12)
+      at ObjectId.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
+      at ObjectId.SchemaType._castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1553:15)
+      at ObjectId.SchemaType.castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1543:15)
+      at ObjectId.SchemaType.castForQueryWrapper (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1520:20)
+      at cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast.js:338:32)
+      at model.Query.Query.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4963:12)
+      at model.Query.Query._castConditions (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:2055:10),
+  valueType: 'string'
+}
+[2022-05-25T16:36:32.572] [ERROR] error - TypeError: Cannot read property 'beginDate' of undefined
+    at ApiPlantShutdownWork.createPlantShutdownWorkFromWorkToDo (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:48:62)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:29:63
+[2022-05-25T16:36:32.573] [ERROR] error - TypeError: Cannot read property 'beginDate' of undefined
+    at ApiPlantShutdownWork.createPlantShutdownWorkFromWorkToDo (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:48:62)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:29:63
+[2022-05-25T17:14:05.577] [ERROR] error - CastError: Cast to ObjectId failed for value "1" (type string) at path "_id" for model "plantshutdowns"
+    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"1"',
+  kind: 'ObjectId',
+  value: '1',
+  path: '_id',
+  reason: TypeError: Argument passed in must be a Buffer or string of 12 bytes or a string of 24 hex characters
+      at new ObjectId (E:\instr-app\instr-app-back\node_modules\bson\lib\objectid.js:61:23)
+      at castObjectId (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast\objectid.js:25:12)
+      at ObjectId.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\objectid.js:246:12)
+      at ObjectId.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
+      at ObjectId.SchemaType._castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1553:15)
+      at ObjectId.SchemaType.castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1543:15)
+      at ObjectId.SchemaType.castForQueryWrapper (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1520:20)
+      at cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast.js:338:32)
+      at model.Query.Query.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4963:12)
+      at model.Query.Query._castConditions (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:2055:10),
+  valueType: 'string'
+}
+[2022-05-25T17:14:05.580] [ERROR] error - TypeError: Cannot read property 'beginDate' of undefined
+    at ApiPlantShutdownWork.createPlantShutdownWorkFromWorkToDo (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:50:62)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:31:63
+[2022-05-25T17:21:43.599] [ERROR] error - CastError: Cast to ObjectId failed for value "1" (type string) at path "_id" for model "plantshutdowns"
+    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"1"',
+  kind: 'ObjectId',
+  value: '1',
+  path: '_id',
+  reason: TypeError: Argument passed in must be a Buffer or string of 12 bytes or a string of 24 hex characters
+      at new ObjectId (E:\instr-app\instr-app-back\node_modules\bson\lib\objectid.js:61:23)
+      at castObjectId (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast\objectid.js:25:12)
+      at ObjectId.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\objectid.js:246:12)
+      at ObjectId.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
+      at ObjectId.SchemaType._castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1553:15)
+      at ObjectId.SchemaType.castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1543:15)
+      at ObjectId.SchemaType.castForQueryWrapper (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1520:20)
+      at cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast.js:338:32)
+      at model.Query.Query.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4963:12)
+      at model.Query.Query._castConditions (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:2055:10),
+  valueType: 'string'
+}
+[2022-05-25T17:21:43.602] [ERROR] error - CastError: Cast to ObjectId failed for value "1" (type string) at path "_id" for model "plantshutdowns"
+    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"1"',
+  kind: 'ObjectId',
+  value: '1',
+  path: '_id',
+  reason: TypeError: Argument passed in must be a Buffer or string of 12 bytes or a string of 24 hex characters
+      at new ObjectId (E:\instr-app\instr-app-back\node_modules\bson\lib\objectid.js:61:23)
+      at castObjectId (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast\objectid.js:25:12)
+      at ObjectId.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\objectid.js:246:12)
+      at ObjectId.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
+      at ObjectId.SchemaType._castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1553:15)
+      at ObjectId.SchemaType.castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1543:15)
+      at ObjectId.SchemaType.castForQueryWrapper (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1520:20)
+      at cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast.js:338:32)
+      at model.Query.Query.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4963:12)
+      at model.Query.Query._castConditions (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:2055:10),
+  valueType: 'string'
+}
+[2022-05-25T17:21:43.604] [ERROR] error - TypeError: Cannot read property '0' of undefined
+    at ApiPlantShutdownWork.createPlantShutdownWorkFromWorkToDo (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:52:110)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:31:63
+[2022-05-25T17:21:43.605] [ERROR] error - TypeError: Cannot read property '0' of undefined
+    at ApiPlantShutdownWork.createPlantShutdownWorkFromWorkToDo (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:52:110)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:31:63
+[2022-05-25T17:23:18.361] [ERROR] error - CastError: Cast to ObjectId failed for value "1" (type string) at path "_id" for model "plantshutdowns"
+    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"1"',
+  kind: 'ObjectId',
+  value: '1',
+  path: '_id',
+  reason: TypeError: Argument passed in must be a Buffer or string of 12 bytes or a string of 24 hex characters
+      at new ObjectId (E:\instr-app\instr-app-back\node_modules\bson\lib\objectid.js:61:23)
+      at castObjectId (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast\objectid.js:25:12)
+      at ObjectId.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\objectid.js:246:12)
+      at ObjectId.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
+      at ObjectId.SchemaType._castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1553:15)
+      at ObjectId.SchemaType.castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1543:15)
+      at ObjectId.SchemaType.castForQueryWrapper (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1520:20)
+      at cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast.js:338:32)
+      at model.Query.Query.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4963:12)
+      at model.Query.Query._castConditions (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:2055:10),
+  valueType: 'string'
+}
+[2022-05-25T17:23:18.362] [ERROR] error - CastError: Cast to ObjectId failed for value "1" (type string) at path "_id" for model "plantshutdowns"
+    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"1"',
+  kind: 'ObjectId',
+  value: '1',
+  path: '_id',
+  reason: TypeError: Argument passed in must be a Buffer or string of 12 bytes or a string of 24 hex characters
+      at new ObjectId (E:\instr-app\instr-app-back\node_modules\bson\lib\objectid.js:61:23)
+      at castObjectId (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast\objectid.js:25:12)
+      at ObjectId.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\objectid.js:246:12)
+      at ObjectId.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
+      at ObjectId.SchemaType._castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1553:15)
+      at ObjectId.SchemaType.castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1543:15)
+      at ObjectId.SchemaType.castForQueryWrapper (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1520:20)
+      at cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast.js:338:32)
+      at model.Query.Query.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4963:12)
+      at model.Query.Query._castConditions (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:2055:10),
+  valueType: 'string'
+}
+[2022-05-25T17:23:18.363] [ERROR] error - TypeError: Cannot read property '0' of undefined
+    at ApiPlantShutdownWork.createPlantShutdownWorkFromWorkToDo (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:52:110)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:31:63
+[2022-05-25T17:23:18.364] [ERROR] error - TypeError: Cannot read property '0' of undefined
+    at ApiPlantShutdownWork.createPlantShutdownWorkFromWorkToDo (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:52:110)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:31:63
+[2022-05-25T17:31:16.353] [ERROR] error - CastError: Cast to ObjectId failed for value "1" (type string) at path "_id" for model "plantshutdowns"
+    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"1"',
+  kind: 'ObjectId',
+  value: '1',
+  path: '_id',
+  reason: TypeError: Argument passed in must be a Buffer or string of 12 bytes or a string of 24 hex characters
+      at new ObjectId (E:\instr-app\instr-app-back\node_modules\bson\lib\objectid.js:61:23)
+      at castObjectId (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast\objectid.js:25:12)
+      at ObjectId.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\objectid.js:246:12)
+      at ObjectId.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
+      at ObjectId.SchemaType._castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1553:15)
+      at ObjectId.SchemaType.castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1543:15)
+      at ObjectId.SchemaType.castForQueryWrapper (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1520:20)
+      at cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast.js:338:32)
+      at model.Query.Query.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4963:12)
+      at model.Query.Query._castConditions (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:2055:10),
+  valueType: 'string'
+}
+[2022-05-25T17:31:16.355] [ERROR] error - CastError: Cast to ObjectId failed for value "1" (type string) at path "_id" for model "plantshutdowns"
+    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"1"',
+  kind: 'ObjectId',
+  value: '1',
+  path: '_id',
+  reason: TypeError: Argument passed in must be a Buffer or string of 12 bytes or a string of 24 hex characters
+      at new ObjectId (E:\instr-app\instr-app-back\node_modules\bson\lib\objectid.js:61:23)
+      at castObjectId (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast\objectid.js:25:12)
+      at ObjectId.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\objectid.js:246:12)
+      at ObjectId.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
+      at ObjectId.SchemaType._castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1553:15)
+      at ObjectId.SchemaType.castForQuery (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1543:15)
+      at ObjectId.SchemaType.castForQueryWrapper (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1520:20)
+      at cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast.js:338:32)
+      at model.Query.Query.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4963:12)
+      at model.Query.Query._castConditions (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:2055:10),
+  valueType: 'string'
+}
+[2022-05-25T17:31:16.356] [ERROR] error - TypeError: Cannot read property '0' of undefined
+    at ApiPlantShutdownWork.createPlantShutdownWorkFromWorkToDo (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:52:110)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:31:63
+[2022-05-25T17:31:16.358] [ERROR] error - TypeError: Cannot read property '0' of undefined
+    at ApiPlantShutdownWork.createPlantShutdownWorkFromWorkToDo (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:52:110)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:31:63
+[2022-05-28T14:39:19.904] [ERROR] error - ReferenceError: data is not defined
+    at ApiPlantShutdownWork.createPlantShutdownWork (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:55:13)
+    at ApiPlantShutdownWork.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:27:41)
+    at Socket.<anonymous> (file:///E:/instr-app/instr-app-back/sockets.js:76:97)
+    at Socket.emit (events.js:315:20)
+    at Socket.emitUntyped (E:\instr-app\instr-app-back\node_modules\socket.io\dist\typed-events.js:69:22)
+    at E:\instr-app\instr-app-back\node_modules\socket.io\dist\socket.js:428:39
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+[2022-05-28T15:22:02.884] [ERROR] error - ReferenceError: data is not defined
+    at ApiPlantShutdownWork.createPlantShutdownWork (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:55:13)
+    at ApiPlantShutdownWork.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:27:41)
+    at Socket.<anonymous> (file:///E:/instr-app/instr-app-back/sockets.js:76:97)
+    at Socket.emit (events.js:315:20)
+    at Socket.emitUntyped (E:\instr-app\instr-app-back\node_modules\socket.io\dist\typed-events.js:69:22)
+    at E:\instr-app\instr-app-back\node_modules\socket.io\dist\socket.js:428:39
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+[2022-05-28T15:31:39.579] [ERROR] error - TypeError: Cannot read property 'plant' of undefined
+    at savePlantShutdownWorkDTO (file:///E:/instr-app/instr-app-back/model/DTOs/plantShutdownWork.js:4:17)
+    at ApiPlantShutdownWork.createPlantShutdownWork (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:51:45)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiPlantShutdownWork.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:25:30)
+[2022-05-28T15:36:27.210] [ERROR] error - ReferenceError: data is not defined
+    at ApiPlantShutdownWork.createPlantShutdownWork (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:52:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiPlantShutdownWork.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:25:30)
+[2022-05-28T15:37:00.858] [ERROR] error - ReferenceError: data is not defined
+    at ApiPlantShutdownWork.createPlantShutdownWork (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:52:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiPlantShutdownWork.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:25:30)
+[2022-05-28T15:37:32.004] [ERROR] error - ReferenceError: data is not defined
+    at ApiPlantShutdownWork.createPlantShutdownWork (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:53:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiPlantShutdownWork.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:25:30)
+[2022-05-28T15:38:02.621] [ERROR] error - ReferenceError: data is not defined
+    at ApiPlantShutdownWork.createPlantShutdownWork (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:53:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiPlantShutdownWork.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:25:30)
+[2022-05-28T15:39:55.588] [ERROR] error - ReferenceError: data is not defined
+    at ApiPlantShutdownWork.createPlantShutdownWork (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:53:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiPlantShutdownWork.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:25:30)
+[2022-05-28T15:53:10.261] [ERROR] error - ReferenceError: data is not defined
+    at ApiPlantShutdownWork.createPlantShutdownWork (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:53:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiPlantShutdownWork.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:25:30)
+[2022-05-28T15:58:52.192] [ERROR] error - ReferenceError: data is not defined
+    at ApiPlantShutdownWork.createPlantShutdownWork (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:53:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiPlantShutdownWork.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:25:30)
+[2022-05-28T16:08:39.393] [ERROR] error - TypeError: data.id.push is not a function
+    at savePlantShutdownWorkDTO (file:///E:/instr-app/instr-app-back/model/DTOs/plantShutdownWork.js:18:36)
+    at ApiPlantShutdownWork.createPlantShutdownWorkFromWorkToDo (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:67:49)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiPlantShutdownWork.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:29:30)
+[2022-05-28T16:10:20.978] [ERROR] error - ReferenceError: data is not defined
+    at ApiPlantShutdownWork.createPlantShutdownWork (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:53:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiPlantShutdownWork.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:25:30)
+[2022-05-28T16:11:38.177] [ERROR] error - ReferenceError: data is not defined
+    at ApiPlantShutdownWork.createPlantShutdownWork (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:54:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiPlantShutdownWork.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:25:30)
+[2022-05-28T16:13:45.500] [ERROR] error - ReferenceError: data is not defined
+    at ApiPlantShutdownWork.createPlantShutdownWork (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:54:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiPlantShutdownWork.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:25:30)
+[2022-05-29T15:05:50.570] [ERROR] error - Error: plantshutdownworks validation failed: beginDate: Cast to date failed for value "29/5/22" (type string) at path "beginDate"
+    at ValidationError.inspect (E:\instr-app\instr-app-back\node_modules\mongoose\lib\error\validation.js:48:26)
+    at internal/per_context/primordials.js:23:32
+    at formatValue (internal/util/inspect.js:783:19)
+    at inspect (internal/util/inspect.js:337:10)
+    at formatWithOptionsInternal (internal/util/inspect.js:2016:40)
+    at Object.format (internal/util/inspect.js:1890:10)
+    at basicLayout (E:\instr-app\instr-app-back\node_modules\log4js\lib\layouts.js:63:57)
+    at app (E:\instr-app\instr-app-back\node_modules\log4js\lib\appenders\file.js:73:23)
+    at E:\instr-app\instr-app-back\node_modules\log4js\lib\log4js.js:43:5
+    at Array.forEach (<anonymous>) {
+  errors: {
+    beginDate: CastError: Cast to date failed for value "29/5/22" (type string) at path "beginDate"
+        at SchemaDate.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\date.js:354:11)
+        at SchemaDate.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
+        at model.$set (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:1380:20)
+        at model.$set (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:1122:16)
+        at model.Document (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:150:12)
+        at model.Model (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:106:12)
+        at new model (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:4752:15)
+        at Array.<anonymous> (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:3318:17)
+        at _start (E:\instr-app\instr-app-back\node_modules\mongoose\lib\helpers\parallelLimit.js:27:37)
+        at parallelLimit (E:\instr-app\instr-app-back\node_modules\mongoose\lib\helpers\parallelLimit.js:23:5) {
+      stringValue: '"29/5/22"',
+      messageFormat: undefined,
+      kind: 'date',
+      value: '29/5/22',
+      path: 'beginDate',
+      reason: AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+      
+        assert.ok(false)
+      
+          at castDate (E:\instr-app\instr-app-back\node_modules\mongoose\lib\cast\date.js:40:10)
+          at SchemaDate.cast (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schema\date.js:352:12)
+          at SchemaDate.SchemaType.applySetters (E:\instr-app\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
+          at model.$set (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:1380:20)
+          at model.$set (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:1122:16)
+          at model.Document (E:\instr-app\instr-app-back\node_modules\mongoose\lib\document.js:150:12)
+          at model.Model (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:106:12)
+          at new model (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:4752:15)
+          at Array.<anonymous> (E:\instr-app\instr-app-back\node_modules\mongoose\lib\model.js:3318:17)
+          at _start (E:\instr-app\instr-app-back\node_modules\mongoose\lib\helpers\parallelLimit.js:27:37) {
+        generatedMessage: true,
+        code: 'ERR_ASSERTION',
+        actual: false,
+        expected: true,
+        operator: '=='
+      },
+      valueType: 'string'
+    }
+  },
+  _message: 'plantshutdownworks validation failed'
+}
+[2022-05-29T19:06:23.813] [ERROR] error - ReferenceError: dailyWorkToSave is not defined
+    at ApiPlantShutdownWork.updatePlantShutdownWork (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:132:70)
+    at ApiPlantShutdownWork.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:38:41)
+    at Socket.<anonymous> (file:///E:/instr-app/instr-app-back/sockets.js:77:97)
+    at Socket.emit (events.js:315:20)
+    at Socket.emitUntyped (E:\instr-app\instr-app-back\node_modules\socket.io\dist\typed-events.js:69:22)
+    at E:\instr-app\instr-app-back\node_modules\socket.io\dist\socket.js:428:39
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+[2022-05-29T21:48:43.693] [ERROR] error - ReferenceError: dailyWorkToSave is not defined
+    at ApiPlantShutdownWork.updatePlantShutdownWork (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:136:70)
+    at ApiPlantShutdownWork.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:38:41)
+    at Socket.<anonymous> (file:///E:/instr-app/instr-app-back/sockets.js:77:97)
+    at Socket.emit (events.js:315:20)
+    at Socket.emitUntyped (E:\instr-app\instr-app-back\node_modules\socket.io\dist\typed-events.js:69:22)
+    at E:\instr-app\instr-app-back\node_modules\socket.io\dist\socket.js:428:39
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+[2022-05-29T21:51:53.529] [ERROR] error - ReferenceError: plantShutdownWork is not defined
+    at ApiPlantShutdownWork.updatePlantShutdownWork (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:139:13)
+    at ApiPlantShutdownWork.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:38:41)
+    at Socket.<anonymous> (file:///E:/instr-app/instr-app-back/sockets.js:77:97)
+    at Socket.emit (events.js:315:20)
+    at Socket.emitUntyped (E:\instr-app\instr-app-back\node_modules\socket.io\dist\typed-events.js:69:22)
+    at E:\instr-app\instr-app-back\node_modules\socket.io\dist\socket.js:428:39
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+[2022-05-29T21:57:17.540] [ERROR] error - ReferenceError: updatedPlantShutdownWork is not defined
+    at ApiPlantShutdownWork.updatePlantShutdownWork (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:134:25)
+    at ApiPlantShutdownWork.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:38:41)
+    at Socket.<anonymous> (file:///E:/instr-app/instr-app-back/sockets.js:77:97)
+    at Socket.emit (events.js:315:20)
+    at Socket.emitUntyped (E:\instr-app\instr-app-back\node_modules\socket.io\dist\typed-events.js:69:22)
+    at E:\instr-app\instr-app-back\node_modules\socket.io\dist\socket.js:428:39
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+[2022-05-29T22:06:40.930] [ERROR] error - TypeError: Cannot read property 'push' of null
+    at ApiPlantShutdownWork.updatePlantShutdownWork (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:139:46)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiPlantShutdownWork.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:38:30)
+[2022-05-29T22:07:26.690] [ERROR] error - TypeError: Cannot read property 'push' of null
+    at ApiPlantShutdownWork.updatePlantShutdownWork (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:140:46)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiPlantShutdownWork.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:38:30)
+[2022-05-30T21:11:52.089] [ERROR] error - ReferenceError: removePlantShutdownWorkIdDTO is not defined
+    at ApiPlantShutdownWork.updatePlantShutdownWork (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:138:47)
+    at ApiPlantShutdownWork.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:38:41)
+    at Socket.<anonymous> (file:///E:/instr-app/instr-app-back/sockets.js:77:97)
+    at Socket.emit (events.js:315:20)
+    at Socket.emitUntyped (E:\instr-app\instr-app-back\node_modules\socket.io\dist\typed-events.js:69:22)
+    at E:\instr-app\instr-app-back\node_modules\socket.io\dist\socket.js:428:39
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)

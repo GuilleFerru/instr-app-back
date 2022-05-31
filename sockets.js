@@ -1,12 +1,16 @@
 import { ApiSchedule } from './api/schedules.js';
 import { ApiDailyWork } from './api/dailyWorks.js';
 import { ApiRoutine } from './api/routines.js';
+import { ApiPlantShutdown } from './api/plantShutdowns.js';
+import { ApiPlantShutdownWork } from './api/plantShutdownWorks.js';
 import { formatDate } from './utils/formatDate.js';
 import { loggerInfo } from "./utils/logger.js";
 
 const apiSchedule = new ApiSchedule();
 const apiDailyWork = new ApiDailyWork();
 const apiRoutine = new ApiRoutine();
+const apiPlantShutdown = new ApiPlantShutdown();
+const apiPlantShutdownWork = new ApiPlantShutdownWork();
 
 
 export default (io) => {
@@ -39,6 +43,7 @@ export default (io) => {
 
         // DAILY WORKS
         socket.on("get_daily_works", (date) => apiDailyWork.handleSocket({ date, socket, action: "get_daily_works" }));
+        socket.on("get_daily_works_for_plant_shutdown", () => apiDailyWork.handleSocket({ socket, action: "get_daily_works_for_plant_shutdown" }));
         socket.on("create_daily_work", (dailyWorkData, roomId) => apiDailyWork.handleSocket({ socket, action: "create_daily_work", dailyWorkData, roomId: formatDate(roomId), io }));
         socket.on("daily_works_join_room", (date) => {
             const id = formatDate(date);
@@ -61,7 +66,18 @@ export default (io) => {
         socket.on("get_qtyOverDueRoutines", () => apiRoutine.handleSocket({ socket, action: "get_qtyOverDueRoutines", io }));
 
         //PLANTSHUTDOWNS
-        socket.on("get_plant_shutdowns", () => apiRoutine.handleSocket({ socket, action: "get_plant_shutdowns" }));
+        socket.on("get_plant_shutdowns", (date) => apiPlantShutdown.handleSocket({ date, socket, action: "get_plant_shutdowns" }));
+        socket.on("create_plant_shutdown", (plantShutdownData) => apiPlantShutdown.handleSocket({ socket, action: "create_plant_shutdown", plantShutdownData, io }));
+        socket.on("update_plant_shutdown", (date, plantShutdownData) => apiPlantShutdown.handleSocket({ date, socket, action: "update_plant_shutdown", plantShutdownData, io }));
+        socket.on("delete_plant_shutdown", (plantShutdownData) => apiPlantShutdown.handleSocket({ socket, action: "delete_plant_shutdown", plantShutdownData, io }));
+        socket.on("create_plant_shutdown_work_from_work_to_do", (plantShutdownWorkData) => apiPlantShutdownWork.handleSocket({ socket, action: "create_plant_shutdown_work_from_work_to_do", plantShutdownWorkData, io }));
+        socket.on("bulk_create_plant_shutdown_work_from_work_to_do", (plantShutdownWorkData) => apiPlantShutdownWork.handleSocket({ socket, action: "bulk_create_plant_shutdown_work_from_work_to_do", plantShutdownWorkData, io }));
+        socket.on("get_plant_shutdown_works", (plantShutdownWorkData) => apiPlantShutdownWork.handleSocket({ socket, action: "get_plant_shutdown_works", plantShutdownWorkData }));
+        socket.on("create_plant_shutdown_work", (plantShutdownWorkData) => apiPlantShutdownWork.handleSocket({ socket, action: "create_plant_shutdown_work", plantShutdownWorkData, io }));
+        socket.on("update_plant_shutdown_work", (plantShutdownWorkData) => apiPlantShutdownWork.handleSocket({ socket, action: "update_plant_shutdown_work", plantShutdownWorkData, io }));
+        socket.on("delete_plant_shutdown_work", (plantShutdownWorkData) => apiPlantShutdownWork.handleSocket({ socket, action: "delete_plant_shutdown_work", plantShutdownWorkData, io }));
+
+
 
         socket.on("disconnect", () => {
             loggerInfo.info(`Socket ${socket.id} disconnected`);

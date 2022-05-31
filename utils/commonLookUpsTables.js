@@ -3,6 +3,7 @@ import { ApiAttelier } from '../api/attelieres.js';
 import { ApiTimeSchedule } from '../api/timeSchedules.js';
 import { ApiManteinance } from '../api/manteinances.js';
 import { ApiManteinanceAction } from '../api/manteinanceActions.js';
+import { ApiPlantShutdown } from '../api/plantShutdowns.js';
 
 const plantData = async () => {
     return await ApiPlant.getPlantsForColumnTable();
@@ -24,12 +25,17 @@ const manteinanceActionData = async () => {
     return await ApiManteinanceAction.getManteinanceActionsForColumnTable();
 }
 
+const plantShutdownsData = async () => {
+    return await ApiPlantShutdown.getPlantShutdownsForColumnTable();
+}
+
 export {
     plantData,
     attelierData,
     timeScheduleData,
     manteinanceData,
     manteinanceActionData,
+    plantShutdownsData
 }
 
 
