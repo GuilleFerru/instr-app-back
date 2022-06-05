@@ -1,9 +1,19 @@
 import { dao } from '../server.js';
 import { PlantShutdownWorksColumnTable } from '../utils/plantShutdownWorksTable.js';
-import { savePlantShutdownWorkDTO, plantShutdownWorksRespDTO, removePlantShutdownWorkIdDTO } from '../model/DTOs/plantShutdownWork.js';
-//import { ApiPlantShutdown } from './plantShutdowns.js';
 import { ApiDailyWork } from './dailyWorks.js';
 import { loggerError, loggerInfo } from '../utils/logger.js';
+import { ApiManteinanceAction } from './manteinanceActions.js';
+import { ApiPlantShutdown } from './plantShutdowns.js';
+import {
+    changeIDForViewDTO,
+    normalizeIDViewDTO,
+    savePlantShutdownWorkDTO,
+    plantShutdownWorksRespDTO,
+    saveDailyWorkFromShutdownWorkDTO
+} from '../model/DTOs/plantShutdownWork.js';
+
+
+
 
 export class ApiPlantShutdownWork {
 
@@ -15,6 +25,7 @@ export class ApiPlantShutdownWork {
             if (action === 'get_plant_shutdown_works') {
                 const data = await this.getPlantShutdownWorksByPlantShutdownId(plantShutdownWorkData);
                 data && socket.emit('get_plant_shutdown_works', data);
+
             } else if (action === 'create_plant_shutdown_work') {
                 const data = await this.createPlantShutdownWork(plantShutdownWorkData, apiDailyWork);
                 data && socket.emit('get_plant_shutdown_works', await this.getPlantShutdownWorksByPlantShutdownId(plantShutdownWorkData.plantShutdownId));
@@ -31,6 +42,7 @@ export class ApiPlantShutdownWork {
             } else if (action === 'update_plant_shutdown_work') {
                 const data = await this.updatePlantShutdownWork(plantShutdownWorkData, apiDailyWork);
                 data && socket.emit('get_plant_shutdown_works', await this.getPlantShutdownWorksByPlantShutdownId(plantShutdownWorkData.newData.plantShutdownId));
+
             } else if (action === 'delete_plant_shutdown_work') {
                 const data = await this.deletePlantShutdownWork(plantShutdownWorkData, apiDailyWork);
                 data && socket.emit('get_plant_shutdown_works', await this.getPlantShutdownWorksByPlantShutdownId(plantShutdownWorkData.plantShutdownId));
@@ -48,22 +60,21 @@ export class ApiPlantShutdownWork {
             if (plantShutdown) {
                 const beginDate = plantShutdown[0].beginDate;
                 const endDate = plantShutdown[0].endDate;
-                const timeSchedule = plantShutdown[0].timeSchedule;
-                const plantShutdownWorkToSave = savePlantShutdownWorkDTO(plantShutdownWorkData, beginDate, endDate, timeSchedule);
+                const plantShutdownWorkToSave = savePlantShutdownWorkDTO(plantShutdownWorkData, beginDate, endDate, null);
+                const plantShutdownWork = await dao.createPlantShutdownWork(plantShutdownWorkToSave);
 
-                // si la descripcion es distinta de null es porque ya se empezo con el trabajo, se debe crear un dayliWork con la fecha actual
-                const createDailyWork = plantShutdownWorkToSave.description !== '';
-                if (createDailyWork) {
-                    const dailyWorkToSave = plantShutdownWorkToSave;
-                    const dailyWork = await apiDailyWork.createDailyWork(dailyWorkToSave, 'fromPlantShutdownWork');
-                    const dailyWorkId = dailyWork[0]._id;
-                    plantShutdownWorkToSave.dailyWorkId = dailyWorkId;
-                    //le fuerzo la fecha de inicio igual al paro de pta.
-                    plantShutdownWorkToSave.beginDate = beginDate;
+                if (plantShutdownWork.length > 0) {
+                    // si la descripcion es distinta de null es porque ya se empezo con el trabajo, se debe crear un dayliWork con la fecha actual
+                    const createDailyWork = plantShutdownWorkToSave.description !== '';
+                    if (createDailyWork) {
+                        const dailyWorkToSave = plantShutdownWorkToSave;
+                        dailyWorkToSave.plantShutdownWorkId = plantShutdownWork[0]._id;
+                        const dailyWork = saveDailyWorkFromShutdownWorkDTO(dailyWorkToSave)
+                        await apiDailyWork.createDailyWork(dailyWork, 'fromPlantShutdownWork');
+                    }
+                    return true;
                 }
-
-                await dao.createPlantShutdownWork(plantShutdownWorkToSave);
-                return true;
+                return false;
             } else {
                 return false;
             }
@@ -83,7 +94,7 @@ export class ApiPlantShutdownWork {
                 const plantShutdownWork = await dao.createPlantShutdownWork(plantShutdownWorkToSave);
                 //actualizo el plantShutdownId en la tabla dailyWork
                 if (plantShutdownWork.length > 0) {
-                    const dailyWorkUpdatePlantShutdownId = await apiDailyWork.updateDailyWorkByShutdownId(plantShutdownWork[0].dailyWorkId, plantShutdownId);
+                    const dailyWorkUpdatePlantShutdownId = await apiDailyWork.updateDailyWorkByPlantShutdownWorkId(plantShutdownWorkData.id, plantShutdownWork[0]._id);
                     if (dailyWorkUpdatePlantShutdownId) {
                         return true;
                     }
@@ -102,7 +113,9 @@ export class ApiPlantShutdownWork {
     getPlantShutdownWorksByPlantShutdownId = async (plantShutdownId) => {
         try {
             const columns = [];
-            const plantShutdownWorks = await dao.getPlantShutdownWorksByPlantShutdownId(plantShutdownId);
+            const plantShutdownWorks = [];
+            const rawPlantShutdownWorks = await dao.getPlantShutdownWorksByPlantShutdownId(plantShutdownId);
+            rawPlantShutdownWorks.map((plantShutdownWork) => { plantShutdownWorks.push(changeIDForViewDTO(plantShutdownWork)) });
             const savedColumns = await PlantShutdownWorksColumnTable.getColumns();
             if (savedColumns.length === 0) {
                 const savedColumns = await PlantShutdownWorksColumnTable.createColumns();
@@ -110,10 +123,18 @@ export class ApiPlantShutdownWork {
             } else {
                 columns.push(savedColumns[0].columns);
             }
+            //si el paro no empezo no dejo agregar descripcion para q no me cree un dailyWork
+            const apiPlantShutdown = new ApiPlantShutdown();
+            const plantShutdown = await apiPlantShutdown.getPlantShutdownById(plantShutdownId);
+            const plantShutdownBeginDate = plantShutdown[0].beginDate;
+            if (new Date() <= plantShutdownBeginDate) {
+                columns[0][8].editable = "never";
+            }
+            const action = await ApiManteinanceAction.getManteinanceActionsForSelectForm();
             if (plantShutdownWorks.length > 0) {
-                return plantShutdownWorksRespDTO(plantShutdownWorks, ...columns);
+                return plantShutdownWorksRespDTO(plantShutdownWorks, ...columns, action);
             } else {
-                return plantShutdownWorksRespDTO([], ...columns);
+                return plantShutdownWorksRespDTO([], ...columns, action);
             }
         } catch (err) {
             loggerError.error(err);
@@ -127,14 +148,14 @@ export class ApiPlantShutdownWork {
             const oldPlantShutdownWork = plantShutdownWorkData.oldData;
             const oldDescription = oldPlantShutdownWork.description;
             const newDescription = newPlantShutdownWork.description;
+            const oldBeginDate = oldPlantShutdownWork.beginDate;
+            const newBeginDate = newPlantShutdownWork.beginDate;
             // si actualiza el trabajo realizado, creo un nuevo dailyWork con la fecha actual de la modificacion
-            if (oldDescription !== newDescription) {
-                // le saco el id del dailyWork para que no lo guarde como rutina
-                const plantShutdownWorkRest = removePlantShutdownWorkIdDTO(newPlantShutdownWork);
-                const dailyWork = await apiDailyWork.createDailyWork(plantShutdownWorkRest, 'fromPlantShutdownWork');
-                newPlantShutdownWork.dailyWorkId.push(dailyWork[0]._id);
+            if (oldDescription !== newDescription || oldBeginDate !== newBeginDate) {
+                const plantShutdownWork = saveDailyWorkFromShutdownWorkDTO(newPlantShutdownWork);
+                await apiDailyWork.createDailyWork(plantShutdownWork, 'fromPlantShutdownWork');
             }
-            const plantShutdownWork = await dao.updatePlantShutdownWork(newPlantShutdownWork);
+            const plantShutdownWork = await dao.updatePlantShutdownWork(normalizeIDViewDTO(newPlantShutdownWork));
             if (plantShutdownWork) {
                 return true;
             } else {
@@ -150,15 +171,17 @@ export class ApiPlantShutdownWork {
 
     deletePlantShutdownWork = async (plantShutdownWorkData, apiDailyWork = null) => {
         try {
-            plantShutdownWorkData.dailyWorkId.forEach(async (dailyWorkId) => {
-                const dailyWork = {
-                    id: dailyWorkId,
-                    routineScheduleId: plantShutdownWorkData.routineScheduleId,
-                    action: plantShutdownWorkData.action
+            const normalizePlantShutdownWork = normalizeIDViewDTO(plantShutdownWorkData);
+            const dailyWorks = await apiDailyWork.getDailyWorkByPlantShutdownWorkId(normalizePlantShutdownWork._id);
+            dailyWorks.forEach(async (dailyWork) => {
+                const dailyWorkToDelete = {
+                    id: dailyWork._id,
+                    routineScheduleId: dailyWork.routineScheduleId,
+                    action: dailyWork.action
                 }
-                await apiDailyWork.deleteDailyWork(dailyWork);
+                await apiDailyWork.deleteDailyWork(dailyWorkToDelete);
             });
-            const plantShutdownWork = await dao.deletePlantShutdownWork(plantShutdownWorkData);
+            const plantShutdownWork = await dao.deletePlantShutdownWork(normalizePlantShutdownWork);
             if (plantShutdownWork) {
                 return true;
             } else {

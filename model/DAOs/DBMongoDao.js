@@ -411,13 +411,23 @@ export class DBMongoDao {
 
     getDailyWorkForPlantShutdown = async () => {
         try {
-            const dailyWorkResp = await dailyWorkModel.find({ $and: [{ complete: 'PP' }, { "plantShutdownId": { $eq: 1 } }] }, { __v: 0, createdAt: 0, updatedAt: 0 }).sort({ createdAt: 1 });
+            const dailyWorkResp = await dailyWorkModel.find({ $and: [{ complete: 'PP' }, { "plantShutdownWorkId": { $eq: 1 } }] }, { __v: 0, createdAt: 0, updatedAt: 0 }).sort({ createdAt: 1 });
             return dailyWorkResp;
         } catch (error) {
             console.log(error)
             loggerError.error(error)
         }
     }
+
+    getDailyWorkByPlantShutdownWorkId = async (plantShutdownWorkId) => {
+        try {
+            const dailyWorkResp = await dailyWorkModel.find({ "plantShutdownWorkId": plantShutdownWorkId }, { __v: 0, createdAt: 0, updatedAt: 0 });
+            return dailyWorkResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
 
     updateDailyWork = async (date, dailyWork) => {
         try {
@@ -435,7 +445,7 @@ export class DBMongoDao {
                     "beginDate": dailyWork.beginDate,
                     "endDate": dailyWork.endDate,
                     "routineScheduleId": dailyWork.routineScheduleId,
-                    "plantShutdownId": dailyWork.plantShutdownId,
+                    "plantShutdownWorkId": dailyWork.plantShutdownWorkId,
                     "sector": dailyWork.sector,
                 }
             });
@@ -459,11 +469,11 @@ export class DBMongoDao {
         }
     }
 
-    updateDailyWorkByShutdownId = async (id, plantShutdownId) => {
+    updateDailyWorkByPlantShutdownWorkId = async (id, plantShutdownWorkId) => {
         try {
             await dailyWorkModel.updateOne({ _id: id }, {
                 $set: {
-                    plantShutdownId: plantShutdownId,
+                    plantShutdownWorkId: plantShutdownWorkId,
                 }
             });
             return true;
@@ -777,15 +787,13 @@ export class DBMongoDao {
         try {
             await plantShutdownWorkModel.updateOne({ "_id": plantShutdownWork._id }, {
                 $set: {
-                    "plant": plantShutdownWork.plant,
-                    "attelier": plantShutdownWork.attelier,
                     "tag": plantShutdownWork.tag,
                     "ot": plantShutdownWork.ot,
                     "action": plantShutdownWork.action,
                     "workToDo": plantShutdownWork.workToDo,
                     "description": plantShutdownWork.description,
                     "complete": plantShutdownWork.complete,
-                    "dailyWorkId": plantShutdownWork.dailyWorkId,
+                    
                 }
             });
             return true;

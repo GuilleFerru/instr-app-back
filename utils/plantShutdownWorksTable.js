@@ -59,6 +59,7 @@ const createplantShutdownWorksColumns = (plantsForColumnTable, atteliersForColum
             title: 'Trabajo realizado',
             multiline: true,
             align: "justify",
+            editable: "always",
             width: '25%'
         },
         {

@@ -116,6 +116,7 @@ export class ApiPlantShutdown {
         try {
             const apiDailyWork = new ApiDailyWork();
             const plantShutdownWorks = await dao.getPlantShutdownWorksByPlantShutdownId(plantShutdownData._id);
+
             if (plantShutdownWorks.length > 0) {
                 plantShutdownWorks.forEach(async (plantShutdownWork) => {
                     await apiPlantShutdownWork.deletePlantShutdownWork(plantShutdownWork, apiDailyWork);

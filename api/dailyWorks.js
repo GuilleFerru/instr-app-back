@@ -4,7 +4,7 @@ import { ApiRoutine } from './routines.js';
 import { ApiDailyWorksColumnTable } from '../utils/dailyWorksColumnTable.js';
 import { DailyWorksRoutineTable } from '../utils/dailyWorksRoutineTable.js';
 import { PlantShutdownWorksToDoColumnTable } from '../utils/plantShutdownWorksToDoTable.js';
-import { saveDailyWorkDTO, updateDayWorkDTO, completedDailyWorkDTO, dailyWorkRoutineRespDTO, changeIDForViewDTO } from '../model/DTOs/dailyWork.js';
+import { saveDailyWorkDTO, updateDayWorkDTO, completedDailyWorkDTO, dailyWorkRoutineRespDTO, changeIDForViewDTO, changeViewForPlantShutdonWorksToDoDTO } from '../model/DTOs/dailyWork.js';
 import { loggerError, loggerInfo } from '../utils/logger.js';
 
 
@@ -78,9 +78,11 @@ export class ApiDailyWork {
             if (filter === 'fromRoutine') {
                 return await dao.createDailyWork(data);
             } else if (filter === 'fromPlantShutdownWork') {
-                const date = new Date();
-                data.beginDate = date;
-                return await dao.createDailyWork(saveDailyWorkDTO(data));
+                // controla que haya rutinas de ese dia, sino las hay, las crea.
+                const createDayRoutines = await this.getDailyWork(parseStringToDate(data.beginDate));
+                if (createDayRoutines.dayWorks.length > 0) {
+                    return await dao.createDailyWork(data);
+                }
             } else {
                 await dao.createDailyWork(saveDailyWorkDTO(data));
                 return true
@@ -101,6 +103,7 @@ export class ApiDailyWork {
             const dateLocalString = formatDate(date);
             const rawWorks = await dao.getDailyWork(dateLocalString);
             rawWorks.map((work) => { dayWorks.push(changeIDForViewDTO(work)) });
+            //console.log('dayWorks', dayWorks);
             /*si no hay trabajos diarios, busca todas las rutinas y las crea como trabajos diarios, 
             sino va a devolver las rutinas creadas la primera vez y los trabajos diarios */
             if (dayWorks.length === 0) {
@@ -164,8 +167,19 @@ export class ApiDailyWork {
             const dailyWorksForPlantShutdown = [];
             const columns = await getDailyWorkTable('fromPlantShutdownWorksToDo');
             const rawDailyWorksForPlantShutdown = await dao.getDailyWorkForPlantShutdown();
-            rawDailyWorksForPlantShutdown.map(dailyWorkForPlantShutdown => { dailyWorksForPlantShutdown.push(changeIDForViewDTO(dailyWorkForPlantShutdown)) });
+
+            rawDailyWorksForPlantShutdown.map(dailyWorkForPlantShutdown => { dailyWorksForPlantShutdown.push(changeViewForPlantShutdonWorksToDoDTO(dailyWorkForPlantShutdown)) });
             return worksResp(dailyWorksForPlantShutdown, ...columns);
+        } catch (err) {
+            loggerError.error(err);
+        } finally {
+        }
+    }
+
+    getDailyWorkByPlantShutdownWorkId = async (plantShutdownWorkId) => {
+        try {
+            const dailyWork = await dao.getDailyWorkByPlantShutdownWorkId(plantShutdownWorkId);
+            return dailyWork;
         } catch (err) {
             loggerError.error(err);
         } finally {
@@ -204,9 +218,9 @@ export class ApiDailyWork {
         }
     }
 
-    updateDailyWorkByShutdownId = async (id, plantShutdownId) => {
+    updateDailyWorkByPlantShutdownWorkId = async (id, plantShutdownWorkId) => {
         try {
-            const resultado = await dao.updateDailyWorkByShutdownId(id, plantShutdownId);
+            const resultado = await dao.updateDailyWorkByPlantShutdownWorkId(id, plantShutdownWorkId);
             if (resultado)
                 return true;
         } catch (err) {

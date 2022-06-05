@@ -14,10 +14,10 @@ export const saveDailyWorkDTO = (data, dateLocal) => ({
     beginDate: data.beginDate ? formatDate(data.beginDate) : dateLocal,
     endDate: data.complete === 'C' ? formatDate(new Date()) : '',
     routineScheduleId: data._id ? data._id : '',
-    plantShutdownId: data.complete === 'PP' ? '1' : data.plantShutdownId ? data.plantShutdownId : null,
-    //plantShutdownWorkId: data.plantShutdownWorkId ? data.plantShutdownWorkId : null,
+    plantShutdownWorkId: data.complete === 'PP' ? '1' : data.plantShutdownWorkId ? data.plantShutdownWorkId : null,
     sector: 'Instrumentos-Sistemas'
 });
+
 
 export const changeIDForViewDTO = (data) => ({
     id: data._id,
@@ -33,7 +33,26 @@ export const changeIDForViewDTO = (data) => ({
     beginDate: data.beginDate,
     endDate: data.endDate,
     routineScheduleId: data.routineScheduleId,
-    plantShutdownId: data.plantShutdownId,
+    plantShutdownWorkId: data.plantShutdownWorkId,
+    sector: data.sector
+});
+
+
+export const changeViewForPlantShutdonWorksToDoDTO = (data) => ({
+    id: data._id,
+    plant: data.plant,
+    attelier: data.attelier,
+    tag: data.tag,
+    timeSchedule: data.timeSchedule,
+    manteinance: data.manteinance,
+    ot: data.ot,
+    action: data.action,
+    description: data.description,
+    complete: data.complete,
+    beginDate: data.beginDate,
+    endDate: data.endDate,
+    routineScheduleId: data.routineScheduleId,
+    plantShutdownId: data.plantShutdownWorkId,
     sector: data.sector
 });
 
@@ -59,7 +78,7 @@ export const completedDailyWorkDTO = (dayWorks, today) => ({
     //endDate: dayWorks.endDate ? dayWorks.endDate : dayWorks.complete === 'C' ? today : '',
     endDate: dayWorks.endDate && dayWorks.complete === 'C' ? dayWorks.endDate : dayWorks.complete === 'C' ? today : '',
     routineScheduleId: dayWorks.routineScheduleId === undefined ? '' : dayWorks.routineScheduleId,
-    plantShutdownId: dayWorks.complete === 'PP' ? '1' : null,
+    plantShutdownWorkId: dayWorks.complete === 'PP' ? '1' : null,
     sector: 'Instrumentos-Sistemas'
 })
 

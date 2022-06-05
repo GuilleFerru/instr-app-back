@@ -52,10 +52,6 @@ const PlantShutdownWorksSchema = new mongoose.Schema({
     plantShutdownId: {
         type: String,
     },
-    dailyWorkId: {
-        type: Array,
-        default: [],
-    },
     sector: {
         type: String,
         require: true,

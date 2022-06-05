@@ -45,7 +45,7 @@ const DailyWorksSchema = new mongoose.Schema({
     routineScheduleId: {
         type: String,
     },
-    plantShutdownId: {
+    plantShutdownWorkId: {
         type: String,
     },
     sector: {

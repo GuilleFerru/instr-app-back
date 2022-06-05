@@ -25,6 +25,7 @@ export class ApiManteinanceAction {
     static getManteinanceActionsForColumnTable = async () => {
         try {
             const mantActResp = await dao.getManteinanceActions();
+            console.log(mantActResp);
             return reduceForLookUp(mantActResp);
         } catch (err) {
             loggerInfo.info(err);
@@ -32,4 +33,16 @@ export class ApiManteinanceAction {
         } finally {
         }
     }
+
+    static getManteinanceActionsForSelectForm = async () => {
+        try {
+            const mantActResp = await dao.getManteinanceActions();
+            return mantActResp
+        } catch (err) {
+            loggerInfo.info(err);
+            return err;
+        } finally {
+        }
+    }
+
 }

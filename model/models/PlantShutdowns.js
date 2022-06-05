@@ -11,7 +11,6 @@ const PlantShutdownSchema = new mongoose.Schema({
     endDate: {
         type: Date,
         default: null,
-
     },
     timeSchedule: {
         type: Number,
@@ -22,6 +21,10 @@ const PlantShutdownSchema = new mongoose.Schema({
     },
     complete: {
         type: String,
+    },
+    program: {
+        type: String,
+        default: null,
     },
     sector: {
         type: String,
