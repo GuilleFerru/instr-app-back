@@ -4,12 +4,14 @@ import { ApiDailyWork } from './dailyWorks.js';
 import { loggerError, loggerInfo } from '../utils/logger.js';
 import { ApiManteinanceAction } from './manteinanceActions.js';
 import { ApiPlantShutdown } from './plantShutdowns.js';
+import {  getDailyWorkTable } from './dailyWorks.js';
+import {changeIDForViewDTO as dailyWorkDTO} from '../model/DTOs/dailyWork.js'
 import {
     changeIDForViewDTO,
     normalizeIDViewDTO,
     savePlantShutdownWorkDTO,
     plantShutdownWorksRespDTO,
-    saveDailyWorkFromShutdownWorkDTO
+    saveDailyWorkFromShutdownWorkDTO,
 } from '../model/DTOs/plantShutdownWork.js';
 
 
@@ -46,8 +48,7 @@ export class ApiPlantShutdownWork {
             } else if (action === 'delete_plant_shutdown_work') {
                 const data = await this.deletePlantShutdownWork(plantShutdownWorkData, apiDailyWork);
                 data && socket.emit('get_plant_shutdown_works', await this.getPlantShutdownWorksByPlantShutdownId(plantShutdownWorkData.plantShutdownId));
-            }
-
+            } 
         } catch (error) {
             console.log(error);
             loggerError.error(error);
@@ -123,6 +124,17 @@ export class ApiPlantShutdownWork {
             } else {
                 columns.push(savedColumns[0].columns);
             }
+
+
+            const plantShutdownWorksComplete = await Promise.all(
+                plantShutdownWorks.map(async (plantShutdownWork) => {
+                    const dailyWorks = await dao.getDailyWorkByPlantShutdownWorkId(plantShutdownWork.id);
+                    const dailyWorksForView = dailyWorks.map((dailyWork) => { return dailyWorkDTO(dailyWork) });
+                    plantShutdownWork.dailyWorks = dailyWorksForView;
+                    return plantShutdownWork;
+                })
+            )
+            
             //si el paro no empezo no dejo agregar descripcion para q no me cree un dailyWork
             const apiPlantShutdown = new ApiPlantShutdown();
             const plantShutdown = await apiPlantShutdown.getPlantShutdownById(plantShutdownId);
@@ -131,8 +143,9 @@ export class ApiPlantShutdownWork {
                 columns[0][8].editable = "never";
             }
             const action = await ApiManteinanceAction.getManteinanceActionsForSelectForm();
-            if (plantShutdownWorks.length > 0) {
-                return plantShutdownWorksRespDTO(plantShutdownWorks, ...columns, action);
+            const dayWorksColumns = await getDailyWorkTable('fromDailyWork');
+            if (plantShutdownWorksComplete.length > 0) {
+                return plantShutdownWorksRespDTO(plantShutdownWorksComplete, ...columns, action, ...dayWorksColumns);
             } else {
                 return plantShutdownWorksRespDTO([], ...columns, action);
             }

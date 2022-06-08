@@ -18,8 +18,8 @@ export const changeIDForViewDTO = (data) => ({
     routineScheduleId: data.routineScheduleId,
     plantShutdownId: data.plantShutdownId,
     sector: data.sector
-
 });
+
 
 export const normalizeIDViewDTO = (data) => ({
     _id: data.id,
@@ -60,8 +60,8 @@ export const savePlantShutdownWorkDTO = (data, beginDate, endDate, timeSchedule)
     sector: 'Instrumentos-Sistemas'
 });
 
-export const plantShutdownWorksRespDTO = (plantShutdowns, columns, actions) => {
-    const plantShutdownResp = { plantShutdowns, columns, actions };
+export const plantShutdownWorksRespDTO = (plantShutdowns, columns, actions, dayWorksColumns) => {
+    const plantShutdownResp = { plantShutdowns, columns, actions, dayWorksColumns };
     return plantShutdownResp;
 }
 

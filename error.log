@@ -49,3 +49,43 @@
     at ApiPlantShutdownWork.getPlantShutdownWorksByPlantShutdownId (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:132:25)
     at processTicksAndRejections (internal/process/task_queues.js:93:5)
     at async ApiPlantShutdownWork.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:26:30)
+[2022-06-07T20:55:41.426] [ERROR] error - ReferenceError: plantShutdownWork is not defined
+    at ApiPlantShutdownWork.getDailyWorksByPlantShutdownWorkId (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:123:80)
+    at ApiPlantShutdownWork.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:53:41)
+    at Socket.<anonymous> (file:///E:/instr-app/instr-app-back/sockets.js:79:112)
+    at Socket.emit (events.js:315:20)
+    at Socket.emitUntyped (E:\instr-app\instr-app-back\node_modules\socket.io\dist\typed-events.js:69:22)
+    at E:\instr-app\instr-app-back\node_modules\socket.io\dist\socket.js:428:39
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+[2022-06-07T20:55:41.448] [ERROR] error - ReferenceError: plantShutdownWork is not defined
+    at ApiPlantShutdownWork.getDailyWorksByPlantShutdownWorkId (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:123:80)
+    at ApiPlantShutdownWork.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:53:41)
+    at Socket.<anonymous> (file:///E:/instr-app/instr-app-back/sockets.js:79:112)
+    at Socket.emit (events.js:315:20)
+    at Socket.emitUntyped (E:\instr-app\instr-app-back\node_modules\socket.io\dist\typed-events.js:69:22)
+    at E:\instr-app\instr-app-back\node_modules\socket.io\dist\socket.js:428:39
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+[2022-06-07T20:56:01.651] [ERROR] error - ReferenceError: plantShutdownWorks is not defined
+    at file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:126:53
+    at Array.map (<anonymous>)
+    at ApiPlantShutdownWork.getDailyWorksByPlantShutdownWorkId (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:126:32)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiPlantShutdownWork.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:53:30)
+[2022-06-07T20:56:01.715] [ERROR] error - ReferenceError: plantShutdownWorks is not defined
+    at file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:126:53
+    at Array.map (<anonymous>)
+    at ApiPlantShutdownWork.getDailyWorksByPlantShutdownWorkId (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:126:32)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiPlantShutdownWork.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:53:30)
+[2022-06-07T20:58:30.913] [ERROR] error - TypeError: apiDailyWork.getDailyWorkTable is not a function
+    at ApiPlantShutdownWork.getDailyWorksByPlantShutdownWorkId (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:124:44)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiPlantShutdownWork.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:53:30)
+[2022-06-07T20:58:30.968] [ERROR] error - TypeError: apiDailyWork.getDailyWorkTable is not a function
+    at ApiPlantShutdownWork.getDailyWorksByPlantShutdownWorkId (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:124:44)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiPlantShutdownWork.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:53:30)
+[2022-06-07T20:58:30.975] [ERROR] error - TypeError: apiDailyWork.getDailyWorkTable is not a function
+    at ApiPlantShutdownWork.getDailyWorksByPlantShutdownWorkId (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:124:44)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiPlantShutdownWork.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:53:30)

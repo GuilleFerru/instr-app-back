@@ -26,8 +26,8 @@ import { plantShutdownModel } from '../models/PlantShutdowns.js';
 import { plantShutdownWorkModel } from '../models/PlantShutdownWorks.js';
 import { plantShutdownWorksColumnsSchemaModel } from '../models/PlantShutdownWorksColumns.js';
 
-//const MONGO_URL = config.MONGO_URL_DEV;
-const MONGO_URL = config.MONGO_URL;
+const MONGO_URL = config.MONGO_URL_DEV;
+//const MONGO_URL = config.MONGO_URL;
 
 export class DBMongoDao {
 

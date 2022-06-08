@@ -10,12 +10,12 @@ import { loggerError, loggerInfo } from '../utils/logger.js';
 
 const apiRoutine = new ApiRoutine();
 
-const worksResp = (dayWorks, columns) => {
+export const worksResp = (dayWorks, columns) => {
     const worksResp = { dayWorks, columns };
     return worksResp;
 }
 
-const getDailyWorkTable = async (filter) => {
+export const getDailyWorkTable = async (filter) => {
     const columns = [];
     let savedColumns = [];
 

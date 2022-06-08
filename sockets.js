@@ -76,6 +76,7 @@ export default (io) => {
         socket.on("create_plant_shutdown_work", (plantShutdownWorkData) => apiPlantShutdownWork.handleSocket({ socket, action: "create_plant_shutdown_work", plantShutdownWorkData, io }));
         socket.on("update_plant_shutdown_work", (plantShutdownWorkData) => apiPlantShutdownWork.handleSocket({ socket, action: "update_plant_shutdown_work", plantShutdownWorkData, io }));
         socket.on("delete_plant_shutdown_work", (plantShutdownWorkData) => apiPlantShutdownWork.handleSocket({ socket, action: "delete_plant_shutdown_work", plantShutdownWorkData, io }));
+        //socket.on("get_daily_works_by_plant_shutdown_work_id", (plantShutdownWorkData) => apiPlantShutdownWork.handleSocket({ socket, action: "get_daily_works_by_plant_shutdown_work_id", plantShutdownWorkData }));
 
 
 
