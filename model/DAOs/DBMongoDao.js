@@ -25,6 +25,7 @@ import { plantShutdownWorksToDoColumnsSchemaModel } from '../models/PlantShutdow
 import { plantShutdownModel } from '../models/PlantShutdowns.js';
 import { plantShutdownWorkModel } from '../models/PlantShutdownWorks.js';
 import { plantShutdownWorksColumnsSchemaModel } from '../models/PlantShutdownWorksColumns.js';
+import {plantShutdowndailyWorksColumnsSchemaModel} from '../models/PlantShutdownDailyWorksColumns.js'
 
 //const MONGO_URL = config.MONGO_URL_DEV;
 const MONGO_URL = config.MONGO_URL;
@@ -981,6 +982,24 @@ export class DBMongoDao {
         }
     }
 
+    createPlantShutdownDailyWorksColumns = async (columns) => {
+        try {
+            const dailyWorkForShutdownWorksColumns = await plantShutdowndailyWorksColumnsSchemaModel.insertMany(columns);
+            return dailyWorkForShutdownWorksColumns;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    getPlantShutdownDailyWorksColumns = async () => {
+        try {
+            const dailyWorkForShutdownWorksColumns = await plantShutdowndailyWorksColumnsSchemaModel.find({}, { _id: 0, __v: 0, createdAt: 0, updatedAt: 0 });
+            return dailyWorkForShutdownWorksColumns;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+    
 
 
 

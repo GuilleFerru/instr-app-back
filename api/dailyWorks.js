@@ -52,7 +52,6 @@ export class ApiDailyWork {
                 data && socket.emit('get_daily_works', data);
             } else if (action === 'create_daily_work') {
                 const data = await this.createDailyWork(dailyWorkData, '');
-                console.log('data', data);
                 data && io.to(roomId).emit('get_daily_works', await this.getDailyWork(dailyWorkData.beginDate));
             } else if (action === 'update_daily_work') {
                 const data = await this.updateDailyWork(date, dailyWorkData);
@@ -154,7 +153,9 @@ export class ApiDailyWork {
             columns[0][8].width = '10%';
             columns[0][9].width = '25%';
             //delete columns[0][6].defaultGroupOrder
-            const dayWorks = await dao.getDailyWorkSearchBy(value);
+            const dayWorks = []
+            const rawWorks = await dao.getDailyWorkSearchBy(value);
+            rawWorks.map((work) => { dayWorks.push(changeIDForViewDTO(work)) });
             return worksResp(dayWorks, ...columns);
         } catch (err) {
             loggerError.error(err);

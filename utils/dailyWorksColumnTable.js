@@ -103,7 +103,7 @@ export class ApiDailyWorksColumnTable {
             loggerInfo.info('createColumns');
         }
     }
-
+    
     static getColumns = async () => {
         try {
             const resp = await dao.getDailyWorksColumns();

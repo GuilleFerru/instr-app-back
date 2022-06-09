@@ -4,8 +4,9 @@ import { ApiDailyWork } from './dailyWorks.js';
 import { loggerError, loggerInfo } from '../utils/logger.js';
 import { ApiManteinanceAction } from './manteinanceActions.js';
 import { ApiPlantShutdown } from './plantShutdowns.js';
-import {  getDailyWorkTable } from './dailyWorks.js';
-import {changeIDForViewDTO as dailyWorkDTO} from '../model/DTOs/dailyWork.js'
+//import { getDailyWorkTable } from './dailyWorks.js';
+import { PlantShutdownDailyWorksColumnTable } from '../utils/plantShutdownDailyWorkTable.js';
+import { changeIDForViewDTO as dailyWorkDTO } from '../model/DTOs/dailyWork.js'
 import {
     changeIDForViewDTO,
     normalizeIDViewDTO,
@@ -48,7 +49,7 @@ export class ApiPlantShutdownWork {
             } else if (action === 'delete_plant_shutdown_work') {
                 const data = await this.deletePlantShutdownWork(plantShutdownWorkData, apiDailyWork);
                 data && socket.emit('get_plant_shutdown_works', await this.getPlantShutdownWorksByPlantShutdownId(plantShutdownWorkData.plantShutdownId));
-            } 
+            }
         } catch (error) {
             console.log(error);
             loggerError.error(error);
@@ -134,7 +135,7 @@ export class ApiPlantShutdownWork {
                     return plantShutdownWork;
                 })
             )
-            
+
             //si el paro no empezo no dejo agregar descripcion para q no me cree un dailyWork
             const apiPlantShutdown = new ApiPlantShutdown();
             const plantShutdown = await apiPlantShutdown.getPlantShutdownById(plantShutdownId);
@@ -143,13 +144,19 @@ export class ApiPlantShutdownWork {
                 columns[0][8].editable = "never";
             }
             const action = await ApiManteinanceAction.getManteinanceActionsForSelectForm();
-            const dayWorksColumns = await getDailyWorkTable('fromDailyWork');
+            let dayWorksColumns = []
+            dayWorksColumns = await PlantShutdownDailyWorksColumnTable.getColumns();
+            if (dayWorksColumns.length === 0) {
+                dayWorksColumns = await PlantShutdownDailyWorksColumnTable.createColumns();
+            }
+
             if (plantShutdownWorksComplete.length > 0) {
-                return plantShutdownWorksRespDTO(plantShutdownWorksComplete, ...columns, action, ...dayWorksColumns);
+                return plantShutdownWorksRespDTO(plantShutdownWorksComplete, ...columns, action, dayWorksColumns[0].columns);
             } else {
                 return plantShutdownWorksRespDTO([], ...columns, action);
             }
         } catch (err) {
+            
             loggerError.error(err);
         } finally {
         }

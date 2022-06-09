@@ -14,6 +14,7 @@ const createplantShutdownWorksToDoColumns = (plantsForColumnTable, atteliersForC
             title: 'Planta',
             lookup: plantsForColumnTable,
             editable: 'never',
+            defaultGroupOrder: 0,
             width: "10%",
         },
         {

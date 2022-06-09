@@ -89,3 +89,19 @@
     at ApiPlantShutdownWork.getDailyWorksByPlantShutdownWorkId (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:124:44)
     at processTicksAndRejections (internal/process/task_queues.js:93:5)
     at async ApiPlantShutdownWork.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:53:30)
+[2022-06-08T21:54:45.596] [ERROR] error - ReferenceError: PlantShutdownDailyWorkColumns is not defined
+    at ApiPlantShutdownWork.getPlantShutdownWorksByPlantShutdownId (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:147:37)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiPlantShutdownWork.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:29:30)
+[2022-06-08T21:55:02.730] [ERROR] error - TypeError: dayWorksColumns is not iterable
+    at ApiPlantShutdownWork.getPlantShutdownWorksByPlantShutdownId (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:152:101)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiPlantShutdownWork.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:29:30)
+[2022-06-08T22:00:30.517] [ERROR] error - ReferenceError: createdTable is not defined
+    at ApiPlantShutdownWork.getPlantShutdownWorksByPlantShutdownId (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:149:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiPlantShutdownWork.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:29:30)
+[2022-06-08T22:00:43.796] [ERROR] error - ReferenceError: createdTable is not defined
+    at ApiPlantShutdownWork.getPlantShutdownWorksByPlantShutdownId (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:149:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiPlantShutdownWork.handleSocket (file:///E:/instr-app/instr-app-back/api/plantShutdownWorks.js:29:30)

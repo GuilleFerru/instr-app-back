@@ -16,7 +16,6 @@ export class ControllerUser {
 
     failRegister = async (_req, res) => {
         try {
-            console.log('fail')
             const fail = true
             if (fail) {
                 return res.status(200).json(fail);
