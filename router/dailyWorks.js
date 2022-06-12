@@ -19,6 +19,8 @@ export class RouterDailyWork {
         router.put('/updateFromRoutineDetail', userExtractor, this.controllerDailyWork.updateFromRoutineDetail);
         router.put('/updateBulk/:date', userExtractor, this.controllerDailyWork.updateBulkDailyWork);
         router.delete('/delete', userExtractor, this.controllerDailyWork.deleteDailyWork);
+
+        router.get('/convert', this.controllerDailyWork.convertBeginDateToDate);
         return router;
     }
 

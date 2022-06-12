@@ -71,7 +71,7 @@ export class ApiPlantShutdownWork {
                     if (createDailyWork) {
                         const dailyWorkToSave = plantShutdownWorkToSave;
                         dailyWorkToSave.plantShutdownWorkId = plantShutdownWork[0]._id;
-                        const dailyWork = saveDailyWorkFromShutdownWorkDTO(dailyWorkToSave)
+                        const dailyWork = saveDailyWorkFromShutdownWorkDTO(dailyWorkToSave);
                         await apiDailyWork.createDailyWork(dailyWork, 'fromPlantShutdownWork');
                     }
                     return true;
@@ -156,7 +156,7 @@ export class ApiPlantShutdownWork {
                 return plantShutdownWorksRespDTO([], ...columns, action);
             }
         } catch (err) {
-            
+
             loggerError.error(err);
         } finally {
         }
@@ -175,6 +175,22 @@ export class ApiPlantShutdownWork {
                 const plantShutdownWork = saveDailyWorkFromShutdownWorkDTO(newPlantShutdownWork);
                 await apiDailyWork.createDailyWork(plantShutdownWork, 'fromPlantShutdownWork');
             }
+
+
+            const oldTag = oldPlantShutdownWork.tag;
+            const newTag = newPlantShutdownWork.tag;
+            const oldOt = oldPlantShutdownWork.ot;
+            const newOt = newPlantShutdownWork.ot;
+
+            if (oldTag !== newTag || oldOt !== newOt) {
+                const dailyWorks = newPlantShutdownWork.dailyWorks;
+                for (const dailyWork of dailyWorks) {
+                    dailyWork.tag = newTag;
+                    dailyWork.ot = newOt;
+                    await apiDailyWork.updateDailyWork(dailyWork.beginDate, dailyWork, 'fromPlantShutdownWorks');
+                }
+            }
+
             const plantShutdownWork = await dao.updatePlantShutdownWork(normalizeIDViewDTO(newPlantShutdownWork));
             if (plantShutdownWork) {
                 return true;

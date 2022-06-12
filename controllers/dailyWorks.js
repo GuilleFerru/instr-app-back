@@ -9,6 +9,12 @@ export class ControllerDailyWork {
         this.apiDailyWork = new ApiDailyWork();
     }
 
+    convertBeginDateToDate = async (req, res) => {
+        await this.apiDailyWork.convertBeginDateToDate();
+        res.status(200).send('ok');
+    }
+
+
     createDailyWork = async (req, res) => {
         try {
             const data = req.body;

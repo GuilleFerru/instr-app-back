@@ -1,4 +1,4 @@
-import { formatDate, dateInLocalDateString, parseStringToDate } from '../../utils/formatDate.js';
+import { formatDate, dateInLocalDateString, parseStringToDate, dateInLocalDate } from '../../utils/formatDate.js';
 
 export const saveDailyWorkDTO = (data, dateLocal) => ({
     id: data._id,
@@ -12,7 +12,9 @@ export const saveDailyWorkDTO = (data, dateLocal) => ({
     description: data.description,
     complete: data.complete === false ? 'P' : data.complete,
     beginDate: data.beginDate ? formatDate(data.beginDate) : dateLocal,
+    beginDateTime: data.beginDate ? dateInLocalDate(data.beginDate) : parseStringToDate(dateLocal),
     endDate: data.complete === 'C' ? formatDate(new Date()) : '',
+    endDateTime: data.complete === 'C' ? dateInLocalDate(new Date()) : null,
     routineScheduleId: data._id ? data._id : '',
     plantShutdownWorkId: data.complete === 'PP' ? '1' : data.plantShutdownWorkId ? data.plantShutdownWorkId : null,
     sector: 'Instrumentos-Sistemas'
@@ -31,7 +33,9 @@ export const changeIDForViewDTO = (data) => ({
     description: data.description,
     complete: data.complete,
     beginDate: data.beginDate,
+    beginDateTime: data.beginDateTime,
     endDate: data.endDate,
+    endDateTime: data.endDateTime,
     routineScheduleId: data.routineScheduleId,
     plantShutdownWorkId: data.plantShutdownWorkId,
     sector: data.sector
@@ -63,7 +67,7 @@ export const updateDayWorkDTO = (dayWorks) => {
     return scheduleRest;
 }
 
-export const completedDailyWorkDTO = (dayWorks, today) => ({
+export const completedDailyWorkDTO = (dayWorks, today, fromPlantShutdownWork = false) => ({
     _id: dayWorks.id,
     plant: dayWorks.plant,
     attelier: dayWorks.attelier,
@@ -75,10 +79,11 @@ export const completedDailyWorkDTO = (dayWorks, today) => ({
     description: dayWorks.description === undefined ? '' : dayWorks.description,
     complete: dayWorks.complete,
     beginDate: dayWorks.beginDate,
-    //endDate: dayWorks.endDate ? dayWorks.endDate : dayWorks.complete === 'C' ? today : '',
+    beginDateTime: dayWorks.beginDateTime,
     endDate: dayWorks.endDate && dayWorks.complete === 'C' ? dayWorks.endDate : dayWorks.complete === 'C' ? today : '',
+    endDateTime: dayWorks.endDateTime && dayWorks.complete === 'C' ? dayWorks.endDateTime : dayWorks.complete === 'C' ? dateInLocalDate(new Date()) : null,
     routineScheduleId: dayWorks.routineScheduleId === undefined ? '' : dayWorks.routineScheduleId,
-    plantShutdownWorkId: dayWorks.complete === 'PP' ? '1' : null,
+    plantShutdownWorkId: fromPlantShutdownWork ? dayWorks.plantShutdownWorkId : dayWorks.complete === 'PP' ? '1' : null,
     sector: 'Instrumentos-Sistemas'
 })
 

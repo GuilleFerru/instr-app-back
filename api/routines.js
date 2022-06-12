@@ -217,21 +217,6 @@ export class ApiRoutine {
                 const apiDailyWork = new ApiDailyWork();
                 await apiDailyWork.createDailyWork(routineSavedAsDailyWork, 'fromRoutine');
             }
-            // const dataToDailyWork = [];
-
-            // for (const routineFromClient of data) {
-            //     const routine = await dao.getRoutine(routineFromClient.routineId);
-            //     const routineSavedAsDailyWork = routineSavedAsDailyWorkDTO(routine[0], routineFromClient);
-            //     dataToDailyWork.push(routineSavedAsDailyWork);
-
-            //     const id = routineFromClient._id;
-            //     const checkedDay = parseStringToDate(routineSavedAsDailyWork.endDate);
-            //     await dao.updateRoutineScheduleByCompleteTask(id, checkedDay);
-            // }
-            // ahora tengo que crear el dailyWork en el dia que se cerro la routineSchedule
-            // const apiDailyWork = new ApiDailyWork();
-            // await apiDailyWork.createDailyWork(dataToDailyWork, 'fromRoutine');
-            // por ultimo updateo la rutina
             return true;
         } catch (err) {
             console.log(err)

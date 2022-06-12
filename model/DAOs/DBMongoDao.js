@@ -25,7 +25,7 @@ import { plantShutdownWorksToDoColumnsSchemaModel } from '../models/PlantShutdow
 import { plantShutdownModel } from '../models/PlantShutdowns.js';
 import { plantShutdownWorkModel } from '../models/PlantShutdownWorks.js';
 import { plantShutdownWorksColumnsSchemaModel } from '../models/PlantShutdownWorksColumns.js';
-import {plantShutdowndailyWorksColumnsSchemaModel} from '../models/PlantShutdownDailyWorksColumns.js'
+import { plantShutdowndailyWorksColumnsSchemaModel } from '../models/PlantShutdownDailyWorksColumns.js'
 
 //const MONGO_URL = config.MONGO_URL_DEV;
 const MONGO_URL = config.MONGO_URL;
@@ -359,6 +359,53 @@ export class DBMongoDao {
 
     /* DAILYWORKS   */
 
+    //  getDailyWorks = async () => {
+    //     try {
+    //         const dailyWorkResp = await dailyWorkModel.find({}, { __v: 0, createdAt: 0, updatedAt: 0 });
+    //         return dailyWorkResp;
+    //     } catch (error) {
+    //         loggerError.error(error)
+    //     }
+    // }
+
+    // updatebeginDateTime = async (id, endDate) => {
+    //     try {
+    //         const dailyWorkResp = await dailyWorkModel.updateMany({ _id: id }, { $set: { endDate } });
+    //         console.log(dailyWorkResp)
+    //         return dailyWorkResp;
+    //     } catch (error) {
+    //         console.log(error)
+    //         loggerError.error(error)
+    //     }
+    // }
+
+    // updateAndDelete = async (id, dailyWork) => {
+    //     try {
+    //         //console.log(dailyWork)
+    //         await dailyWorkModel.updateOne({ _id: id }, {
+    //             $set: {
+    //                 "plant": dailyWork.plant,
+    //                 "attelier": dailyWork.attelier,
+    //                 "tag": dailyWork.tag,
+    //                 "timeSchedule": dailyWork.timeSchedule,
+    //                 "manteinance": dailyWork.manteinance,
+    //                 "ot": dailyWork.ot,
+    //                 "action": dailyWork.action,
+    //                 "description": dailyWork.description,
+    //                 "complete": dailyWork.complete,
+    //                 "beginDate": dailyWork.beginDate,
+    //                 "endDate": dailyWork.endDate,
+    //                 "routineScheduleId": dailyWork.routineScheduleId,
+    //                 "plantShutdownWorkId": dailyWork.plantShutdownWorkId,
+    //                 "sector": 'Instrumentos-Sistemas',
+    //             }
+    //         });
+    //     } catch (error) {
+    //         console.log(error)
+    //         loggerError.error(error)
+    //     }
+    // }
+
     createDailyWork = async (dailyWork) => {
         try {
             const dailyWorkResp = await dailyWorkModel.insertMany(dailyWork);
@@ -369,7 +416,7 @@ export class DBMongoDao {
     }
 
     getDailyWork = async (date) => {
-        try {
+        try {          
             const dailyWorkResp = await dailyWorkModel.find({ beginDate: date }, { __v: 0, createdAt: 0, updatedAt: 0 });
             return dailyWorkResp;
         } catch (error) {
@@ -444,10 +491,12 @@ export class DBMongoDao {
                     "description": dailyWork.description,
                     "complete": dailyWork.complete,
                     "beginDate": dailyWork.beginDate,
+                    "beginDateTime": dailyWork.beginDateTime,
                     "endDate": dailyWork.endDate,
+                    "endDateTime": dailyWork.endDateTime,
                     "routineScheduleId": dailyWork.routineScheduleId,
                     "plantShutdownWorkId": dailyWork.plantShutdownWorkId,
-                    "sector": dailyWork.sector,
+                    "sector": 'Instrumentos-Sistemas',
                 }
             });
             return true;
@@ -794,7 +843,7 @@ export class DBMongoDao {
                     "workToDo": plantShutdownWork.workToDo,
                     "description": plantShutdownWork.description,
                     "complete": plantShutdownWork.complete,
-                    
+
                 }
             });
             return true;
@@ -999,7 +1048,7 @@ export class DBMongoDao {
             loggerError.error(error)
         }
     }
-    
+
 
 
 

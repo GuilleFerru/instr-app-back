@@ -15,14 +15,14 @@ const createShutdownDailyWorksColumns = (manteinancesForColumnTable, manteinance
             type: 'date',
             dateSetting: { locale: 'es-AR', format: 'dd-MMM-yyyy' },
             defaultSort: 'asc',
-            width: "10%"
+            width: "15%"
         },
         {
             field: 'manteinance',
             title: 'Tipo de mto',
             lookup: manteinancesForColumnTable,
             initialEditValue: '1',
-            width: "20%"
+            width: "15%"
             // defaultGroupSort: 'desc'
         },
         {

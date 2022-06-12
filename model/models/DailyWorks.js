@@ -39,8 +39,16 @@ const DailyWorksSchema = new mongoose.Schema({
     beginDate: {
         type: String,
     },
+    beginDateTime: {
+        type: Date,
+        default: null,
+    },
     endDate: {
         type: String,
+    },
+    endDateTime: {
+        type: Date,
+        default: null,
     },
     routineScheduleId: {
         type: String,

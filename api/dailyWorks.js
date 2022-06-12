@@ -42,11 +42,27 @@ export const getDailyWorkTable = async (filter) => {
 
 export class ApiDailyWork {
 
+    // convertBeginDateToDate = async () => {
+    //     const dayWorks = await dao.getDailyWorks();
+    //     for (let i = 0; i < dayWorks.length; i++) {
+    //         const dayWork = dayWorks[i];
+    //         //const date = dayWork.endDateTime;
+    //         // let beginDate;
+    //         // if (beginDate === '') {
+    //         //     beginDate = null
+    //         // }
+
+    //         // //const endDateDate = parseStringToDate(endDate);
+    //         // //dayWork.beginDateTime = beginDateDate;
+
+    //         await dao.updateAndDelete(dayWork._id, dayWork);
+    //     }
+    // }
+
 
     handleSocket = async (...data) => {
         try {
             const { date, socket, action, dailyWorkData, roomId, io } = data[0];
-
             if (action === 'get_daily_works') {
                 const data = await this.getDailyWork(date);
                 data && socket.emit('get_daily_works', data);
@@ -95,6 +111,7 @@ export class ApiDailyWork {
 
     getDailyWork = async (date) => {
         try {
+
             const dayWorks = [];
             // busca la tabla de trabajo diario y guarda las columnas en columns, sino existe la crea.
             const columns = await getDailyWorkTable('fromDailyWork');
@@ -102,7 +119,6 @@ export class ApiDailyWork {
             const dateLocalString = formatDate(date);
             const rawWorks = await dao.getDailyWork(dateLocalString);
             rawWorks.map((work) => { dayWorks.push(changeIDForViewDTO(work)) });
-            //console.log('dayWorks', dayWorks);
             /*si no hay trabajos diarios, busca todas las rutinas y las crea como trabajos diarios, 
             sino va a devolver las rutinas creadas la primera vez y los trabajos diarios */
             if (dayWorks.length === 0) {
@@ -187,7 +203,7 @@ export class ApiDailyWork {
         }
     }
 
-    updateDailyWork = async (date, dayWork) => {
+    updateDailyWork = async (date, dayWork, filter = '') => {
         try {
             const dateLocal = formatDate(date);
             if (dateLocal && dayWork) {
@@ -199,17 +215,17 @@ export class ApiDailyWork {
                     await dao.updateRoutineScheduleOT(routineScheduleId, routineOT);
                 }
                 const today = formatDate(todayInLocalDate());
-                const dailyWorkToUpdate = completedDailyWorkDTO(dayWork, today);
+
+                let dailyWorkToUpdate;
+                if (filter === 'fromPlantShutdownWorks') {
+                    dailyWorkToUpdate = completedDailyWorkDTO(dayWork, today, true);
+                } else {
+                    dailyWorkToUpdate = completedDailyWorkDTO(dayWork, today);
+                }
+
                 //me fijo si actualiza usando la fecha que viene desde el calendario o si actualiza usando la fecha que se obtiene de la barra de busqueda
-                //PROBAR CAMBIOOOOOO 28/3/2022
                 const dailyWorkBeginDate = dailyWorkToUpdate.beginDate;
                 const resultado = dateLocal === dailyWorkBeginDate ? await dao.updateDailyWork(dateLocal, dailyWorkToUpdate) : await dao.updateDailyWork(dailyWorkBeginDate, dailyWorkToUpdate);
-                // if (resultado) {
-                //     const updateResp = this.getDailyWorkRoutine(dayWork.routineScheduleId)
-                //     return updateResp;
-                // } else {
-                //     return false;
-                // }
                 return resultado;
             }
         } catch (err) {
@@ -231,6 +247,17 @@ export class ApiDailyWork {
         }
     }
 
+    // updateDailyWorkFromPlantShutdownWork = async (plantShutdownWorkId, dailyWork) => {
+    //     try {
+    //         const resultado = await dao.updateDailyWorkFromPlantShutdownWork(plantShutdownWorkId, dailyWork);
+    //         if (resultado)
+    //             return true;
+    //     } catch (err) {
+    //         loggerError.error(err);
+    //         return false
+    //     } finally {
+    //     }
+    // }
 
     // lo ejecuto como transaccion, hago todo el Dao de Mongo
     deleteDailyWork = async (dailyWork, socket) => {
@@ -246,3 +273,6 @@ export class ApiDailyWork {
         }
     }
 }
+
+
+

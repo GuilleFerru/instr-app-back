@@ -1,5 +1,5 @@
 
-import { formatDate } from '../../utils/formatDate.js';
+import { formatDate, dateInLocalDate } from '../../utils/formatDate.js';
 
 export const changeIDForViewDTO = (data) => ({
     id: data._id,
@@ -38,9 +38,7 @@ export const normalizeIDViewDTO = (data) => ({
     routineScheduleId: data.routineScheduleId,
     plantShutdownId: data.plantShutdownId,
     sector: data.sector
-
 });
-
 
 export const savePlantShutdownWorkDTO = (data, beginDate, endDate, timeSchedule) => ({
     plant: data.plant,
@@ -65,11 +63,6 @@ export const plantShutdownWorksRespDTO = (plantShutdowns, columns, actions, dayW
     return plantShutdownResp;
 }
 
-// export const removePlantShutdownWorkIdDTO = (plantShutdownWork) => {
-//     const { id, ...plantShutdownWorkRest } = plantShutdownWork;
-//     return plantShutdownWorkRest;
-// }
-
 // si me viene data.id es desde el update, sino desde el create
 export const saveDailyWorkFromShutdownWorkDTO = (data) => ({
     plant: data.plant,
@@ -82,7 +75,9 @@ export const saveDailyWorkFromShutdownWorkDTO = (data) => ({
     description: data.description,
     complete: data.complete,
     beginDate: formatDate(data.beginDate),
+    beginDateTime: dateInLocalDate(data.beginDate),
     endDate: data.complete === 'C' ? formatDate(new Date()) : '',
+    endDateTime: data.complete === 'C' ? dateInLocalDate(new Date()) : null,
     routineScheduleId: data.routineScheduleId,
     plantShutdownWorkId: data.id ? data.id : data.plantShutdownWorkId,
     sector: data.sector

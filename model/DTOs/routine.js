@@ -1,4 +1,4 @@
-import { checkWeekDay, formatDate } from '../../utils/formatDate.js';
+import { checkWeekDay, formatDate, dateInLocalDate } from '../../utils/formatDate.js';
 
 export const saveRoutineDTO = (plant, attelier, tag, timeSchedule, frecuency, manteinance, action, description) => ({
     plant: plant,
@@ -71,7 +71,9 @@ export const routineSavedAsDailyWorkDTO = (routine, routineSchedule) => ({
     description: routine.description,
     complete: routineSchedule.complete,
     beginDate: formatDate(new Date()),
+    beginDateTime: dateInLocalDate(new Date()),
     endDate: formatDate(new Date()),
+    endDateTime: dateInLocalDate(new Date()),
     routineScheduleId: routineSchedule.id,
     sector: "Instrumentos-Sistemas"
 })
