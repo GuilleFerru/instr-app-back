@@ -15,6 +15,8 @@ export class RouterSchedule {
         router.get('/get/:date', userExtractor, this.controllerSchedule.getSchedule);
         router.put('/update/:date', userExtractor, this.controllerSchedule.updateSchedule);
         router.put('/update/columns/:date', userExtractor, this.controllerSchedule.updateScheduleColumns);
+
+        //router.get('/convert', this.controllerSchedule.convertDateToDate)
         return router;
     }
 

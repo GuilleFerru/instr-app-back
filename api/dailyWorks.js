@@ -15,13 +15,21 @@ import { loggerError, loggerInfo } from '../utils/logger.js';
 const apiRoutine = new ApiRoutine();
 
 
-const modifyTable = (columns) => {
-
+const modifyTableForSearchActions = (columns) => {
     columns[0][1].hidden = false;
     columns[0][8].width = '10%';
     columns[0][9].width = '25%';
+    modifyTableForDisplayActions(columns);
+}
+
+const modifyTableForDisplayActions = (columns) => {
+    
+    columns[0].map((column) => {
+        column.field === 'tag' ? column.cellStyle = { 'fontWeight': 'bold' } : null;
+    });
 
 }
+
 
 
 export const worksResp = (dayWorks, columns) => {
@@ -51,6 +59,7 @@ export const getDailyWorkTable = async (filter) => {
         }
     }
     columns.push(savedColumns[0].columns);
+    modifyTableForDisplayActions(columns);
     return columns;
 
 }
@@ -130,6 +139,7 @@ export class ApiDailyWork {
             const dayWorks = [];
             // busca la tabla de trabajo diario y guarda las columnas en columns, sino existe la crea.
             const columns = await getDailyWorkTable('fromDailyWork');
+
             // busca los trabajos diarios de la fecha que viene en date
             const dateLocalString = formatDate(date);
             const rawWorks = await dao.getDailyWork(dateLocalString);
@@ -180,7 +190,7 @@ export class ApiDailyWork {
     getDailyWorkSearchBy = async (value) => {
         try {
             const columns = await getDailyWorkTable('fromDailyWork');
-            modifyTable(columns);
+            modifyTableForSearchActions(columns);
             //delete columns[0][6].defaultGroupOrder
             const dayWorks = []
             const rawWorks = await dao.getDailyWorkSearchBy(value);
@@ -241,11 +251,11 @@ export class ApiDailyWork {
                 }
             })
             const columns = await getDailyWorkTable('fromDailyWork');
-            modifyTable(columns);
+            modifyTableForSearchActions(columns);
             const dayWorks = []
             const rawWorks = await dao.getDailyWorkSearchAdvance(data, startDate, endDate);
             rawWorks.map((work) => { dayWorks.push(changeIDForViewDTO(work)) });
-            // console.log(rawWorks)
+
             return worksResp(dayWorks, ...columns);
 
 

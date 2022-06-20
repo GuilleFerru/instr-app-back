@@ -2,7 +2,7 @@ import { dao } from '../server.js'
 import { ApiShift } from './shifts.js';
 import { ApiEmployee } from './employees.js';
 import { reduceForLookUp } from '../utils/reduceForLookup.js';
-import { formatDate, dateInLocalDate } from '../utils/formatDate.js';
+import { formatDate, dateInLocalDate, parseStringToDate } from '../utils/formatDate.js';
 import { scheduleDTO, saveScheduleDTO, returnScheduleDTO, updateScheduleDTO } from '../model/DTOs/schedule.js';
 import { getForScheduleEmployeesDTO } from '../model/DTOs/employee.js';
 import { timeScheduleForScheduleDTO } from '../model/DTOs/timeSchedule.js';
@@ -193,6 +193,23 @@ export class ApiSchedule {
             loggerInfo.info('deleteSchedule');
         }
     }
+
+    // convertDateToDate = async () => {
+    //     try {
+
+    //         const schedules = await dao.getSchedules();
+    //         for (let i = 0; i < schedules.length; i++) {
+    //             const schedule = schedules[i];
+    //             const dateTime = parseStringToDate(schedule.date);
+    //             await dao.updateDateTime(schedule.date, dateTime);
+    //         }
+    //         const result = true;
+    //         return result;
+    //     } catch (error) {
+    //         console.log(error);
+    //         loggerError.error(error);
+    //     }
+    // }
 }
 
 

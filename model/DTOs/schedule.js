@@ -1,3 +1,5 @@
+import {parseStringToDate } from '../../utils/formatDate.js';
+
 export const scheduleDTO = (employee, currentTimeSchedule, workedHours) => ({
     id: employee._id,
     legajo: employee.legajo,
@@ -8,6 +10,7 @@ export const scheduleDTO = (employee, currentTimeSchedule, workedHours) => ({
 
 export const returnScheduleDTO = (date, schedule, columns, aditionals, id) => ({
     date: date,
+    dateTime: parseStringToDate(date),
     schedule: schedule,
     columns: columns,
     aditionals: aditionals,
@@ -17,6 +20,7 @@ export const returnScheduleDTO = (date, schedule, columns, aditionals, id) => ({
 
 export const saveScheduleDTO = (date, schedule, columns) => ({
     date: date,
+    dateTime: parseStringToDate(date),
     schedule: schedule,
     columns: columns,
     sector: 'Instrumentos-Sistemas'

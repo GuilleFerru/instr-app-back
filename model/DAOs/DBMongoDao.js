@@ -133,6 +133,26 @@ export class DBMongoDao {
 
     /* SCHEDULE */
 
+    // getSchedules = async () => {
+    //     try {
+    //         const scheduleResp = await scheduleModel.find({}, { __v: 0, createdAt: 0, updatedAt: 0 });
+    //         return scheduleResp;
+    //     } catch (error) {
+    //         loggerError.error(error)
+    //     }
+    // }
+
+    // updateDateTime = async (date, dateTime) => {
+    //     try {
+    //         const schedule = await scheduleModel.updateMany({ date: date }, { $set: { dateTime } });
+    //         console.log(schedule)
+    //         return schedule;
+    //     } catch (error) {
+    //         console.log(error)
+    //         loggerError.error(error)
+    //     }
+    // }
+
     createSchedule = async (schedule) => {
         try {
             const scheduleResp = await scheduleModel.insertMany(schedule);

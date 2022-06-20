@@ -78,4 +78,17 @@ export class ControllerSchedule {
             return res.status(500).json(error);
         }
     }
+
+
+    // convertDateToDate = async (req, res) => {
+    //     try {
+    //         const resultado = await this.apiSchedule.convertDateToDate();
+    //         return res.status(200).json(resultado);
+    //     }
+    //     catch (error) {
+    //         loggerError.error(error)
+    //         return res.status(500).json(error);
+    //     }
+    // }
+
 }

@@ -5,6 +5,10 @@ const SchedulesSchema = new mongoose.Schema({
         type: String,
         require: true,
     },
+    dateTime: {
+        type: Date,
+        default: null,
+    },
     schedule: {
         type: Array,
         require: true,
@@ -14,7 +18,7 @@ const SchedulesSchema = new mongoose.Schema({
         type: Array,
         require: true,
     },
-    sector:{
+    sector: {
         type: String,
         require: true,
     }

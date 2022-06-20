@@ -34,7 +34,7 @@ const createDailyWorkColumns = (plantsForColumnTable, atteliersForColumnTable, t
             field: 'tag',
             title: 'TAG',
             type: 'string',
-            width: "10%"
+            width: "10%",
         },
         {
             field: 'timeSchedule',
@@ -69,7 +69,7 @@ const createDailyWorkColumns = (plantsForColumnTable, atteliersForColumnTable, t
             field: 'description',
             title: 'Descripción',
             multiline: true,
-            align : "justify",
+            align: "justify",
             width: '30%'
         },
         {
@@ -103,7 +103,7 @@ export class ApiDailyWorksColumnTable {
             loggerInfo.info('createColumns');
         }
     }
-    
+
     static getColumns = async () => {
         try {
             const resp = await dao.getDailyWorksColumns();

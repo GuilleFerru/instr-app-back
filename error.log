@@ -22610,3 +22610,7 @@
     at ApiDailyWork.getDailyWorkSearchAdvance (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:244:40)
     at processTicksAndRejections (internal/process/task_queues.js:93:5)
     at async getDailyWorkSearchAdvance (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:66:31)
+[2022-06-20T15:51:28.971] [ERROR] error - ReferenceError: parseStringToDate is not defined
+    at ApiSchedule.convertDateToDate (file:///E:/instr-app/instr-app-back/api/schedules.js:209:34)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async convertDateToDate (file:///E:/instr-app/instr-app-back/controllers/schedules.js:85:31)
