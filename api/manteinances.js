@@ -32,4 +32,15 @@ export class ApiManteinance {
         } finally {
         }
     }
+
+    static getManteinancesForSelectForm = async () => {
+        try {
+            const mantResp = await dao.getManteinances();
+            return mantResp;
+        } catch (err) {
+            loggerInfo.info(err);
+            return err;
+        } finally {
+        }
+    }
 }

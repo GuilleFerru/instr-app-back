@@ -1,6 +1,10 @@
 import { dao, io } from '../server.js';
 import { formatDate, todayInLocalDate, dateInLocalDate, parseStringToDate } from '../utils/formatDate.js';
 import { ApiRoutine } from './routines.js';
+import { ApiPlant } from './plants.js';
+import { ApiAttelier } from './attelieres.js';
+import { ApiManteinance } from './manteinances.js';
+import { ApiManteinanceAction } from './manteinanceActions.js';
 import { ApiDailyWorksColumnTable } from '../utils/dailyWorksColumnTable.js';
 import { DailyWorksRoutineTable } from '../utils/dailyWorksRoutineTable.js';
 import { PlantShutdownWorksToDoColumnTable } from '../utils/plantShutdownWorksToDoTable.js';
@@ -10,10 +14,21 @@ import { loggerError, loggerInfo } from '../utils/logger.js';
 
 const apiRoutine = new ApiRoutine();
 
+
+const modifyTable = (columns) => {
+
+    columns[0][1].hidden = false;
+    columns[0][8].width = '10%';
+    columns[0][9].width = '25%';
+
+}
+
+
 export const worksResp = (dayWorks, columns) => {
     const worksResp = { dayWorks, columns };
     return worksResp;
 }
+
 
 export const getDailyWorkTable = async (filter) => {
     const columns = [];
@@ -165,9 +180,7 @@ export class ApiDailyWork {
     getDailyWorkSearchBy = async (value) => {
         try {
             const columns = await getDailyWorkTable('fromDailyWork');
-            columns[0][1].hidden = false;
-            columns[0][8].width = '10%';
-            columns[0][9].width = '25%';
+            modifyTable(columns);
             //delete columns[0][6].defaultGroupOrder
             const dayWorks = []
             const rawWorks = await dao.getDailyWorkSearchBy(value);
@@ -190,6 +203,56 @@ export class ApiDailyWork {
         } catch (err) {
             loggerError.error(err);
         } finally {
+        }
+    }
+
+    getDailyWorkDataForSearch = async () => {
+        try {
+            const plant = await ApiPlant.getPlantsForSelectForm();
+            const attelier = await ApiAttelier.getAttelieresForSelectForm();
+            const manteinance = await ApiManteinance.getManteinancesForSelectForm();
+            const action = await ApiManteinanceAction.getManteinanceActionsForSelectForm();
+            const complete = [
+                { id: 'E', name: 'En ejecución' },
+                { id: 'P', name: 'Pendiente' },
+                { id: 'C', name: 'Completo' },
+                { id: 'R', name: 'Demorado' },
+                { id: 'PP', name: 'Paro de planta' },
+            ]
+            const searchData = [plant, attelier, manteinance, action, complete];
+            return searchData;
+        } catch (err) {
+            loggerInfo.info(err);
+            return err;
+        }
+    }
+
+    getDailyWorkSearchAdvance = async (data) => {
+        try {
+
+            // armo la query para el dao
+            const startDate = data.startDate;
+            const endDate = data.endDate;
+            delete data.startDate;
+            delete data.endDate;
+            Object.keys(data).forEach(key => {
+                if (data[key] === '') {
+                    delete data[key];
+                }
+            })
+            const columns = await getDailyWorkTable('fromDailyWork');
+            modifyTable(columns);
+            const dayWorks = []
+            const rawWorks = await dao.getDailyWorkSearchAdvance(data, startDate, endDate);
+            rawWorks.map((work) => { dayWorks.push(changeIDForViewDTO(work)) });
+            // console.log(rawWorks)
+            return worksResp(dayWorks, ...columns);
+
+
+
+        } catch (err) {
+            loggerInfo.info(err);
+            return err;
         }
     }
 

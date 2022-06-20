@@ -59,6 +59,29 @@ export class ControllerDailyWork {
         }
     }
 
+    getDailyWorkSearchAdvance = async (req, res) => {
+        try {
+            const dataToJSON = JSON.parse(req.query.params);
+            const { dataForSearch } = dataToJSON;
+            const resultado = await this.apiDailyWork.getDailyWorkSearchAdvance(dataForSearch);
+            return res.status(200).json(resultado);
+        } catch (err) {
+            console.log(err);
+            return res.status(500).json(err);
+        }
+    }
+
+    getDailyWorkDataForSearch = async (_req, res) => {
+        try {
+            const resultado = await this.apiDailyWork.getDailyWorkDataForSearch();
+            return res.status(200).json(resultado);
+        } catch (err) {
+            console.log(err);
+            return res.status(500).json(err);
+        }
+    }
+
+
     getDailyWorkForPlantShutdown = async (_req, res) => {
         try {
             const resultado = await this.apiDailyWork.getDailyWorkForPlantShutdown();

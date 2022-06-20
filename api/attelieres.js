@@ -24,7 +24,7 @@ export class ApiAttelier {
         try {
             const attelieres = await dao.getAttelieres();
             return attelieres;
-            
+
             // const attelieres = await dao.getAttelieresGroupByPlant();
             // let countPlant = 1000;
             // const arrayToReduce = [];
@@ -62,6 +62,16 @@ export class ApiAttelier {
         try {
             const attelieres = await dao.getAttelieres();
             return reduceForLookUp(attelieres);
+        } catch (err) {
+            loggerError.error(err);
+        } finally {
+        }
+    }
+
+    static getAttelieresForSelectForm = async () => {
+        try {
+            const attelieres = await dao.getAttelieres();
+            return attelieres;
         } catch (err) {
             loggerError.error(err);
         } finally {

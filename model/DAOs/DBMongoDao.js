@@ -27,8 +27,8 @@ import { plantShutdownWorkModel } from '../models/PlantShutdownWorks.js';
 import { plantShutdownWorksColumnsSchemaModel } from '../models/PlantShutdownWorksColumns.js';
 import { plantShutdowndailyWorksColumnsSchemaModel } from '../models/PlantShutdownDailyWorksColumns.js'
 
-//const MONGO_URL = config.MONGO_URL_DEV;
-const MONGO_URL = config.MONGO_URL;
+const MONGO_URL = config.MONGO_URL_DEV;
+//const MONGO_URL = config.MONGO_URL;
 
 export class DBMongoDao {
 
@@ -416,7 +416,7 @@ export class DBMongoDao {
     }
 
     getDailyWork = async (date) => {
-        try {          
+        try {
             const dailyWorkResp = await dailyWorkModel.find({ beginDate: date }, { __v: 0, createdAt: 0, updatedAt: 0 });
             return dailyWorkResp;
         } catch (error) {
@@ -453,6 +453,29 @@ export class DBMongoDao {
             }, { __v: 0, createdAt: 0, updatedAt: 0 }).sort({ createdAt: -1 });
             return dailyWorkResp;
         } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    getDailyWorkSearchAdvance = async (query, startDate, endDate) => {
+        try {
+            const andQuery = [];
+            const beginDate = { beginDateTime: { $gte: new Date(startDate) } };
+            const finishDate = { endDateTime: { $lte: new Date(endDate) } };
+
+            if (query.complete) {
+                if (query.complete === 'C') {
+                    andQuery.push(beginDate, finishDate);
+                } else {
+                    andQuery.push(beginDate);
+                }
+            } else {
+                andQuery.push(beginDate, finishDate);
+            }
+            const dailyWorkResp = await dailyWorkModel.find({ ...query, $and: andQuery }, { __v: 0, createdAt: 0, updatedAt: 0 }).sort({ beginDateTime: -1 });
+            return dailyWorkResp;
+        } catch (error) {
+            console.log(error)
             loggerError.error(error)
         }
     }

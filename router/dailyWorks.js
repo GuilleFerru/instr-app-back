@@ -14,7 +14,9 @@ export class RouterDailyWork {
         router.get('/get/:date', userExtractor, this.controllerDailyWork.getDailyWork);
         router.get('/getDailyWorkRoutine/:routineScheduleId', userExtractor, this.controllerDailyWork.getDailyWorkRoutine);
         router.get('/searchBy/:value', userExtractor, this.controllerDailyWork.getDailyWorkSearchBy);
+        router.get('/searchAdvance/dataForSearch', userExtractor, this.controllerDailyWork.getDailyWorkSearchAdvance)
         router.get('/getForPlantShutdown', this.controllerDailyWork.getDailyWorkForPlantShutdown);
+        router.get('/dataForSearch', this.controllerDailyWork.getDailyWorkDataForSearch);
         router.put('/update/:date', userExtractor, this.controllerDailyWork.updateDailyWork);
         router.put('/updateFromRoutineDetail', userExtractor, this.controllerDailyWork.updateFromRoutineDetail);
         router.put('/updateBulk/:date', userExtractor, this.controllerDailyWork.updateBulkDailyWork);

@@ -22456,3 +22456,157 @@
     at Socket.emitUntyped (E:\instr-app\instr-app-back\node_modules\socket.io\dist\typed-events.js:69:22)
     at E:\instr-app\instr-app-back\node_modules\socket.io\dist\socket.js:428:39
     at processTicksAndRejections (internal/process/task_queues.js:75:11)
+[2022-06-17T17:42:33.573] [ERROR] error - CastError: Cast to number failed for value "i" (type string) at path "plant" for model "dailyworks"
+    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"i"',
+  kind: 'number',
+  value: 'i',
+  path: 'plant',
+  reason: null,
+  valueType: 'string'
+}
+[2022-06-17T17:42:55.969] [ERROR] error - CastError: Cast to number failed for value "i" (type string) at path "plant" for model "dailyworks"
+    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"i"',
+  kind: 'number',
+  value: 'i',
+  path: 'plant',
+  reason: null,
+  valueType: 'string'
+}
+[2022-06-17T17:43:12.493] [ERROR] error - CastError: Cast to number failed for value "i" (type string) at path "plant" for model "dailyworks"
+    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"i"',
+  kind: 'number',
+  value: 'i',
+  path: 'plant',
+  reason: null,
+  valueType: 'string'
+}
+[2022-06-17T17:43:34.524] [ERROR] error - CastError: Cast to number failed for value "i" (type string) at path "plant" for model "dailyworks"
+    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"i"',
+  kind: 'number',
+  value: 'i',
+  path: 'plant',
+  reason: null,
+  valueType: 'string'
+}
+[2022-06-17T17:44:39.096] [ERROR] error - CastError: Cast to number failed for value "i" (type string) at path "plant" for model "dailyworks"
+    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"i"',
+  kind: 'number',
+  value: 'i',
+  path: 'plant',
+  reason: null,
+  valueType: 'string'
+}
+[2022-06-17T17:44:55.331] [ERROR] error - CastError: Cast to number failed for value "i" (type string) at path "plant" for model "dailyworks"
+    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"i"',
+  kind: 'number',
+  value: 'i',
+  path: 'plant',
+  reason: null,
+  valueType: 'string'
+}
+[2022-06-17T17:46:38.778] [ERROR] error - CastError: Cast to number failed for value "" (type string) at path "plant" for model "dailyworks"
+    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '""',
+  kind: 'number',
+  value: '',
+  path: 'plant',
+  reason: null,
+  valueType: 'string'
+}
+[2022-06-17T17:47:05.340] [ERROR] error - CastError: Cast to number failed for value "" (type string) at path "plant" for model "dailyworks"
+    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '""',
+  kind: 'number',
+  value: '',
+  path: 'plant',
+  reason: null,
+  valueType: 'string'
+}
+[2022-06-17T17:47:30.704] [ERROR] error - CastError: Cast to number failed for value "1" (type number) at path "plant" for model "dailyworks"
+    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"1"',
+  kind: 'number',
+  value: 1,
+  path: 'plant',
+  reason: null,
+  valueType: 'number'
+}
+[2022-06-17T19:44:17.644] [ERROR] error - CastError: Cast to Object failed for value "null" (type null) at path "$or.1" for model "dailyworks"
+    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"null"',
+  kind: 'Object',
+  value: null,
+  path: '$or.1',
+  reason: undefined,
+  valueType: 'null'
+}
+[2022-06-17T19:45:15.387] [ERROR] error - CastError: Cast to Object failed for value "null" (type null) at path "$or.1" for model "dailyworks"
+    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"null"',
+  kind: 'Object',
+  value: null,
+  path: '$or.1',
+  reason: undefined,
+  valueType: 'null'
+}
+[2022-06-17T19:46:53.258] [ERROR] error - CastError: Cast to Object failed for value "null" (type null) at path "$or.1" for model "dailyworks"
+    at model.Query.exec (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (E:\instr-app\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5) {
+  messageFormat: undefined,
+  stringValue: '"null"',
+  kind: 'Object',
+  value: null,
+  path: '$or.1',
+  reason: undefined,
+  valueType: 'null'
+}
+[2022-06-17T20:03:47.530] [ERROR] error - ReferenceError: data is not defined
+    at DBMongoDao.getDailyWorkSearchAdvance (file:///E:/instr-app/instr-app-back/model/DAOs/DBMongoDao.js:463:25)
+    at ApiDailyWork.getDailyWorkSearchAdvance (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:244:40)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getDailyWorkSearchAdvance (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:66:31)
+[2022-06-17T20:11:04.735] [ERROR] error - TypeError: Found non-callable @@iterator
+    at DBMongoDao.getDailyWorkSearchAdvance (file:///E:/instr-app/instr-app-back/model/DAOs/DBMongoDao.js:474:21)
+    at ApiDailyWork.getDailyWorkSearchAdvance (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:244:40)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getDailyWorkSearchAdvance (file:///E:/instr-app/instr-app-back/controllers/dailyWorks.js:66:31)

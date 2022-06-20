@@ -13,7 +13,7 @@ export class ApiPlant {
                 name: plant
             }
             const plantResp = await dao.createPlant(newPlant);
-            
+
             await ApiDailyWorksColumnTable.deleteColumns(await ApiDailyWorksColumnTable.getColumnsId())
             await ApiDailyWorksColumnTable.createColumns();
 
@@ -34,7 +34,6 @@ export class ApiPlant {
             loggerError.error(err);
             return err;
         } finally {
-
         }
     }
 
@@ -46,7 +45,17 @@ export class ApiPlant {
             loggerError.error(err);
             return err;
         } finally {
+        }
+    }
 
+    static getPlantsForSelectForm = async () => {
+        try {
+            const plants = await dao.getPlants();
+            return plants;
+        } catch (err) {
+            loggerError.error(err);
+            return err;
+        } finally {
         }
     }
 }
