@@ -76,6 +76,8 @@ export class ApiSchedule {
                 await this.deleteSchedule(scheduleData);
                 //este emit no me anda y no se porque ... 6-5-22
                 await io.to(roomId).emit('get_schedule', await this.getSchedule(date));
+            } else if (action === 'generate_daily_shift') {
+                await this.generateDailyShift(scheduleData);
             }
         } catch (error) {
             console.error(error);
@@ -193,6 +195,19 @@ export class ApiSchedule {
             loggerInfo.info('deleteSchedule');
         }
     }
+
+    generateDailyShift = async (data) => {
+        try {
+            const { startDate, endDate } = data;
+            console.log(startDate, endDate);
+
+        } catch (err) {
+            console.log(err);
+            loggerError.error(err);
+        }
+    }
+
+
 
     // convertDateToDate = async () => {
     //     try {
