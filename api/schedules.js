@@ -202,15 +202,19 @@ export class ApiSchedule {
             console.log(startDate, endDate);
 
             let workbook = new excel.Workbook();
-            let worksheet = workbook.addWorksheet("Tutorials");
-            worksheet.columns = [
-                { header: "Id", key: "id", width: 5 },
-                { header: "Columna 1", key: "col1", width: 25 },
-                { header: "Columna 2", key: "col2", width: 25 },
-                { header: "Columna 3", key: "col3", width: 10 },
-                { header: "Columna 4", key: "col4", width: 10 },
-                { header: "Columna 5", key: "col5", width: 10 },
-            ];
+            await workbook.xlsx.readFile('./data/dailyShiftTemplate.xlsx');
+
+
+
+            // let worksheet = workbook.addWorksheet("Tutorials");
+            // worksheet.columns = [
+            //     { header: "Id", key: "id", width: 5 },
+            //     { header: "Columna 1", key: "col1", width: 25 },
+            //     { header: "Columna 2", key: "col2", width: 25 },
+            //     { header: "Columna 3", key: "col3", width: 10 },
+            //     { header: "Columna 4", key: "col4", width: 10 },
+            //     { header: "Columna 5", key: "col5", width: 10 },
+            // ];
 
             return workbook;
 
