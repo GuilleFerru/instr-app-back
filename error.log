@@ -22614,3 +22614,46 @@
     at ApiSchedule.convertDateToDate (file:///E:/instr-app/instr-app-back/api/schedules.js:209:34)
     at processTicksAndRejections (internal/process/task_queues.js:93:5)
     at async convertDateToDate (file:///E:/instr-app/instr-app-back/controllers/schedules.js:85:31)
+[2022-06-21T20:22:39.015] [ERROR] error - ReferenceError: excel is not defined
+    at ApiSchedule.generateDailyShift (file:///E:/instr-app/instr-app-back/api/schedules.js:204:28)
+    at ApiSchedule.handleSocket (file:///E:/instr-app/instr-app-back/api/schedules.js:80:28)
+    at Socket.<anonymous> (file:///E:/instr-app/instr-app-back/sockets.js:43:81)
+    at Socket.emit (events.js:315:20)
+    at Socket.emitUntyped (E:\instr-app\instr-app-back\node_modules\socket.io\dist\typed-events.js:69:22)
+    at E:\instr-app\instr-app-back\node_modules\socket.io\dist\socket.js:428:39
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+[2022-06-21T20:23:00.748] [ERROR] error - ReferenceError: tutorials is not defined
+    at ApiSchedule.generateDailyShift (file:///E:/instr-app/instr-app-back/api/schedules.js:213:31)
+    at ApiSchedule.handleSocket (file:///E:/instr-app/instr-app-back/api/schedules.js:80:28)
+    at Socket.<anonymous> (file:///E:/instr-app/instr-app-back/sockets.js:43:81)
+    at Socket.emit (events.js:315:20)
+    at Socket.emitUntyped (E:\instr-app\instr-app-back\node_modules\socket.io\dist\typed-events.js:69:22)
+    at E:\instr-app\instr-app-back\node_modules\socket.io\dist\socket.js:428:39
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+[2022-06-21T20:24:43.449] [ERROR] error - ReferenceError: res is not defined
+    at ApiSchedule.generateDailyShift (file:///E:/instr-app/instr-app-back/api/schedules.js:215:13)
+    at ApiSchedule.handleSocket (file:///E:/instr-app/instr-app-back/api/schedules.js:80:28)
+    at Socket.<anonymous> (file:///E:/instr-app/instr-app-back/sockets.js:43:81)
+    at Socket.emit (events.js:315:20)
+    at Socket.emitUntyped (E:\instr-app\instr-app-back\node_modules\socket.io\dist\typed-events.js:69:22)
+    at E:\instr-app\instr-app-back\node_modules\socket.io\dist\socket.js:428:39
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+[2022-06-21T20:26:23.148] [ERROR] error - TypeError: Cannot read property 'setHeader' of undefined
+    at ApiSchedule.generateDailyShift (file:///E:/instr-app/instr-app-back/api/schedules.js:215:17)
+    at ApiSchedule.handleSocket (file:///E:/instr-app/instr-app-back/api/schedules.js:80:28)
+    at Socket.<anonymous> (file:///E:/instr-app/instr-app-back/sockets.js:43:81)
+    at Socket.emit (events.js:315:20)
+    at Socket.emitUntyped (E:\instr-app\instr-app-back\node_modules\socket.io\dist\typed-events.js:69:22)
+    at E:\instr-app\instr-app-back\node_modules\socket.io\dist\socket.js:428:39
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+[2022-06-21T20:45:09.637] [ERROR] error - Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (_http_outgoing.js:558:11)
+    at ServerResponse.header (E:\instr-app\instr-app-back\node_modules\express\lib\response.js:771:10)
+    at ServerResponse.send (E:\instr-app\instr-app-back\node_modules\express\lib\response.js:170:12)
+    at ServerResponse.json (E:\instr-app\instr-app-back\node_modules\express\lib\response.js:267:15)
+    at getDailyShiftExcel (file:///E:/instr-app/instr-app-back/controllers/schedules.js:49:36) {
+  code: 'ERR_HTTP_HEADERS_SENT'
+}
+[2022-06-21T20:59:22.556] [ERROR] error - ReferenceError: response is not defined
+    at getDailyShiftExcel (file:///E:/instr-app/instr-app-back/controllers/schedules.js:50:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)

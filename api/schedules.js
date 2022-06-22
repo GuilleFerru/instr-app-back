@@ -7,7 +7,7 @@ import { scheduleDTO, saveScheduleDTO, returnScheduleDTO, updateScheduleDTO } fr
 import { getForScheduleEmployeesDTO } from '../model/DTOs/employee.js';
 import { timeScheduleForScheduleDTO } from '../model/DTOs/timeSchedule.js';
 import { loggerError, loggerInfo } from '../utils/logger.js'
-
+import excel from 'exceljs';
 
 //MODIFICAR Y DEJAR IGUAL A DAILY WORKS... USAR LOS METODOS ESTATICOS 
 
@@ -196,10 +196,25 @@ export class ApiSchedule {
         }
     }
 
-    generateDailyShift = async (data) => {
+    getDailyShiftExcel = async (data) => {
         try {
             const { startDate, endDate } = data;
             console.log(startDate, endDate);
+
+            let workbook = new excel.Workbook();
+            let worksheet = workbook.addWorksheet("Tutorials");
+            worksheet.columns = [
+                { header: "Id", key: "id", width: 5 },
+                { header: "Columna 1", key: "col1", width: 25 },
+                { header: "Columna 2", key: "col2", width: 25 },
+                { header: "Columna 3", key: "col3", width: 10 },
+                { header: "Columna 4", key: "col4", width: 10 },
+                { header: "Columna 5", key: "col5", width: 10 },
+            ];
+
+            return workbook;
+
+
 
         } catch (err) {
             console.log(err);

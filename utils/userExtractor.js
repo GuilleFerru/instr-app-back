@@ -3,6 +3,7 @@ import config from "../config.js";
 
 export const userExtractor = (req, res, next) => {
 
+    
     let token = req.headers.authorization;
     if (token && token.toLowerCase().startsWith("bearer")) {
         token = token.slice(7, token.length);
