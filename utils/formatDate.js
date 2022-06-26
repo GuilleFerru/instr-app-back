@@ -48,6 +48,13 @@ export const checkWeekDay = (weekCheckDays) => {
     return dayName.join(' - ');
 }
 
+export const getDayName = (dayNumber) => {
+    const days = ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
+    
+    return days[dayNumber];
+}
+
+
 export const monthAndYearString = (date) => {
     const months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
     const month = date.getMonth();

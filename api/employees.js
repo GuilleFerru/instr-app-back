@@ -1,5 +1,5 @@
 import { dao } from '../server.js';
-import {getForScheduleEmployeesDTO} from '../model/DTOs/employee.js';
+import { getForScheduleEmployeesDTO } from '../model/DTOs/employee.js';
 import { loggerError, loggerInfo } from '../utils/logger.js'
 
 export class ApiEmployee {
@@ -25,6 +25,17 @@ export class ApiEmployee {
             loggerInfo.info('getEmployees');
         }
     }
+
+    getEmployeeBylegajo = async (legajo) => {
+        try {
+            const empResp = await dao.getEmployeeBylegajo(legajo);
+            return empResp;
+        } catch (err) {
+            loggerError.error(err);
+        } finally {
+        }
+    }
+
 
     getForScheduleEmployees = async () => {
         try {

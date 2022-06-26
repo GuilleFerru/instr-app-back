@@ -107,6 +107,15 @@ export class DBMongoDao {
             loggerError.error(error)
         }
     }
+    getEmployeeBylegajo = async (legajo) => {
+        try {
+            const empResp = await empModel.find({ legajo: legajo }, { __v: 0, createdAt: 0, updatedAt: 0 });
+            return empResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
     /*          */
 
     /* ADICIONALES */
@@ -165,6 +174,15 @@ export class DBMongoDao {
     getSchedule = async (date) => {
         try {
             const scheduleResp = await scheduleModel.find({ date: date }, { __v: 0, createdAt: 0, updatedAt: 0 });
+            return scheduleResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    getSchedulesBettweenDates = async (startDate, endDate) => {
+        try {
+            const scheduleResp = await scheduleModel.find({ dateTime: { $gte: startDate, $lte: endDate } }, { __v: 0, createdAt: 0, updatedAt: 0 }).sort({ dateTime: 1 });
             return scheduleResp;
         } catch (error) {
             loggerError.error(error)

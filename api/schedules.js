@@ -2,14 +2,12 @@ import { dao } from '../server.js'
 import { ApiShift } from './shifts.js';
 import { ApiEmployee } from './employees.js';
 import { reduceForLookUp } from '../utils/reduceForLookup.js';
-import { formatDate, dateInLocalDate, parseStringToDate } from '../utils/formatDate.js';
+import { formatDate, dateInLocalDate, getDayName } from '../utils/formatDate.js';
 import { scheduleDTO, saveScheduleDTO, returnScheduleDTO, updateScheduleDTO } from '../model/DTOs/schedule.js';
 import { getForScheduleEmployeesDTO } from '../model/DTOs/employee.js';
 import { timeScheduleForScheduleDTO } from '../model/DTOs/timeSchedule.js';
 import { loggerError, loggerInfo } from '../utils/logger.js'
 import excel from 'exceljs';
-
-//MODIFICAR Y DEJAR IGUAL A DAILY WORKS... USAR LOS METODOS ESTATICOS 
 
 
 const getDayShift = async (date) => {
@@ -19,9 +17,14 @@ const getDayShift = async (date) => {
     return dayShift;
 }
 
-const getEmployees = async () => {
+const getEmployees = async (filter, legajo) => {
     const apiEmployee = new ApiEmployee();
-    const employees = await apiEmployee.getEmployees();
+    let employees;
+    if (filter === 'all') {
+        employees = await apiEmployee.getEmployees();
+    } else if (filter === 'byLegajo') {
+        employees = await apiEmployee.getEmployeeBylegajo(legajo);
+    }
     return employees;
 }
 
@@ -55,6 +58,58 @@ const createScheduleColumns = (timeSchedule, employeesForSchedule) => {
         },
     ];
     return columns;
+}
+
+
+const adjustDailyShiftSheetColumnWidth = (sheet, n3) => {
+
+    const lengths = [];
+    sheet.getColumn(`${n3}`).values.map((value) => {
+        const length = value && value.toString().length;
+        lengths.push(length);
+    });
+    lengths.splice(0, 4);
+    lengths.length > 49 ? lengths.splice(49, lengths.length) : '';
+    const maxLength = Math.max(...lengths.filter(v => typeof v === 'number'));
+    sheet.getColumn(`${n3}`).width = maxLength + 1;
+}
+
+const isNumeric = (value) => {
+    return /^\d+$/.test(value);
+}
+
+const completeDailyShiftSheet = (firstIterate, weekData, workbook, n1, n2, n3) => {
+
+    for (let i = 0; i < weekData.length; i++) {
+        const sheet = workbook.getWorksheet(`SEMANA ${i + 1}`);
+        if (weekData[i][n1] !== undefined) {
+            const { dateNumber, dayName, employees } = weekData[i][n1];
+            sheet.getCell(`${n2}4`).value = `${dayName}`;
+            sheet.getCell(`${n2}5`).value = parseInt(`${dateNumber}`);
+            let cellNumber = 7
+            for (let j = 0; j < employees.length; j++) {
+                if (firstIterate === true) {
+                    const { legajo, fullName } = employees[j];
+                    sheet.getCell(`B${cellNumber}`).value = legajo;
+                    sheet.getCell(`C${cellNumber}`).value = fullName;
+                }
+                const { aditionals } = employees[j];
+                for (let k = 0; k < aditionals.length; k++) {
+                    const { ...rest } = aditionals[k];
+                    sheet.getCell(`${n2}${cellNumber}`).value = rest.additional_1 ? Number(rest.additional_1) : '';
+                    sheet.getCell(`${n3}${cellNumber}`).value = rest.additional_1_info ? isNumeric(rest.additional_1_info) ? Number(rest.additional_1_info) : rest.additional_1_info : '';
+                    sheet.getCell(`${n2}${cellNumber + 1}`).value = rest.additional_2 ? Number(rest.additional_2) : '';
+                    sheet.getCell(`${n3}${cellNumber + 1}`).value = rest.additional_2_info ? isNumeric(rest.additional_2_info) ? Number(rest.additional_2_info) : rest.additional_2_info : '';
+                    sheet.getCell(`${n2}${cellNumber + 2}`).value = rest.additional_3 ? Number(rest.additional_3) : '';
+                    sheet.getCell(`${n3}${cellNumber + 2}`).value = rest.additional_3_info ? isNumeric(rest.additional_3_info) ? Number(rest.additional_3_info) : rest.additional_3_info : '';
+                    sheet.getCell(`${n2}${cellNumber + 3}`).value = rest.additional_4 ? Number(rest.additional_4) : '';
+                    sheet.getCell(`${n3}${cellNumber + 3}`).value = rest.additional_4_info ? isNumeric(rest.additional_4_info) ? Number(rest.additional_4_info) : rest.additional_4_info : '';
+                }
+                cellNumber += 4;
+            }
+            adjustDailyShiftSheetColumnWidth(sheet, n3);
+        }
+    }
 }
 
 export class ApiSchedule {
@@ -91,7 +146,7 @@ export class ApiSchedule {
             // llamadas a las bases de datos para buscar información
             const dateLocal = formatDate(date);
             const dayShift = await getDayShift(dateLocal);
-            const employees = await getEmployees();
+            const employees = await getEmployees('all');
             const workHours = await dao.getWorkHours();
             const timeSchedule = await dao.getTimeSchedule();
             const aditionals = await dao.getAditionals();
@@ -199,27 +254,57 @@ export class ApiSchedule {
     getDailyShiftExcel = async (data) => {
         try {
             const { startDate, endDate } = data;
-            console.log(startDate, endDate);
-
-            let workbook = new excel.Workbook();
+            const schedules = await dao.getSchedulesBettweenDates(startDate, endDate);
+            const workbook = new excel.Workbook();
             await workbook.xlsx.readFile('./data/dailyShiftTemplate.xlsx');
 
+            // me fijo cuantos dias tengo en el rango de fechas y muestro las sheets que me hagan falta
+            const dateQty = schedules.length;
+            const qtyOfSheets = Math.ceil(dateQty / 7);
+            for (let i = 1; i < qtyOfSheets; i++) {
+                const showSheet = workbook.getWorksheet(`SEMANA ${i + 1}`)
+                showSheet.state = 'visible';
+            }
 
+            const dataForSheet = [];
+            let employees = [];
+            for (const element of schedules) {
+                const { schedule, dateTime } = element;
+                const dayNumber = dateTime.getDay();
+                const dateNumber = dateTime.getDate();
+                const dataObject = {
+                    dateNumber: dateNumber,
+                    dayName: getDayName(dayNumber),
+                }
+                for (let i = 0; i < schedule.length; i++) {
+                    const { id, legajo, fullName, timeSchedule, workedHours, ...rest } = schedule[i];
+                    const employee = await getEmployees('byLegajo', legajo);
+                    const { nombre, apellido } = employee[0];
+                    employees.push({
+                        legajo: legajo,
+                        fullName: `${nombre} ${apellido}`,
+                        aditionals: Object.keys(rest).length === 0 ? [{}] : [rest],
+                    })
+                    dataObject.employees = employees;
+                }
+                employees = [];
+                dataForSheet.push(dataObject);
+            }
 
-            // let worksheet = workbook.addWorksheet("Tutorials");
-            // worksheet.columns = [
-            //     { header: "Id", key: "id", width: 5 },
-            //     { header: "Columna 1", key: "col1", width: 25 },
-            //     { header: "Columna 2", key: "col2", width: 25 },
-            //     { header: "Columna 3", key: "col3", width: 10 },
-            //     { header: "Columna 4", key: "col4", width: 10 },
-            //     { header: "Columna 5", key: "col5", width: 10 },
-            // ];
+            const weekData = []
+            do {
+                weekData.push(dataForSheet.splice(0, 7));
+            } while (dataForSheet.length > 7)
+            weekData.push(dataForSheet.splice(0));
 
+            completeDailyShiftSheet(true, weekData, workbook, 0, 'D', 'E')
+            completeDailyShiftSheet(false, weekData, workbook, 1, 'F', 'G')
+            completeDailyShiftSheet(false, weekData, workbook, 2, 'H', 'I')
+            completeDailyShiftSheet(false, weekData, workbook, 3, 'J', 'K')
+            completeDailyShiftSheet(false, weekData, workbook, 4, 'L', 'M')
+            completeDailyShiftSheet(false, weekData, workbook, 5, 'N', 'O')
+            completeDailyShiftSheet(false, weekData, workbook, 6, 'P', 'Q')
             return workbook;
-
-
-
         } catch (err) {
             console.log(err);
             loggerError.error(err);
@@ -227,23 +312,6 @@ export class ApiSchedule {
     }
 
 
-
-    // convertDateToDate = async () => {
-    //     try {
-
-    //         const schedules = await dao.getSchedules();
-    //         for (let i = 0; i < schedules.length; i++) {
-    //             const schedule = schedules[i];
-    //             const dateTime = parseStringToDate(schedule.date);
-    //             await dao.updateDateTime(schedule.date, dateTime);
-    //         }
-    //         const result = true;
-    //         return result;
-    //     } catch (error) {
-    //         console.log(error);
-    //         loggerError.error(error);
-    //     }
-    // }
 }
 
 

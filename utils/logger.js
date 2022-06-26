@@ -2,9 +2,9 @@ import log4js from 'log4js'
 
 log4js.configure({
     appenders: {
-        miLoggerConsole: { type: "console"},
-        miLoggerFileWarn: { type: 'file', filename: 'warn.log' },
-        miLoggerFileError: { type: 'file', filename: 'error.log' }
+        miLoggerConsole: { type: "file", filename: './utils/logs/info.log' },
+        miLoggerFileWarn: { type: 'file', filename: './utils/logs/warn.log' },
+        miLoggerFileError: { type: 'file', filename: './utils/logs/error.log' }
     },
     categories: {
         default: { appenders: ["miLoggerConsole"], level: "trace" },
