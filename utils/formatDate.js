@@ -50,7 +50,6 @@ export const checkWeekDay = (weekCheckDays) => {
 
 export const getDayName = (dayNumber) => {
     const days = ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
-    
     return days[dayNumber];
 }
 

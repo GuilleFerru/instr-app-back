@@ -314,39 +314,40 @@ export class ApiSchedule {
     getDataForDailyShiftExcel = async (data) => {
         const { startDate, endDate } = data;
         const schedules = await dao.getSchedulesBettweenDates(startDate, endDate);
+        const employees = await getEmployees('all');
+        return { schedules, employees };
+        // const dataForSheet = [];
+        // let employees = [];
+        // for (const element of schedules) {
+        //     const { schedule, dateTime } = element;
+        //     const dayNumber = dateTime.getDay();
+        //     const dateNumber = dateTime.getDate();
+        //     const dataObject = {
+        //         dateNumber: dateNumber,
+        //         dayName: getDayName(dayNumber),
+        //     }
+        //     for (let i = 0; i < schedule.length; i++) {
+        //         const { id, legajo, fullName, timeSchedule, workedHours, ...rest } = schedule[i];
+        //         const employee = await getEmployees('byLegajo', legajo);
+        //         const { nombre, apellido } = employee[0];
+        //         employees.push({
+        //             legajo: legajo,
+        //             fullName: `${nombre} ${apellido}`,
+        //             aditionals: Object.keys(rest).length === 0 ? [{}] : [rest],
+        //         })
+        //         dataObject.employees = employees;
+        //     }
+        //     employees = [];
+        //     dataForSheet.push(dataObject);
+        // }
 
-        const dataForSheet = [];
-        let employees = [];
-        for (const element of schedules) {
-            const { schedule, dateTime } = element;
-            const dayNumber = dateTime.getDay();
-            const dateNumber = dateTime.getDate();
-            const dataObject = {
-                dateNumber: dateNumber,
-                dayName: getDayName(dayNumber),
-            }
-            for (let i = 0; i < schedule.length; i++) {
-                const { id, legajo, fullName, timeSchedule, workedHours, ...rest } = schedule[i];
-                const employee = await getEmployees('byLegajo', legajo);
-                const { nombre, apellido } = employee[0];
-                employees.push({
-                    legajo: legajo,
-                    fullName: `${nombre} ${apellido}`,
-                    aditionals: Object.keys(rest).length === 0 ? [{}] : [rest],
-                })
-                dataObject.employees = employees;
-            }
-            employees = [];
-            dataForSheet.push(dataObject);
-        }
+        // const weekData = []
+        // do {
+        //     weekData.push(dataForSheet.splice(0, 7));
+        // } while (dataForSheet.length > 7)
+        // weekData.push(dataForSheet.splice(0));
 
-        const weekData = []
-        do {
-            weekData.push(dataForSheet.splice(0, 7));
-        } while (dataForSheet.length > 7)
-        weekData.push(dataForSheet.splice(0));
-
-        return weekData;
+        // return weekData;
     }
 
 
