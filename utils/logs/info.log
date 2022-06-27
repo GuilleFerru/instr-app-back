@@ -1,3 +1,5 @@
-[2022-06-26T20:53:12.974] [INFO] info - Contectando a la Base de datos...
-[2022-06-26T20:53:13.017] [INFO] info - Servidor listo en el puerto 8080
-[2022-06-26T20:53:14.828] [INFO] info - Base de datos conectada instrumentosdb-shard-00-01.hwfi6.mongodb.net
+
+[2022-06-27T14:35:27.249] [INFO] info - Contectando a la Base de datos...
+[2022-06-27T14:35:27.287] [INFO] info - Servidor listo en el puerto 8080
+[2022-06-27T14:35:28.100] [INFO] info - Base de datos conectada instrumentosdb-shard-00-01.hwfi6.mongodb.net
+[2022-06-27T14:35:29.737] [INFO] info - Socket 4dY6i4nP1ZqBXTwpAAAB connected

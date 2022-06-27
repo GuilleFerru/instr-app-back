@@ -40,24 +40,29 @@ export class ControllerSchedule {
         }
     }
 
-    getDailyShiftExcel = async (req, res) => {
+    postDailyShiftExcel = async (req, res) => {
         try {
-            const dataToJSON = JSON.parse(req.query.params);
-            // const {startDate, endDate} = dataToJSON;
-            // console.log(startDate,endDate);
-            const workbook = await this.apiSchedule.getDailyShiftExcel(dataToJSON);
-
+            
+            const weekData = req.body;
+           // const dataToJSON = JSON.parse(req.query.params);
+            const workbook = await this.apiSchedule.getDailyShiftExcel(weekData);
             res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
             res.setHeader("Content-Disposition", "attachment; filename=" + 'fileName.xlsx');
             await workbook.xlsx.write(res);
             res.end();
-            // return workbook.xlsx.write(res).then(function () {
-            //     
-            // });
-
-
         } catch (error) {
             console.log(error)
+            loggerError.error(error)
+            return res.status(500).json(error);
+        }
+    }
+
+    getDataForDailyShiftExcel = async (req, res) => {
+        try {
+            const dataToJSON = JSON.parse(req.query.params);
+            const resultado = await this.apiSchedule.getDataForDailyShiftExcel(dataToJSON);
+            return res.status(200).json(resultado);
+        } catch (error) {
             loggerError.error(error)
             return res.status(500).json(error);
         }

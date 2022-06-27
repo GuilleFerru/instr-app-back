@@ -69,6 +69,11 @@ app.use(json());
 app.use(express.urlencoded({ extended: true }));
 app.use(helmet());
 // app.use(morgan("dev"));
+const corsOptions = {
+  origin: "http://localhost:8080/",
+  optionsSuccessStatus: 200,
+  method: "GET, PUT",
+};
 app.use(cors());
 app.options('*', cors());
 
