@@ -101,7 +101,7 @@ export class DBMongoDao {
 
     getEmployees = async () => {
         try {
-            const empResp = await empModel.find({}, { __v: 0, createdAt: 0, updatedAt: 0 });
+            const empResp = await empModel.find({}, { __v: 0, createdAt: 0, updatedAt: 0 }).sort({ createdAt: 1 });
             return empResp;
         } catch (error) {
             loggerError.error(error)

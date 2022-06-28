@@ -22,6 +22,7 @@ const getEmployees = async (filter, legajo) => {
     let employees;
     if (filter === 'all') {
         employees = await apiEmployee.getEmployees();
+
     } else if (filter === 'byLegajo') {
         employees = await apiEmployee.getEmployeeBylegajo(legajo);
     }
@@ -259,14 +260,6 @@ export class ApiSchedule {
             const workbook = new excel.Workbook();
             await workbook.xlsx.readFile('./data/dailyShiftTemplate.xlsx');
 
-            // me fijo cuantos dias tengo en el rango de fechas y muestro las sheets que me hagan falta
-            // const dateQty = weekData.length;
-            // // const qtyOfSheets = Math.ceil(dateQty / 7);
-            // for (let i = 1; i < dateQty; i++) {
-            //     const showSheet = workbook.getWorksheet(`SEMANA ${i + 1}`)
-            //     showSheet.state = 'visible';
-            // }
-
             const dataForSheet = [];
             let dayEmployees = [];
             for (const element of schedules) {
@@ -279,7 +272,6 @@ export class ApiSchedule {
                 }
                 for (let i = 0; i < schedule.length; i++) {
                     const { id, legajo, fullName, timeSchedule, workedHours, ...rest } = schedule[i];
-                    //const employee = await getEmployees('byLegajo', legajo);
                     const { nombre, apellido } = employees[i];
                     dayEmployees.push({
                         legajo: legajo,
@@ -298,9 +290,7 @@ export class ApiSchedule {
             } while (dataForSheet.length > 7)
             weekData.push(dataForSheet.splice(0));
 
-            // me fijo cuantos dias tengo en el rango de fechas y muestro las sheets que me hagan falta
             const weekQty = weekData.length;
-            // const qtyOfSheets = Math.ceil(dateQty / 7);
             for (let i = 1; i < weekQty; i++) {
                 const showSheet = workbook.getWorksheet(`SEMANA ${i + 1}`)
                 showSheet.state = 'visible';
@@ -319,48 +309,6 @@ export class ApiSchedule {
             loggerError.error(err);
         }
     }
-
-    getDataForDailyShiftExcel = async (data) => {
-        const { startDate, endDate } = data;
-        const schedules = await dao.getSchedulesBettweenDates(startDate, endDate);
-        const employees = await getEmployees('all');
-        return { schedules, employees };
-        // const dataForSheet = [];
-        // let employees = [];
-        // for (const element of schedules) {
-        //     const { schedule, dateTime } = element;
-        //     const dayNumber = dateTime.getDay();
-        //     const dateNumber = dateTime.getDate();
-        //     const dataObject = {
-        //         dateNumber: dateNumber,
-        //         dayName: getDayName(dayNumber),
-        //     }
-        //     for (let i = 0; i < schedule.length; i++) {
-        //         const { id, legajo, fullName, timeSchedule, workedHours, ...rest } = schedule[i];
-        //         const employee = await getEmployees('byLegajo', legajo);
-        //         const { nombre, apellido } = employee[0];
-        //         employees.push({
-        //             legajo: legajo,
-        //             fullName: `${nombre} ${apellido}`,
-        //             aditionals: Object.keys(rest).length === 0 ? [{}] : [rest],
-        //         })
-        //         dataObject.employees = employees;
-        //     }
-        //     employees = [];
-        //     dataForSheet.push(dataObject);
-        // }
-
-        // const weekData = []
-        // do {
-        //     weekData.push(dataForSheet.splice(0, 7));
-        // } while (dataForSheet.length > 7)
-        // weekData.push(dataForSheet.splice(0));
-
-        // return weekData;
-    }
-
-
-
 
 }
 

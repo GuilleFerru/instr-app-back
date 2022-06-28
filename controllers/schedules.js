@@ -42,8 +42,6 @@ export class ControllerSchedule {
 
     getDailyShiftExcel = async (req, res) => {
         try {
-
-            //const weekData = req.body;
             const dataToJSON = JSON.parse(req.query.params);
             const workbook = await this.apiSchedule.getDailyShiftExcel(dataToJSON);
             res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
@@ -56,18 +54,6 @@ export class ControllerSchedule {
             return res.status(500).json(error);
         }
     }
-
-    getDataForDailyShiftExcel = async (req, res) => {
-        try {
-            const dataToJSON = JSON.parse(req.query.params);
-            const resultado = await this.apiSchedule.getDataForDailyShiftExcel(dataToJSON);
-            return res.status(200).json(resultado);
-        } catch (error) {
-            loggerError.error(error)
-            return res.status(500).json(error);
-        }
-    }
-
 
     updateSchedule = async (req, res) => {
         try {
