@@ -1,5 +1,0 @@
-[2022-06-27T14:33:27.282] [ERROR] error - ReferenceError: weekData is not defined
-    at ApiSchedule.getDailyShiftExcel (file:///E:/instr-app/instr-app-back/api/schedules.js:300:43)
-    at async postDailyShiftExcel (file:///E:/instr-app/instr-app-back/controllers/schedules.js:48:30)
-[2022-06-27T14:33:27.283] [ERROR] error - TypeError: Cannot read property 'xlsx' of undefined
-    at postDailyShiftExcel (file:///E:/instr-app/instr-app-back/controllers/schedules.js:51:28)

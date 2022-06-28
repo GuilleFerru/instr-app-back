@@ -40,12 +40,12 @@ export class ControllerSchedule {
         }
     }
 
-    postDailyShiftExcel = async (req, res) => {
+    getDailyShiftExcel = async (req, res) => {
         try {
-            
-            const weekData = req.body;
-           // const dataToJSON = JSON.parse(req.query.params);
-            const workbook = await this.apiSchedule.getDailyShiftExcel(weekData);
+
+            //const weekData = req.body;
+            const dataToJSON = JSON.parse(req.query.params);
+            const workbook = await this.apiSchedule.getDailyShiftExcel(dataToJSON);
             res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
             res.setHeader("Content-Disposition", "attachment; filename=" + 'fileName.xlsx');
             await workbook.xlsx.write(res);
