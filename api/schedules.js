@@ -2,7 +2,7 @@ import { dao } from '../server.js'
 import { ApiShift } from './shifts.js';
 import { ApiEmployee } from './employees.js';
 import { reduceForLookUp } from '../utils/reduceForLookup.js';
-import { formatDate, dateInLocalDate, getDayName } from '../utils/formatDate.js';
+import { formatDate, dateInLocalDate, getDayName, monthAndYearString } from '../utils/formatDate.js';
 import { scheduleDTO, saveScheduleDTO, returnScheduleDTO, updateScheduleDTO } from '../model/DTOs/schedule.js';
 import { getForScheduleEmployeesDTO } from '../model/DTOs/employee.js';
 import { timeScheduleForScheduleDTO } from '../model/DTOs/timeSchedule.js';
@@ -84,7 +84,7 @@ const completeDailyShiftSheet = (firstIterate, weekData, workbook, n1, n2, n3) =
     for (let i = 0; i < weekData.length; i++) {
         const sheet = workbook.getWorksheet(`SEMANA ${i + 1}`);
         if (weekData[i][n1] !== undefined) {
-            const { dateNumber, dayName, employees } = weekData[i][n1];
+            const { dateNumber, dayName, date, employees } = weekData[i][n1];
             sheet.getCell(`${n2}4`).value = `${dayName}`;
             sheet.getCell(`${n2}5`).value = parseInt(`${dateNumber}`);
             let cellNumber = 7
@@ -93,6 +93,7 @@ const completeDailyShiftSheet = (firstIterate, weekData, workbook, n1, n2, n3) =
                     const { legajo, fullName } = employees[j];
                     sheet.getCell(`B${cellNumber}`).value = legajo;
                     sheet.getCell(`C${cellNumber}`).value = fullName;
+                    sheet.getCell('S2').value = monthAndYearString(date);
                 }
                 const { aditionals } = employees[j];
                 for (let k = 0; k < aditionals.length; k++) {
@@ -267,6 +268,7 @@ export class ApiSchedule {
                 const dataObject = {
                     dateNumber: dateNumber,
                     dayName: getDayName(dayNumber),
+                    date: dateTime
                 }
                 for (let i = 0; i < schedule.length; i++) {
                     const { id, legajo, fullName, timeSchedule, workedHours, ...rest } = schedule[i];
@@ -293,7 +295,6 @@ export class ApiSchedule {
                 const showSheet = workbook.getWorksheet(`SEMANA ${i + 1}`)
                 showSheet.state = 'visible';
             }
-
             completeDailyShiftSheet(true, weekData, workbook, 0, 'D', 'E')
             completeDailyShiftSheet(false, weekData, workbook, 1, 'F', 'G')
             completeDailyShiftSheet(false, weekData, workbook, 2, 'H', 'I')
