@@ -126,14 +126,12 @@ export class ApiSchedule {
                 io.to(roomId).emit('get_schedule', await this.getSchedule(date));
             } else if (action === 'update_schedule_columns') {
                 await this.updateScheduleColumns(date, scheduleData);
-                io.to(roomId).emit('get_schedule', await this.getSchedule(date));
+                //io.to(roomId).emit('get_schedule', await this.getSchedule(date));
             } else if (action === 'delete_schedule') {
                 await this.deleteSchedule(scheduleData);
                 io.to(roomId).emit('get_schedule', await this.getSchedule(date));
             }
         } catch (error) {
-            console.log(error)
-            console.error(error);
             loggerError.error(error);
         }
     }
@@ -178,13 +176,11 @@ export class ApiSchedule {
 
     getSchedule = async (date) => {
         try {
-            console.log('getSchedule');
             const dateLocalDate = dateInLocalDate(date);
             if (dateLocalDate >= new Date('2022-01-01')) {
                 const dateLocal = formatDate(date);
                 const resultado = await dao.getSchedule(dateLocal);
                 if (resultado.length === 0) {
-                    console.log('0')
                     return await this.createSchedule(date);
                 } else if (resultado.length > 0) {
                     const aditionals = await dao.getAditionals();
@@ -197,7 +193,7 @@ export class ApiSchedule {
                 return [''];
             }
         } catch (error) {
-            console.log(error);
+            loggerError.error(error);
         }
     }
 
@@ -216,7 +212,7 @@ export class ApiSchedule {
                 }
             }
         } catch (error) {
-            console.log(error);
+            loggerError.error(error);
         }
     }
 
@@ -232,7 +228,7 @@ export class ApiSchedule {
                 }
             }
         } catch (error) {
-            console.log(error);
+            loggerError.error(error);
         }
     }
 
@@ -248,7 +244,6 @@ export class ApiSchedule {
             }
             return schedule;
         } catch (err) {
-            console.log(err);
             loggerError.error(err);
         } finally {
             loggerInfo.info('deleteSchedule');
@@ -308,7 +303,6 @@ export class ApiSchedule {
             completeDailyShiftSheet(false, weekData, workbook, 6, 'P', 'Q')
             return workbook;
         } catch (err) {
-            console.log(err);
             loggerError.error(err);
         }
     }
