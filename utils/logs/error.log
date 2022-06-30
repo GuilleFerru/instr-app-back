@@ -1,0 +1,12 @@
+[2022-06-29T20:39:08.850] [ERROR] error - ReferenceError: routineSchedule is not defined
+    at getRoutines (file:///E:/instr-app/instr-app-back/api/routines.js:101:17)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiRoutine.getAllRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:182:33)
+    at async getAllRoutine (file:///E:/instr-app/instr-app-back/controllers/routines.js:34:29)
+[2022-06-29T20:58:35.796] [ERROR] error - ReferenceError: ObjectId is not defined
+    at file:///E:/instr-app/instr-app-back/api/routines.js:107:60
+    at Array.find (<anonymous>)
+    at getRoutines (file:///E:/instr-app/instr-app-back/api/routines.js:107:32)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiRoutine.getAllRoutine (file:///E:/instr-app/instr-app-back/api/routines.js:184:33)
+    at async getAllRoutine (file:///E:/instr-app/instr-app-back/controllers/routines.js:34:29)

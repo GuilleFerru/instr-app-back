@@ -37,10 +37,10 @@ export default (io) => {
             socket.to(id).emit("schedule_leave_room", id);
             // loggerInfo.info(`Socket ${socket.id} left Schedules room ${id}`);
         })
-        socket.on("update_schedule", (date, scheduleData, roomId) => apiSchedule.handleSocket({ date, socket, action: "update_schedule", scheduleData, roomId }));
+        socket.on("update_schedule", (date, scheduleData, roomId) => apiSchedule.handleSocket({ date, socket, action: "update_schedule", scheduleData, roomId, io }));
         socket.on("update_schedule_columns", (date, scheduleData, roomId) => apiSchedule.handleSocket({ date, socket, action: "update_schedule_columns", scheduleData, roomId, io }));
-        socket.on("delete_schedule", (date, scheduleData, roomId) => apiSchedule.handleSocket({ date, socket, action: "delete_schedule", scheduleData, roomId: formatDate(roomId), io }));
-        socket.on("generate_daily_shift", (scheduleData, roomId) => apiSchedule.handleSocket({ socket, action: "generate_daily_shift", scheduleData, roomId: formatDate(roomId), io }));
+        socket.on("delete_schedule", (date, scheduleData, roomId) => apiSchedule.handleSocket({ date, socket, action: "delete_schedule", scheduleData, roomId: roomId, io }));
+        //socket.on("generate_daily_shift", (scheduleData, roomId) => apiSchedule.handleSocket({ socket, action: "generate_daily_shift", scheduleData, roomId: formatDate(roomId), io }));
 
         // DAILY WORKS
         socket.on("get_daily_works", (date) => apiDailyWork.handleSocket({ date, socket, action: "get_daily_works" }));

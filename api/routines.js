@@ -88,6 +88,7 @@ const otherRoutineResp = (otherRoutines, columns, date) => {
 const getRoutines = async (routineSchedules, filter) => {
     const routinesId = [];
     const routines = [];
+    const savedRoutines = await dao.getRoutines();
 
     if (routineSchedules !== undefined) {
         routineSchedules.map(element => {
@@ -95,13 +96,13 @@ const getRoutines = async (routineSchedules, filter) => {
         });
     }
     for (const element of routinesId) {
-        const routine = await dao.getRoutine(element.routineId);
-        // const routineFrecuency = routine[0].frecuency;
+        const routine = savedRoutines.find(({_id}) => _id.toString() === element.routineId);
+        //const routine = await dao.getRoutine(element.routineId);
         if (filter === 'forRoutines') {
-            const routineRes = routineRespForOthersRoutineDTO(routine[0], element.complete, element._id, element.ot, element.filePath, element.nickname, element.checkDay, element.weekCheckDays, element.realCheckedDay);
+            const routineRes = routineRespForOthersRoutineDTO(routine, element.complete, element._id, element.ot, element.filePath, element.nickname, element.checkDay, element.weekCheckDays, element.realCheckedDay);
             routines.push(routineRes);
         } else if (filter === 'forDailyWorks') {
-            const routineRes = routineRespDTO(routine[0], element.complete, element._id, element.ot);
+            const routineRes = routineRespDTO(routine, element.complete, element._id, element.ot);
             routines.push(routineRes);
         }
     }
@@ -114,7 +115,6 @@ export class ApiRoutine {
     handleSocket = async (...data) => {
         try {
             const { date, socket, action, routineData, io } = data[0];
-
             if (action === 'get_qtyOverDueRoutines') {
                 const data = await this.getQtyOverdueRoutines();
                 data && io.emit('get_qtyOverDueRoutines', data);

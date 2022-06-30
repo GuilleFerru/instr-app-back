@@ -123,19 +123,16 @@ export class ApiSchedule {
                 data && socket.emit('get_schedule', data);
             } else if (action === 'update_schedule') {
                 await this.updateSchedule(date, scheduleData, roomId);
-                socket.to(roomId).emit('get_schedule', await this.getSchedule(date));
+                io.to(roomId).emit('get_schedule', await this.getSchedule(date));
             } else if (action === 'update_schedule_columns') {
                 await this.updateScheduleColumns(date, scheduleData);
-                await io.to(roomId).emit('get_schedule', await this.getSchedule(date));
-                // socket.emit('updateScheduleColumns', data);
+                io.to(roomId).emit('get_schedule', await this.getSchedule(date));
             } else if (action === 'delete_schedule') {
                 await this.deleteSchedule(scheduleData);
-                //este emit no me anda y no se porque ... 6-5-22
-                await io.to(roomId).emit('get_schedule', await this.getSchedule(date));
-            } else if (action === 'generate_daily_shift') {
-                await this.generateDailyShift(scheduleData);
+                io.to(roomId).emit('get_schedule', await this.getSchedule(date));
             }
         } catch (error) {
+            console.log(error)
             console.error(error);
             loggerError.error(error);
         }
@@ -181,13 +178,14 @@ export class ApiSchedule {
 
     getSchedule = async (date) => {
         try {
+            console.log('getSchedule');
             const dateLocalDate = dateInLocalDate(date);
             if (dateLocalDate >= new Date('2022-01-01')) {
                 const dateLocal = formatDate(date);
                 const resultado = await dao.getSchedule(dateLocal);
                 if (resultado.length === 0) {
-                    const schedule = await this.createSchedule(date);
-                    return schedule;
+                    console.log('0')
+                    return await this.createSchedule(date);
                 } else if (resultado.length > 0) {
                     const aditionals = await dao.getAditionals();
                     const returnSchedule = returnScheduleDTO(resultado[0].date, resultado[0].schedule, resultado[0].columns, reduceForLookUp(aditionals), resultado[0]._id);
@@ -243,6 +241,11 @@ export class ApiSchedule {
 
             const { date, dataDelete } = data;
             const schedule = await dao.deleteSchedule(formatDate(date), dataDelete);
+            const checkSchedule = await dao.getSchedule(formatDate(date));
+            const emptySchedule = checkSchedule[0].schedule.length;
+            if (emptySchedule === 0) {
+                await dao.deleteAllSchedule(formatDate(date));
+            }
             return schedule;
         } catch (err) {
             console.log(err);

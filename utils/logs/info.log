@@ -1,1 +1,16 @@
 
+[2022-06-29T21:02:29.052] [INFO] info - Contectando a la Base de datos...
+[2022-06-29T21:02:29.090] [INFO] info - Servidor listo en el puerto 8080
+[2022-06-29T21:02:29.645] [INFO] info - Base de datos conectada instrumentosdb-shard-00-02.hwfi6.mongodb.net
+[2022-06-29T21:02:31.163] [INFO] info - Socket wZxi5d-8a2fyzIcbAAAB connected
+[2022-06-29T21:03:26.254] [INFO] info - Contectando a la Base de datos...
+[2022-06-29T21:03:26.298] [INFO] info - Servidor listo en el puerto 8080
+[2022-06-29T21:03:27.138] [INFO] info - Base de datos conectada instrumentosdb-shard-00-02.hwfi6.mongodb.net
+[2022-06-29T21:03:29.067] [INFO] info - Socket rfwIJuh4MO-R5th4AAAB connected
+[2022-06-29T21:04:07.446] [INFO] info - Contectando a la Base de datos...
+[2022-06-29T21:04:07.518] [INFO] info - Servidor listo en el puerto 8080
+[2022-06-29T21:04:08.066] [INFO] info - Base de datos conectada instrumentosdb-shard-00-00.hwfi6.mongodb.net
+[2022-06-29T21:04:10.053] [INFO] info - Socket DaVCJXP8YrvCgUbUAAAB connected
+[2022-06-29T21:05:24.682] [INFO] info - Contectando a la Base de datos...
+[2022-06-29T21:05:24.728] [INFO] info - Servidor listo en el puerto 8080
+[2022-06-29T21:05:25.736] [INFO] info - Base de datos conectada instrumentosdb-shard-00-01.hwfi6.mongodb.net

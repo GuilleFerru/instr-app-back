@@ -208,6 +208,16 @@ export class DBMongoDao {
         }
     }
 
+    deleteAllSchedule = async (date) => {
+        try {
+            const scheduleResp = await scheduleModel.deleteMany({ date: date });
+            return scheduleResp && true;
+        } catch (error) {
+            console.log(error)
+            loggerError.error(error)
+        }
+    }
+
     createTimeSchedule = async (timeSchedule) => {
         try {
 
@@ -638,6 +648,16 @@ export class DBMongoDao {
             loggerError.error(error)
         }
     }
+
+    getRoutines = async () => {
+        try {
+            const routineResp = await routineModel.find({}, { __v: 0, createdAt: 0, updatedAt: 0 }).sort({ createdAt: -1 });
+            return routineResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
 
     getRoutine = async (id) => {
         try {
