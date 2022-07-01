@@ -70,6 +70,7 @@ const createplantShutdownWorksColumns = (plantsForColumnTable, atteliersForColum
                 'P': 'Pendiente',
                 'C': 'Completado',
                 'R': 'Demorado',
+                'RE': 'Reprogramado' 
             },
             width: "10%"
         }

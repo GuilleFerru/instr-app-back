@@ -170,34 +170,49 @@ export class ApiPlantShutdownWork {
             const newDescription = newPlantShutdownWork.description;
             const oldBeginDate = oldPlantShutdownWork.beginDate;
             const newBeginDate = newPlantShutdownWork.beginDate;
-            // si actualiza el trabajo realizado, creo un nuevo dailyWork con la fecha actual de la modificacion
-            if (oldDescription !== newDescription || oldBeginDate !== newBeginDate) {
-                const plantShutdownWork = saveDailyWorkFromShutdownWorkDTO(newPlantShutdownWork);
-                await apiDailyWork.createDailyWork(plantShutdownWork, 'fromPlantShutdownWork');
-            }
+            const complete = newPlantShutdownWork.complete;
 
-
-            const oldTag = oldPlantShutdownWork.tag;
-            const newTag = newPlantShutdownWork.tag;
-            const oldOt = oldPlantShutdownWork.ot;
-            const newOt = newPlantShutdownWork.ot;
-
-            if (oldTag !== newTag || oldOt !== newOt) {
+            // si la tarea no se va a hacer por algún motivo me actualiza los dailyWorks creados para que me vuelva a aparecer el original en la tabla worktodo
+            if (complete === 'RE') {
                 const dailyWorks = newPlantShutdownWork.dailyWorks;
                 for (const dailyWork of dailyWorks) {
-                    dailyWork.tag = newTag;
-                    dailyWork.ot = newOt;
+                    dailyWork.plantShutdownWorkId = '1';
                     await apiDailyWork.updateDailyWork(dailyWork.beginDate, dailyWork, 'fromPlantShutdownWorks');
                 }
-            }
+                // me actualiza plantShutdownWork para que se sepa porque no se hizo el trabajo.
+                await dao.updatePlantShutdownWork(normalizeIDViewDTO(newPlantShutdownWork));
 
-            const plantShutdownWork = await dao.updatePlantShutdownWork(normalizeIDViewDTO(newPlantShutdownWork));
-            if (plantShutdownWork) {
+                // me crea un dailyWork de porque no se hizo el trabajo.
+                const plantShutdownWork = saveDailyWorkFromShutdownWorkDTO(newPlantShutdownWork);
+                plantShutdownWork.plantShutdownWorkId = '1';
+                plantShutdownWork.complete = 'P';
+                await apiDailyWork.createDailyWork(plantShutdownWork, 'fromPlantShutdownWork');
                 return true;
             } else {
-                return false;
+                // si actualiza el trabajo realizado, creo un nuevo dailyWork con la fecha actual de la modificacion
+                if (oldDescription !== newDescription || oldBeginDate !== newBeginDate) {
+                    const plantShutdownWork = saveDailyWorkFromShutdownWorkDTO(newPlantShutdownWork);
+                    await apiDailyWork.createDailyWork(plantShutdownWork, 'fromPlantShutdownWork');
+                }
+                const oldTag = oldPlantShutdownWork.tag;
+                const newTag = newPlantShutdownWork.tag;
+                const oldOt = oldPlantShutdownWork.ot;
+                const newOt = newPlantShutdownWork.ot;
+                if (oldTag !== newTag || oldOt !== newOt) {
+                    const dailyWorks = newPlantShutdownWork.dailyWorks;
+                    for (const dailyWork of dailyWorks) {
+                        dailyWork.tag = newTag;
+                        dailyWork.ot = newOt;
+                        await apiDailyWork.updateDailyWork(dailyWork.beginDate, dailyWork, 'fromPlantShutdownWorks');
+                    }
+                }
+                const plantShutdownWork = await dao.updatePlantShutdownWork(normalizeIDViewDTO(newPlantShutdownWork));
+                if (plantShutdownWork) {
+                    return true;
+                } else {
+                    return false;
+                }
             }
-
         } catch (err) {
             console.log(err)
             loggerError.error(err);
