@@ -23,20 +23,15 @@ const modifyTableForSearchActions = (columns) => {
 }
 
 const modifyTableForDisplayActions = (columns) => {
-    
     columns[0].map((column) => {
         column.field === 'tag' ? column.cellStyle = { 'fontWeight': 'bold' } : null;
     });
-
 }
-
-
 
 export const worksResp = (dayWorks, columns) => {
     const worksResp = { dayWorks, columns };
     return worksResp;
 }
-
 
 export const getDailyWorkTable = async (filter) => {
     const columns = [];
@@ -65,24 +60,6 @@ export const getDailyWorkTable = async (filter) => {
 }
 
 export class ApiDailyWork {
-
-    // convertBeginDateToDate = async () => {
-    //     const dayWorks = await dao.getDailyWorks();
-    //     for (let i = 0; i < dayWorks.length; i++) {
-    //         const dayWork = dayWorks[i];
-    //         //const date = dayWork.endDateTime;
-    //         // let beginDate;
-    //         // if (beginDate === '') {
-    //         //     beginDate = null
-    //         // }
-
-    //         // //const endDateDate = parseStringToDate(endDate);
-    //         // //dayWork.beginDateTime = beginDateDate;
-
-    //         await dao.updateAndDelete(dayWork._id, dayWork);
-    //     }
-    // }
-
 
     handleSocket = async (...data) => {
         try {
@@ -135,11 +112,9 @@ export class ApiDailyWork {
 
     getDailyWork = async (date) => {
         try {
-
             const dayWorks = [];
             // busca la tabla de trabajo diario y guarda las columnas en columns, sino existe la crea.
             const columns = await getDailyWorkTable('fromDailyWork');
-
             // busca los trabajos diarios de la fecha que viene en date
             const dateLocalString = formatDate(date);
             const rawWorks = await dao.getDailyWork(dateLocalString);
@@ -148,7 +123,8 @@ export class ApiDailyWork {
             sino va a devolver las rutinas creadas la primera vez y los trabajos diarios */
             if (dayWorks.length === 0) {
                 const routines = await apiRoutine.getRoutine(date);
-                routines !== undefined && routines.map(routine => { dayWorks.push(saveDailyWorkDTO(routine, dateLocalString)) });
+                const isWeekend = new Date(date).getDay() === 0 || new Date(date).getDay() === 6;
+                routines !== undefined && routines.map(routine => { dayWorks.push(saveDailyWorkDTO(routine, dateLocalString, isWeekend)) });
                 /*como la rutina esta asociada a una rutinaSchedule y tiene una fecha de incio y fin, 
                 creo el dailyWork solo si el mes del date coincide con el mes actual, 
                 sino la traigo y la muestro sin OT y sin guardar en dailyWork */

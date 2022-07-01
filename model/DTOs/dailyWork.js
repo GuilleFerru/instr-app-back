@@ -1,11 +1,11 @@
 import { formatDate, dateInLocalDateString, parseStringToDate, dateInLocalDate } from '../../utils/formatDate.js';
 
-export const saveDailyWorkDTO = (data, dateLocal) => ({
+export const saveDailyWorkDTO = (data, dateLocal, isWeekend = false) => ({
     id: data._id,
     plant: data.plant,
     attelier: data.attelier,
     tag: data.tag,
-    timeSchedule: data.timeSchedule,
+    timeSchedule: isWeekend ? 1 : data.timeSchedule,
     manteinance: data.manteinance,
     ot: data.ot,
     action: data.action,
