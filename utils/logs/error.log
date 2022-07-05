@@ -1,1 +1,43 @@
 
+[2022-07-04T16:12:01.249] [ERROR] error - TypeError: date.getDate is not a function
+    at ApiRoutine.getRoutinesForDashboard (file:///E:/instr-app/instr-app-back/api/routines.js:207:36)
+    at ApiDashboard.getDashboardData (file:///E:/instr-app/instr-app-back/api/dashboard.js:11:47)
+    at getDashboardData (file:///E:/instr-app/instr-app-back/controllers/dashboard.js:12:55)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:137:13)
+    at file:///E:/instr-app/instr-app-back/utils/userExtractor.js:17:13
+    at E:\instr-app\instr-app-back\node_modules\jsonwebtoken\verify.js:223:12
+    at getSecret (E:\instr-app\instr-app-back\node_modules\jsonwebtoken\verify.js:90:14)
+    at Object.module.exports [as verify] (E:\instr-app\instr-app-back\node_modules\jsonwebtoken\verify.js:94:10)
+    at userExtractor (file:///E:/instr-app/instr-app-back/utils/userExtractor.js:12:13)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (E:\instr-app\instr-app-back\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (E:\instr-app\instr-app-back\node_modules\express\lib\router\layer.js:95:5)
+    at E:\instr-app\instr-app-back\node_modules\express\lib\router\index.js:281:22
+    at param (E:\instr-app\instr-app-back\node_modules\express\lib\router\index.js:354:14)
+[2022-07-04T20:47:33.400] [ERROR] error - TypeError: dao.getQtyDelayedWorks is not a function
+    at ApiDailyWork.getDailyWorksForDashboard (file:///E:/instr-app/instr-app-back/api/dailyWorks.js:260:48)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiDashboard.getDashboardData (file:///E:/instr-app/instr-app-back/api/dashboard.js:23:32)
+    at async getDashboardData (file:///E:/instr-app/instr-app-back/controllers/dashboard.js:12:31)
+[2022-07-04T21:01:54.541] [ERROR] error - TypeError: apiPlantShutdown.getPlantShutdownsForDashboard is not a function
+    at ApiDashboard.getDashboardData (file:///E:/instr-app/instr-app-back/api/dashboard.js:19:58)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getDashboardData (file:///E:/instr-app/instr-app-back/controllers/dashboard.js:12:31)
+[2022-07-04T21:37:31.543] [ERROR] error - TypeError: Cannot read property 'beginDate' of null
+    at ApiPlantShutdown.getPlantShutdownForDashboard (file:///E:/instr-app/instr-app-back/api/plantShutdowns.js:90:104)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiDashboard.getDashboardData (file:///E:/instr-app/instr-app-back/api/dashboard.js:19:35)
+    at async getDashboardData (file:///E:/instr-app/instr-app-back/controllers/dashboard.js:12:31)
+[2022-07-04T21:38:17.557] [ERROR] error - ReferenceError: dashboardPlantShutdown is not defined
+    at ApiPlantShutdown.getPlantShutdownForDashboard (file:///E:/instr-app/instr-app-back/api/plantShutdowns.js:92:13)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async ApiDashboard.getDashboardData (file:///E:/instr-app/instr-app-back/api/dashboard.js:19:35)
+    at async getDashboardData (file:///E:/instr-app/instr-app-back/controllers/dashboard.js:12:31)
+[2022-07-04T22:05:58.546] [ERROR] error - TypeError: scheduleModel.find(...).next is not a function
+    at DBMongoDao.getQtyDailyEmployees (file:///E:/instr-app/instr-app-back/model/DAOs/DBMongoDao.js:240:143)
+    at ApiSchedule.getScheduleForDashboard (file:///E:/instr-app/instr-app-back/api/schedules.js:314:49)
+    at ApiDashboard.getDashboardData (file:///E:/instr-app/instr-app-back/api/dashboard.js:22:48)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getDashboardData (file:///E:/instr-app/instr-app-back/controllers/dashboard.js:12:31)

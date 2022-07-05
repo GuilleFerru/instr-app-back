@@ -55,7 +55,6 @@ io.use(jwtAuth.default.authenticate({
   }
 }
 ))
-
 Sockets(io);
 
 
@@ -78,7 +77,6 @@ app.use(cors());
 app.options('*', cors());
 
 // endpoints
-
 app.use("/api/shift", router.routerShift.start());
 app.use("/api/emp", router.routerEmployee.start());
 app.use("/api/schedule", router.routerSchedule.start());
@@ -94,6 +92,7 @@ app.use("/api/manteinanceAction", router.routerManteinanceAction.start());
 app.use("/api/user", router.routerUser.start());
 app.use("/api", router.routerLogin.start());
 app.use("/api/plantShutdown", router.routerPlantShutdown.start());
+app.use("/api/dashboard", router.routerDashboard.start());
 
 
 app.get("/", (_req, res) => {
@@ -106,20 +105,3 @@ const apiRoutine = new ApiRoutine();
 schedule.scheduleJob("0 0 0 1 */1 *", () => {
   apiRoutine.createRoutineScheduleByNewMonth();
 })
-
-
-
-// /*  LECTURA DEL ARCHIVO DEL PERONAL POR DIA    */
-
-// const readEmpDailySchedule = () => {
-//     fs.readFile('empDailySchedule.txt', "UTF-8", (error, content) => {
-//         if (error) {
-//             console.error("Hubo un error con fs.readFile!");
-//         } else {
-//             const contentJSON = JSON.parse(content);
-//             contentJSON.forEach(empDailyData => {
-//                 empDailyScheduleData.push(empDailyData)
-//             });
-//         }
-//     })
-// }

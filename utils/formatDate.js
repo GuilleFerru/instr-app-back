@@ -13,10 +13,10 @@ export const parseStringToDate = (stringDate) => {
 
 
 export const parseStringToString = (stringDate) => {
-    const arrayDate= stringDate.split(/\D+/)
+    const arrayDate = stringDate.split(/\D+/)
     const day = arrayDate[2].charAt(0) === '0' ? arrayDate[2].substring(1) : arrayDate[2];
     const month = arrayDate[1].charAt(0) === '0' ? arrayDate[1].substring(1) : arrayDate[1];
-    const year = arrayDate[0].substring(2,4);
+    const year = arrayDate[0].substring(2, 4);
     const dateString = `${day}/${month}/${year}`;
     return dateString;
 }
@@ -60,4 +60,13 @@ export const monthAndYearString = (date) => {
     const year = date.getFullYear();
     const monthAndYear = `${months[month]} ${year}`;
     return monthAndYear;
+}
+
+export const startAndEndOfWeek = (date) => {
+    const now = date ? new Date(date).setHours(0, 0, 0, 0) : new Date().setHours(0, 0, 0, 0);
+    const monday = new Date(now);
+    monday.setDate(monday.getDate() - monday.getDay() + 1);
+    const sunday = new Date(now);
+    sunday.setDate(sunday.getDate() - sunday.getDay() + 7);
+    return [monday, sunday];
 }

@@ -252,6 +252,22 @@ export class ApiDailyWork {
         }
     }
 
+    getDailyWorksForDashboard = async (date) => {
+        try {
+            const startDate = new Date(date[0]);
+            const endDate = new Date(date[1]);
+            const qtyPendingWorks = await dao.getQtyStatusWorks(startDate, endDate, 'P');
+            const qtyDelayeddWorks = await dao.getQtyStatusWorks(startDate, endDate, 'R');
+            const qtyInExecutionWorks = await dao.getQtyStatusWorks(startDate, endDate, 'E');
+            const dashboardDailyWorks = [qtyPendingWorks, qtyInExecutionWorks, qtyDelayeddWorks];
+            return dashboardDailyWorks;
+        } catch (err) {
+
+            loggerError.error(err);
+        } finally {
+        }
+    }
+
     updateDailyWork = async (date, dayWork, filter = '') => {
         try {
             const dateLocal = formatDate(date);

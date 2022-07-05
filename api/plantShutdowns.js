@@ -4,7 +4,7 @@ import { ApiDailyWork } from './dailyWorks.js';
 import { PlantShutdownTable } from '../utils/plantShutdownsColumnTable.js';
 import { createPlantShutdownDTO, plantShutdownRespDTO, plantShutdownReduceForLookUpDTO } from '../model/DTOs/plantShutdown.js';
 import { PlantShutdownWorksToDoColumnTable } from '../utils/plantShutdownWorksToDoTable.js';
-import { dateInLocalDate } from '../utils/formatDate.js';
+import { dateInLocalDate, formatDate } from '../utils/formatDate.js';
 import { reduceForLookUp } from '../utils/reduceForLookup.js';
 import { loggerError, loggerInfo } from '../utils/logger.js';
 
@@ -77,6 +77,20 @@ export class ApiPlantShutdown {
             const plantShutdown = await dao.getPlantShutdownById(id);
             return plantShutdown;
         } catch (err) {
+            loggerError.error(err);
+        } finally {
+        }
+    }
+
+    getPlantShutdownForDashboard = async (date) => {
+        try {
+
+            const qtyInExecutionPlantShutdowns = await dao.getQtytPlantShutdownsUnfinished(date);
+            const nextPlantShutdown = await dao.getBeginDateNextPlantShutdown(date);
+            const dashboardPlantShutdown = [qtyInExecutionPlantShutdowns, nextPlantShutdown ? formatDate(nextPlantShutdown.beginDate) : 'Sin paro programado'];
+            return dashboardPlantShutdown;
+        } catch (err) {
+            console.log(err)
             loggerError.error(err);
         } finally {
         }

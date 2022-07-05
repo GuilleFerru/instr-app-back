@@ -96,7 +96,7 @@ const getRoutines = async (routineSchedules, filter) => {
         });
     }
     for (const element of routinesId) {
-        const routine = savedRoutines.find(({_id}) => _id.toString() === element.routineId);
+        const routine = savedRoutines.find(({ _id }) => _id.toString() === element.routineId);
         //const routine = await dao.getRoutine(element.routineId);
         if (filter === 'forRoutines') {
             const routineRes = routineRespForOthersRoutineDTO(routine, element.complete, element._id, element.ot, element.filePath, element.nickname, element.checkDay, element.weekCheckDays, element.realCheckedDay);
@@ -201,6 +201,22 @@ export class ApiRoutine {
         } finally {
         }
     }
+
+    getRoutinesForDashboard = async (date) => {
+        try {
+            const weekDay = new Date(date).getDay();
+            const qtyDailyRoutines = await dao.getQtyDailyRoutines(weekDay);
+            const qtyOtherRoutines = await dao.getQtyOtherRoutines(date);
+            const qtyOverdueRoutines = await dao.getQtyOverdueRoutines();
+            const dashboardRoutines = [qtyDailyRoutines, qtyOtherRoutines, qtyOverdueRoutines];
+            return dashboardRoutines;
+        } catch (err) {
+            console.log(err)
+            loggerError.error(err);
+        } finally {
+        }
+    }
+
 
     updateRoutineScheduleByCompleteTask = async (data) => {
         try {

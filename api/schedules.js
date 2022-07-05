@@ -308,6 +308,19 @@ export class ApiSchedule {
         }
     }
 
+    getScheduleForDashboard = async (date) => {
+        try {
+            console.log(date);
+            const qtyDailyEmployees = await dao.getQtyDailyEmployees(formatDate(date));
+            console.log(qtyDailyEmployees);
+        } catch (err) {
+            console.log(err)
+            loggerError.error(err);
+        } finally {
+        }
+
+
+    }
 }
 
 

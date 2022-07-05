@@ -142,26 +142,6 @@ export class DBMongoDao {
 
     /* SCHEDULE */
 
-    // getSchedules = async () => {
-    //     try {
-    //         const scheduleResp = await scheduleModel.find({}, { __v: 0, createdAt: 0, updatedAt: 0 });
-    //         return scheduleResp;
-    //     } catch (error) {
-    //         loggerError.error(error)
-    //     }
-    // }
-
-    // updateDateTime = async (date, dateTime) => {
-    //     try {
-    //         const schedule = await scheduleModel.updateMany({ date: date }, { $set: { dateTime } });
-    //         console.log(schedule)
-    //         return schedule;
-    //     } catch (error) {
-    //         console.log(error)
-    //         loggerError.error(error)
-    //     }
-    // }
-
     createSchedule = async (schedule) => {
         try {
             const scheduleResp = await scheduleModel.insertMany(schedule);
@@ -253,7 +233,15 @@ export class DBMongoDao {
         } catch (error) {
             loggerError.error(error)
         }
+    }
 
+    getQtyDailyEmployees = async (date) => {
+        try {
+            const scheduleResp = await scheduleModel.find({ date: date, "schedule.timeSchedule": { $in: [5] } }, { __v: 0, createdAt: 0, updatedAt: 0 });
+            return scheduleResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
     }
 
     /*          */
@@ -406,53 +394,6 @@ export class DBMongoDao {
     }
 
     /* DAILYWORKS   */
-
-    //  getDailyWorks = async () => {
-    //     try {
-    //         const dailyWorkResp = await dailyWorkModel.find({}, { __v: 0, createdAt: 0, updatedAt: 0 });
-    //         return dailyWorkResp;
-    //     } catch (error) {
-    //         loggerError.error(error)
-    //     }
-    // }
-
-    // updatebeginDateTime = async (id, endDate) => {
-    //     try {
-    //         const dailyWorkResp = await dailyWorkModel.updateMany({ _id: id }, { $set: { endDate } });
-    //         console.log(dailyWorkResp)
-    //         return dailyWorkResp;
-    //     } catch (error) {
-    //         console.log(error)
-    //         loggerError.error(error)
-    //     }
-    // }
-
-    // updateAndDelete = async (id, dailyWork) => {
-    //     try {
-    //         //console.log(dailyWork)
-    //         await dailyWorkModel.updateOne({ _id: id }, {
-    //             $set: {
-    //                 "plant": dailyWork.plant,
-    //                 "attelier": dailyWork.attelier,
-    //                 "tag": dailyWork.tag,
-    //                 "timeSchedule": dailyWork.timeSchedule,
-    //                 "manteinance": dailyWork.manteinance,
-    //                 "ot": dailyWork.ot,
-    //                 "action": dailyWork.action,
-    //                 "description": dailyWork.description,
-    //                 "complete": dailyWork.complete,
-    //                 "beginDate": dailyWork.beginDate,
-    //                 "endDate": dailyWork.endDate,
-    //                 "routineScheduleId": dailyWork.routineScheduleId,
-    //                 "plantShutdownWorkId": dailyWork.plantShutdownWorkId,
-    //                 "sector": 'Instrumentos-Sistemas',
-    //             }
-    //         });
-    //     } catch (error) {
-    //         console.log(error)
-    //         loggerError.error(error)
-    //     }
-    // }
 
     createDailyWork = async (dailyWork) => {
         try {
@@ -635,6 +576,18 @@ export class DBMongoDao {
         }
     }
 
+    getQtyStatusWorks = async (startDate, endDate, status) => {
+        try {
+            const dailyWorkResp = await dailyWorkModel.countDocuments({ $and: [{ "complete": status }, { "beginDateTime": { $gte: startDate } }, { "beginDateTime": { $lte: endDate } }] });
+            return dailyWorkResp;
+        } catch (error) {
+            console.log(error)
+            loggerError.error(error)
+        }
+    }
+
+
+
     /*          */
 
 
@@ -657,7 +610,6 @@ export class DBMongoDao {
             loggerError.error(error)
         }
     }
-
 
     getRoutine = async (id) => {
         try {
@@ -686,7 +638,6 @@ export class DBMongoDao {
         }
     }
 
-
     getRoutineScheduleBetweenDates = async (startDate, endDate) => {
         try {
             const routineResp = await routineScheduleModel.find({ startDate: { $gte: startDate }, endDate: { $lte: endDate } }, { __v: 0, createdAt: 0, updatedAt: 0 });
@@ -695,7 +646,6 @@ export class DBMongoDao {
             loggerError.error(error)
         }
     }
-
 
     getLastRoutineId = async () => {
         try {
@@ -716,7 +666,6 @@ export class DBMongoDao {
         }
     }
 
-
     getActualMonthRoutineSchedule = async (checkDays) => {
         try {
             const routineResp = await routineScheduleModel.find({ $and: [{ complete: false }, { checkDays: checkDays }] }, { __v: 0, createdAt: 0, updatedAt: 0 });
@@ -725,7 +674,6 @@ export class DBMongoDao {
             loggerError.error(error)
         }
     }
-
 
     getAllRoutinesSchedules = async (date) => {
         try {
@@ -779,7 +727,6 @@ export class DBMongoDao {
         }
     }
 
-
     updateRoutineScheduleByCompleteTask = async (id, checkedDay) => {
         try {
             await routineScheduleModel.updateOne({ "_id": id }, {
@@ -817,6 +764,26 @@ export class DBMongoDao {
     getQtyOverdueRoutines = async () => {
         try {
             const routineResp = await routineScheduleModel.countDocuments({ $and: [{ isExpired: true }, { complete: false }] });
+            return routineResp;
+        } catch (error) {
+            console.log(error);
+            loggerError.error(error)
+        }
+    }
+
+    getQtyDailyRoutines = async (weekday) => {
+        try {
+            const routineResp = await routineScheduleModel.countDocuments({ $and: [{ complete: false }, { checkDays: weekday }] });
+            return routineResp;
+        } catch (error) {
+            console.log(error);
+            loggerError.error(error)
+        }
+    }
+
+    getQtyOtherRoutines = async (date) => {
+        try {
+            const routineResp = await routineScheduleModel.countDocuments({ $and: [{ complete: false }, { otherCheckDay: date }] });
             return routineResp;
         } catch (error) {
             console.log(error);
@@ -892,6 +859,26 @@ export class DBMongoDao {
         }
     }
 
+    getQtytPlantShutdownsUnfinished = async (date) => {
+        try {
+            const plantShutdownsResp = await plantShutdownModel.countDocuments({ $and: [{ $or: [{ "endDate": { $eq: null } }, { "complete": { $ne: "C" } }] }, { "beginDate": { $lte: date } }] });
+            return plantShutdownsResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    getBeginDateNextPlantShutdown = async (date) => {
+        try {
+            const plantShutdownsResp = await plantShutdownModel.findOne({ $and: [{ $or: [{ "endDate": { $eq: null } }, { "complete": { $ne: "C" } }] }, { "beginDate": { $gt: date } }] }, { "beginDate": 1, "_id": 0 });
+            return plantShutdownsResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+
+
     /* PLANT_SHUTDOWNS_WORKS */
 
     createPlantShutdownWork = async (plantShutdownWork) => {
@@ -943,6 +930,12 @@ export class DBMongoDao {
             loggerError.error(error)
         }
     }
+
+    /*                                                          */
+
+    /*                        DASHBOARD                        */
+
+
 
 
 
