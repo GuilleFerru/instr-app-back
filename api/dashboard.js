@@ -19,12 +19,11 @@ export class ApiDashboard {
             const routines = await apiRoutine.getRoutinesForDashboard(date)
             const dailyWorks = await apiDailyWork.getDailyWorksForDashboard(startAndEndOfWeek(date));
             const plantShutdown = await apiPlantShutdown.getPlantShutdownForDashboard(date);
-            //const schedule = await apiSchedule.getScheduleForDashboard(date);
-
-            const scheduleFake = ['x', 'x'];
-            widgetData.push(routines, dailyWorks, plantShutdown, scheduleFake);
+            const schedule = await apiSchedule.getScheduleForDashboard(date);
+            widgetData.push(routines, dailyWorks, plantShutdown, schedule);
             return widgetData;
         } catch (err) {
+
             loggerError.error(err);
         } finally {
         }

@@ -116,6 +116,9 @@ export class DBMongoDao {
         }
     }
 
+
+
+
     /*          */
 
     /* ADICIONALES */
@@ -235,14 +238,36 @@ export class DBMongoDao {
         }
     }
 
-    getQtyDailyEmployees = async (date) => {
+    getScheduleWithEmployee = async (date) => {
         try {
-            const scheduleResp = await scheduleModel.find({ date: date, "schedule.timeSchedule": { $in: [5] } }, { __v: 0, createdAt: 0, updatedAt: 0 });
+            const scheduleResp = await scheduleModel.aggregate([{
+                $match: {
+                    date: date
+                }
+            }, {
+                $lookup:
+                {
+                    from: "employees",
+                    localField: "schedule.legajo",
+                    foreignField: "legajo",
+                    as: "employeeData"
+                }
+            }]);
             return scheduleResp;
         } catch (error) {
             loggerError.error(error)
         }
     }
+
+    // getQtyDailyEmployees = async (date) => {
+    //     try {
+    //         const scheduleResp = await scheduleModel.find({ date: date, "schedule.timeSchedule": 5 }, { __v: 0, createdAt: 0, updatedAt: 0 });
+    //         return scheduleResp;
+    //     } catch (error) {
+    //         console.log(err);
+    //         loggerError.error(error)
+    //     }
+    // }
 
     /*          */
 

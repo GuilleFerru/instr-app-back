@@ -114,6 +114,11 @@ const completeDailyShiftSheet = (firstIterate, weekData, workbook, n1, n2, n3) =
     }
 }
 
+const qtyEmployessForDashboard = (employees) => {
+    const qtyEmployes = employees.filter((employee) => employee.workedHours > 0 && (employee.timeSchedule === 5 || employee.timeSchedule === 6)).length;
+    return qtyEmployes;
+}
+
 export class ApiSchedule {
 
     handleSocket = async (...data) => {
@@ -310,9 +315,12 @@ export class ApiSchedule {
 
     getScheduleForDashboard = async (date) => {
         try {
-            console.log(date);
-            const qtyDailyEmployees = await dao.getQtyDailyEmployees(formatDate(date));
-            console.log(qtyDailyEmployees);
+            //VER ESTO PORQUE ESTA HORRIBLE....
+            const schedule = await dao.getSchedule(formatDate(date));
+            const dayEmployees = schedule[0].schedule;
+            const regularEmployees = dayEmployees.splice(0, 9);
+            const dashboardSchedule = [qtyEmployessForDashboard(regularEmployees), qtyEmployessForDashboard(dayEmployees)];
+            return dashboardSchedule;
         } catch (err) {
             console.log(err)
             loggerError.error(err);
