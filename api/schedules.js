@@ -9,6 +9,7 @@ import { timeScheduleForScheduleDTO } from '../model/DTOs/timeSchedule.js';
 import { loggerError, loggerInfo } from '../utils/logger.js'
 import excel from 'exceljs';
 
+const apiEmployee = new ApiEmployee();
 
 const getDayShift = async (date) => {
     const apiShift = new ApiShift();
@@ -18,7 +19,7 @@ const getDayShift = async (date) => {
 }
 
 const getEmployees = async (filter, legajo) => {
-    const apiEmployee = new ApiEmployee();
+    //const apiEmployee = new ApiEmployee();
     let employees;
     if (filter === 'all') {
         employees = await apiEmployee.getEmployees();
@@ -27,6 +28,19 @@ const getEmployees = async (filter, legajo) => {
         employees = await apiEmployee.getEmployeeBylegajo(legajo);
     }
     return employees;
+}
+
+const getActualShift = (hour) => {
+
+    if (hour >= 5 && hour < 13) {
+        return 1;
+    }
+    if (hour >= 13 && hour < 21) {
+        return 2;
+    } else {
+        return 3;
+    }
+
 }
 
 const createScheduleColumns = (timeSchedule, employeesForSchedule) => {
@@ -141,7 +155,6 @@ export class ApiSchedule {
             loggerError.error(error);
         }
     }
-
 
     createSchedule = async (date) => {
         try {
@@ -315,12 +328,29 @@ export class ApiSchedule {
 
     getScheduleForDashboard = async (date) => {
         try {
-            //VER ESTO PORQUE ESTA HORRIBLE....
+
             const schedule = await dao.getSchedule(formatDate(date));
-            const dayEmployees = schedule[0].schedule;
-            const regularEmployees = dayEmployees.splice(0, 9);
-            const dashboardSchedule = [qtyEmployessForDashboard(regularEmployees), qtyEmployessForDashboard(dayEmployees)];
-            return dashboardSchedule;
+            const employees = await getEmployees('all');
+            const regularEmployees = [];
+            const othersEmployees = [];
+            if (schedule.length > 0) {
+                for (const employee of employees) {
+                    for (const dayEmployee of schedule[0].schedule) {
+                        if (employee.legajo === dayEmployee.legajo && employee.condicion === 'Afiliado') {
+                            regularEmployees.push(dayEmployee);
+                        } else if (employee.legajo === dayEmployee.legajo && employee.condicion === 'Fuera de convenio') {
+                            othersEmployees.push(dayEmployee);
+                        }
+                    }
+                }
+                const actualHour = new Date(date).getHours();
+                const actualShift = getActualShift(actualHour);
+                const shiftEmployeeLegajo = schedule[0].schedule.filter(employee => employee.timeSchedule.toString() === actualShift.toString() && employee.workedHours > 0);
+                const getEmployee = shiftEmployeeLegajo.length !== 0 && await apiEmployee.getEmployeeBylegajo(shiftEmployeeLegajo[0].legajo);
+                const employeeName = getEmployee ? `${getEmployee[0].nombre} ${getEmployee[0].apellido}` : 'N/A';
+                const dashboardSchedule = [qtyEmployessForDashboard(regularEmployees), employeeName, qtyEmployessForDashboard(othersEmployees)];
+                return dashboardSchedule;
+            }
         } catch (err) {
             console.log(err)
             loggerError.error(err);

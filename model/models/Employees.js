@@ -26,7 +26,7 @@ const EmployeesSchema = new mongoose.Schema({
         require: true,
         max: 50,
     },
-    shift:{
+    shift: {
         type: Number,
         require: true,
         default: 5
@@ -39,6 +39,10 @@ const EmployeesSchema = new mongoose.Schema({
         type: String,
         require: true,
     },
+    condicion: {
+        type: String,
+        require: true,
+    }
 },
     { timestamps: true }
 );
