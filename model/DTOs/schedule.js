@@ -5,7 +5,8 @@ export const scheduleDTO = (employee, currentTimeSchedule, workedHours) => ({
     legajo: employee.legajo,
     fullName: employee.legajo,
     timeSchedule: currentTimeSchedule.id,
-    workedHours: workedHours
+    workedHours: workedHours,
+    shiftType: employee.shiftType
 });
 
 export const returnScheduleDTO = (date, schedule, columns, aditionals, id) => ({

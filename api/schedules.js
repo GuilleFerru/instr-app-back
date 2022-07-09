@@ -11,6 +11,29 @@ import excel from 'exceljs';
 
 const apiEmployee = new ApiEmployee();
 
+const normalizeShifts = (employees, element) => {
+    const emp = employees.find(employee => employee.shiftType !== element.shiftType && employee.legajo === element.legajo);
+    if (emp) {
+        element.shiftType = emp.shiftType;
+    }
+}
+
+const checkChangesRotativeShifts = (element, employees) => {
+    const { id, legajo, fullName, timeSchedule, workedHours, shiftType, ...rest } = element
+    if (!(JSON.stringify(rest) === '{}')) {
+        Object.entries(rest).forEach(item => {
+            if (!(item[0].endsWith('info')) && item[1] === '25' && shiftType === 'dailyShift') {
+                element.shiftType = 'rotativeShift';
+            } else if (!(item[0].endsWith('info')) && item[1] === '0') {
+                normalizeShifts(employees, element)
+            }
+        })
+    } else {
+        normalizeShifts(employees, element)
+    }
+
+}
+
 const getDayShift = async (date) => {
     const apiShift = new ApiShift();
     const dayShiftArr = await apiShift.getShift(date);
@@ -133,6 +156,7 @@ const qtyEmployessForDashboard = (employees) => {
     return qtyEmployes;
 }
 
+
 export class ApiSchedule {
 
     handleSocket = async (...data) => {
@@ -219,8 +243,10 @@ export class ApiSchedule {
     updateSchedule = async (date, schedule) => {
         try {
             const dateLocal = formatDate(date);
+            const employees = await getEmployees('all');
             if (dateLocal && schedule) {
                 const newSchedule = schedule.map(element => {
+                    checkChangesRotativeShifts(element, employees)
                     return updateScheduleDTO(element);
                 });
                 const resultado = await dao.updateSchedule(dateLocal, newSchedule);
@@ -231,6 +257,7 @@ export class ApiSchedule {
                 }
             }
         } catch (error) {
+            console.error(error)
             loggerError.error(error);
         }
     }
@@ -333,6 +360,8 @@ export class ApiSchedule {
             const employees = await getEmployees('all');
             const regularEmployees = [];
             const othersEmployees = [];
+
+            // Obtengo cantidad de supervisores y afiliados que estan trabajando hoy...
             if (schedule.length > 0) {
                 for (const employee of employees) {
                     for (const dayEmployee of schedule[0].schedule) {
@@ -343,16 +372,30 @@ export class ApiSchedule {
                         }
                     }
                 }
+
+                // busco quien es el encargado del turno según la hora que sea.
                 const actualHour = new Date(date).getHours();
                 const actualShift = getActualShift(actualHour);
                 const shiftEmployeeLegajo = schedule[0].schedule.filter(employee => employee.timeSchedule.toString() === actualShift.toString() && employee.workedHours > 0);
-                const getEmployee = shiftEmployeeLegajo.length !== 0 && await apiEmployee.getEmployeeBylegajo(shiftEmployeeLegajo[0].legajo);
-                const employeeName = getEmployee ? `${getEmployee[0].nombre} ${getEmployee[0].apellido}` : 'N/A';
+                const getEmployee = [];
+
+                // sino hay nadie de turno en el horario normal, lo busco en las horas extras.
+                if (shiftEmployeeLegajo.length === 0) {
+                    for (const scheduleEmp of schedule[0].schedule) {
+                        if (scheduleEmp.workedHours > 0) {
+                            if (Number(scheduleEmp.timeSchedule.toString()) > 6 && Number(scheduleEmp.workedHours.toString()) > 8 && scheduleEmp.shiftType === 'rotativeShift') {
+                                getEmployee.push(await apiEmployee.getEmployeeBylegajo(scheduleEmp.legajo));
+                            }
+                        }
+                    }
+                } else {
+                    getEmployee.push(shiftEmployeeLegajo.length !== 0 && await apiEmployee.getEmployeeBylegajo(shiftEmployeeLegajo[0].legajo));
+                }
+                const employeeName = getEmployee.length !== 0 ? `${getEmployee[0][0].nombre} ${getEmployee[0][0].apellido}` : 'N/A';
                 const dashboardSchedule = [qtyEmployessForDashboard(regularEmployees), employeeName, qtyEmployessForDashboard(othersEmployees)];
                 return dashboardSchedule;
             }
         } catch (err) {
-            console.log(err)
             loggerError.error(err);
         } finally {
         }

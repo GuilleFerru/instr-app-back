@@ -42,6 +42,10 @@ const EmployeesSchema = new mongoose.Schema({
     condicion: {
         type: String,
         require: true,
+    },
+    shiftType: {
+        type: String,
+        require: true,
     }
 },
     { timestamps: true }
