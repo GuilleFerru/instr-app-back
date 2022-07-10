@@ -202,7 +202,7 @@ export class ApiRoutine {
         }
     }
 
-    getRoutinesForDashboard = async (date) => {
+    getRoutinesForWidgetDashboard = async (date) => {
         try {
             const weekDay = new Date(date).getDay();
             const qtyDailyRoutines = await dao.getQtyDailyRoutines(weekDay);

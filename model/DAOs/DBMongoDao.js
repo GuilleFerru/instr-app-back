@@ -27,8 +27,8 @@ import { plantShutdownWorkModel } from '../models/PlantShutdownWorks.js';
 import { plantShutdownWorksColumnsSchemaModel } from '../models/PlantShutdownWorksColumns.js';
 import { plantShutdowndailyWorksColumnsSchemaModel } from '../models/PlantShutdownDailyWorksColumns.js'
 
-//const MONGO_URL = config.MONGO_URL_DEV;
-const MONGO_URL = config.MONGO_URL;
+const MONGO_URL = config.MONGO_URL_DEV;
+//const MONGO_URL = config.MONGO_URL;
 
 export class DBMongoDao {
 
@@ -512,6 +512,42 @@ export class DBMongoDao {
             loggerError.error(error)
         }
     }
+
+    getManteinanceActionsForChartDashboard = async (startDate, endDate) => {
+        try {
+            const manteinanceActionResp = await dailyWorkModel.find({
+                $and: [
+                    { beginDateTime: { $gte: startDate } },
+                    { beginDateTime: { $lte: endDate } }
+                ]
+            }, {
+                __v: 0,
+                createdAt: 0,
+                updatedAt: 0,
+                _id: 0, 
+                plant: 0, 
+                attelier: 0, 
+                tag: 0, 
+                timeSchedule: 0, 
+                manteinance: 0, 
+                ot: 0, 
+                description: 0, 
+                complete: 0,
+                sector: 0, 
+                plantShutdownWorkId: 0,
+                routineScheduleId: 0,
+                beginDateTime: 0,
+                endDateTime: 0,
+                beginDate: 0,
+                endDate: 0,
+            }).sort({ beginDateTime: -1 });
+            return manteinanceActionResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+
 
 
     updateDailyWork = async (date, dailyWork) => {

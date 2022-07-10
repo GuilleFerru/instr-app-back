@@ -10,7 +10,8 @@ export class RouterDashboard {
     }
 
     start() {
-        router.get('/get/:date', userExtractor, this.controllerDashboard.getDashboardData);
+        router.get('/getWidgetData/:date', userExtractor, this.controllerDashboard.getWidgetData);
+        router.get('/getChartsData/:date', userExtractor, this.controllerDashboard.getChartsData);
         return router;
     }
 

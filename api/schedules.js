@@ -353,7 +353,7 @@ export class ApiSchedule {
         }
     }
 
-    getScheduleForDashboard = async (date) => {
+    getScheduleForWidgetDashboard = async (date) => {
         try {
 
             const schedule = await dao.getSchedule(formatDate(date));

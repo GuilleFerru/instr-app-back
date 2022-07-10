@@ -44,4 +44,15 @@ export class ApiManteinanceAction {
         }
     }
 
+    static getManteinanceActionsForWidgetDashboard = async () => {
+        try {
+            const mantActResp = await dao.getManteinanceActions();
+            return mantActResp
+        } catch (err) {
+            loggerInfo.info(err);
+            return err;
+        } finally {
+        }
+    }
+
 }

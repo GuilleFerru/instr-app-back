@@ -82,7 +82,7 @@ export class ApiPlantShutdown {
         }
     }
 
-    getPlantShutdownForDashboard = async (date) => {
+    getPlantShutdownForWidgetDashboard = async (date) => {
         try {
 
             const qtyInExecutionPlantShutdowns = await dao.getQtytPlantShutdownsUnfinished(date);

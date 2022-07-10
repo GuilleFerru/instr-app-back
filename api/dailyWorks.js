@@ -252,7 +252,7 @@ export class ApiDailyWork {
         }
     }
 
-    getDailyWorksForDashboard = async (date) => {
+    getDailyWorksForWidgetDashboard = async (date) => {
         try {
             const startDate = new Date(date[0]);
             const endDate = new Date(date[1]);
@@ -263,6 +263,19 @@ export class ApiDailyWork {
             return dashboardDailyWorks;
         } catch (err) {
 
+            loggerError.error(err);
+        } finally {
+        }
+    }
+
+    getDailyWorksManteinanceActionsForChartDashboard = async (date) => {
+        try {
+            const today = new Date(date);
+            const startDate = new Date(today.getFullYear(), today.getMonth(), 1);
+            const endDate = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+            const manteinanceActions = await dao.getManteinanceActionsForChartDashboard(startDate, endDate);
+            return manteinanceActions;
+        } catch (err) {
             loggerError.error(err);
         } finally {
         }
