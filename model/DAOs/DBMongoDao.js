@@ -32,6 +32,7 @@ const MONGO_URL = config.MONGO_URL;
 
 export class DBMongoDao {
 
+    
     constructor() {
         (async () => {
             loggerInfo.info("Contectando a la Base de datos...");
