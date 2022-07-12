@@ -38,7 +38,6 @@ export class DBMongoDao {
             loggerInfo.info("Contectando a la Base de datos...");
             this.connection = await mongoose.connect(MONGO_URL);
             this.conn = mongoose.connection;
-
             loggerInfo.info("Base de datos conectada", this.connection.connection.host);
         })();
     }
@@ -526,11 +525,9 @@ export class DBMongoDao {
                 createdAt: 0,
                 updatedAt: 0,
                 _id: 0, 
-                plant: 0, 
                 attelier: 0, 
                 tag: 0, 
                 timeSchedule: 0, 
-                manteinance: 0, 
                 ot: 0, 
                 description: 0, 
                 complete: 0,
