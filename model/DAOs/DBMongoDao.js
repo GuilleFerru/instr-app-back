@@ -26,13 +26,15 @@ import { plantShutdownModel } from '../models/PlantShutdowns.js';
 import { plantShutdownWorkModel } from '../models/PlantShutdownWorks.js';
 import { plantShutdownWorksColumnsSchemaModel } from '../models/PlantShutdownWorksColumns.js';
 import { plantShutdowndailyWorksColumnsSchemaModel } from '../models/PlantShutdownDailyWorksColumns.js'
+import { holidayScoreColumnsModel } from '../models/HolidayScoreColumns.js';
+import { holidayModel } from '../models/Holidays.js';
 
 //const MONGO_URL = config.MONGO_URL_DEV;
 const MONGO_URL = config.MONGO_URL;
 
 export class DBMongoDao {
 
-    
+
     constructor() {
         (async () => {
             loggerInfo.info("Contectando a la Base de datos...");
@@ -524,14 +526,14 @@ export class DBMongoDao {
                 __v: 0,
                 createdAt: 0,
                 updatedAt: 0,
-                _id: 0, 
-                attelier: 0, 
-                tag: 0, 
-                timeSchedule: 0, 
-                ot: 0, 
-                description: 0, 
+                _id: 0,
+                attelier: 0,
+                tag: 0,
+                timeSchedule: 0,
+                ot: 0,
+                description: 0,
                 complete: 0,
-                sector: 0, 
+                sector: 0,
                 plantShutdownWorkId: 0,
                 routineScheduleId: 0,
                 beginDateTime: 0,
@@ -992,7 +994,28 @@ export class DBMongoDao {
 
     /*                                                          */
 
-    /*                        DASHBOARD                        */
+    /*                        HOLIDAYS                        */
+
+    getHolidays = async () => {
+        try {
+            const holidaysResp = await holidayModel.find({}, { __v: 0, createdAt: 0, updatedAt: 0 });
+            return holidaysResp;
+        }
+        catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    createPeriod = async (period) => {
+        try {
+            await holidayModel.insertMany(period);
+            return true;
+        } catch (error) {
+            loggerError.error(error)
+            return 'duplicate'
+        }
+    }
+
 
 
 
@@ -1181,6 +1204,26 @@ export class DBMongoDao {
             loggerError.error(error)
         }
     }
+
+    createHolidayScoreColumns = async (columns) => {
+        try {
+            const holidayScoreColumns = await holidayScoreColumnsModel.insertMany(columns);
+            return holidayScoreColumns;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    getHolidayScoreColumns = async () => {
+        try {
+            const holidayScoreColumns = await holidayScoreColumnsModel.find({}, { _id: 0, __v: 0, createdAt: 0, updatedAt: 0 });
+            return holidayScoreColumns;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+
 
 
 

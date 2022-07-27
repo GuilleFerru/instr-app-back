@@ -93,6 +93,7 @@ app.use("/api/user", router.routerUser.start());
 app.use("/api", router.routerLogin.start());
 app.use("/api/plantShutdown", router.routerPlantShutdown.start());
 app.use("/api/dashboard", router.routerDashboard.start());
+app.use("/api/holidays", router.routerHoliday.start());
 
 
 app.get("/", (_req, res) => {

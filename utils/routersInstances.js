@@ -30,6 +30,8 @@ import { RouterPlantShutdown } from "../router/plantShutdowns.js";
 const routerPlantShutdown = new RouterPlantShutdown();
 import { RouterDashboard } from "../router/dashboard.js";
 const routerDashboard = new RouterDashboard();
+import { RouterHoliday } from "../router/holidays.js";
+const routerHoliday = new RouterHoliday();
 
 export {
     routerShift,
@@ -47,5 +49,6 @@ export {
     routerUser,
     routerLogin,
     routerPlantShutdown,
-    routerDashboard
+    routerDashboard,
+    routerHoliday
 }

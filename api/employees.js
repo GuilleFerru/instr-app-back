@@ -1,6 +1,8 @@
 import { dao } from '../server.js';
 import { getForScheduleEmployeesDTO } from '../model/DTOs/employee.js';
+
 import { loggerError, loggerInfo } from '../utils/logger.js'
+import { reduceForLookUp } from '../utils/reduceForLookup.js';
 
 export class ApiEmployee {
 
@@ -45,6 +47,35 @@ export class ApiEmployee {
             loggerError.error(err);
         } finally {
             loggerInfo.info('getForScheduleEmployees');
+        }
+    }
+
+    static getEmployeesForSelectForm = async () => {
+        try {
+            const empResp = await dao.getEmployees();
+            const empSelect = empResp.map(emp => {
+                return {
+                    id: emp.legajo,
+                    name: `${emp.nombre} ${emp.apellido}`,
+                }
+            });
+            // empSelect.unshift({ id: '', name: 'Seleccione un empleado' });
+
+            return empSelect;
+        } catch (err) {
+            loggerError.error(err);
+        } finally {
+        }
+    }
+
+    static getEmployeesForColumnTable = async () => {
+        try {
+            const empResp = await dao.getEmployees();
+            return reduceForLookUp(getForScheduleEmployeesDTO(empResp));
+        } catch (err) {
+            loggerError.error(err);
+        } finally {
+            loggerInfo.info('getEmployeesForColumnTable');
         }
     }
 }
