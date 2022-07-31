@@ -1006,6 +1006,18 @@ export class DBMongoDao {
         }
     }
 
+    getPerioData = async (periodId) => {
+        try {
+            const periodDataResp = await holidayModel.find({ "_id": periodId }, { __v: 0, createdAt: 0, updatedAt: 0 });
+            return periodDataResp;
+        }
+        catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+
+
     createPeriod = async (period) => {
         try {
             await holidayModel.insertMany(period);
@@ -1013,6 +1025,15 @@ export class DBMongoDao {
         } catch (error) {
             loggerError.error(error)
             return 'duplicate'
+        }
+    }
+
+    deletePeriod = async (periodId) => {
+        try {
+            await holidayModel.deleteOne({ "_id": periodId });
+            return true;
+        } catch (error) {
+            loggerError.error(error)
         }
     }
 

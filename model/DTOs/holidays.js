@@ -3,6 +3,11 @@ export const holidayScoreRespDTO = (employeeOptions, periodOptions,  periodData)
     return holidayScoreResp;
 }
 
+export const holidayPeriodRespDTO = ( periodData) => {
+    const holidayPeriodRespDTO = {periodData };
+    return holidayPeriodRespDTO;
+}
+
 export const saveHolidaysDTO = (name, startDate, endDate) => ({
     periodName: name,
     startDate: startDate,

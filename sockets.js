@@ -3,6 +3,7 @@ import { ApiDailyWork } from './api/dailyWorks.js';
 import { ApiRoutine } from './api/routines.js';
 import { ApiPlantShutdown } from './api/plantShutdowns.js';
 import { ApiPlantShutdownWork } from './api/plantShutdownWorks.js';
+import { ApiHoliday } from './api/holidays.js';
 import { formatDate } from './utils/formatDate.js';
 import { loggerInfo } from "./utils/logger.js";
 
@@ -11,6 +12,7 @@ const apiDailyWork = new ApiDailyWork();
 const apiRoutine = new ApiRoutine();
 const apiPlantShutdown = new ApiPlantShutdown();
 const apiPlantShutdownWork = new ApiPlantShutdownWork();
+const apiHoliday = new ApiHoliday();
 
 
 export default (io) => {
@@ -79,7 +81,16 @@ export default (io) => {
         socket.on("delete_plant_shutdown_work", (plantShutdownWorkData) => apiPlantShutdownWork.handleSocket({ socket, action: "delete_plant_shutdown_work", plantShutdownWorkData, io }));
         //socket.on("get_daily_works_by_plant_shutdown_work_id", (plantShutdownWorkData) => apiPlantShutdownWork.handleSocket({ socket, action: "get_daily_works_by_plant_shutdown_work_id", plantShutdownWorkData }));
 
-
+        // HOLIDAYS
+        socket.on("get_holiday_data", (date) => apiHoliday.handleSocket({ date, socket, action: "get_holiday_data", io }));
+        socket.on("get_holiday_period", (holidayData) => apiHoliday.handleSocket({ socket, action: "get_holiday_period", holidayData }));
+        socket.on("delete_holiday_period", (date, holidayData) => apiHoliday.handleSocket({ date, socket, action: "delete_holiday_period", holidayData, io }));
+        socket.on("create_employee_holiday", (holidayData) => apiHoliday.handleSocket({ socket, action: "create_employee_holiday", holidayData, io }));
+        socket.on("holiday_leave_room", (id) => {
+            socket.leave(id)
+            socket.to(id).emit("holiday_leave_room", id);
+            // loggerInfo.info(`Socket ${socket.id} left Schedules room ${id}`);
+        })
 
         socket.on("disconnect", () => {
             loggerInfo.info(`Socket ${socket.id} disconnected`);
