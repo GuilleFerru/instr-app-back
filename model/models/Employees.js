@@ -46,7 +46,12 @@ const EmployeesSchema = new mongoose.Schema({
     shiftType: {
         type: String,
         require: true,
+    },
+    holidayDays: {
+        type: Number,
+        require: true,
     }
+
 },
     { timestamps: true }
 );

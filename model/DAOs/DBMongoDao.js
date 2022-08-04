@@ -1016,8 +1016,6 @@ export class DBMongoDao {
         }
     }
 
-
-
     createPeriod = async (period) => {
         try {
             await holidayModel.insertMany(period);
@@ -1027,6 +1025,18 @@ export class DBMongoDao {
             return 'duplicate'
         }
     }
+
+    updateHolidayData = async (id, holidaysData) => {
+        try {
+            await holidayModel.updateOne({ "_id": id }, { $set: { holidaysData } });
+            return true;
+        } catch (error) {
+            console.log(error)
+            loggerError.error(error)
+        }
+    }
+
+
 
     deletePeriod = async (periodId) => {
         try {
