@@ -113,7 +113,7 @@ export class ApiHoliday {
             const { date, socket, action, holidayData, roomId, io } = data[0];
 
             if (action === 'get_holiday_data') {
-                const data = await this.getData(date);
+                const data = await this.getData(date, holidayData);
                 data && socket.emit('get_holiday_data', data);
             } else if (action === 'delete_holiday_period') {
                 const data = await this.deletePeriod(holidayData);
@@ -122,8 +122,9 @@ export class ApiHoliday {
                 const data = await this.getPerioData(holidayData);
                 data && socket.emit('get_holiday_period', data);
             } else if (action === 'create_employee_holiday') {
-                const data = await this.createEmployeeHoliday(holidayData);
-                //data && socket.emit('get_holiday_data', await this.getData(date));
+                const periodId = await this.createEmployeeHoliday(holidayData);
+                socket.emit('create_employee_holiday');
+                periodId && socket.emit('get_holiday_data', await this.getData(undefined, periodId));
             }
         } catch (error) {
             loggerError.error(error);
@@ -171,23 +172,41 @@ export class ApiHoliday {
                 }
             }
             const resp = await dao.updateHolidayData(periodId, holidaysDataToSave);
-            return resp;
+            if (resp)
+                return periodId;
         } catch (err) {
-            console.log(err)
+            
             loggerError.error(err);
         }
     }
 
-    getData = async (date) => {
+    getData = async (date, periodId) => {
         try {
-            const employeeOptions = await ApiEmployee.getEmployeesForSelectForm();
+            const employeeOptions = await ApiEmployee.getEmployeesForHolidayForm();
             const holidays = await dao.getHolidays();
             const periodOptions = getPeriodsForSelectForm(holidays);
-            const getCurrentPeriod = holidays.filter(holiday => {
-                return new Date(holiday.startDate) <= new Date(date) && new Date(holiday.endDate) >= new Date(date);
+            const getCurrentPeriod = [];
+
+            if (date) {
+                const period = holidays.filter(holiday => {
+                    return new Date(holiday.startDate) <= new Date(date) && new Date(holiday.endDate) >= new Date(date);
+                });
+                getCurrentPeriod.push(period[0]);
+            } else {
+                const period = holidays.find(holiday => { return holiday.id === periodId });
+                getCurrentPeriod.push(period);
+            }
+            employeeOptions.forEach(employee => {
+                const empHolidays = getCurrentPeriod[0].holidaysData.filter(holiday => holiday.employee === employee.id);
+                if (empHolidays.length > 0) {
+                    const lastFraction = empHolidays[empHolidays.length - 1].fraction;
+                    const leftDays = empHolidays.filter(holiday => holiday.fraction === lastFraction)[0].leftDays;
+                    employeeOptions.find(emp => emp.id === employee.id).holidayDays = leftDays;
+                }
             });
             return holidayScoreRespDTO(employeeOptions, periodOptions, ...getCurrentPeriod);
         } catch (err) {
+            
             loggerError.error(err);
         } finally {
         }

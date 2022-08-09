@@ -82,7 +82,7 @@ export default (io) => {
         //socket.on("get_daily_works_by_plant_shutdown_work_id", (plantShutdownWorkData) => apiPlantShutdownWork.handleSocket({ socket, action: "get_daily_works_by_plant_shutdown_work_id", plantShutdownWorkData }));
 
         // HOLIDAYS
-        socket.on("get_holiday_data", (date) => apiHoliday.handleSocket({ date, socket, action: "get_holiday_data", io }));
+        socket.on("get_holiday_data", (date, holidayData) => apiHoliday.handleSocket({ date, socket, action: "get_holiday_data", holidayData, io }));
         socket.on("get_holiday_period", (holidayData) => apiHoliday.handleSocket({ socket, action: "get_holiday_period", holidayData }));
         socket.on("delete_holiday_period", (date, holidayData) => apiHoliday.handleSocket({ date, socket, action: "delete_holiday_period", holidayData, io }));
         socket.on("create_employee_holiday", (holidayData) => apiHoliday.handleSocket({ socket, action: "create_employee_holiday", holidayData, io }));

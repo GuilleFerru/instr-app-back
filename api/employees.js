@@ -50,17 +50,17 @@ export class ApiEmployee {
         }
     }
 
-    static getEmployeesForSelectForm = async () => {
+    static getEmployeesForHolidayForm = async () => {
         try {
             const empResp = await dao.getEmployees();
             const empSelect = empResp.map(emp => {
                 return {
                     id: emp.legajo,
                     name: `${emp.nombre} ${emp.apellido}`,
+                    holidayDays: emp.holidayDays
                 }
             });
             // empSelect.unshift({ id: '', name: 'Seleccione un empleado' });
-
             return empSelect;
         } catch (err) {
             loggerError.error(err);
