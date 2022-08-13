@@ -31,7 +31,6 @@ const checkChangesRotativeShifts = (element, employees) => {
     } else {
         normalizeShifts(employees, element)
     }
-
 }
 
 const getDayShift = async (date) => {
@@ -42,11 +41,9 @@ const getDayShift = async (date) => {
 }
 
 const getEmployees = async (filter, legajo) => {
-    //const apiEmployee = new ApiEmployee();
     let employees;
     if (filter === 'all') {
         employees = await apiEmployee.getEmployees();
-
     } else if (filter === 'byLegajo') {
         employees = await apiEmployee.getEmployeeBylegajo(legajo);
     }
@@ -54,7 +51,6 @@ const getEmployees = async (filter, legajo) => {
 }
 
 const getActualShift = (hour) => {
-
     if (hour >= 5 && hour < 13) {
         return 1;
     }
@@ -117,7 +113,6 @@ const isNumeric = (value) => {
 }
 
 const completeDailyShiftSheet = (firstIterate, weekData, workbook, n1, n2, n3) => {
-
     for (let i = 0; i < weekData.length; i++) {
         const sheet = workbook.getWorksheet(`SEMANA ${i + 1}`);
         if (weekData[i][n1] !== undefined) {
@@ -203,11 +198,9 @@ export class ApiSchedule {
             });
             //creo la columna base de la tabla con los lookups del horario y el nombre completo
             const columns = createScheduleColumns(timeScheduleForScheduleDTO(timeSchedule), getForScheduleEmployeesDTO(employees));
-
             const saveSchedule = saveScheduleDTO(dateLocal, schedule, columns);
             const result = await dao.createSchedule(saveSchedule);
             const _id = result[0]._id
-
             const returnSchedule = returnScheduleDTO(dateLocal, schedule, columns, reduceForLookUp(aditionals), _id);
             return returnSchedule;
         } catch (err) {
@@ -316,7 +309,7 @@ export class ApiSchedule {
                     date: dateTime
                 }
                 for (let i = 0; i < schedule.length; i++) {
-                    const { id, legajo, fullName, timeSchedule, workedHours, ...rest } = schedule[i];
+                    const { id, legajo, fullName, timeSchedule, workedHours, shiftType, ...rest } = schedule[i];
                     const { nombre, apellido } = employees[i];
                     dayEmployees.push({
                         legajo: legajo,

@@ -1,7 +1,12 @@
 import { dao } from '../server.js';
 import { saveHolidaysDTO, holidayScoreRespDTO, holidayPeriodRespDTO, holidayDataDTO } from '../model/DTOs/holidays.js';
+import { formatDate } from '../utils/formatDate.js';
 import { loggerError } from '../utils/logger.js';
 import { ApiEmployee } from './employees.js';
+import { ApiSchedule } from './schedules.js';
+import { reduceForLookUp } from '../utils/reduceForLookup.js';
+
+const apiSchedule = new ApiSchedule();
 
 
 const getPeriodsForSelectForm = (holidays) => {
@@ -24,73 +29,89 @@ const calculatePoints = (start, end) => {
     let loop = startDate;
     let points = 0;
     const months = [
-        { 'Enero': 0 },
-        { 'Febrero_quincena_uno': 0 },
-        { 'Febrero_quincena_dos': 0 },
-        { 'Marzo_quincena_uno': 0 },
-        { 'Marzo_quincena_dos': 0 },
-        { 'Abril': 0 },
-        { 'Mayo': 0 },
-        { 'Junio': 0 },
-        { 'Julio': 0 },
-        { 'Agosto': 0 },
-        { 'Septiembre': 0 },
-        { 'Octubre': 0 },
-        { 'Noviembre': 0 },
-        { 'Diciembre_quincena_uno': 0 },
-        { 'Diciembre_quincena_dos': 0 },
+        { 'Enero': 0, 'points': 0 },
+        { 'Febrero_quincena_uno': 0, 'points': 0 },
+        { 'Febrero_quincena_dos': 0, 'points': 0 },
+        { 'Marzo_quincena_uno': 0, 'points': 0 },
+        { 'Marzo_quincena_dos': 0, 'points': 0 },
+        { 'Abril': 0, 'points': 0 },
+        { 'Mayo': 0, 'points': 0 },
+        { 'Junio': 0, 'points': 0 },
+        { 'Julio': 0, 'points': 0 },
+        { 'Agosto': 0, 'points': 0 },
+        { 'Septiembre': 0, 'points': 0 },
+        { 'Octubre': 0, 'points': 0 },
+        { 'Noviembre': 0, 'points': 0 },
+        { 'Diciembre_quincena_uno': 0, 'points': 0 },
+        { 'Diciembre_quincena_dos': 0, 'points': 0 },
     ];
     while (loop <= endDate) {
         if (loop.getMonth() === 0) {
             points += 100;
             months[0].Enero += 1;
+            months[0].points += 100;
         } else if (loop.getMonth() === 1 && loop.getDate() <= 15) {
             points += 100;
             months[1].Febrero_quincena_uno += 1;
+            months[1].points += 100;
         } else if (loop.getMonth() === 1 && loop.getDate() >= 16) {
             points += 95;
             months[2].Febrero_quincena_dos += 1;
+            months[2].points += 95;
         } else if (loop.getMonth() === 2 && loop.getDate() <= 15) {
             points += 80;
             months[3].Marzo_quincena_uno += 1;
+            months[3].points += 80;
         } else if (loop.getMonth() === 2 && loop.getDate() >= 16) {
             points += 50;
             months[4].Marzo_quincena_dos += 1;
+            months[4].points += 50;
         } else if (loop.getMonth() === 3) {
             points += 40;
             months[5].Abril += 1;
+            months[5].points += 40;
         } else if (loop.getMonth() === 4) {
             points += 30;
             months[6].Mayo += 1;
+            months[6].points += 30;
         } else if (loop.getMonth() === 5) {
             points += 25;
             months[7].Junio += 1;
+            months[7].points += 25;
         } else if (loop.getMonth() === 6) {
             points += 50;
             months[8].Julio += 1;
+            months[8].points += 50;
         } else if (loop.getMonth() === 7) {
             points += 25;
             months[9].Agosto += 1;
+            months[9].points += 25;
         } else if (loop.getMonth() === 8) {
             points += 25;
             months[10].Septiembre += 1;
+            months[10].points += 25;
         } else if (loop.getMonth() === 9) {
             points += 30;
             months[11].Octubre += 1;
+            months[11].points += 30;
         } else if (loop.getMonth() === 10) {
             points += 40;
             months[12].Noviembre += 1;
+            months[12].points += 40;
         } else if (loop.getMonth() === 11 && loop.getDate() <= 15) {
             points += 50;
             months[13].Diciembre_quincena_uno += 1;
+            months[13].points += 50;
         } else if (loop.getMonth() === 11 && loop.getDate() >= 16) {
             points += 80;
             months[14].Diciembre_quincena_dos += 1;
+            months[14].points += 80;
         }
         loop.setDate(loop.getDate() + 1);
     }
-    const qtyDays = months.reduce((acc, curr) => acc + curr[Object.keys(curr)], 0);
-    const daysDistribution = months.filter(month => month[Object.keys(month)] !== 0);
+    const qtyDays = months.reduce((acc, curr) => acc + curr[Object.keys(curr)[0]], 0);
+    const daysDistribution = months.filter(month => month[Object.keys(month)[0]] !== 0);
+
 
     return { points, qtyDays, daysDistribution };
 }
@@ -147,9 +168,53 @@ export class ApiHoliday {
         }
     }
 
+    addHolidayToSchedule = async (schedules, employee, lookup, dateLocal) => {
+        schedules[0].schedule.map((schedule) => {
+            if (schedule.legajo === employee) {
+                const { id, legajo, fullName, timeSchedule, workedHours, shiftType, ...rest } = schedule;
+                let flag = false;
+                let availableAdditional = 1;
+                if (Object.keys(rest).length > 0) {
+                    for (let i = 1; i <= Object.keys(rest).length; i++) {
+                        if (schedule.hasOwnProperty(`additional_${i}`) && schedule[`additional_${i}`] === '13') {
+                            flag = true;
+                        } else if (schedule.hasOwnProperty(`additional_${i}`) && schedule[`additional_${i}`] !== '13') {
+                            availableAdditional = i + 1;
+                        }
+                    }
+                }
+                if (!flag) {
+                    schedule[`additional_${availableAdditional}`] = '13';
+                    schedule[`additional_${availableAdditional}_info`] = '';
+                    let columnExists = false;
+                    schedules[0].columns.map(column => {
+                        if (column.field === `additional_${availableAdditional}`) {
+                            columnExists = true;
+                        }
+                    })
+                    if (!columnExists) {
+                        const additionalColum = {
+                            field: `additional_${availableAdditional}`,
+                            title: `Adicional ${availableAdditional}`,
+                            lookup: lookup,
+                            align: 'left',
+                        }
+                        const additionalInfoColum = {
+                            field: `additional_${availableAdditional}_info`,
+                            title: `Anexo ${availableAdditional}`,
+                            align: 'left',
+                        }
+                        schedules[0].columns.push(additionalColum, additionalInfoColum);
+                    }
+                    dao.updateSchedulesHolidays(dateLocal, schedules[0].schedule, schedules[0].columns);
+                }
+            }
+        });
+    }
+
     createEmployeeHoliday = async (empHolidayData) => {
         try {
-            const { employee, periodId, startDate, endDate } = empHolidayData;
+            const { employee, periodId, startDate, endDate, createSchedule } = empHolidayData;
             const periodData = await dao.getPerioData(periodId);
             const pointsData = calculatePoints(startDate, endDate);
             const holidayDataDB = periodData[0].holidaysData;
@@ -167,15 +232,38 @@ export class ApiHoliday {
                     const fraction = checkEmpHolidays.length + 1;
                     const leftDays = checkEmpHolidays[checkEmpHolidays.length - 1].leftDays - pointsData.qtyDays;
                     const actualDays = checkEmpHolidays[checkEmpHolidays.length - 1].actualDays;
-                    const holidayData = holidayDataDTO(empHolidayData, pointsData, fraction, actualDays, leftDays);
+                    const holidayData = holidayDataDTO(empHolidayData, pointsData, fraction, actualDays, leftDays, createSchedule);
                     holidaysDataToSave.push(...holidayDataDB, ...holidayData);
+                }
+            }
+
+            if (createSchedule) {
+                let loop = new Date(startDate);
+                const loopEnd = new Date(endDate);
+                const aditionals = await dao.getAditionals();
+                const lookup = reduceForLookUp(aditionals)
+                while (loop <= loopEnd) {
+                    const dateLocal = formatDate(loop);
+                    const scheduleExist = await dao.getSchedule(dateLocal);
+                    // si el día esta creado en la tabla schedule
+                    if (scheduleExist.length > 0) {
+                        const addHolidayToSchedule = await this.addHolidayToSchedule(scheduleExist, employee, lookup, dateLocal);
+                    } else {
+                        const scheduleResp = await apiSchedule.createSchedule(loop);
+                        const { schedule, columns } = scheduleResp;
+                        const schedules = [{
+                            schedule: schedule,
+                            columns: columns,
+                        }]
+                        const addHolidayToSchedule = await this.addHolidayToSchedule(schedules, employee, lookup, dateLocal);
+                    }
+                    loop.setDate(loop.getDate() + 1);
                 }
             }
             const resp = await dao.updateHolidayData(periodId, holidaysDataToSave);
             if (resp)
                 return periodId;
         } catch (err) {
-            
             loggerError.error(err);
         }
     }
@@ -206,7 +294,7 @@ export class ApiHoliday {
             });
             return holidayScoreRespDTO(employeeOptions, periodOptions, ...getCurrentPeriod);
         } catch (err) {
-            
+
             loggerError.error(err);
         } finally {
         }

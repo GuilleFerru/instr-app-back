@@ -261,6 +261,16 @@ export class DBMongoDao {
         }
     }
 
+    updateSchedulesHolidays = async (date, schedule, columns) => {
+        try {
+            const scheduleResp = await scheduleModel.updateMany({ date: date }, { $set: { schedule, columns } });
+            //const scheduleResp = await scheduleModel.updateMany({ date: date }, { $set: { columns } });
+            return scheduleResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
     // getQtyDailyEmployees = async (date) => {
     //     try {
     //         const scheduleResp = await scheduleModel.find({ date: date, "schedule.timeSchedule": 5 }, { __v: 0, createdAt: 0, updatedAt: 0 });
