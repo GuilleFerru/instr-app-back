@@ -188,7 +188,6 @@ export class DBMongoDao {
             const scheduleResp = await scheduleModel.updateMany({ date: date }, { $set: { schedule } });
             return scheduleResp;
         } catch (error) {
-            console.log(error)
             loggerError.error(error)
         }
     }
@@ -1046,11 +1045,19 @@ export class DBMongoDao {
         }
     }
 
-
-
     deletePeriod = async (periodId) => {
         try {
             await holidayModel.deleteOne({ "_id": periodId });
+            return true;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    deleteFraction = async (period) => {
+        try {
+            const { periodId, fraction, employee } = period;
+            await holidayModel.updateOne({ _id: periodId }, { $pull: { holidaysData: { fraction: fraction, employee: employee } } });
             return true;
         } catch (error) {
             loggerError.error(error)

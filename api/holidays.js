@@ -146,6 +146,9 @@ export class ApiHoliday {
                 const periodId = await this.createEmployeeHoliday(holidayData);
                 socket.emit('create_employee_holiday');
                 periodId && socket.emit('get_holiday_data', await this.getData(undefined, periodId));
+            } else if (action === 'delete_holiday_fraction') {
+                const periodId = await this.deleteFraction(holidayData);
+                periodId && socket.emit('get_holiday_data', await this.getData(undefined, periodId));
             }
         } catch (error) {
             loggerError.error(error);
@@ -155,7 +158,7 @@ export class ApiHoliday {
     createPeriod = async (newPeriod) => {
         try {
             const { startDate, endDate } = newPeriod;
-            const name = `Período ${new Date(startDate).getFullYear()}-${new Date(endDate).getFullYear()}`;
+            const name = `Período ${new Date(startDate).getFullYear() + 1}-${new Date(endDate).getFullYear() + 1}`;
             const dataToSave = saveHolidaysDTO(name, startDate, endDate);
             const resp = await dao.createPeriod(dataToSave);
             if (resp === 'duplicate') {
@@ -186,6 +189,7 @@ export class ApiHoliday {
                 if (!flag) {
                     schedule[`additional_${availableAdditional}`] = '13';
                     schedule[`additional_${availableAdditional}_info`] = '';
+                    schedule.workedHours = 0
                     let columnExists = false;
                     schedules[0].columns.map(column => {
                         if (column.field === `additional_${availableAdditional}`) {
@@ -247,7 +251,7 @@ export class ApiHoliday {
                     const scheduleExist = await dao.getSchedule(dateLocal);
                     // si el día esta creado en la tabla schedule
                     if (scheduleExist.length > 0) {
-                        const addHolidayToSchedule = await this.addHolidayToSchedule(scheduleExist, employee, lookup, dateLocal);
+                        await this.addHolidayToSchedule(scheduleExist, employee, lookup, dateLocal);
                     } else {
                         const scheduleResp = await apiSchedule.createSchedule(loop);
                         const { schedule, columns } = scheduleResp;
@@ -255,7 +259,7 @@ export class ApiHoliday {
                             schedule: schedule,
                             columns: columns,
                         }]
-                        const addHolidayToSchedule = await this.addHolidayToSchedule(schedules, employee, lookup, dateLocal);
+                        await this.addHolidayToSchedule(schedules, employee, lookup, dateLocal);
                     }
                     loop.setDate(loop.getDate() + 1);
                 }
@@ -323,6 +327,50 @@ export class ApiHoliday {
         try {
             const resp = await dao.deletePeriod(periodId);
             return resp;
+        } catch (err) {
+            loggerError.error(err);
+            return err;
+        }
+    }
+
+    deleteFraction = async (period) => {
+        try {
+            const { periodId, employee, startDate, endDate } = period;
+            if (period) {
+                let loop = new Date(startDate);
+                const loopEnd = new Date(endDate);
+                while (loop <= loopEnd) {
+                    const dateLocal = formatDate(loop);
+                    const schedule = await dao.getSchedule(dateLocal);
+                    if (schedule.length > 0) {
+                        schedule[0].schedule.map(empSchedule => {
+                            if (empSchedule.legajo === employee) {
+                                const { id, legajo, fullName, timeSchedule, workedHours, shiftType, ...rest } = empSchedule;
+                                if (Object.keys(rest).length > 0) {
+                                    for (let i = 1; i <= Object.keys(rest).length; i++) {
+                                        if (rest.hasOwnProperty(`additional_${i}`) && rest[`additional_${i}`] === '13') {
+                                            delete empSchedule[`additional_${i}`];
+                                            delete empSchedule[`additional_${i}_info`];
+                                            if (timeSchedule >= 1 && timeSchedule <= 3) {
+                                                empSchedule.workedHours = 8
+                                            } else if (timeSchedule >= 5 && timeSchedule <= 6) {
+                                                empSchedule.workedHours = 9
+                                            } else if (timeSchedule === 4) {
+                                                empSchedule.workedHours = 0
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        })
+                        await dao.updateSchedule(dateLocal, schedule[0].schedule);
+                    }
+                    loop.setDate(loop.getDate() + 1);
+                }
+            }
+            const resp = await dao.deleteFraction(period);
+            if (resp)
+                return periodId;
         } catch (err) {
             loggerError.error(err);
             return err;

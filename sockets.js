@@ -86,6 +86,7 @@ export default (io) => {
         socket.on("get_holiday_period", (holidayData) => apiHoliday.handleSocket({ socket, action: "get_holiday_period", holidayData }));
         socket.on("delete_holiday_period", (date, holidayData) => apiHoliday.handleSocket({ date, socket, action: "delete_holiday_period", holidayData, io }));
         socket.on("create_employee_holiday", (holidayData) => apiHoliday.handleSocket({ socket, action: "create_employee_holiday", holidayData, io }));
+        socket.on("delete_holiday_fraction", (holidayData) => apiHoliday.handleSocket({ socket, action: "delete_holiday_fraction", holidayData, io }));
         socket.on("holiday_leave_room", (id) => {
             socket.leave(id)
             socket.to(id).emit("holiday_leave_room", id);
