@@ -19,6 +19,11 @@ const HolidaySchema = new mongoose.Schema({
         require: true,
         default: [],
     },
+    scores: {
+        type: Array,
+        require: true,
+        default: [],
+    },
     sector: {
         type: String,
         require: true,

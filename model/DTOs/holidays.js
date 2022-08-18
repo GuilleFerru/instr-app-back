@@ -8,11 +8,12 @@ export const holidayPeriodRespDTO = (periodData) => {
     return holidayPeriodRespDTO;
 }
 
-export const saveHolidaysDTO = (name, startDate, endDate) => ({
+export const saveHolidaysDTO = (name, startDate, endDate, scores) => ({
     periodName: name,
     startDate: startDate,
     endDate: endDate,
     holidaysData: [],
+    scores: scores,
     sector: 'Instrumentos-Sistemas'
 });
 

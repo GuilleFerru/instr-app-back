@@ -1015,7 +1015,7 @@ export class DBMongoDao {
         }
     }
 
-    getPerioData = async (periodId) => {
+    getPeriodData = async (periodId) => {
         try {
             const periodDataResp = await holidayModel.find({ "_id": periodId }, { __v: 0, createdAt: 0, updatedAt: 0 });
             return periodDataResp;
@@ -1023,6 +1023,18 @@ export class DBMongoDao {
         catch (error) {
             loggerError.error(error)
         }
+    }
+
+    getLastPeriod = async (periodStartYear, periodEndYear) => {
+        try {
+            const lastPeriodResp = await holidayModel.find({ $and: [{ $expr: { $eq: [{ "$year": "$startDate" }, periodStartYear] } }, { $expr: { $eq: [{ "$year": "$endDate" }, periodEndYear] } }] }, { __v: 0, createdAt: 0, updatedAt: 0 });
+            return lastPeriodResp;
+        }
+        catch (error) {
+            console.log(error)
+            loggerError.error(error)
+        }
+
     }
 
     createPeriod = async (period) => {
@@ -1035,12 +1047,20 @@ export class DBMongoDao {
         }
     }
 
-    updateHolidayData = async (id, holidaysData) => {
+    updateHolidayData = async (id, holidaysData, scores) => {
         try {
-            await holidayModel.updateOne({ "_id": id }, { $set: { holidaysData } });
+            await holidayModel.updateOne({ "_id": id }, { $set: { "holidaysData": holidaysData, "scores": scores } });
             return true;
         } catch (error) {
-            console.log(error)
+            loggerError.error(error)
+        }
+    }
+
+    updateScore = async (id, score) => {
+        try {
+            await holidayModel.updateOne({ "_id": id }, { $set: { "scores": score } });
+            return true;
+        } catch (error) {
             loggerError.error(error)
         }
     }
