@@ -172,6 +172,7 @@ export class ApiHoliday {
                 employeeName: `${employee.nombre} ${employee.apellido}`,
                 holidayDays: employee.holidayDays,
                 shiftType: employee.shiftType,
+                condicion: employee.condicion,
                 average: 0,
                 points: 0,
                 dailyShiftPosition: 0,
@@ -245,39 +246,49 @@ export class ApiHoliday {
     }
 
     updateScore = async (employee, employeeCondition, periodData, currentHolidayData) => {
-        const periodStartYear = (periodData[0].startDate).getFullYear() - 1;
-        const periodEndYear = (periodData[0].endDate).getFullYear() - 1;
-        const lastPeriod = await dao.getLastPeriod(periodStartYear, periodEndYear);
-        const actualPeriodPoints = currentHolidayData.reduce((acc, curr) => {
-            if (employee === curr.employee) {
-                return acc + curr.points;
-            } else {
-                return acc;
-            }
-        }, 0);
-        let lastPeriodPoints = 0;
-        lastPeriod[0].scores.forEach(score => {
-            if (score.employee === employee) {
-                lastPeriodPoints = score.points;
-            }
-        })
-        const actualDays = periodData[0].scores.find(score => score.employee === employee).holidayDays;
-        const lastDays = lastPeriod[0].scores.find(score => score.employee === employee).holidayDays;
-        const average = Number(((actualPeriodPoints + lastPeriodPoints) / (actualDays + lastDays) === Infinity ? 100 : (actualPeriodPoints + lastPeriodPoints) / (actualDays + lastDays)).toFixed(2));
-        periodData[0].scores.find(score => score.employee === employee).average = average;
+        try {
+            const periodStartYear = (periodData[0].startDate).getFullYear() - 1;
+            const periodEndYear = (periodData[0].endDate).getFullYear() - 1;
+            const lastPeriod = await dao.getLastPeriod(periodStartYear, periodEndYear);
 
-        const shiftType = periodData[0].scores.find(score => score.employee === employee).shiftType;
-        const empScoreShift = periodData[0].scores.filter(score => score.shiftType === shiftType && score.condicion === employeeCondition);
-        if (shiftType === 'dailyShift') {
-            sortShift(empScoreShift, 'dailyShiftPosition');
-        } else if (shiftType === 'rotativeShift') {
-            sortShift(empScoreShift, 'rotativeShiftPosition');
+            const actualPeriodPoints = currentHolidayData.reduce((acc, curr) => {
+                if (employee === curr.employee) {
+                    return acc + curr.points;
+                } else {
+                    return acc;
+                }
+            }, 0);
+
+            let lastPeriodPoints = 0;
+            if (lastPeriod.length > 0) {
+                lastPeriod[0].scores.forEach(score => {
+                    if (score.employee === employee) {
+                        lastPeriodPoints = score.points;
+                    }
+                })
+            }
+            const actualDays = periodData[0].scores.find(score => score.employee === employee).holidayDays;
+            const lastDays = lastPeriod[0].scores.find(score => score.employee === employee) !== undefined ? lastPeriod[0].scores.find(score => score.employee === employee).holidayDays : 0;
+            const average = Number(((actualPeriodPoints + lastPeriodPoints) / (actualDays + lastDays) === Infinity ? 100 : (actualPeriodPoints + lastPeriodPoints) / (actualDays + lastDays)).toFixed(2));
+            periodData[0].scores.find(score => score.employee === employee).average = average;
+            periodData[0].scores.find(score => score.employee === employee).points = actualPeriodPoints;
+
+            const shiftType = periodData[0].scores.find(score => score.employee === employee).shiftType;
+            const empScoreShift = periodData[0].scores.filter(score => score.shiftType === shiftType && score.condicion === employeeCondition);
+            if (shiftType === 'dailyShift') {
+                sortShift(empScoreShift, 'dailyShiftPosition');
+            } else if (shiftType === 'rotativeShift') {
+                sortShift(empScoreShift, 'rotativeShiftPosition');
+            }
+            periodData[0].scores.sort((a, b) => a.average - b.average).filter(score => score.condicion === employeeCondition).map((score, index) => {
+                score.generalPosition = index + 1;
+                return score;
+            });
+
+            return periodData[0].scores;
+        } catch (err) {
+            loggerError.error(err);
         }
-        periodData[0].scores.sort((a, b) => a.average - b.average).filter(score => score.condicion === employeeCondition).map((score, index) => {
-            score.generalPosition = index + 1;
-            return score;
-        });
-        return periodData[0].scores;
     }
 
     createEmployeeHoliday = async (empHolidayData) => {
@@ -359,6 +370,12 @@ export class ApiHoliday {
                     employeeOptions.find(emp => emp.id === employee.id).holidayDays = leftDays;
                 }
             });
+
+
+            //getCurrentPeriod[0].scores.splice
+            const scores = getCurrentPeriod[0].scores.filter(scores => scores.condicion === 'Afiliado')
+            getCurrentPeriod[0].scores = scores;
+
             return holidayScoreRespDTO(employeeOptions, periodOptions, ...getCurrentPeriod);
         } catch (err) {
 
