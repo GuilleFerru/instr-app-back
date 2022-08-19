@@ -269,7 +269,7 @@ export class ApiHoliday {
             }
             const actualDays = periodData[0].scores.find(score => score.employee === employee).holidayDays;
             const lastDays = lastPeriod[0].scores.find(score => score.employee === employee) !== undefined ? lastPeriod[0].scores.find(score => score.employee === employee).holidayDays : 0;
-            const average = Number(((actualPeriodPoints + lastPeriodPoints) / (actualDays + lastDays) === Infinity ? 100 : (actualPeriodPoints + lastPeriodPoints) / (actualDays + lastDays)).toFixed(2));
+            const average = actualPeriodPoints === 0 ? 0 : Number(((actualPeriodPoints + lastPeriodPoints) / (actualDays + lastDays) === Infinity ? 100 : (actualPeriodPoints + lastPeriodPoints) / (actualDays + lastDays)).toFixed(2));
             periodData[0].scores.find(score => score.employee === employee).average = average;
             periodData[0].scores.find(score => score.employee === employee).points = actualPeriodPoints;
 
