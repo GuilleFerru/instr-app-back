@@ -171,6 +171,8 @@ export class ApiHoliday {
                 employee: employee.legajo,
                 employeeName: `${employee.nombre} ${employee.apellido}`,
                 holidayDays: employee.holidayDays,
+                takenDays: 0,
+                leftDays: employee.holidayDays,
                 shiftType: employee.shiftType,
                 condicion: employee.condicion,
                 average: 0,
@@ -250,7 +252,6 @@ export class ApiHoliday {
             const periodStartYear = (periodData[0].startDate).getFullYear() - 1;
             const periodEndYear = (periodData[0].endDate).getFullYear() - 1;
             const lastPeriod = await dao.getLastPeriod(periodStartYear, periodEndYear);
-
             const actualPeriodPoints = currentHolidayData.reduce((acc, curr) => {
                 if (employee === curr.employee) {
                     return acc + curr.points;
@@ -258,7 +259,6 @@ export class ApiHoliday {
                     return acc;
                 }
             }, 0);
-
             let lastPeriodPoints = 0;
             if (lastPeriod.length > 0) {
                 lastPeriod[0].scores.forEach(score => {
@@ -272,7 +272,16 @@ export class ApiHoliday {
             const average = actualPeriodPoints === 0 ? 0 : Number(((actualPeriodPoints + lastPeriodPoints) / (actualDays + lastDays) === Infinity ? 100 : (actualPeriodPoints + lastPeriodPoints) / (actualDays + lastDays)).toFixed(2));
             periodData[0].scores.find(score => score.employee === employee).average = average;
             periodData[0].scores.find(score => score.employee === employee).points = actualPeriodPoints;
-
+            const totalQtyDays = currentHolidayData.reduce((acc, curr) => {
+                if (employee === curr.employee) {
+                    return acc + curr.qtyDays;
+                } else {
+                    return acc;
+                }
+            }, 0);
+            periodData[0].scores.find(score => score.employee === employee).takenDays = totalQtyDays;
+            const leftDays = actualDays - totalQtyDays;
+            periodData[0].scores.find(score => score.employee === employee).leftDays = leftDays;
             const shiftType = periodData[0].scores.find(score => score.employee === employee).shiftType;
             const empScoreShift = periodData[0].scores.filter(score => score.shiftType === shiftType && score.condicion === employeeCondition);
             if (shiftType === 'dailyShift') {
