@@ -1,10 +1,34 @@
 import { dao } from '../server.js';
 import { ApiDailyWork } from './dailyWorks.js';
+import { ApiPlant } from './plants.js';
+import { ApiAttelier } from './attelieres.js';
+import { ApiTimeSchedule } from './timeSchedules.js';
+import { ApiManteinanceFrequency } from './manteinanceFrequencies.js';
+import { ApiManteinance } from './manteinances.js';
+import { ApiManteinanceAction } from './manteinanceActions.js';
 import { saveRoutineDTO, routineScheduleDTO, routineRespDTO, routineRespForOthersRoutineDTO, routineSavedAsDailyWorkDTO } from '../model/DTOs/routine.js';
 import { OthersRoutineColumnTable } from '../utils/otherRoutinesColumnTable.js';
 import { parseStringToDate, dateInLocalDate, todayInLocalDate, monthAndYearString } from '../utils/formatDate.js';
 import { loggerError, loggerInfo } from '../utils/logger.js';
 
+
+const getNicknamesForSelectForm = async () => {
+    const dbNicknames = await dao.getRoutinesSchedulesNicknames();
+    const dotlessNickname = dbNicknames.map(element => {
+        const removeDot = element.replace(/\./g, '');
+        return removeDot;
+    })
+    const duplicateNicknames = Array.from(new Set(dotlessNickname));
+    const nicknames = duplicateNicknames.map((nickname, index) => {
+        const nicknameObj = {
+            id: index + 1,
+            name: nickname + '.'
+        }
+        return nicknameObj;
+    })
+    //nicknames.unshift({ id: 0, name: 'Nuevo Nombre' });
+    return nicknames;
+}
 
 const daysInMonth = (month, year) => {
     return new Date(year, month, 0).getDate();
@@ -120,7 +144,6 @@ export class ApiRoutine {
                 data && io.emit('get_qtyOverDueRoutines', data);
             }
         } catch (error) {
-            console.log(error);
             loggerError.error(error);
         }
     }
@@ -131,7 +154,7 @@ export class ApiRoutine {
             const newRoutine = saveRoutineDTO(plant, attelier, tag, timeSchedule, frecuency, manteinance, action, description);
             const lastRoutine = await dao.createRoutine(newRoutine);
             const lastRoutineId = lastRoutine[0]._id;
-            const newRoutineSchedule = checkDueDate(lastRoutineId, startDay, checkDays, otherCheckDay, frecuency, filePath, nickname);
+            const newRoutineSchedule = checkDueDate(lastRoutineId, startDay, checkDays, new Date(otherCheckDay), frecuency, filePath, nickname);
             await dao.createRoutineSchedule(newRoutineSchedule);
             return true;
         } catch (err) {
@@ -161,7 +184,6 @@ export class ApiRoutine {
             const actualMonthRoutineSchedule = await dao.getActualMonthRoutineSchedule(weekDay);
             return await getRoutines(actualMonthRoutineSchedule, 'forDailyWorks');
         } catch (err) {
-            console.log(err)
             loggerError.error(err);
         } finally {
         }
@@ -185,18 +207,44 @@ export class ApiRoutine {
                 return otherRoutineResp(allRoutines, ...columns, monthAndYear);
             }
         } catch (err) {
-            console.log(err)
             loggerError.error(err);
         } finally {
         }
     }
+
+    getDataForRoutineCreate = async () => {
+        try {
+            //const data = [];
+            const plants = await ApiPlant.getPlantsForSelectForm();
+            const attelieres = await ApiAttelier.getAttelieresForSelectForm();
+            const timeSchedules = await ApiTimeSchedule.getTimeScheduleForSelectForm();
+            const frequencies = await ApiManteinanceFrequency.getManteinanceFrequencyForSelectForm();
+            const manteinances = await ApiManteinance.getManteinancesForSelectForm();
+            const actions = await ApiManteinanceAction.getManteinanceActionsForSelectForm();
+            const nicknames = await getNicknamesForSelectForm();
+
+
+
+            const data = { plants, attelieres, timeSchedules, frequencies, manteinances, actions, nicknames };
+            return data;
+
+            // const atteliers = await dao.getAtteliers();
+            // const tags = await dao.getTags();
+            // const timeSchedules = await dao.getTimeSchedules();
+            // const frecuencies = await dao.getFrecuencies();
+            // const manteinances = await dao.getManteinances();
+        } catch (err) {
+            loggerError.error(err);
+        } finally {
+        }
+    }
+
 
     getQtyOverdueRoutines = async () => {
         try {
             const overdueRoutines = await dao.getQtyOverdueRoutines();
             return overdueRoutines;
         } catch (err) {
-            console.log(err)
             loggerError.error(err);
         } finally {
         }
@@ -211,7 +259,6 @@ export class ApiRoutine {
             const dashboardRoutines = [qtyDailyRoutines, qtyOtherRoutines, qtyOverdueRoutines];
             return dashboardRoutines;
         } catch (err) {
-            console.log(err)
             loggerError.error(err);
         } finally {
         }
@@ -235,7 +282,6 @@ export class ApiRoutine {
             }
             return true;
         } catch (err) {
-            console.log(err)
             loggerError.error(err);
         } finally {
             loggerInfo.info('');

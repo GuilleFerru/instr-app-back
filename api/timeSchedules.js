@@ -44,6 +44,16 @@ export class ApiTimeSchedule {
         }
     }
 
+    static getTimeScheduleForSelectForm = async () => {
+        try {
+            const timeSchedule = await dao.getTimeSchedule();
+            return timeSchedule;
+        } catch (err) {
+            loggerError.error(err);
+        } finally {
+        }
+    }
+
     dropTimeSchedule = async () => {
         try {
             const timeScheduleResp = await dao.dropTimeScheduleCollection();

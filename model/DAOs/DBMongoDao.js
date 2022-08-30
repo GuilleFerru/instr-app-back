@@ -10,6 +10,7 @@ import { attelierModel } from "../models/Attelieres.js";
 import { tagModel } from "../models/Tags.js";
 import { manteinanceModel } from "../models/Manteinances.js";
 import { manteinanceActionModel } from "../models/ManteinanceActions.js";
+import { manteinanceFrecuencyModel } from "../models/ManteinanceFrecuencies.js";
 import { dailyWorkModel } from "../models/DailyWorks.js";
 import { routineModel } from "../models/Routines.js";
 import { routineScheduleModel } from "../models/RoutinesSchedule.js";
@@ -429,6 +430,19 @@ export class DBMongoDao {
         }
     }
 
+    /*          */
+    /* MANTEINANCE FRECUENCIES  */
+
+    getManteinanceFrequencies = async () => {
+        try {
+            const manteinanceFrecuencyResp = await manteinanceFrecuencyModel.find({}, { _id: 0, __v: 0, createdAt: 0, updatedAt: 0 });
+            return manteinanceFrecuencyResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+
     /* DAILYWORKS   */
 
     createDailyWork = async (dailyWork) => {
@@ -727,6 +741,8 @@ export class DBMongoDao {
         }
     }
 
+
+
     createRoutineSchedule = async (routineSchedule) => {
         try {
             const routineScheduleResp = await routineScheduleModel.insertMany(routineSchedule);
@@ -751,6 +767,17 @@ export class DBMongoDao {
             //const routineResp = await routineScheduleModel.find({ "showMonthAndYear": monthAndYear }, { __v: 0, createdAt: 0, updatedAt: 0 });
             return routineResp;
         } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+
+    getRoutinesSchedulesNicknames = async () => {
+        try {
+            const routineResp = await routineScheduleModel.distinct("nickname");
+            return routineResp;
+        } catch (error) {
+            console.log(error)
             loggerError.error(error)
         }
     }

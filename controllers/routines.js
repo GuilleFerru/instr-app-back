@@ -41,6 +41,17 @@ export class ControllerRoutine {
         }
     }
 
+    getDataForRoutineCreate = async (_req, res) => {
+        try {
+            const data = await this.apiRoutine.getDataForRoutineCreate();
+            return res.status(200).json(data);
+        } catch (err) {
+            console.log(err);
+            return res.status(500).json(err);
+        }
+    }
+
+
     updateRoutineScheduleByCompleteTask = async (req, res) => {
         try {
             const { data } = req.body;
