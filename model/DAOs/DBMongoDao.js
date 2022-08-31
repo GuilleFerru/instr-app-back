@@ -777,7 +777,6 @@ export class DBMongoDao {
             const routineResp = await routineScheduleModel.distinct("nickname");
             return routineResp;
         } catch (error) {
-            console.log(error)
             loggerError.error(error)
         }
     }

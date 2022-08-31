@@ -30,6 +30,14 @@ const getNicknamesForSelectForm = async () => {
     return nicknames;
 }
 
+const checkNicknameDot = (nickname) => {
+    const checkNicknameDot = nickname.split('.');
+    if (checkNicknameDot.length === 1) {
+        nickname = nickname + '.';
+    }
+    return nickname;
+}
+
 const daysInMonth = (month, year) => {
     return new Date(year, month, 0).getDate();
 }
@@ -154,11 +162,12 @@ export class ApiRoutine {
             const newRoutine = saveRoutineDTO(plant, attelier, tag, timeSchedule, frecuency, manteinance, action, description);
             const lastRoutine = await dao.createRoutine(newRoutine);
             const lastRoutineId = lastRoutine[0]._id;
-            const newRoutineSchedule = checkDueDate(lastRoutineId, startDay, checkDays, new Date(otherCheckDay), frecuency, filePath, nickname);
+            const newRoutineSchedule = checkDueDate(lastRoutineId, startDay, checkDays, new Date(otherCheckDay), frecuency, filePath, checkNicknameDot(nickname));
             await dao.createRoutineSchedule(newRoutineSchedule);
             return true;
         } catch (err) {
             loggerError.error(err);
+            return false
         } finally {
             loggerInfo.info('createRoutine');
         }

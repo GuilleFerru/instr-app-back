@@ -1,4 +1,5 @@
 import { ApiRoutine } from '../api/routines.js';
+import { loggerError } from '../utils/logger.js';
 
 export class ControllerRoutine {
 
@@ -9,11 +10,11 @@ export class ControllerRoutine {
     createRoutine = async (req, res) => {
         try {
             const routine = req.body;
-            await this.apiRoutine.createRoutine(routine);
-            return res.status(200).json(true);
+            const routineResp = await this.apiRoutine.createRoutine(routine);
+            return res.status(200).json(routineResp);
         } catch (err) {
-            console.log(err);
-            return res.status(500).json(err);
+            loggerError.error(err);
+            return res.status(500).json(false);
         }
     }
 
@@ -23,7 +24,7 @@ export class ControllerRoutine {
             const routine = await this.apiRoutine.getRoutine(date);
             return res.status(200).json(routine);
         } catch (err) {
-            console.log(err);
+            loggerError.error(err);
             return res.status(500).json(err);
         }
     }
@@ -36,7 +37,7 @@ export class ControllerRoutine {
                 return res.status(200).json(routine);
             }
         } catch (err) {
-            console.log(err);
+            loggerError.error(err);
             return res.status(500).json(err);
         }
     }
@@ -46,7 +47,7 @@ export class ControllerRoutine {
             const data = await this.apiRoutine.getDataForRoutineCreate();
             return res.status(200).json(data);
         } catch (err) {
-            console.log(err);
+            loggerError.error(err);
             return res.status(500).json(err);
         }
     }
@@ -63,7 +64,7 @@ export class ControllerRoutine {
                 res.status(500).json(false);
             }
         } catch (err) {
-            console.log(err);
+            loggerError.error(err);
             return res.status(500).json(err);
         }
     }
@@ -74,7 +75,7 @@ export class ControllerRoutine {
             const routine = await this.apiRoutine.updateRoutineScheduleOT(data);
             return res.status(200).json(routine);
         } catch (err) {
-            console.log(err);
+            loggerError.error(err);
             return res.status(500).json(err);
         }
     }
@@ -84,7 +85,7 @@ export class ControllerRoutine {
             const qtyOverdueRoutines = await this.apiRoutine.getQtyOverdueRoutines();
             return res.status(200).json(qtyOverdueRoutines);
         } catch (err) {
-            console.log(err);
+            loggerError.error(err);
             return res.status(500).json(err);
         }
     }
