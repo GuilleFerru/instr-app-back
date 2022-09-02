@@ -180,9 +180,11 @@ export class ApiRoutine {
         for (const routineSchedule of completeRoutineSchedules) {
             const startDate = addDays(dueDate, 1)
             const routine = await dao.getRoutine(routineSchedule.routine);
-            const newRoutineSchedule = checkDueDate(routineSchedule.routine, startDate, routineSchedule.checkDays, routineSchedule.otherCheckDay, routine[0].frecuency, '', routineSchedule.nickname);
-            routineSchedule.complete === false && await dao.updateIsExpiredRoutineSchedule(routineSchedule._id, true);
-            await dao.createRoutineSchedule(newRoutineSchedule);
+            if (routine[0].active) {
+                const newRoutineSchedule = checkDueDate(routineSchedule.routine, startDate, routineSchedule.checkDays, routineSchedule.otherCheckDay, routine[0].frecuency, '', routineSchedule.nickname);
+                routineSchedule.complete === false && await dao.updateIsExpiredRoutineSchedule(routineSchedule._id, true);
+                await dao.createRoutineSchedule(newRoutineSchedule);
+            }
         }
     }
 

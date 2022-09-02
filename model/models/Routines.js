@@ -33,6 +33,10 @@ const RoutinesSchema = new mongoose.Schema({
     description: {
         type: String,
     },
+    active: {
+        type: Boolean,
+        default: true,
+    },
     sector: {
         type: String,
         require: true,

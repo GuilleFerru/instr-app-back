@@ -805,7 +805,6 @@ export class DBMongoDao {
             const updatedRoutinesSchedules = await routineScheduleModel.find({ "dueDate": dueDate }, { __v: 0, createdAt: 0, updatedAt: 0 });
             return updatedRoutinesSchedules;
         } catch (error) {
-            console.log(error)
             loggerError.error(error)
         }
     }
