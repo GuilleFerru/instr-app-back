@@ -602,14 +602,10 @@ export class DBMongoDao {
         }
     }
 
-    updateDailyWorkRoutineOtBySchedRoutineId = (routineScheduleId, ot) => {
+    updateDailyWorkRoutineOtBySchedRoutineId = async (routineScheduleId, ot) => {
         try {
-            dailyWorkModel.updateMany({ routineScheduleId: routineScheduleId }, {
-                $set: {
-                    ot: ot,
-                }
-            });
-            return true;
+            const updateResp = await dailyWorkModel.updateMany({ routineScheduleId: routineScheduleId }, { $set: { ot: ot } });
+            return updateResp.acknowledged;
         } catch (error) {
             loggerError.error(error)
         }
@@ -820,15 +816,11 @@ export class DBMongoDao {
 
     updateRoutineScheduleOT = async (id, ot, filePath) => {
         try {
-            await routineScheduleModel.updateOne({ "_id": id }, {
-                $set: {
-                    "ot": ot,
-                    "filePath": filePath,
-                }
-            });
-            return true;
+            const updateResp = await routineScheduleModel.updateOne({ "_id": id }, { $set: { "ot": ot, "filePath": filePath } });
+            return updateResp.acknowledged;
         } catch (error) {
             loggerError.error(error)
+            return false;
         }
     }
 

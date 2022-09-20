@@ -354,11 +354,15 @@ export class ApiRoutine {
     updateRoutineScheduleOT = async (routineSchedule) => {
         try {
             const updatedRoutineScheduleOT = await dao.updateRoutineScheduleOT(routineSchedule.id, routineSchedule.ot, routineSchedule.filePath);
-            return updatedRoutineScheduleOT;
+            if (updatedRoutineScheduleOT) {
+                const updateResp = await dao.updateDailyWorkRoutineOtBySchedRoutineId(routineSchedule.id, routineSchedule.ot);
+                return updateResp;
+            } else {
+                return false;
+            }
         } catch (err) {
             loggerError.error(err);
         } finally {
-            loggerInfo.info('');
         }
     }
 }
