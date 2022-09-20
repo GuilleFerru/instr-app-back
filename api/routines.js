@@ -8,7 +8,7 @@ import { ApiManteinance } from './manteinances.js';
 import { ApiManteinanceAction } from './manteinanceActions.js';
 import { saveRoutineDTO, routineScheduleDTO, routineRespDTO, routineRespForOthersRoutineDTO, routineSavedAsDailyWorkDTO } from '../model/DTOs/routine.js';
 import { OthersRoutineColumnTable } from '../utils/otherRoutinesColumnTable.js';
-import { parseStringToDate, dateInLocalDate, todayInLocalDate, monthAndYearString } from '../utils/formatDate.js';
+import { parseStringToDate, dateInLocalDate, todayInLocalDate, monthAndYearString, getDayName } from '../utils/formatDate.js';
 import { loggerError, loggerInfo } from '../utils/logger.js';
 
 
@@ -56,9 +56,8 @@ const checkIfWeekend = (date) => {
     return weekDay;
 }
 
-const checkDueDate = (lastRoutineId, startDay, checkDays, otherCheckDay, frecuency, filePath, nickname) => {
+const checkDueDate = (lastRoutineId, startDay, checkDays, otherCheckDay, frecuency, filePath, nickname, ot = '') => {
 
-    const ot = '';
     const startDate = new Date(startDay);
     let dayInMonth = daysInMonth(startDate.getMonth() + 1, startDate.getFullYear());
 
@@ -87,25 +86,27 @@ const checkDueDate = (lastRoutineId, startDay, checkDays, otherCheckDay, frecuen
 
     } else if (otherCheckDay && frecuency === 7) {
 
-        const dayInMonth = daysInMonth(startDate.getMonth() + 2, startDate.getFullYear());
-        const dueDate = new Date((startDate.getMonth() + 2) + '-' + dayInMonth + '-' + startDate.getFullYear());
+        const twoMonthsDateFromStartDate = new Date(startDate.setMonth(startDate.getMonth() + 2));
+        const dayInMonth = daysInMonth(twoMonthsDateFromStartDate.getMonth(), twoMonthsDateFromStartDate.getFullYear());
+        const dueDate = new Date(twoMonthsDateFromStartDate.getMonth() + '-' + dayInMonth + '-' + startDate.getFullYear());
         return routineScheduleDTO(lastRoutineId, startDay, ot, dueDate, [], checkIfWeekend(otherCheckDay), undefined, false, false, filePath, nickname);
 
     } else if (otherCheckDay && frecuency === 8) {
 
-        const dayInMonth = daysInMonth(startDate.getMonth() + 6, startDate.getFullYear());
-        const dueDate = new Date((startDate.getMonth() + 6) + '-' + dayInMonth + '-' + startDate.getFullYear());
+        const sixMonthsDateFromStartDate = new Date(startDate.setMonth(startDate.getMonth() + 6));
+        const dayInMonth = daysInMonth(sixMonthsDateFromStartDate.getMonth(), sixMonthsDateFromStartDate.getFullYear());
+        const dueDate = new Date(sixMonthsDateFromStartDate.getMonth() + '-' + dayInMonth + '-' + sixMonthsDateFromStartDate.getFullYear());
         return routineScheduleDTO(lastRoutineId, startDay, ot, dueDate, [], checkIfWeekend(otherCheckDay), undefined, false, false, filePath, nickname);
 
     } else if (otherCheckDay && frecuency === 9) {
 
-        const oneYearFromStartDate = new Date((startDate.getMonth() + 1) + '-' + startDate.getDate() + '-' + startDate.getFullYear(startDate.setFullYear(startDate.getFullYear() + 1)));
+        const oneYearFromStartDate = new Date(startDate.setMonth(startDate.getMonth() + 12));
         const dueDate = new Date(oneYearFromStartDate.setDate(oneYearFromStartDate.getDate() - 1));
         return routineScheduleDTO(lastRoutineId, startDay, ot, dueDate, [], checkIfWeekend(otherCheckDay), undefined, false, false, filePath, nickname);
 
     } else if (otherCheckDay && frecuency === 10) {
 
-        const twoYearsFromStartDate = new Date((startDate.getMonth() + 1) + '-' + startDate.getDate() + '-' + startDate.getFullYear(startDate.setFullYear(startDate.getFullYear() + 2)));
+        const twoYearsFromStartDate = new Date(startDate.setMonth(startDate.getMonth() + 24));
         const dueDate = new Date(twoYearsFromStartDate.setDate(twoYearsFromStartDate.getDate() - 1));
         return routineScheduleDTO(lastRoutineId, startDay, ot, dueDate, [], checkIfWeekend(otherCheckDay), undefined, false, false, filePath, nickname);
     }
@@ -140,7 +141,6 @@ const getRoutines = async (routineSchedules, filter) => {
     }
     return routines;
 }
-
 
 export class ApiRoutine {
 
@@ -223,9 +223,8 @@ export class ApiRoutine {
         }
     }
 
-    getDataForRoutineCreate = async () => {
+    getDataForRoutineCrud = async () => {
         try {
-            //const data = [];
             const plants = await ApiPlant.getPlantsForSelectForm();
             const attelieres = await ApiAttelier.getAttelieresForSelectForm();
             const timeSchedules = await ApiTimeSchedule.getTimeScheduleForSelectForm();
@@ -233,23 +232,77 @@ export class ApiRoutine {
             const manteinances = await ApiManteinance.getManteinancesForSelectForm();
             const actions = await ApiManteinanceAction.getManteinanceActionsForSelectForm();
             const nicknames = await getNicknamesForSelectForm();
-
-
-
-            const data = { plants, attelieres, timeSchedules, frequencies, manteinances, actions, nicknames };
+            const rawTags = await dao.getRoutinesTags();
+            const orderedRawTags = rawTags.sort((a, b) => (a.tag > b.tag) ? 1 : ((b.tag > a.tag) ? -1 : 0));
+            const tags = orderedRawTags.map(tag => {
+                tag = {
+                    id: tag._id,
+                    name: tag.tag
+                }
+                return tag;
+            });
+            const data = { plants, attelieres, timeSchedules, frequencies, manteinances, actions, nicknames, tags };
             return data;
-
-            // const atteliers = await dao.getAtteliers();
-            // const tags = await dao.getTags();
-            // const timeSchedules = await dao.getTimeSchedules();
-            // const frecuencies = await dao.getFrecuencies();
-            // const manteinances = await dao.getManteinances();
         } catch (err) {
             loggerError.error(err);
         } finally {
         }
     }
 
+    getDataForRoutineEdit = async (routineId) => {
+        try {
+            if (routineId) {
+                const routineFromDB = await dao.getRoutine(routineId);
+                const routineSchedule = await dao.getLastRoutineScheduleByRoutineId(routineId);
+
+                if (routineSchedule.length > 0) {
+                    routineSchedule[0].checkDays = routineSchedule[0].checkDays.map((day) => {
+                        return { id: day, name: getDayName(day) }
+                    });
+                }
+                const routine = {
+                    routineId: routineFromDB[0]._id,
+                    routineScheduleId: routineSchedule.length > 0 ? routineSchedule[0]._id : '',
+                    nickname: routineSchedule.length > 0 ? routineSchedule[0].nickname : '',
+                    plant: routineFromDB[0].plant,
+                    attelier: routineFromDB[0].attelier,
+                    tag: routineFromDB[0].tag,
+                    timeSchedule: routineFromDB[0].timeSchedule,
+                    frecuency: routineFromDB[0].frecuency,
+                    manteinance: routineFromDB[0].manteinance,
+                    action: routineFromDB[0].action,
+                    description: routineFromDB[0].description,
+                    checkDays: routineSchedule.length > 0 ? routineSchedule[0].checkDays : [],
+                    otherCheckDay: routineSchedule.length > 0 ? routineSchedule[0].otherCheckDay : null,
+                    startDay: routineSchedule.length > 0 ? routineSchedule[0].startDate : null,
+                    active: routineFromDB[0].active,
+                    ot: routineSchedule.length > 0 ? routineSchedule[0].ot : '',
+                    complete: routineSchedule.length > 0 ? routineSchedule[0].complete : true,
+                }
+                return routine;
+            } else {
+                return [];
+            }
+        } catch (err) {
+            loggerError.error(err);
+        } finally {
+        }
+    }
+
+    updateRoutine = async (routine) => {
+        try {
+            const { plant, attelier, tag, timeSchedule, active, frecuency, manteinance, action, description, checkDays, otherCheckDay, startDay, filePath, nickname, routineId, routineScheduleId, complete, ot } = routine;
+            const newRoutine = saveRoutineDTO(plant, attelier, tag, timeSchedule, frecuency, manteinance, action, description, active);
+            const newRoutineSchedule = checkDueDate(routineId, new Date(startDay), checkDays, new Date(otherCheckDay), frecuency, filePath, checkNicknameDot(nickname), ot);
+            await dao.updateRoutine(routineId, newRoutine);
+            !complete && await dao.updateRoutineSchedule(routineScheduleId, newRoutineSchedule);
+            return true;
+        } catch (err) {
+            loggerError.error(err);
+            return false;
+        } finally {
+        }
+    }
 
     getQtyOverdueRoutines = async () => {
         try {
@@ -274,7 +327,6 @@ export class ApiRoutine {
         } finally {
         }
     }
-
 
     updateRoutineScheduleByCompleteTask = async (data) => {
         try {

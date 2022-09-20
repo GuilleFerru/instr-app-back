@@ -722,6 +722,16 @@ export class DBMongoDao {
         }
     }
 
+    getLastRoutineScheduleByRoutineId = async (id) => {
+        try {
+            const routineResp = await routineScheduleModel.find({ $and: [{ routine: id }, { complete: false }] }, { __v: 0, createdAt: 0, updatedAt: 0 }).sort({ _id: -1 }).limit(1);
+            return routineResp;
+        } catch (error) {
+            console.log(error)
+            loggerError.error(error)
+        }
+    }
+
     getRoutineScheduleBetweenDates = async (startDate, endDate) => {
         try {
             const routineResp = await routineScheduleModel.find({ startDate: { $gte: startDate }, endDate: { $lte: endDate } }, { __v: 0, createdAt: 0, updatedAt: 0 });
@@ -741,6 +751,14 @@ export class DBMongoDao {
         }
     }
 
+    getRoutinesTags = async () => {
+        try {
+            const routineResp = await routineModel.find({}, { tag: 1 });
+            return routineResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
 
 
     createRoutineSchedule = async (routineSchedule) => {
@@ -780,6 +798,25 @@ export class DBMongoDao {
             loggerError.error(error)
         }
     }
+
+    updateRoutine = async (id, routine) => {
+        try {
+            const routineResp = await routineModel.updateOne({ _id: id }, { $set: routine });
+            return routineResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    updateRoutineSchedule = async (routineScheduleId, routineSchedule) => {
+        try {
+            const routineResp = await routineScheduleModel.updateOne({ _id: routineScheduleId }, { $set: routineSchedule });
+            return routineResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
 
     updateRoutineScheduleOT = async (id, ot, filePath) => {
         try {

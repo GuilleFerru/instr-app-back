@@ -1,6 +1,6 @@
 import { checkWeekDay, formatDate, dateInLocalDate } from '../../utils/formatDate.js';
 
-export const saveRoutineDTO = (plant, attelier, tag, timeSchedule, frecuency, manteinance, action, description) => ({
+export const saveRoutineDTO = (plant, attelier, tag, timeSchedule, frecuency, manteinance, action, description, active = true) => ({
     plant: plant,
     attelier: attelier,
     tag: tag,
@@ -9,7 +9,8 @@ export const saveRoutineDTO = (plant, attelier, tag, timeSchedule, frecuency, ma
     manteinance: manteinance,
     action: action,
     description: description,
-    sector: 'Instrumentos-Sistemas'
+    sector: 'Instrumentos-Sistemas',
+    active: active
 });
 
 export const routineScheduleDTO = (routine, startDate, ot, dueDate, checkDays, otherCheckDay, realCheckedDay, isExpired, complete, filePath, nickname) => ({

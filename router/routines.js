@@ -13,7 +13,9 @@ export class RouterRoutine {
         router.post('/create', userExtractor, this.controllerRoutine.createRoutine);
         router.get('/get', userExtractor, this.controllerRoutine.getRoutine);
         router.get('/getAllRoutines/:date', userExtractor, this.controllerRoutine.getAllRoutine);
-        router.get('/getDataForRoutineCreate', userExtractor, this.controllerRoutine.getDataForRoutineCreate);
+        router.get('/getDataForRoutineCrud', userExtractor, this.controllerRoutine.getDataForRoutineCrud);
+        router.get('/getDataForRoutineEdit/routineId', userExtractor, this.controllerRoutine.getDataForRoutineEdit);
+        router.put('/updateRoutine', userExtractor, this.controllerRoutine.updateRoutine);
         router.put('/update', userExtractor, this.controllerRoutine.updateRoutineScheduleByCompleteTask);
         router.put('/updateOt', userExtractor, this.controllerRoutine.updateRoutineScheduleOT);
         router.get('/qtyOverdueRoutines', this.controllerRoutine.getQtyOverdueRoutines);

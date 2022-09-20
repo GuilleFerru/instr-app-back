@@ -42,15 +42,40 @@ export class ControllerRoutine {
         }
     }
 
-    getDataForRoutineCreate = async (_req, res) => {
+    getDataForRoutineCrud = async (_req, res) => {
         try {
-            const data = await this.apiRoutine.getDataForRoutineCreate();
+            const data = await this.apiRoutine.getDataForRoutineCrud();
             return res.status(200).json(data);
         } catch (err) {
             loggerError.error(err);
             return res.status(500).json(err);
         }
     }
+
+    getDataForRoutineEdit = async (req, res) => {
+        try {
+
+            const dataToJSON = JSON.parse(req.query.params);
+            const routineId = dataToJSON.routineId;
+            const data = await this.apiRoutine.getDataForRoutineEdit(routineId);
+            return res.status(200).json(data);
+        } catch (err) {
+            loggerError.error(err);
+            return res.status(500).json(err);
+        }
+    }
+
+    updateRoutine = async (req, res) => {
+        try {
+            const routine = req.body;
+            const routineResp = await this.apiRoutine.updateRoutine(routine);
+            return res.status(200).json(routineResp);
+        } catch (err) {
+            loggerError.error(err);
+            return res.status(500).json(false);
+        }
+    }
+
 
 
     updateRoutineScheduleByCompleteTask = async (req, res) => {
