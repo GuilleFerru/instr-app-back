@@ -1,25 +1,5 @@
-
 import jwt from "jsonwebtoken";
 import config from "../config.js";
-// import { app } from "../server.js";
-// import passport from 'passport';
-// import cookieParser from "cookie-parser";
-// import session from "express-session";
-
-
-// app.use(cookieParser());
-
-// app.use(session({
-//     secret: config.SECRET_KEY,
-//     resave: false,
-//     saveUninitialized: false,
-//     cookie: {
-//         maxAge: 1000 * 60 * 60 * 24 * 7
-//     }
-// }));
-
-
-// app.use(passport.session());
 
 export class ControllerLogin {
 
@@ -39,18 +19,16 @@ export class ControllerLogin {
                 token
             }
             if (user) {
-                // res.cookie('token', token)
                 res.cookie('token', token).status(200).json(user);
             } else {
                 return res.status(500).json(user);
             }
         } catch (err) {
-            console.log(err);
             return res.status(500).json(err);
         }
     }
 
-    failLogin = (req, res) => {
+    failLogin = (_req, res) => {
         return res.status(401).json({ message: "Usuario o contraseña incorrectos" });
     }
 

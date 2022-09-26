@@ -1061,7 +1061,7 @@ export class DBMongoDao {
 
     getHolidays = async () => {
         try {
-            const holidaysResp = await holidayModel.find({}, { __v: 0, createdAt: 0, updatedAt: 0 });
+            const holidaysResp = await holidayModel.find({}, { __v: 0, createdAt: 0, updatedAt: 0 }).sort({ startDate: 1 });
             return holidaysResp;
         }
         catch (error) {
