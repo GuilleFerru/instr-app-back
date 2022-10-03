@@ -4,6 +4,7 @@ import { ApiRoutine } from './api/routines.js';
 import { ApiPlantShutdown } from './api/plantShutdowns.js';
 import { ApiPlantShutdownWork } from './api/plantShutdownWorks.js';
 import { ApiHoliday } from './api/holidays.js';
+import { ApiStoreClaim } from './api/storeClaims.js'
 import { formatDate } from './utils/formatDate.js';
 import { loggerInfo } from "./utils/logger.js";
 
@@ -13,6 +14,7 @@ const apiRoutine = new ApiRoutine();
 const apiPlantShutdown = new ApiPlantShutdown();
 const apiPlantShutdownWork = new ApiPlantShutdownWork();
 const apiHoliday = new ApiHoliday();
+const apiStoreClaim = new ApiStoreClaim();
 
 
 export default (io) => {
@@ -92,6 +94,14 @@ export default (io) => {
             socket.to(id).emit("holiday_leave_room", id);
             // loggerInfo.info(`Socket ${socket.id} left Schedules room ${id}`);
         })
+
+        // STORES
+        socket.on("get_store_claims", () => apiStoreClaim.handleSocket({ socket, action: "get_store_claims" }));
+        //socket.on("get_store_claim", (storeClaimData) => apiStoreClaim.handleSocket({ socket, action: "get_store_claim", storeClaimData }));
+        socket.on("create_store_claim", (storeClaimData) => apiStoreClaim.handleSocket({ socket, action: "create_store_claim", storeClaimData, io }));
+        socket.on("update_store_claim", (storeClaimData) => apiStoreClaim.handleSocket({ socket, action: "update_store_claim", storeClaimData, io }));
+        socket.on("bulk_update_store_claims", (storeClaimData) => apiStoreClaim.handleSocket({ socket, action: "bulk_update_store_claims", storeClaimData, io }));
+        socket.on("delete_store_claim", (storeClaimData) => apiStoreClaim.handleSocket({ socket, action: "delete_store_claim", storeClaimData, io }));
 
         socket.on("disconnect", () => {
             loggerInfo.info(`Socket ${socket.id} disconnected`);

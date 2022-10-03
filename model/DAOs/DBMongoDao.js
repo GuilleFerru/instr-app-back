@@ -29,6 +29,7 @@ import { plantShutdownWorksColumnsSchemaModel } from '../models/PlantShutdownWor
 import { plantShutdowndailyWorksColumnsSchemaModel } from '../models/PlantShutdownDailyWorksColumns.js'
 import { holidayScoreColumnsModel } from '../models/HolidayScoreColumns.js';
 import { holidayModel } from '../models/Holidays.js';
+import { storeClaimModel } from "../models/StoreClaim.js";
 
 //const MONGO_URL = config.MONGO_URL_DEV;
 const MONGO_URL = config.MONGO_URL;
@@ -1137,6 +1138,62 @@ export class DBMongoDao {
             loggerError.error(error)
         }
     }
+
+    /*                                                          */
+
+    /*                        STORE                       */
+
+    getStoreClaims = async () => {
+        try {
+            const storeClaimsResp = await storeClaimModel.find({}, { __v: 0, createdAt: 0, updatedAt: 0 }).sort({ nonstockdate: -1 });
+            return storeClaimsResp;
+        }
+        catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    createStoreClaim = async (storeClaim) => {
+        try {
+            await storeClaimModel.insertMany(storeClaim);
+            return true;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    updateStoreClaim = async (id, storeClaim) => {
+        try {
+            await storeClaimModel.updateOne({ "_id": id }, {
+                $set: {
+                    "item": storeClaim.item,
+                    "description": storeClaim.description,
+                    "nonstockdate": storeClaim.nonstockdate,
+                    "claimdate": storeClaim.claimdate,
+                    "claimed": storeClaim.claimed,
+                    "claimedBy": storeClaim.claimedBy,
+                    "claimedQty": storeClaim.claimedQty,
+                    //"addedToClaim": storeClaim.addedToClaim,
+                    "sector": storeClaim.sector
+                }
+            });
+            return true;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    deleteStoreClaim = async (id) => {
+        try {
+            await storeClaimModel.deleteOne({ "_id": id });
+            return true;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+
+
 
 
 
