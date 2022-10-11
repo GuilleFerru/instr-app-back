@@ -32,8 +32,8 @@ import { holidayModel } from '../models/Holidays.js';
 import { storeClaimModel } from "../models/StoreClaim.js";
 import { storeItemModel } from "../models/StoreItems.js";
 
-//const MONGO_URL = config.MONGO_URL_DEV;
-const MONGO_URL = config.MONGO_URL;
+const MONGO_URL = config.MONGO_URL_DEV;
+//const MONGO_URL = config.MONGO_URL;
 
 export class DBMongoDao {
 

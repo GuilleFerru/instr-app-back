@@ -2,7 +2,7 @@ import log4js from 'log4js'
 
 log4js.configure({
     appenders: {
-        miLoggerConsole: { type: 'file', filename: './utils/logs/info.log' },
+        miLoggerConsole: { type: 'console', filename: './utils/logs/info.log' },
         miLoggerFileWarn: { type: 'file', filename: './utils/logs/warn.log' },
         miLoggerFileError: { type: 'file', filename: './utils/logs/error.log' }
     },
