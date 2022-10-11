@@ -32,6 +32,8 @@ import { RouterDashboard } from "../router/dashboard.js";
 const routerDashboard = new RouterDashboard();
 import { RouterHoliday } from "../router/holidays.js";
 const routerHoliday = new RouterHoliday();
+import { RouterStore } from "../router/stores.js";
+const routerStore = new RouterStore();
 
 export {
     routerShift,
@@ -50,5 +52,6 @@ export {
     routerLogin,
     routerPlantShutdown,
     routerDashboard,
-    routerHoliday
+    routerHoliday,
+    routerStore
 }

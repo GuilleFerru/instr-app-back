@@ -71,10 +71,13 @@ app.use(helmet());
 const corsOptions = {
   origin: "http://localhost:8080/",
   optionsSuccessStatus: 200,
-  method: "GET, PUT",
+  method: "GET, PUT, POST, DELETE",
 };
 app.use(cors());
 app.options('*', cors());
+
+app.use(express.json({limit: '25mb'}));
+app.use(express.urlencoded({ limit: "100mb", extended: true, parameterLimit: 50000 }))
 
 // endpoints
 app.use("/api/shift", router.routerShift.start());
@@ -94,6 +97,7 @@ app.use("/api", router.routerLogin.start());
 app.use("/api/plantShutdown", router.routerPlantShutdown.start());
 app.use("/api/dashboard", router.routerDashboard.start());
 app.use("/api/holidays", router.routerHoliday.start());
+app.use("/api/store", router.routerStore.start());
 
 
 app.get("/", (_req, res) => {

@@ -30,6 +30,7 @@ import { plantShutdowndailyWorksColumnsSchemaModel } from '../models/PlantShutdo
 import { holidayScoreColumnsModel } from '../models/HolidayScoreColumns.js';
 import { holidayModel } from '../models/Holidays.js';
 import { storeClaimModel } from "../models/StoreClaim.js";
+import { storeItemModel } from "../models/StoreItems.js";
 
 //const MONGO_URL = config.MONGO_URL_DEV;
 const MONGO_URL = config.MONGO_URL;
@@ -1191,6 +1192,17 @@ export class DBMongoDao {
             loggerError.error(error)
         }
     }
+
+    uploadStoreItems = async (storeItems) => {
+        try {
+            await storeItemModel.deleteMany({});
+            await storeItemModel.insertMany(storeItems);
+            return true;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
 
 
 
