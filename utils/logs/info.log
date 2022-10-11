@@ -1,0 +1,3 @@
+[2022-10-10T21:30:58.066] [INFO] info - Contectando a la Base de datos...
+[2022-10-10T21:30:58.106] [INFO] info - Servidor listo en el puerto 8080
+[2022-10-10T21:30:59.372] [INFO] info - Base de datos conectada instrumentosdb-shard-00-00.hwfi6.mongodb.net

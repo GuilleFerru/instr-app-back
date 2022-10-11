@@ -64,8 +64,10 @@ export const dao = daoInstance.get("mongo");
 //middleware
 app.use(passport.initialize());
 app.use(compression());
-app.use(json());
-app.use(express.urlencoded({ extended: true }));
+//app.use(json());
+app.use(json({limit: '50mb'}));
+//app.use(express.urlencoded({limit: '50mb'}));
+app.use(express.urlencoded({limit: "50mb", extended: true }));
 app.use(helmet());
 // app.use(morgan("dev"));
 const corsOptions = {
@@ -76,8 +78,8 @@ const corsOptions = {
 app.use(cors());
 app.options('*', cors());
 
-app.use(express.json({limit: '25mb'}));
-app.use(express.urlencoded({ limit: "100mb", extended: true, parameterLimit: 50000 }))
+//app.use(express.json({limit: '25mb'}));
+//app.use(express.urlencoded({ limit: "100mb", extended: true, parameterLimit: 50000 }))
 
 // endpoints
 app.use("/api/shift", router.routerShift.start());
