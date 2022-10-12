@@ -11,6 +11,7 @@ export class RouterStore {
 
     start() {
         router.post('/uploadStoreItems', userExtractor, this.controllerStore.uploadStoreItems);
+        router.get('/searchBy/:value', userExtractor, this.controllerStore.getStoreItemBy);
         return router;
     }
 

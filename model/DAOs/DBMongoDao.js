@@ -1203,6 +1203,21 @@ export class DBMongoDao {
         }
     }
 
+    getStoreItemBy = async (value) => {
+        try {
+            const itemsResp = await storeItemModel.find({
+                $or: [
+                    { "item": { $regex: value, $options: 'i' } },
+                    { "smallDescription": { $regex: value, $options: 'i' } },
+                    { "bigDescription": { $regex: value, $options: 'i' } },
+                    // { "storeUbication": { $regex: value, $options: 'i' } }
+                ]
+            }, { __v: 0, createdAt: 0, updatedAt: 0 }).sort({ smallDescription: 1 });
+            return itemsResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
 
 
 

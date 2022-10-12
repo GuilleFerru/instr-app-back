@@ -16,7 +16,10 @@ const StoreItemsSchema = new mongoose.Schema({
     },
     bigDescription: {
         type: String,
-    }
+    },
+    quantity: {
+        type: Number,
+    },
 },
     { timestamps: true }
 );

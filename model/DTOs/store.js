@@ -12,6 +12,16 @@ export const changeIDForViewDTO = (data) => ({
     //addedToClaim: data.addedToClaim,
 });
 
+export const changeIDForViewItemsDTO = (data) => ({
+    id: data._id,
+    item: data.item,
+    smallDescription: data.smallDescription,
+    bigDescription: data.bigDescription,
+    unit: data.unit,
+    storeUbication: data.storeUbication,
+    quantity: data.quantity,
+});
+
 export const saveStoreClaimDTO = (data) => ({
     item: data.item,
     description: data.description,

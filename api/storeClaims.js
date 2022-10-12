@@ -1,5 +1,4 @@
 import { dao } from '../server.js';
-
 import { saveStoreClaimDTO, changeIDForViewDTO } from '../model/DTOs/store.js';
 import { loggerError } from '../utils/logger.js';
 
