@@ -13,12 +13,12 @@ const UserSchema = new mongoose.Schema({
         require: true,
         min: 4
     },
-    name:{
+    name: {
         type: String,
         require: true,
         min: 3,
     },
-    lastname:{
+    lastname: {
         type: String,
         require: true,
         min: 3,
@@ -35,7 +35,12 @@ const UserSchema = new mongoose.Schema({
     isAdmin: {
         type: Boolean,
         default: false
-    }
+    },
+    userType: {
+        type: String,
+        require: true,
+        default: "user"
+    },
 },
     { timestamps: true }
 );

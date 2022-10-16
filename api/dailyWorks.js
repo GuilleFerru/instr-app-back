@@ -84,7 +84,6 @@ export class ApiDailyWork {
                 data && socket.emit('get_daily_works_for_plant_shutdown', data);
             }
         } catch (error) {
-            console.log(error);
             loggerError.error(error);
         }
     }
@@ -137,7 +136,6 @@ export class ApiDailyWork {
                 return worksResp(dayWorks, ...columns);
             }
         } catch (err) {
-            console.log(err)
             loggerError.error(err);
         } finally {
         }
@@ -157,7 +155,6 @@ export class ApiDailyWork {
             })
             return worksResp(sortedDailyWorkRoutineResp, ...columns);
         } catch (err) {
-            console.log(err)
             loggerError.error(err);
         } finally {
         }
@@ -300,14 +297,18 @@ export class ApiDailyWork {
                 } else {
                     dailyWorkToUpdate = completedDailyWorkDTO(dayWork, today);
                 }
-
+                
+                // si modifico la fecha de una tarea, me fijo que en la nueva fecha haya rutinas, sino las creo
+                if (dayWork.beginDate !== formatDate(dayWork.beginDateTime)) {
+                    await this.getDailyWork(parseStringToDate(dailyWorkToUpdate.beginDate));
+                }
                 //me fijo si actualiza usando la fecha que viene desde el calendario o si actualiza usando la fecha que se obtiene de la barra de busqueda
-                const dailyWorkBeginDate = dailyWorkToUpdate.beginDate;
+                const dailyWorkBeginDate = dayWork.beginDate;
                 const resultado = dateLocal === dailyWorkBeginDate ? await dao.updateDailyWork(dateLocal, dailyWorkToUpdate) : await dao.updateDailyWork(dailyWorkBeginDate, dailyWorkToUpdate);
+
                 return resultado;
             }
         } catch (err) {
-            console.log(err)
             loggerError.error(err);
         } finally {
         }
@@ -344,7 +345,6 @@ export class ApiDailyWork {
             resultado && await apiRoutine.handleSocket({ socket, action: "get_qtyOverDueRoutines", io });
             return resultado;
         } catch (err) {
-            console.log(err)
             loggerError.error(err);
         } finally {
             loggerInfo.info('deleteDailyWork');

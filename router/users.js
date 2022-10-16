@@ -31,6 +31,7 @@ passport.use(signUpStrategyName, new LocalStrategy(
             newUser.legajo = req.body.legajo;
             newUser.sector = req.body.sector;
             newUser.isAdmin = req.body.isAdmin;
+            newUser.userType = req.body.userType;
             
             newUser.save((err) => {
                 if (err) {

@@ -14,7 +14,7 @@ const createDailyWorkColumns = (plantsForColumnTable, atteliersForColumnTable, t
             title: 'Fecha de inicio',
             hidden: true,
             type: 'string',
-            width: "10%"
+            width: "15%"
         },
         {
             field: 'plant',
@@ -70,7 +70,7 @@ const createDailyWorkColumns = (plantsForColumnTable, atteliersForColumnTable, t
             title: 'Descripción',
             multiline: true,
             align: "justify",
-            width: '30%'
+            width: '25%'
         },
         {
             field: 'complete',

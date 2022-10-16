@@ -12,6 +12,7 @@ export class ControllerLogin {
             const token = jwt.sign(userForToken, config.SECRET_KEY, { expiresIn: '7d' });
             const user = {
                 username: req.user.username,
+                userType: req.user.userType,
                 name: req.user.name,
                 lastname: req.user.lastname,
                 legajo: req.user.legajo,
