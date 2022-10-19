@@ -1,25 +1,33 @@
 import mongoose from "mongoose";
 
 const StoreItemsSchema = new mongoose.Schema({
-    item: {
-        type: String,
-        require: true,
+    date: {
+        type: Date,
+        required: true,
     },
-    unit: {
-        type: String,
-    },
-    smallDescription: {
-        type: String,
-    },
-    storeUbication: {
-        type: String,
-    },
-    bigDescription: {
-        type: String,
-    },
-    quantity: {
-        type: Number,
-    },
+    items: [
+        {
+            item: {
+                type: String,
+                require: true,
+            },
+            unit: {
+                type: String,
+            },
+            smallDescription: {
+                type: String,
+            },
+            storeUbication: {
+                type: String,
+            },
+            bigDescription: {
+                type: String,
+            },
+            quantity: {
+                type: Number,
+            },
+        }
+    ]
 },
     { timestamps: true }
 );

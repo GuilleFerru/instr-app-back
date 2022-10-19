@@ -572,9 +572,6 @@ export class DBMongoDao {
         }
     }
 
-
-
-
     updateDailyWork = async (date, dailyWork) => {
         try {
             await dailyWorkModel.updateOne({ $and: [{ "beginDate": date }, { "_id": dailyWork._id }] }, {
@@ -1203,16 +1200,19 @@ export class DBMongoDao {
         }
     }
 
-    getStoreItemBy = async (value) => {
+    getStoreItemBy = async () => {
         try {
-            const itemsResp = await storeItemModel.find({
-                $or: [
-                    { "item": { $regex: value, $options: 'i' } },
-                    { "smallDescription": { $regex: value, $options: 'i' } },
-                    { "bigDescription": { $regex: value, $options: 'i' } },
-                    // { "storeUbication": { $regex: value, $options: 'i' } }
-                ]
-            }, { __v: 0, createdAt: 0, updatedAt: 0 }).sort({ smallDescription: 1 });
+            // const itemsResp = await storeItemModel.find({
+            //     $or:
+            //         [
+            //             { "items.item": { $regex: value, $options: 'i' } },
+            //             { "items.smallDescription": { $regex: value, $options: 'i' } },
+            //             { "items.bigDescription": { $regex: value, $options: 'i' } },
+            //             // { "storeUbication": { $regex: value, $options: 'i' } }
+            //         ]
+
+            // }, { __v: 0, createdAt: 0, updatedAt: 0 }).sort({ smallDescription: 1 });
+            const itemsResp = await storeItemModel.findOne({}, { __v: 0, createdAt: 0, updatedAt: 0 });
             return itemsResp;
         } catch (error) {
             loggerError.error(error)
