@@ -1212,7 +1212,7 @@ export class DBMongoDao {
             //         ]
 
             // }, { __v: 0, createdAt: 0, updatedAt: 0 }).sort({ smallDescription: 1 });
-            const itemsResp = await storeItemModel.findOne({}, { __v: 0, createdAt: 0, updatedAt: 0 });
+            const itemsResp = await storeItemModel.findOne({}, { _id: 0, __v: 0, createdAt: 0, updatedAt: 0 });
             return itemsResp;
         } catch (error) {
             loggerError.error(error)

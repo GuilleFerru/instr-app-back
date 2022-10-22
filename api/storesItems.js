@@ -1,5 +1,5 @@
 import { dao } from '../server.js';
-import { changeIDForViewItemsDTO } from '../model/DTOs/store.js';
+// import { changeIDForViewItemsDTO } from '../model/DTOs/store.js';
 import { loggerError } from '../utils/logger.js'
 
 export class ApiStoreItem {
@@ -20,9 +20,9 @@ export class ApiStoreItem {
             const items = resp ? resp.items : [];
             const date = resp ? resp.date : new Date();
             const regex = new RegExp(value, 'i');
-            const findItems = items.filter(item => regex.test(item.item) || regex.test(item.smallDescription) || regex.test(item.bigDescription));
-            const itemsResp = findItems.map(item => changeIDForViewItemsDTO(item));
-            return { items: itemsResp, date: date };
+            const findedItems = items.filter(item => regex.test(item.item) || regex.test(item.smallDescription) || regex.test(item.bigDescription));
+            //const itemsResp = findItems.map(item => changeIDForViewItemsDTO(item));
+            return { items: findedItems, date: date };
         } catch (err) {
             console.error(err);
             loggerError.error(err);
