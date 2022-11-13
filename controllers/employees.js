@@ -17,6 +17,17 @@ export class ControllerEmployee {
         }
     }
 
+    getEmployeesData = async (_req, res) => {
+        try {
+            const empResp = await this.apiEmployee.getEmployeesData();
+            return res.status(200).json(empResp);
+        } catch (err) {
+            console.log(err);
+            return res.status(500).json(err);
+        }
+    }
+
+
     getForScheduleEmployees = async (_req, res) => {
         try {
             const empResp = await this.apiEmployee.getForScheduleEmployees();

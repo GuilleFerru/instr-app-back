@@ -50,6 +50,9 @@ const EmployeesSchema = new mongoose.Schema({
     holidayDays: {
         type: Number,
         require: true,
+    },
+    hireDate : {
+        type: Date,
     }
 
 },

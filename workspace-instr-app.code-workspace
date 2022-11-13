@@ -6,6 +6,9 @@
 		},
 		{
 			"path": "../oct2022"
+		},
+		{
+			"path": "../react examples/youtube-react"
 		}
 	],
 	"settings": {

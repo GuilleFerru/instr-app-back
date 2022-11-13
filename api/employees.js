@@ -1,8 +1,11 @@
 import { dao } from '../server.js';
-import { getForScheduleEmployeesDTO } from '../model/DTOs/employee.js';
-
-import { loggerError, loggerInfo } from '../utils/logger.js'
+import { getForScheduleEmployeesDTO, employeesDTO } from '../model/DTOs/employee.js';
+import { timeScheduleForScheduleDTO } from '../model/DTOs/timeSchedule.js';
 import { reduceForLookUp } from '../utils/reduceForLookup.js';
+import { ApiTimeSchedule } from './timeSchedules.js';
+import { loggerError, loggerInfo } from '../utils/logger.js'
+
+const apiTimeSchedule = new ApiTimeSchedule();
 
 export class ApiEmployee {
 
@@ -25,6 +28,49 @@ export class ApiEmployee {
             loggerError.error(err);
         } finally {
             loggerInfo.info('getEmployees');
+        }
+    }
+
+    getEmployeesData = async () => {
+        try {
+            const empResp = await dao.getEmployees();
+            const timeSchedule = await apiTimeSchedule.getTimeSchedule();
+            const schedule = timeScheduleForScheduleDTO(timeSchedule);
+            const employees = employeesDTO(empResp, schedule);
+
+            const shiftOptions = [
+                {
+                    id: 1,
+                    name: 'Turno rotativo 1',
+                },
+                {
+                    id: 2,
+                    name: 'Turno rotativo 2',
+                },
+                {
+                    id: 3,
+                    name: 'Turno rotativo 3',
+                },
+                {
+                    id: 4,
+                    name: 'Turno rotativo 4',
+                },
+                {
+                    id: 5,
+                    name: 'Diurno de 08:00 a 17:00 hs',
+                },
+                {
+                    id: 6,
+                    name: 'Diurno de 07:00 a 16:00 hs',
+                },
+            ]
+
+
+            return { employees, shiftOptions };
+        } catch (err) {
+            loggerError.error(err);
+        } finally {
+            loggerInfo.info('getEmployeesData');
         }
     }
 

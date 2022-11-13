@@ -10,6 +10,7 @@ export class RouterEmployee {
 
     start() {
         router.post('/create', this.controllerEmployee.createEmployee);
+        router.get('/get', this.controllerEmployee.getEmployeesData);
         router.get('/getForSchedule', this.controllerEmployee.getForScheduleEmployees);
         return router;
     }
