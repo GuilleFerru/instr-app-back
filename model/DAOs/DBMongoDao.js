@@ -32,8 +32,8 @@ import { holidayModel } from '../models/Holidays.js';
 import { storeClaimModel } from "../models/StoreClaim.js";
 import { storeItemModel } from "../models/StoreItems.js";
 
-//const MONGO_URL = config.MONGO_URL_DEV;
-const MONGO_URL = config.MONGO_URL;
+const MONGO_URL = config.MONGO_URL_DEV;
+//const MONGO_URL = config.MONGO_URL;
 
 export class DBMongoDao {
 
@@ -121,8 +121,26 @@ export class DBMongoDao {
         }
     }
 
-
-
+    updateEmployee = async (employee) => {
+        try {
+            const empResp = await empModel.updateOne({ legajo: employee.legajo },
+                {
+                    $set: {
+                        nombre: employee.nombre,
+                        apellido: employee.apellido,
+                        puesto: employee.puesto,
+                        categoria: employee.categoria,
+                        shiftType: employee.shift,
+                        shift: employee.turno,
+                        holidayDays: employee.holidayDays,
+                        hireDate: new Date(employee.hireDate),
+                    }
+                });
+            return empResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
 
     /*          */
 

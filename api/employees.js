@@ -1,11 +1,14 @@
 import { dao } from '../server.js';
-import { getForScheduleEmployeesDTO, employeesDTO } from '../model/DTOs/employee.js';
+import { getForScheduleEmployeesDTO, employeesDTO, updateEmployeeDTO } from '../model/DTOs/employee.js';
 import { timeScheduleForScheduleDTO } from '../model/DTOs/timeSchedule.js';
 import { reduceForLookUp } from '../utils/reduceForLookup.js';
+import { dateInLocalDate } from '../utils/formatDate.js';
 import { ApiTimeSchedule } from './timeSchedules.js';
 import { loggerError, loggerInfo } from '../utils/logger.js'
 
 const apiTimeSchedule = new ApiTimeSchedule();
+
+
 
 export class ApiEmployee {
 
@@ -37,7 +40,6 @@ export class ApiEmployee {
             const timeSchedule = await apiTimeSchedule.getTimeSchedule();
             const schedule = timeScheduleForScheduleDTO(timeSchedule);
             const employees = employeesDTO(empResp, schedule);
-
             const shiftOptions = [
                 {
                     id: 1,
@@ -64,8 +66,6 @@ export class ApiEmployee {
                     name: 'Diurno de 07:00 a 16:00 hs',
                 },
             ]
-
-
             return { employees, shiftOptions };
         } catch (err) {
             loggerError.error(err);
@@ -83,7 +83,6 @@ export class ApiEmployee {
         } finally {
         }
     }
-
 
     getForScheduleEmployees = async () => {
         try {
@@ -123,6 +122,25 @@ export class ApiEmployee {
             loggerError.error(err);
         } finally {
             loggerInfo.info('getEmployeesForColumnTable');
+        }
+    }
+
+    updateEmployee = async (employee) => {
+        try {
+            let date = dateInLocalDate(employee.hireDate);
+            date = date.setDate(date.getDate() + 1);
+            const newEmployee = updateEmployeeDTO(employee, date);
+            const empUpdate = await dao.updateEmployee(newEmployee);
+            if (empUpdate !== undefined) {
+                const empResp = await this.getEmployeesData();
+                return empResp;
+            } else {
+                return undefined;
+            }
+        } catch (err) {
+            loggerError.error(err);
+        } finally {
+            loggerInfo.info('updateEmployee');
         }
     }
 }

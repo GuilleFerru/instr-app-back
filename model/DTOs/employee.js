@@ -26,5 +26,9 @@ export const employeesDTO = (employees, schedules) => employees.map(employee => 
     schedule: schedules.find(schedule => schedule.id === employee.schedule).name,
     holidayDays: employee.holidayDays,
     hireDate: new Date(employee.hireDate).toLocaleDateString(),
-
 }));
+
+export const updateEmployeeDTO = (employee, date) => ({
+    ...employee,
+    hireDate: date
+});
