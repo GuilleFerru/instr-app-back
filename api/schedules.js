@@ -33,7 +33,7 @@ const checkChangesRotativeShifts = (element, employees) => {
     }
 }
 
-const getDayShift = async (date) => {
+export const getDayShift = async (date) => {
     const apiShift = new ApiShift();
     const dayShiftArr = await apiShift.getShift(date);
     const dayShift = dayShiftArr[0];

@@ -28,7 +28,15 @@ export const employeesDTO = (employees, schedules) => employees.map(employee => 
     hireDate: new Date(employee.hireDate).toLocaleDateString("es-AR"),
 }));
 
-export const updateEmployeeDTO = (employee, date) => ({
-    ...employee,
-    hireDate: date
+export const updateEmployeeDTO = (employee, employeeDb) => ({
+    legajo: employee.legajo,
+    nombre: employee.nombre,
+    apellido: employee.apellido,
+    puesto: employee.puesto,
+    categoria: employee.categoria,
+    shiftType: employee.shift,
+    shift: employee.turno,
+    schedule: employee.shift === 'dailyShift' ? employee.turno : employeeDb[0].schedule,
+    holidayDays: employee.holidayDays,
+    hireDate: new Date(employee.hireDate),
 });

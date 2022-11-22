@@ -130,10 +130,11 @@ export class DBMongoDao {
                         apellido: employee.apellido,
                         puesto: employee.puesto,
                         categoria: employee.categoria,
-                        shiftType: employee.shift,
-                        shift: employee.turno,
+                        shiftType: employee.shiftType,
+                        shift: employee.shift,
+                        schedule: employee.schedule,
                         holidayDays: employee.holidayDays,
-                        hireDate: new Date(employee.hireDate),
+                        hireDate: employee.hireDate,
                     }
                 });
             return empResp;
@@ -195,11 +196,21 @@ export class DBMongoDao {
         }
     }
 
-    updateSchedule = async (date, schedule) => {
+    getSchedulesFromToday = async (today) => {
         try {
-            const scheduleResp = await scheduleModel.updateMany({ date: date }, { $set: { schedule } });
+            const scheduleResp = await scheduleModel.find({ dateTime: { $gte: today } }, { __v: 0, createdAt: 0, updatedAt: 0 }).sort({ dateTime: 1 });
             return scheduleResp;
         } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    updateSchedule = async (date, schedule) => {
+        try {
+            const scheduleResp = await scheduleModel.updateOne({ date: date }, { $set: { schedule } });
+            return scheduleResp;
+        } catch (error) {
+            console.error(error)
             loggerError.error(error)
         }
     }
