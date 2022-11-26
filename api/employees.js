@@ -1,14 +1,16 @@
 import { dao } from '../server.js';
 import { getForScheduleEmployeesDTO, employeesDTO, updateEmployeeDTO } from '../model/DTOs/employee.js';
+import {scheduleUpdateDTO} from '../model/DTOs/scheduleUpdate.js';
 import { dateInLocalDate } from '../utils/formatDate.js';
 import { timeScheduleForScheduleDTO } from '../model/DTOs/timeSchedule.js';
 import { reduceForLookUp } from '../utils/reduceForLookup.js';
 import { ApiTimeSchedule } from './timeSchedules.js';
+import { ApiScheduleUpdate } from './scheduleUpdates.js'
 import { getDayShift } from './schedules.js';
 import { loggerError, loggerInfo } from '../utils/logger.js'
 
 const apiTimeSchedule = new ApiTimeSchedule();
-
+const apiScheduleUpdate = new ApiScheduleUpdate();
 
 
 export class ApiEmployee {
@@ -134,9 +136,7 @@ export class ApiEmployee {
 
             if (empUpdate !== undefined) {
                 const empResp = await this.getEmployeesData();
-
                 if (newEmployee.shift !== employeeDb[0].shift || newEmployee.shiftType !== employeeDb[0].shiftType) {
-
                     const timeSchedule = await dao.getTimeSchedule();
                     const workHours = await dao.getWorkHours();
                     const shiftWorkHours = workHours.find(workHour => workHour.schedule === 'T').hour;
@@ -162,6 +162,9 @@ export class ApiEmployee {
                         });
                         await dao.updateSchedule(schedule.date, newSchedule);
                     });
+                    
+                    await apiScheduleUpdate.createScheduleUpdate(scheduleUpdateDTO(newEmployee,employeeDb[0]));
+
                 }
                 return empResp;
             } else {

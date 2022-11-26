@@ -17,14 +17,16 @@ const SchedulesUpdatesSchema = new mongoose.Schema({
         type: Array,
         require: true,
     },
+    reason: {
+        type: String,
+        default: 'no especifcado',
+    },
     sector: {
         type: String,
         require: true,
     }
-
-
 },
     { timestamps: true }
 );
 
-export const scheduleUpdatesModel = mongoose.model("schedulesupdates", SchedulesUpdatesSchema);
+export const scheduleUpdateModel = mongoose.model("schedulesupdates", SchedulesUpdatesSchema);
