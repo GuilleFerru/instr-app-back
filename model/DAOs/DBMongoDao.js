@@ -230,7 +230,6 @@ export class DBMongoDao {
             const scheduleResp = await scheduleModel.deleteMany({ date: date });
             return scheduleResp && true;
         } catch (error) {
-            console.log(error)
             loggerError.error(error)
         }
     }
@@ -308,7 +307,6 @@ export class DBMongoDao {
     //         const scheduleResp = await scheduleModel.find({ date: date, "schedule.timeSchedule": 5 }, { __v: 0, createdAt: 0, updatedAt: 0 });
     //         return scheduleResp;
     //     } catch (error) {
-    //         console.log(err);
     //         loggerError.error(error)
     //     }
     // }
@@ -379,7 +377,6 @@ export class DBMongoDao {
             ]);
             return attelierResp;
         } catch (error) {
-            console.log(error)
             loggerError.error(error)
         }
     }
@@ -546,7 +543,6 @@ export class DBMongoDao {
             const dailyWorkResp = await dailyWorkModel.find({ ...query, $and: andQuery }, { __v: 0, createdAt: 0, updatedAt: 0 }).sort({ beginDateTime: -1 });
             return dailyWorkResp;
         } catch (error) {
-            console.log(error)
             loggerError.error(error)
         }
     }
@@ -556,7 +552,6 @@ export class DBMongoDao {
             const dailyWorkResp = await dailyWorkModel.find({ $and: [{ complete: 'PP' }, { "plantShutdownWorkId": { $eq: 1 } }] }, { __v: 0, createdAt: 0, updatedAt: 0 }).sort({ createdAt: 1 });
             return dailyWorkResp;
         } catch (error) {
-            console.log(error)
             loggerError.error(error)
         }
     }
@@ -626,7 +621,6 @@ export class DBMongoDao {
             });
             return true;
         } catch (error) {
-            console.log(error)
             loggerError.error(error)
         }
     }
@@ -649,7 +643,6 @@ export class DBMongoDao {
             });
             return true;
         } catch (error) {
-            console.log(error)
             loggerError.error(error)
         }
     }
@@ -690,7 +683,6 @@ export class DBMongoDao {
             const dailyWorkResp = await dailyWorkModel.countDocuments({ $and: [{ "complete": status }, { "beginDateTime": { $gte: startDate } }, { "beginDateTime": { $lte: endDate } }] });
             return dailyWorkResp;
         } catch (error) {
-            console.log(error)
             loggerError.error(error)
         }
     }
@@ -752,7 +744,6 @@ export class DBMongoDao {
             const routineResp = await routineScheduleModel.find({ $and: [{ routine: id }, { complete: false }] }, { __v: 0, createdAt: 0, updatedAt: 0 }).sort({ _id: -1 }).limit(1);
             return routineResp;
         } catch (error) {
-            console.log(error)
             loggerError.error(error)
         }
     }
@@ -891,7 +882,6 @@ export class DBMongoDao {
             });
             return true;
         } catch (error) {
-            console.log(error)
             loggerError.error(error)
         }
     }
@@ -909,7 +899,6 @@ export class DBMongoDao {
             );
             return true;
         } catch (error) {
-            console.log(error);
             loggerError.error(error)
         }
     }
@@ -919,7 +908,6 @@ export class DBMongoDao {
             const routineResp = await routineScheduleModel.countDocuments({ $and: [{ isExpired: true }, { complete: false }] });
             return routineResp;
         } catch (error) {
-            console.log(error);
             loggerError.error(error)
         }
     }
@@ -929,7 +917,6 @@ export class DBMongoDao {
             const routineResp = await routineScheduleModel.countDocuments({ $and: [{ complete: false }, { checkDays: weekday }] });
             return routineResp;
         } catch (error) {
-            console.log(error);
             loggerError.error(error)
         }
     }
@@ -939,7 +926,6 @@ export class DBMongoDao {
             const routineResp = await routineScheduleModel.countDocuments({ $and: [{ complete: false }, { otherCheckDay: date }] });
             return routineResp;
         } catch (error) {
-            console.log(error);
             loggerError.error(error)
         }
     }
@@ -978,7 +964,6 @@ export class DBMongoDao {
             const plantShutdownResp = await plantShutdownModel.insertMany(plantShutdown);
             return plantShutdownResp;
         } catch (error) {
-            console.log(error)
             loggerError.error(error)
         }
     }
@@ -997,7 +982,6 @@ export class DBMongoDao {
             });
             return true;
         } catch (error) {
-            console.log(error)
             loggerError.error(error)
         }
     }
@@ -1007,7 +991,6 @@ export class DBMongoDao {
             await plantShutdownModel.deleteOne({ "_id": plantShutdown._id });
             return true;
         } catch (error) {
-            console.log(error)
             loggerError.error(error)
         }
     }
@@ -1039,7 +1022,6 @@ export class DBMongoDao {
             const plantShutdownWorkResp = await plantShutdownWorkModel.insertMany(plantShutdownWork);
             return plantShutdownWorkResp;
         } catch (error) {
-            console.log(error)
             loggerError.error(error)
         }
     }
@@ -1049,7 +1031,6 @@ export class DBMongoDao {
             const plantShutdownWorksResp = await plantShutdownWorkModel.find({ "plantShutdownId": plantShutdownId }, { __v: 0, createdAt: 0, updatedAt: 0 });
             return plantShutdownWorksResp;
         } catch (error) {
-            console.log(error)
             loggerError.error(error)
         }
     }
@@ -1069,7 +1050,6 @@ export class DBMongoDao {
             });
             return true;
         } catch (error) {
-            console.log(error)
             loggerError.error(error)
         }
     }
@@ -1079,7 +1059,6 @@ export class DBMongoDao {
             await plantShutdownWorkModel.deleteOne({ "_id": plantShutdownWork._id });
             return true;
         } catch (error) {
-            console.log(error)
             loggerError.error(error)
         }
     }
@@ -1114,7 +1093,6 @@ export class DBMongoDao {
             return lastPeriodResp;
         }
         catch (error) {
-            console.log(error)
             loggerError.error(error)
         }
 

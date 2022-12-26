@@ -94,7 +94,6 @@ const createScheduleColumns = (timeSchedule, employeesForSchedule) => {
     return columns;
 }
 
-
 const adjustDailyShiftSheetColumnWidth = (sheet, n3) => {
 
     const lengths = [];
@@ -149,6 +148,67 @@ const completeDailyShiftSheet = (firstIterate, weekData, workbook, n1, n2, n3) =
 const qtyEmployessForDashboard = (employees) => {
     const qtyEmployes = employees.filter((employee) => employee.workedHours > 0 && (employee.timeSchedule === 5 || employee.timeSchedule === 6)).length;
     return qtyEmployes;
+}
+
+
+const addAditionalToSchedule = async (schedules, employee, aditional, aditionalInfo, lookup, dateLocal) => {
+    schedules[0].schedule.map((schedule) => {
+        if (schedule.legajo === employee) {
+            const { id, legajo, fullName, timeSchedule, workedHours, shiftType, ...rest } = schedule;
+            let flag = false;
+            let availableAdditional = 1;
+            if (Object.keys(rest).length > 0) {
+                for (let i = 1; i <= Object.keys(rest).length; i++) {
+                    if (schedule.hasOwnProperty(`additional_${i}`) && schedule[`additional_${i}`] === aditional.toString()) {
+                        flag = true;
+                    } else if (schedule.hasOwnProperty(`additional_${i}`) && schedule[`additional_${i}`] !== aditional.toString()) {
+                        availableAdditional = i + 1;
+                    }
+                }
+            }
+            if (!flag) {
+                schedule[`additional_${availableAdditional}`] = aditional.toString();
+                schedule[`additional_${availableAdditional}_info`] = aditionalInfo;
+                if (aditional === 1 ||
+                    aditional === 2 ||
+                    aditional === 3 ||
+                    aditional === 6 ||
+                    aditional === 7 ||
+                    aditional === 8 ||
+                    aditional === 9 ||
+                    aditional === 10 ||
+                    aditional === 12 ||
+                    aditional === 13 ||
+                    aditional === 23) {
+                    schedule.workedHours = 0;
+                }
+                if (aditional === 25) {
+                    schedule.workedHours = 8;
+                }
+                let columnExists = false;
+                schedules[0].columns.map(column => {
+                    if (column.field === `additional_${availableAdditional}`) {
+                        columnExists = true;
+                    }
+                })
+                if (!columnExists) {
+                    const additionalColum = {
+                        field: `additional_${availableAdditional}`,
+                        title: `Adicional ${availableAdditional}`,
+                        lookup: lookup,
+                        align: 'left',
+                    }
+                    const additionalInfoColum = {
+                        field: `additional_${availableAdditional}_info`,
+                        title: `Anexo ${availableAdditional}`,
+                        align: 'left',
+                    }
+                    schedules[0].columns.push(additionalColum, additionalInfoColum);
+                }
+                dao.updateSchedulesHolidays(dateLocal, schedules[0].schedule, schedules[0].columns);
+            }
+        }
+    });
 }
 
 
@@ -209,6 +269,40 @@ export class ApiSchedule {
             loggerInfo.info('createSchedule');
         }
     }
+
+    createScheduleAditionals = async (legajo, startDate, endDate, aditional) => {
+        try {
+            console.log('createScheduleAditionals');
+            let loop = dateInLocalDate(startDate);
+            const loopEnd = dateInLocalDate(endDate);
+            const aditionals = await dao.getAditionals();
+            const lookup = reduceForLookUp(aditionals)
+            while (loop <= loopEnd) {
+                const dateLocal = formatDate(loop);
+                const scheduleExist = await dao.getSchedule(dateLocal);
+                // si el día esta creado en la tabla schedule
+                if (scheduleExist.length > 0) {
+                    await addAditionalToSchedule(scheduleExist, legajo, aditional, '', lookup, dateLocal);
+                } else {
+                    const scheduleResp = await this.createSchedule(loop);
+                    const { schedule, columns } = scheduleResp;
+                    const schedules = [{
+                        schedule: schedule,
+                        columns: columns,
+                    }]
+                    await addAditionalToSchedule(schedules, legajo, aditional, '', lookup, dateLocal);
+                }
+                loop.setDate(loop.getDate() + 1);
+            }
+
+            return true;
+        } catch (err) {
+            loggerError.error(err);
+        } finally {
+            loggerInfo.info('createScheduleAditionals');
+        }
+    }
+
 
     getSchedule = async (date) => {
         try {

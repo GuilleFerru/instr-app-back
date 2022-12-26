@@ -14,9 +14,9 @@ export class ApiAditional {
         }
     }
 
-    getAditional = async () => {
+    getAditionals = async () => {
         try {
-            const aditional = await dao.getAditional();
+            const aditional = await dao.getAditionals();
             return aditional;
         } catch (err) {
             loggerError.error(err);

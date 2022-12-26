@@ -10,7 +10,7 @@ export class RouterAditional {
 
     start() {
         router.post('/create', this.controllerAditional.createAditional);
-        router.get('get', this.controllerAditional.getAditional);
+        router.get('/get', this.controllerAditional.getAditionals);
         return router;
     }
 

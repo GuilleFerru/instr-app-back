@@ -12,6 +12,7 @@ export class RouterSchedule {
 
     start() {
         router.post('/create', userExtractor, this.controllerSchedule.createSchedule);
+        router.post('/create/aditionals', userExtractor, this.controllerSchedule.createScheduleAditionals);
         router.get('/get/:date', userExtractor, this.controllerSchedule.getSchedule);
         router.get('/getDailyShiftExcel/dataForSearch', userExtractor, this.controllerSchedule.getDailyShiftExcel);
         router.put('/update/:date', userExtractor, this.controllerSchedule.updateSchedule);

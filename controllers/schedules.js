@@ -3,7 +3,6 @@ import { loggerError } from '../utils/logger.js';
 import { io } from '../server.js';
 
 
-
 export class ControllerSchedule {
 
     constructor() {
@@ -19,6 +18,22 @@ export class ControllerSchedule {
             return res.status(500).json(err);
         }
     }
+
+    createScheduleAditionals = async (req, res) => {
+        try {
+            const { legajo, startDate, endDate, aditional } = req.body;
+            const resultado = await this.apiSchedule.createScheduleAditionals(legajo, startDate, endDate, aditional);
+            if (resultado) {
+                return res.status(200).json(true);
+            } else {
+                return res.status(500).json(false);
+            }
+        } catch (err) {
+            loggerError.error(err);
+            return res.status(500).json(err);
+        }
+    }
+
 
     getSchedule = async (req, res) => {
         try {
@@ -49,7 +64,6 @@ export class ControllerSchedule {
             await workbook.xlsx.write(res);
             res.end();
         } catch (error) {
-            console.log(error)
             loggerError.error(error)
             return res.status(500).json(error);
         }

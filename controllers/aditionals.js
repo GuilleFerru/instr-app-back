@@ -17,9 +17,9 @@ export class ControllerAditional {
         }
     }
 
-    getAditional = async (_req, res) => {
+    getAditionals = async (_req, res) => {
         try {
-            const aditional = await this.apiAditional.getAditional();
+            const aditional = await this.apiAditional.getAditionals();
             return res.status(200).json(aditional);
         } catch (err) {
             console.log(err);
