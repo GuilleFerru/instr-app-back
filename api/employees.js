@@ -106,7 +106,8 @@ export class ApiEmployee {
                     id: emp.legajo,
                     name: `${emp.nombre} ${emp.apellido}`,
                     holidayDays: emp.holidayDays,
-                    employeeCondition: emp.condicion
+                    employeeCondition: emp.condicion,
+                    shiftType: emp.shiftType,
                 }
             });
             // empSelect.unshift({ id: '', name: 'Seleccione un empleado' });
@@ -171,7 +172,6 @@ export class ApiEmployee {
                 return undefined;
             }
         } catch (err) {
-            console.log(err);
             loggerError.error(err);
         }
 

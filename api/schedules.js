@@ -151,7 +151,7 @@ const qtyEmployessForDashboard = (employees) => {
 }
 
 
-const addAditionalToSchedule = async (schedules, employee, aditional, aditionalInfo, lookup, dateLocal) => {
+const addAditionalToSchedule = async (schedules, employee, aditional, aditionalInfo, lookup, dateLocal, restData = false) => {
     schedules[0].schedule.map((schedule) => {
         if (schedule.legajo === employee) {
             const { id, legajo, fullName, timeSchedule, workedHours, shiftType, ...rest } = schedule;
@@ -184,6 +184,13 @@ const addAditionalToSchedule = async (schedules, employee, aditional, aditionalI
                 }
                 if (aditional === 25) {
                     schedule.workedHours = 8;
+                    if (restData) {
+                        schedules[0].schedule.map((scheduleHolidayEmp) => {
+                            if (scheduleHolidayEmp.legajo === restData) {
+                                schedule.timeSchedule = scheduleHolidayEmp.timeSchedule;
+                            }
+                        })
+                    }
                 }
                 let columnExists = false;
                 schedules[0].columns.map(column => {
@@ -270,19 +277,21 @@ export class ApiSchedule {
         }
     }
 
-    createScheduleAditionals = async (legajo, startDate, endDate, aditional) => {
+    createScheduleAditionals = async (data) => {
         try {
-            console.log('createScheduleAditionals');
+            const { legajo, startDate, endDate, aditional, ...rest } = data;
             let loop = dateInLocalDate(startDate);
             const loopEnd = dateInLocalDate(endDate);
             const aditionals = await dao.getAditionals();
-            const lookup = reduceForLookUp(aditionals)
+            const lookup = reduceForLookUp(aditionals);
+            const aditionalInfo = rest.aditionalInfo ? rest.aditionalInfo : '';
+            const holidayEmp = rest.holidayEmp ? rest.holidayEmp : false;
             while (loop <= loopEnd) {
                 const dateLocal = formatDate(loop);
                 const scheduleExist = await dao.getSchedule(dateLocal);
                 // si el día esta creado en la tabla schedule
                 if (scheduleExist.length > 0) {
-                    await addAditionalToSchedule(scheduleExist, legajo, aditional, '', lookup, dateLocal);
+                    await addAditionalToSchedule(scheduleExist, legajo, aditional, aditionalInfo, lookup, dateLocal, holidayEmp);
                 } else {
                     const scheduleResp = await this.createSchedule(loop);
                     const { schedule, columns } = scheduleResp;
@@ -290,11 +299,10 @@ export class ApiSchedule {
                         schedule: schedule,
                         columns: columns,
                     }]
-                    await addAditionalToSchedule(schedules, legajo, aditional, '', lookup, dateLocal);
+                    await addAditionalToSchedule(schedules, legajo, aditional, aditionalInfo, lookup, dateLocal, holidayEmp);
                 }
                 loop.setDate(loop.getDate() + 1);
             }
-
             return true;
         } catch (err) {
             loggerError.error(err);
@@ -302,6 +310,7 @@ export class ApiSchedule {
             loggerInfo.info('createScheduleAditionals');
         }
     }
+
 
 
     getSchedule = async (date) => {
@@ -344,7 +353,6 @@ export class ApiSchedule {
                 }
             }
         } catch (error) {
-            console.error(error)
             loggerError.error(error);
         }
     }

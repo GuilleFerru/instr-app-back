@@ -21,8 +21,8 @@ export class ControllerSchedule {
 
     createScheduleAditionals = async (req, res) => {
         try {
-            const { legajo, startDate, endDate, aditional } = req.body;
-            const resultado = await this.apiSchedule.createScheduleAditionals(legajo, startDate, endDate, aditional);
+            const data = req.body;
+            const resultado = await this.apiSchedule.createScheduleAditionals(data);
             if (resultado) {
                 return res.status(200).json(true);
             } else {

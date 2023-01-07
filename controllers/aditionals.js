@@ -12,7 +12,6 @@ export class ControllerAditional {
             await this.apiAditional.createAditional(aditional);
             return res.status(200).json(true);
         } catch (err) {
-            console.log(err);
             return res.status(500).json(err);
         }
     }
@@ -22,7 +21,6 @@ export class ControllerAditional {
             const aditional = await this.apiAditional.getAditionals();
             return res.status(200).json(aditional);
         } catch (err) {
-            console.log(err);
             return res.status(500).json(err);
         }
     }
