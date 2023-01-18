@@ -31,6 +31,7 @@ export const holidayDataDTO = (empHolidayData, pointsData, fraction, actualDays,
         fraction: fraction,
         actualDays: actualDays,
         leftDays: leftDays,
-        createSchedule: empHolidayData.createSchedule
+        createSchedule: empHolidayData.createSchedule,
+        substitute: empHolidayData.substitute,
     }
 ]);

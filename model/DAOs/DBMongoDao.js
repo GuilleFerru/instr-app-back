@@ -211,7 +211,6 @@ export class DBMongoDao {
             const scheduleResp = await scheduleModel.updateOne({ date: date }, { $set: { schedule } });
             return scheduleResp;
         } catch (error) {
-            console.error(error)
             loggerError.error(error)
         }
     }

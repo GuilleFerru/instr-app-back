@@ -7,7 +7,7 @@ import { ApiSchedule } from './schedules.js';
 import { reduceForLookUp } from '../utils/reduceForLookup.js';
 
 const apiSchedule = new ApiSchedule();
-
+const apiEmployee = new ApiEmployee();
 
 const getPeriodsForSelectForm = (holidays) => {
     try {
@@ -117,7 +117,7 @@ const calculatePoints = (start, end) => {
 }
 
 const employeeFirstFraction = async (employee, empHolidayData, pointsData) => {
-    const apiEmployee = new ApiEmployee();
+
     const employeeDB = await apiEmployee.getEmployeeBylegajo(employee);
     const actualDays = employeeDB[0].holidayDays;
     const leftDays = actualDays - pointsData.qtyDays;
@@ -164,7 +164,7 @@ export class ApiHoliday {
 
     createScores = async () => {
         const scores = [];
-        const apiEmployee = new ApiEmployee();
+        //const apiEmployee = new ApiEmployee();
         const employees = await apiEmployee.getEmployees();
         employees.map(employee => {
             scores.push({
@@ -302,7 +302,9 @@ export class ApiHoliday {
 
     createEmployeeHoliday = async (empHolidayData) => {
         try {
+
             const { employee, employeeCondition, periodId, startDate, endDate, createSchedule } = empHolidayData;
+
             const periodData = await dao.getPeriodData(periodId);
             const pointsData = calculatePoints(startDate, endDate);
             const holidayDataDB = periodData[0].holidaysData;
@@ -346,6 +348,7 @@ export class ApiHoliday {
                     loop.setDate(loop.getDate() + 1);
                 }
             }
+
             const scores = await this.updateScore(employee, employeeCondition, periodData, holidaysDataToSave);
             const resp = await dao.updateHolidayData(periodId, holidaysDataToSave, scores);
             if (resp)
@@ -425,12 +428,16 @@ export class ApiHoliday {
     deleteFraction = async (period) => {
         try {
             const { periodId, employee, employeeCondition, startDate, endDate } = period;
+            const substituteDB = await apiEmployee.getEmployeeBylegajo(period.substitute);
+
             if (period) {
                 let loop = new Date(startDate);
                 const loopEnd = new Date(endDate);
+
                 while (loop <= loopEnd) {
                     const dateLocal = formatDate(loop);
                     const schedule = await dao.getSchedule(dateLocal);
+
                     if (schedule.length > 0) {
                         schedule[0].schedule.map(empSchedule => {
                             if (empSchedule.legajo === employee) {
@@ -446,6 +453,28 @@ export class ApiHoliday {
                                                 empSchedule.workedHours = 9
                                             } else if (timeSchedule === 4) {
                                                 empSchedule.workedHours = 0
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                            if (empSchedule.legajo === period.substitute) {
+                                const { id, legajo, fullName, timeSchedule, workedHours, shiftType, ...rest } = empSchedule;
+                                if (Object.keys(rest).length > 0) {
+                                    for (let i = 1; i <= Object.keys(rest).length; i++) {
+                                        if (rest.hasOwnProperty(`additional_${i}`) && (rest[`additional_${i}`] === '25' || (rest[`additional_${i}`] === '14' && i === 1))) {
+                                            delete empSchedule[`additional_${i}`];
+                                            delete empSchedule[`additional_${i}_info`];
+                                            if (substituteDB[0].shift >= 1 && substituteDB[0].shift <= 3) {
+                                                empSchedule.workedHours = 8;
+                                            } else if (substituteDB[0].shift >= 5 && substituteDB[0].shift <= 6) {
+                                                empSchedule.workedHours = 9;
+                                                empSchedule.timeSchedule = substituteDB[0].shift
+                                            }
+                                            if (loop.getDay() === 0 || loop.getDay() === 6) {
+                                                empSchedule.workedHours = 0;
+                                                empSchedule.timeSchedule = 4
                                             }
                                         }
                                     }
