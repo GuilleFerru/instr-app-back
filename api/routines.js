@@ -11,7 +11,6 @@ import { OthersRoutineColumnTable } from '../utils/otherRoutinesColumnTable.js';
 import { parseStringToDate, dateInLocalDate, todayInLocalDate, monthAndYearString, getDayName } from '../utils/formatDate.js';
 import { loggerError, loggerInfo } from '../utils/logger.js';
 
-
 const getNicknamesForSelectForm = async () => {
     const dbNicknames = await dao.getRoutinesSchedulesNicknames();
     const dotlessNickname = dbNicknames.map(element => {
@@ -177,6 +176,7 @@ export class ApiRoutine {
         const today = todayInLocalDate();
         const dueDate = addDays(today, -1);
         const completeRoutineSchedules = await dao.updateRoutineScheduleByDueDate(dueDate);
+        
         for (const routineSchedule of completeRoutineSchedules) {
             const startDate = addDays(dueDate, 1)
             const routine = await dao.getRoutine(routineSchedule.routine);
