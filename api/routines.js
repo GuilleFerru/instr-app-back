@@ -148,7 +148,7 @@ export class ApiRoutine {
             const { date, socket, action, routineData, io } = data[0];
             if (action === 'get_qtyOverDueRoutines') {
                 const data = await this.getQtyOverdueRoutines();
-                data && io.emit('get_qtyOverDueRoutines', data);
+                io.emit('get_qtyOverDueRoutines', data);
             }
         } catch (error) {
             loggerError.error(error);
