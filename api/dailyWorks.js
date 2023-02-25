@@ -82,6 +82,9 @@ export class ApiDailyWork {
             } else if (action === 'get_daily_works_for_plant_shutdown') {
                 const data = await this.getDailyWorkForPlantShutdown();
                 data && socket.emit('get_daily_works_for_plant_shutdown', data);
+            } else if (action === 'complete_day_routines') {
+                const data = await this.completeDayWorkRoutines(dailyWorkData);
+                data && io.to(roomId).emit('get_daily_works', await this.getDailyWork(date));
             }
         } catch (error) {
             loggerError.error(error);
@@ -297,7 +300,7 @@ export class ApiDailyWork {
                 } else {
                     dailyWorkToUpdate = completedDailyWorkDTO(dayWork, today);
                 }
-                
+
                 // si modifico la fecha de una tarea, me fijo que en la nueva fecha haya rutinas, sino las creo
                 if (dayWork.beginDate !== formatDate(dayWork.beginDateTime)) {
                     await this.getDailyWork(parseStringToDate(dailyWorkToUpdate.beginDate));
@@ -313,6 +316,26 @@ export class ApiDailyWork {
         } finally {
         }
     }
+
+    completeDayWorkRoutines = async (dayRoutines) => {
+        try {
+            const resultado = await Promise.all(
+                dayRoutines.map(async (dayRoutine) => {
+                    return await dao.updateDayWorkRoutineComplete(dayRoutine.id);
+                }));
+
+            // const resultado = [];
+            // for (const dayRoutine of dayRoutines) {
+            //     const result = await dao.updateDayWorkRoutineComplete(dayRoutine.id);
+            //     resultado.push(result);
+            // }
+            return  resultado.every((result) => result === true) ? true : false;
+        } catch (err) {
+            loggerError.error(err);
+        } finally {
+        }
+    }
+
 
     updateDailyWorkByPlantShutdownWorkId = async (id, plantShutdownWorkId) => {
         try {

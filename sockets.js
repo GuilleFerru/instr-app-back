@@ -65,6 +65,7 @@ export default (io) => {
         socket.on("update_daily_work", (date, dailyWorkData, roomId) => apiDailyWork.handleSocket({ date, socket, action: "update_daily_work", dailyWorkData, roomId: formatDate(roomId), io }));
         socket.on("bulk_update_daily_work", (date, dailyWorkData, roomId) => apiDailyWork.handleSocket({ date, socket, action: "bulk_update_daily_work", dailyWorkData, roomId: formatDate(roomId), io }));
         socket.on("delete_daily_work", (date, dailyWorkData, roomId) => apiDailyWork.handleSocket({ date, socket, action: "delete_daily_work", dailyWorkData, roomId: formatDate(roomId), io }));
+        socket.on("complete_day_routines", (date, dailyWorkData, roomId) => apiDailyWork.handleSocket({ date, socket, action: "complete_day_routines", dailyWorkData, roomId: formatDate(roomId), io }));
 
 
         //ROUTINES

@@ -31,7 +31,7 @@ import { holidayScoreColumnsModel } from '../models/HolidayScoreColumns.js';
 import { holidayModel } from '../models/Holidays.js';
 import { storeClaimModel } from "../models/StoreClaim.js";
 import { storeItemModel } from "../models/StoreItems.js";
-import { scheduleUpdateModel} from "../models/ScheduleUpdates.js";
+import { scheduleUpdateModel } from "../models/ScheduleUpdates.js";
 
 //const MONGO_URL = config.MONGO_URL_DEV;
 const MONGO_URL = config.MONGO_URL;
@@ -645,6 +645,17 @@ export class DBMongoDao {
             loggerError.error(error)
         }
     }
+
+    updateDayWorkRoutineComplete = async (id) => {
+        try {
+            await dailyWorkModel.updateOne({ _id: id }, { $set: { complete: 'C' } });
+            return true;
+        } catch (error) {
+            loggerError.error(error)
+            return false;
+        }
+    }
+
 
     // lo hago como una transaccion
     deleteDailyWork = async (dailyWork) => {
