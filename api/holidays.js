@@ -1,6 +1,6 @@
 import { dao } from '../server.js';
 import { saveHolidaysDTO, holidayScoreRespDTO, holidayPeriodRespDTO, holidayDataDTO } from '../model/DTOs/holidays.js';
-import { formatDate } from '../utils/formatDate.js';
+import { formatDate, parseStringToDate } from '../utils/formatDate.js';
 import { loggerError } from '../utils/logger.js';
 import { ApiEmployee } from './employees.js';
 import { ApiSchedule } from './schedules.js';
@@ -302,9 +302,7 @@ export class ApiHoliday {
 
     createEmployeeHoliday = async (empHolidayData) => {
         try {
-
             const { employee, employeeCondition, periodId, startDate, endDate, createSchedule } = empHolidayData;
-
             const periodData = await dao.getPeriodData(periodId);
             const pointsData = calculatePoints(startDate, endDate);
             const holidayDataDB = periodData[0].holidaysData;
@@ -360,10 +358,13 @@ export class ApiHoliday {
 
     getData = async (date, periodId) => {
         try {
+
             const employeeOptions = await ApiEmployee.getEmployeesForHolidayForm();
             const holidays = await dao.getHolidays();
             const periodOptions = getPeriodsForSelectForm(holidays);
             const getCurrentPeriod = [];
+            const formatedDate = parseStringToDate(formatDate(date));
+            const nextEmpHoliday = []
 
             if (date) {
                 const period = holidays.filter(holiday => {
@@ -380,17 +381,16 @@ export class ApiHoliday {
                     const lastFraction = empHolidays[empHolidays.length - 1].fraction;
                     const leftDays = empHolidays.filter(holiday => holiday.fraction === lastFraction)[0].leftDays;
                     employeeOptions.find(emp => emp.id === employee.id).holidayDays = leftDays;
+                    nextEmpHoliday.push(empHolidays.find(holiday => formatedDate <= holiday.startDate));
                 }
             });
-
-
-            //getCurrentPeriod[0].scores.splice
+            const filteredNextEmpHoliday = nextEmpHoliday.filter(holiday => holiday !== undefined);
+            filteredNextEmpHoliday.sort((a, b) => a.startDate - b.startDate);
             const scores = getCurrentPeriod[0].scores.filter(scores => scores.condicion === 'Afiliado')
             getCurrentPeriod[0].scores = scores;
 
-            return holidayScoreRespDTO(employeeOptions, periodOptions, ...getCurrentPeriod);
+            return holidayScoreRespDTO(employeeOptions, periodOptions, ...getCurrentPeriod, filteredNextEmpHoliday);
         } catch (err) {
-
             loggerError.error(err);
         } finally {
         }

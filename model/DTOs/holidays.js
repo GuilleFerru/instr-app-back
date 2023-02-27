@@ -1,5 +1,5 @@
-export const holidayScoreRespDTO = (employeeOptions, periodOptions, periodData) => {
-    const holidayScoreResp = { employeeOptions, periodOptions, periodData };
+export const holidayScoreRespDTO = (employeeOptions, periodOptions, periodData, nextEmpHoliday) => {
+    const holidayScoreResp = { employeeOptions, periodOptions, periodData, nextEmpHoliday };
     return holidayScoreResp;
 }
 
