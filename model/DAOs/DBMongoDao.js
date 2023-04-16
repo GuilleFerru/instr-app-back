@@ -646,9 +646,9 @@ export class DBMongoDao {
         }
     }
 
-    updateDayWorkRoutineComplete = async (id) => {
+    updateDayWorkRoutineComplete = async (id, endDate, endDateTime) => {
         try {
-            await dailyWorkModel.updateOne({ _id: id }, { $set: { complete: 'C' } });
+            await dailyWorkModel.updateOne({ _id: id }, { $set: { "complete": 'C', "endDate": endDate, "endDateTime": endDateTime} });
             return true;
         } catch (error) {
             loggerError.error(error)

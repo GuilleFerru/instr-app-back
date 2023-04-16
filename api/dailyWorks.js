@@ -283,6 +283,7 @@ export class ApiDailyWork {
 
     updateDailyWork = async (date, dayWork, filter = '') => {
         try {
+
             const dateLocal = formatDate(date);
             if (dateLocal && dayWork) {
                 const dailyWork = updateDayWorkDTO(dayWork);
@@ -321,15 +322,9 @@ export class ApiDailyWork {
         try {
             const resultado = await Promise.all(
                 dayRoutines.map(async (dayRoutine) => {
-                    return await dao.updateDayWorkRoutineComplete(dayRoutine.id);
+                    return await dao.updateDayWorkRoutineComplete(dayRoutine.id, formatDate(dayRoutine.beginDateTime), new Date(dayRoutine.beginDateTime));
                 }));
-
-            // const resultado = [];
-            // for (const dayRoutine of dayRoutines) {
-            //     const result = await dao.updateDayWorkRoutineComplete(dayRoutine.id);
-            //     resultado.push(result);
-            // }
-            return  resultado.every((result) => result === true) ? true : false;
+            return resultado.every((result) => result === true) ? true : false;
         } catch (err) {
             loggerError.error(err);
         } finally {
