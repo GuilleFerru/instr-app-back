@@ -5,7 +5,14 @@ export const employeeDTO = (employee) => ({
     nombre: employee.nombre,
     apellido: employee.apellido,
     puesto: employee.puesto,
-    categoria: employee.categoria
+    categoria: employee.categoria,
+    shift: employee.turno,
+    schedule: employee.turno,
+    sector: "Instrumentos-Sistemas",
+    condicion: "Afiliado",
+    shiftType: employee.shift,
+    holidayDays: employee.holidayDays,
+    hireDate: employee.hireDate
 });
 
 export const getForScheduleEmployeesDTO = (employees) => employees.map(employee => ({
@@ -34,6 +41,7 @@ export const updateEmployeeDTO = (employee, employeeDb) => ({
     apellido: employee.apellido,
     puesto: employee.puesto,
     categoria: employee.categoria,
+    condicion: employee.condicion,
     shiftType: employee.shift,
     shift: employee.turno,
     schedule: employee.shift === 'dailyShift' ? employee.turno : employeeDb[0].schedule,

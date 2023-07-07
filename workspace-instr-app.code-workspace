@@ -12,6 +12,15 @@
 		},
 		{
 			"path": "../../CODERHOUSE/2_js/ProyectoFinal"
+		},
+		{
+			"path": "../react examples/tokyo-template/tokyo-free-black-react-admin-dashboard-js"
+		},
+		{
+			"path": "../inst-app-work"
+		},
+		{
+			"path": "../tokyo-black-nextjs-admin-dashboard-js"
 		}
 	],
 	"settings": {

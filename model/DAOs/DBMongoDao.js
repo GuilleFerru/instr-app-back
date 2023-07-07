@@ -33,8 +33,8 @@ import { storeClaimModel } from "../models/StoreClaim.js";
 import { storeItemModel } from "../models/StoreItems.js";
 import { scheduleUpdateModel } from "../models/ScheduleUpdates.js";
 
-//const MONGO_URL = config.MONGO_URL_DEV;
-const MONGO_URL = config.MONGO_URL;
+const MONGO_URL = config.MONGO_URL_DEV;
+//const MONGO_URL = config.MONGO_URL;
 
 export class DBMongoDao {
 
@@ -134,6 +134,7 @@ export class DBMongoDao {
                         shiftType: employee.shiftType,
                         shift: employee.shift,
                         schedule: employee.schedule,
+                        condicion: employee.condicion,
                         holidayDays: employee.holidayDays,
                         hireDate: employee.hireDate,
                     }
@@ -206,9 +207,9 @@ export class DBMongoDao {
         }
     }
 
-    updateSchedule = async (date, schedule) => {
+    updateSchedule = async (date, schedule, columns) => {
         try {
-            const scheduleResp = await scheduleModel.updateOne({ date: date }, { $set: { schedule } });
+            const scheduleResp = await scheduleModel.updateOne({ date: date }, { $set: { schedule, columns } });
             return scheduleResp;
         } catch (error) {
             loggerError.error(error)
@@ -648,7 +649,7 @@ export class DBMongoDao {
 
     updateDayWorkRoutineComplete = async (id, endDate, endDateTime) => {
         try {
-            await dailyWorkModel.updateOne({ _id: id }, { $set: { "complete": 'C', "endDate": endDate, "endDateTime": endDateTime} });
+            await dailyWorkModel.updateOne({ _id: id }, { $set: { "complete": 'C', "endDate": endDate, "endDateTime": endDateTime } });
             return true;
         } catch (error) {
             loggerError.error(error)

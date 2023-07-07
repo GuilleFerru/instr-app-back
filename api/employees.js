@@ -1,6 +1,6 @@
 import { dao } from '../server.js';
 import { getForScheduleEmployeesDTO, employeesDTO, updateEmployeeDTO } from '../model/DTOs/employee.js';
-import {scheduleUpdateDTO} from '../model/DTOs/scheduleUpdate.js';
+import { scheduleUpdateDTO } from '../model/DTOs/scheduleUpdate.js';
 import { dateInLocalDate } from '../utils/formatDate.js';
 import { timeScheduleForScheduleDTO } from '../model/DTOs/timeSchedule.js';
 import { reduceForLookUp } from '../utils/reduceForLookup.js';
@@ -8,6 +8,7 @@ import { ApiTimeSchedule } from './timeSchedules.js';
 import { ApiScheduleUpdate } from './scheduleUpdates.js'
 import { getDayShift } from './schedules.js';
 import { loggerError, loggerInfo } from '../utils/logger.js'
+import { ObjectId } from 'mongodb';
 
 const apiTimeSchedule = new ApiTimeSchedule();
 const apiScheduleUpdate = new ApiScheduleUpdate();
@@ -15,9 +16,56 @@ const apiScheduleUpdate = new ApiScheduleUpdate();
 
 export class ApiEmployee {
 
+
+
+    getDataForUpdateSchedule = async () => {
+        try {
+            const timeSchedule = await dao.getTimeSchedule();
+            const workHours = await dao.getWorkHours();
+            const shiftWorkHours = workHours.find(workHour => workHour.schedule === 'T').hour;
+            const dailyWorkHours = workHours.find(workHour => workHour.schedule === 'D').hour;
+            return { timeSchedule, shiftWorkHours, dailyWorkHours }
+        } catch (err) {
+
+        }
+    }
+
+
+
+
     createEmployee = async (employee) => {
         try {
-            const empResp = await dao.createEmployee(employee);
+            const emp = await dao.createEmployee(employee);
+            const { timeSchedule, shiftWorkHours, dailyWorkHours } = await this.getDataForUpdateSchedule();
+            const hireDate = dateInLocalDate(employee.hireDate);
+            const schedulesFromHireDate = await dao.getSchedulesFromToday(hireDate);
+
+            if (emp) {
+                schedulesFromHireDate.forEach(async (schedule) => {
+                    const dayShift = await getDayShift(schedule.date);
+                    const shift = dayShift.shifts.find(shift => shift.shift === emp[0].shift);
+                    const shiftSchedule = shift.schedule;
+                    const currentTimeSchedule = timeSchedule.find(eLement => eLement.schedule == shiftSchedule);
+                    const workedHours = shiftSchedule === 'F' ? 0 : shiftSchedule === 'D' || shiftSchedule === 'D1' ? dailyWorkHours : shiftWorkHours;
+
+                    const scheduleEmployee = {
+                        id: ObjectId.createFromHexString(emp[0].id),
+                        legajo: emp[0].legajo,
+                        fullName: emp[0].legajo,
+                        timeSchedule: currentTimeSchedule.id,
+                        workedHours: workedHours,
+                        shiftType: emp[0].shiftType
+                    }
+                    const currentSchedule = schedule.schedule;
+                    currentSchedule.push(scheduleEmployee);
+
+                    const legajoToString = emp[0].legajo.toString();
+                    schedule.columns[2].lookup[legajoToString] = `${emp[0].nombre} ${emp[0].apellido} `
+
+                    await dao.updateSchedule(schedule.date, currentSchedule, schedule.columns);
+                })
+            }
+            const empResp = await this.getEmployeesData();
             return empResp;
         } catch (err) {
             loggerError.error(err);
@@ -137,16 +185,12 @@ export class ApiEmployee {
 
             if (empUpdate !== undefined) {
                 const empResp = await this.getEmployeesData();
-                if (newEmployee.shift !== employeeDb[0].shift || newEmployee.shiftType !== employeeDb[0].shiftType) {
-                    const timeSchedule = await dao.getTimeSchedule();
-                    const workHours = await dao.getWorkHours();
-                    const shiftWorkHours = workHours.find(workHour => workHour.schedule === 'T').hour;
-                    const dailyWorkHours = workHours.find(workHour => workHour.schedule === 'D').hour;
+               // if (newEmployee.shift !== employeeDb[0].shift || newEmployee.shiftType !== employeeDb[0].shiftType) {
+                    const { timeSchedule, shiftWorkHours, dailyWorkHours } = await this.getDataForUpdateSchedule();
                     const localDate = dateInLocalDate(new Date())
                     const schedulesFromToday = await dao.getSchedulesFromToday(localDate);
 
                     schedulesFromToday.forEach(async (schedule) => {
-
                         const dayShift = await getDayShift(schedule.date);
                         const shift = dayShift.shifts.find(shift => shift.shift === newEmployee.shift);
                         const shiftSchedule = shift.schedule;
@@ -161,12 +205,12 @@ export class ApiEmployee {
                             }
                             return emp;
                         });
-                        await dao.updateSchedule(schedule.date, newSchedule);
+                        const legajoToString = newEmployee.legajo.toString();
+                        schedule.columns[2].lookup[legajoToString] = `${newEmployee.nombre} ${newEmployee.apellido} `
+                        await dao.updateSchedule(schedule.date, newSchedule, schedule.columns);
                     });
-                    
-                    await apiScheduleUpdate.createScheduleUpdate(scheduleUpdateDTO(newEmployee,employeeDb[0]));
-
-                }
+                    await apiScheduleUpdate.createScheduleUpdate(scheduleUpdateDTO(newEmployee, employeeDb[0]));
+                //}
                 return empResp;
             } else {
                 return undefined;

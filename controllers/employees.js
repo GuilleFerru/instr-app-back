@@ -8,7 +8,7 @@ export class ControllerEmployee {
 
     createEmployee = async (req, res) => {
         try {
-            const { employee } = req.body;
+            const employee = req.body;
             const empResp = await this.apiEmployee.createEmployee(employee);
             return res.status(200).json({ empResp });
         } catch (err) {
