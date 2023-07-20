@@ -139,7 +139,6 @@ export class ApiHoliday {
     handleSocket = async (...data) => {
         try {
             const { date, socket, action, holidayData, roomId, io } = data[0];
-
             if (action === 'get_holiday_data') {
                 const data = await this.getData(date, holidayData);
                 data && socket.emit('get_holiday_data', data);
@@ -249,6 +248,24 @@ export class ApiHoliday {
 
     updateScore = async (employee, employeeCondition, periodData, currentHolidayData) => {
         try {
+            const checkEmployee = periodData[0].scores.some(scoreEmployee => scoreEmployee.employee === employee);
+            if (!checkEmployee) {
+                const [dbEmployee] = await apiEmployee.getEmployeeBylegajo(employee);
+                periodData[0].scores.push({
+                    employee: dbEmployee.legajo,
+                    employeeName: `${dbEmployee.nombre} ${dbEmployee.apellido}`,
+                    holidayDays: dbEmployee.holidayDays,
+                    takenDays: 0,
+                    leftDays: dbEmployee.holidayDays,
+                    shiftType: dbEmployee.shiftType,
+                    condicion: dbEmployee.condicion,
+                    average: 0,
+                    points: 0,
+                    dailyShiftPosition: 0,
+                    rotativeShiftPosition: 0,
+                    generalPosition: 0
+                })
+            }
             const periodStartYear = (periodData[0].startDate).getFullYear() - 1;
             const periodEndYear = (periodData[0].endDate).getFullYear() - 1;
             const lastPeriod = await dao.getLastPeriod(periodStartYear, periodEndYear);
@@ -307,6 +324,7 @@ export class ApiHoliday {
             const pointsData = calculatePoints(startDate, endDate);
             const holidayDataDB = periodData[0].holidaysData;
             const holidaysDataToSave = [];
+
             if (holidayDataDB.length === 0) {
                 const holidayData = await employeeFirstFraction(employee, empHolidayData, pointsData);
                 holidaysDataToSave.push(...holidayData);
@@ -349,6 +367,7 @@ export class ApiHoliday {
 
             const scores = await this.updateScore(employee, employeeCondition, periodData, holidaysDataToSave);
             const resp = await dao.updateHolidayData(periodId, holidaysDataToSave, scores);
+
             if (resp)
                 return periodId;
         } catch (err) {
@@ -358,14 +377,12 @@ export class ApiHoliday {
 
     getData = async (date, periodId) => {
         try {
-
             const employeeOptions = await ApiEmployee.getEmployeesForHolidayForm();
             const holidays = await dao.getHolidays();
             const periodOptions = getPeriodsForSelectForm(holidays);
             const getCurrentPeriod = [];
-            const formatedDate = parseStringToDate(formatDate(date));
+            const formatedDate = parseStringToDate(formatDate(date ? date : new Date()));
             const nextEmpHoliday = []
-
             if (date) {
                 const period = holidays.filter(holiday => {
                     return new Date(holiday.startDate) <= new Date(date) && new Date(holiday.endDate) >= new Date(date);
@@ -388,7 +405,6 @@ export class ApiHoliday {
             filteredNextEmpHoliday.sort((a, b) => a.startDate - b.startDate);
             const scores = getCurrentPeriod[0].scores.filter(scores => scores.condicion === 'Afiliado')
             getCurrentPeriod[0].scores = scores;
-
             return holidayScoreRespDTO(employeeOptions, periodOptions, ...getCurrentPeriod, filteredNextEmpHoliday);
         } catch (err) {
             loggerError.error(err);
