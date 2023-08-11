@@ -392,13 +392,23 @@ export class ApiHoliday {
                 const period = holidays.find(holiday => { return holiday.id === periodId });
                 getCurrentPeriod.push(period);
             }
+
             employeeOptions.forEach(employee => {
                 const empHolidays = getCurrentPeriod[0].holidaysData.filter(holiday => holiday.employee === employee.id);
                 if (empHolidays.length > 0) {
                     const lastFraction = empHolidays[empHolidays.length - 1].fraction;
                     const leftDays = empHolidays.filter(holiday => holiday.fraction === lastFraction)[0].leftDays;
+
                     employeeOptions.find(emp => emp.id === employee.id).holidayDays = leftDays;
-                    nextEmpHoliday.push(empHolidays.find(holiday => formatedDate <= holiday.startDate));
+                    const getNextHolidays = holidays.map(holiday => {
+                        return holiday.holidaysData.filter(nextHoliday => nextHoliday.employee === employee.id)
+                    })
+
+                    getNextHolidays.map((empTotalHolidays) => {
+                        if (empTotalHolidays.length > 0) {
+                            nextEmpHoliday.push(empTotalHolidays.find(({ startDate }) => formatedDate <= startDate))
+                        }
+                    })
                 }
             });
             const filteredNextEmpHoliday = nextEmpHoliday.filter(holiday => holiday !== undefined);
