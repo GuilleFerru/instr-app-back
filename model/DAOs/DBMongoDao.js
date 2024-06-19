@@ -32,6 +32,7 @@ import { holidayModel } from '../models/Holidays.js';
 import { storeClaimModel } from "../models/StoreClaim.js";
 import { storeItemModel } from "../models/StoreItems.js";
 import { scheduleUpdateModel } from "../models/ScheduleUpdates.js";
+import { storeWorkshopModel } from "../models/StoreWorkshop.js";
 
 //const MONGO_URL = config.MONGO_URL_DEV;
 const MONGO_URL = config.MONGO_URL;
@@ -1233,6 +1234,33 @@ export class DBMongoDao {
             // }, { __v: 0, createdAt: 0, updatedAt: 0 }).sort({ smallDescription: 1 });
             const itemsResp = await storeItemModel.findOne({}, { _id: 0, __v: 0, createdAt: 0, updatedAt: 0 });
             return itemsResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    getStoreWorkshop = async () => {
+        try {
+            const storeWorkshopResp = await storeWorkshopModel.find({}, { __v: 0, createdAt: 0, updatedAt: 0 });
+            return storeWorkshopResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    createWorkshopStoreItem = async (item) => {
+        try {
+            await storeWorkshopModel.insertMany(item);
+            return true;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    deleteStoreWorkshop = async (id) => {
+        try {
+            await storeWorkshopModel.deleteOne({ "_id": id });
+            return true;
         } catch (error) {
             loggerError.error(error)
         }

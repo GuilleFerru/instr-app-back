@@ -3,6 +3,8 @@ let instance = null;
 
 class DaoFactory {
 
+    
+
     static getInstance() {
         if (!instance) {
             instance = new DaoFactory();

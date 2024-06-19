@@ -112,3 +112,4 @@ const apiRoutine = new ApiRoutine();
 schedule.scheduleJob("0 0 0 1 */1 *", () => {
   apiRoutine.createRoutineScheduleByNewMonth();
 })
+//apiRoutine.createRoutineScheduleByNewMonth();

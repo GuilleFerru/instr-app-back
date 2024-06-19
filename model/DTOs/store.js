@@ -33,3 +33,26 @@ export const saveStoreClaimDTO = (data) => ({
     //addedToClaim: data.addedToClaim,
     sector: 'Instrumentos-Sistemas'
 });
+
+
+export const changeIDForViewStoreWorkshopDTO = (data) => ({
+    id: data._id,
+    eqType: data.eqType,
+    tag: data.tag,
+    item: data.item,
+    bigDescription: data.bigDescription,
+    storeWorkshopUbication: data.storeWorkshopUbication,
+    quantity: data.quantity,
+    //addedToClaim: data.addedToClaim,
+});
+
+export const saveStoreWorkshopDTO = (data) => ({
+    eqType: data.eqType,
+    tag: data.tag,
+    item: data.item,
+    bigDescription: data.bigDescription,
+    storeWorkshopUbication: data.storeWorkshopUbication,
+    quantity: data.quantity,
+    //addedToClaim: data.addedToClaim,
+    sector: 'Instrumentos-Sistemas'
+});
