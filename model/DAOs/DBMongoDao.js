@@ -1257,6 +1257,26 @@ export class DBMongoDao {
         }
     }
 
+    updateStoreWorkshop = async (id, storeWorkshopData) => {
+        try {
+            await storeWorkshopModel.updateOne({ "_id": id }, {
+                $set: {
+                    "eqType": storeWorkshopData.eqType,
+                    "tag": storeWorkshopData.tag,
+                    "item": storeWorkshopData.item,
+                    "bigDescription": storeWorkshopData.bigDescription,
+                    "storeWorkshopUbication": storeWorkshopData.storeWorkshopUbication,
+                    "quantity": storeWorkshopData.quantity,
+                    "date": storeWorkshopData.date,
+                    "sector": storeWorkshopData.sector
+                }
+            });
+            return true;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
     deleteStoreWorkshop = async (id) => {
         try {
             await storeWorkshopModel.deleteOne({ "_id": id });

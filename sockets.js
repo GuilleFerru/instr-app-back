@@ -107,6 +107,7 @@ export default (io) => {
         socket.on("delete_store_claim", (storeClaimData) => apiStoreClaim.handleSocket({ socket, action: "delete_store_claim", storeClaimData, io }));
         socket.on("get_store_workshop", () => apiStoreWorkshop.handleSocket({ socket, action: "get_store_workshop" }));
         socket.on("create_store_workshop", (storeWorkshopData) => apiStoreWorkshop.handleSocket({ socket, action: "create_store_workshop", storeWorkshopData, io }));
+        socket.on("update_store_workshop", (storeWorkshopData) => apiStoreWorkshop.handleSocket({ socket, action: "update_store_workshop", storeWorkshopData, io }));
         socket.on("delete_store_workshop", (storeWorkshopData) => apiStoreWorkshop.handleSocket({ socket, action: "delete_store_workshop", storeWorkshopData, io }));
         socket.on("disconnect", () => {
             loggerInfo.info(`Socket ${socket.id} disconnected`);

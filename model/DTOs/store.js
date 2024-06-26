@@ -43,16 +43,16 @@ export const changeIDForViewStoreWorkshopDTO = (data) => ({
     bigDescription: data.bigDescription,
     storeWorkshopUbication: data.storeWorkshopUbication,
     quantity: data.quantity,
-    //addedToClaim: data.addedToClaim,
+    date: data.date,
 });
 
 export const saveStoreWorkshopDTO = (data) => ({
     eqType: data.eqType,
-    tag: data.tag,
-    item: data.item,
-    bigDescription: data.bigDescription,
+    tag: data.tag ? data.tag : '-',
+    item: data.item ? data.item : '-',
+    bigDescription: data.bigDescription ? data.bigDescription : 'Sin información relevante',
     storeWorkshopUbication: data.storeWorkshopUbication,
     quantity: data.quantity,
-    //addedToClaim: data.addedToClaim,
+    date: data.date ? dateInLocalDate(data.date) : dateInLocalDate(new Date()),
     sector: 'Instrumentos-Sistemas'
 });

@@ -24,6 +24,10 @@ const StoreWorkshopSchema = new mongoose.Schema({
         type: Number,
         default: 0,
     },
+    date: {
+        type: Date,
+        require: true,
+    },
     sector: {
         type: String,
         require: true,
