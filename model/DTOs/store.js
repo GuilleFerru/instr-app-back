@@ -56,3 +56,14 @@ export const saveStoreWorkshopDTO = (data) => ({
     date: data.date ? dateInLocalDate(data.date) : dateInLocalDate(new Date()),
     sector: 'Instrumentos-Sistemas'
 });
+
+export const reduceForLookUpDTO = (ubications) => ubications.map(ubication => ({
+    id: ubication.id,
+    name: ubication.name,
+}));
+
+export const saveUbicationWorkshopDTO  = (data) => {
+    return {
+        name: data.name,
+    }
+}

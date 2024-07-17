@@ -109,6 +109,11 @@ export default (io) => {
         socket.on("create_store_workshop", (storeWorkshopData) => apiStoreWorkshop.handleSocket({ socket, action: "create_store_workshop", storeWorkshopData, io }));
         socket.on("update_store_workshop", (storeWorkshopData) => apiStoreWorkshop.handleSocket({ socket, action: "update_store_workshop", storeWorkshopData, io }));
         socket.on("delete_store_workshop", (storeWorkshopData) => apiStoreWorkshop.handleSocket({ socket, action: "delete_store_workshop", storeWorkshopData, io }));
+        socket.on("create_ubication_workshop", (storeWorkshopData) => apiStoreWorkshop.handleSocket({ socket, action: "create_ubication_workshop", storeWorkshopData, io }));
+        socket.on("create_type_workshop", (storeWorkshopData) => apiStoreWorkshop.handleSocket({ socket, action: "create_type_workshop", storeWorkshopData, io }));
+        socket.on("create_crud_workshop", (storeWorkshopData) => apiStoreWorkshop.handleSocket({ socket, action: "create_crud_workshop", storeWorkshopData, io }));
+        socket.on("update_crud_workshop", (storeWorkshopData) => apiStoreWorkshop.handleSocket({ socket, action: "update_crud_workshop", storeWorkshopData, io }));
+        socket.on("delete_crud_workshop", (storeWorkshopData) => apiStoreWorkshop.handleSocket({ socket, action: "delete_crud_workshop", storeWorkshopData, io }));
         socket.on("disconnect", () => {
             loggerInfo.info(`Socket ${socket.id} disconnected`);
         });

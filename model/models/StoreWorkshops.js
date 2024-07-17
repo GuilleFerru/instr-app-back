@@ -2,8 +2,7 @@ import mongoose from "mongoose";
 
 const StoreWorkshopSchema = new mongoose.Schema({
     eqType: {
-        type: Number,
-        require: true,
+        type: mongoose.Schema.Types.Number, ref: 'storeWorkshopTypes',
     },
     tag: {
         type: String,
@@ -18,7 +17,7 @@ const StoreWorkshopSchema = new mongoose.Schema({
         default: 'Sin información relevante',
     },
     storeWorkshopUbication: {
-        type: Number,
+        type: mongoose.Schema.Types.Number, ref: 'storeWorkshopUbications',
     },
     quantity: {
         type: Number,
@@ -37,4 +36,7 @@ const StoreWorkshopSchema = new mongoose.Schema({
     { timestamps: true }
 );
 
+StoreWorkshopSchema.index({ storeWorkshopUbication: 1 });
+
 export const storeWorkshopModel = mongoose.model("storeWorkshops", StoreWorkshopSchema);
+
