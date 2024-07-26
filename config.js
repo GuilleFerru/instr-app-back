@@ -16,8 +16,8 @@ export default {
     NODE_TLS_REJECT: process.env.NODE_TLS_REJECT_UNAUTHORIZED || '0',
     HOST: process.env.HOST || '127.0.0.1',
     PORT: process.env.PORT || 3001,
-    MONGO_URL: process.env.MONGO_URL,
-    MONGO_URL_DEV: process.env.MONGO_URL_DEV,
-    SECRET_KEY: process.env.SECRET_KEY,
+    MONGO_URL: 'mongodb+srv://instrpr3:t03fnx3x5piHl20P@instrumentosdb.hwfi6.mongodb.net/instrumentos?retryWrites=true&w=majority',
+    MONGO_URL_DEV: 'mongodb://localhost:27017',
+    SECRET_KEY: 'instrumentos'
 }
 

@@ -174,7 +174,7 @@ export class ApiRoutine {
 
     createRoutineScheduleByNewMonth = async () => {
         const today = todayInLocalDate();
-        const dueDate = addDays(today, -1);
+        const dueDate = addDays(today, -2);
         const completeRoutineSchedules = await dao.updateRoutineScheduleByDueDate(dueDate);
         
         for (const routineSchedule of completeRoutineSchedules) {
