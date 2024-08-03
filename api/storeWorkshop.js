@@ -28,7 +28,7 @@ export class ApiStoreWorkshop {
                 },
                 'update_crud_workshop': async () => {
                     const data = await this.updateCrudWorkshop(storeWorkshopData);
-                    if (data) socket.emit('get_store_workshop', await this.getStoreWorkshop());
+                    socket.emit('get_store_workshop', data ? await this.getStoreWorkshop() : false);
                 },
                 'delete_store_workshop': async () => {
                     const data = await this.deleteStoreWorkshop(storeWorkshopData);
@@ -110,8 +110,8 @@ export class ApiStoreWorkshop {
         try {
             const { id, name, crudAction } = { ...data };
             if (data) {
-                await dao.updateCrudWorkshop(id, name, crudAction);
-                return true;
+                const resp = await dao.updateCrudWorkshop(id, name, crudAction);
+                return resp;
             } else {
                 loggerError.error(`Unknown action: ${crudAction}`);
             }

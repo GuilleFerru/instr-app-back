@@ -1313,6 +1313,7 @@ export class DBMongoDao {
                     "bigDescription": storeWorkshopData.bigDescription,
                     "storeWorkshopUbication": storeWorkshopData.storeWorkshopUbication,
                     "quantity": storeWorkshopData.quantity,
+                    "state":storeWorkshopData.state,
                     "date": storeWorkshopData.date,
                     "sector": storeWorkshopData.sector
                 }
