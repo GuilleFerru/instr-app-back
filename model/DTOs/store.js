@@ -43,6 +43,7 @@ export const changeIDForViewStoreWorkshopDTO = (data) => ({
     bigDescription: data.bigDescription,
     storeWorkshopUbication: data.storeWorkshopUbication,
     quantity: data.quantity,
+    state: data.state,
     date: data.date,
 });
 
@@ -53,6 +54,7 @@ export const saveStoreWorkshopDTO = (data) => ({
     bigDescription: data.bigDescription ? data.bigDescription : 'Sin información relevante',
     storeWorkshopUbication: data.storeWorkshopUbication,
     quantity: data.quantity,
+    state: data.state,
     date: data.date ? dateInLocalDate(data.date) : dateInLocalDate(new Date()),
     sector: 'Instrumentos-Sistemas'
 });

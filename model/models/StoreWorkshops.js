@@ -21,7 +21,11 @@ const StoreWorkshopSchema = new mongoose.Schema({
     },
     quantity: {
         type: Number,
-        default: 0,
+        default: 1,
+    },
+    state: {
+        type: Number,
+        default: 1,
     },
     date: {
         type: Date,
