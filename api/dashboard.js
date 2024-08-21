@@ -59,7 +59,6 @@ export class ApiDashboard {
             widgetData.push(routines, dailyWorks, plantShutdown, schedule);
             return widgetData;
         } catch (err) {
-            console.log(err)
             loggerError.error(err);
         } finally {
         }

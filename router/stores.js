@@ -12,6 +12,8 @@ export class RouterStore {
     start() {
         router.post('/uploadStoreItems', userExtractor, this.controllerStore.uploadStoreItems);
         router.get('/searchBy/:value', userExtractor, this.controllerStore.getStoreItemBy);
+        //router.get('/getDataForUbicationCrud', userExtractor, this.controllerStore.getDataForUbicationCrud);
+        //router.delete('/deleteUbication', userExtractor, this.controllerStore.deleteUbicationWorkshop);
         return router;
     }
 

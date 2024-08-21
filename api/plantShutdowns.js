@@ -90,7 +90,6 @@ export class ApiPlantShutdown {
             const dashboardPlantShutdown = [qtyInExecutionPlantShutdowns, nextPlantShutdown ? formatDate(nextPlantShutdown.beginDate) : 'Sin paro programado'];
             return dashboardPlantShutdown;
         } catch (err) {
-            console.log(err)
             loggerError.error(err);
         } finally {
         }

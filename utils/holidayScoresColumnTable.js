@@ -56,7 +56,6 @@ export class HolidayScoreColumnTable {
         try {
             const columns = createHolidayScoreColumns(await employeesData());
             const saveColumns = { columns: columns };
-            console.log(saveColumns);
             const resp = await dao.createHolidayScoreColumns(saveColumns);
             return resp;
         } catch (err) {

@@ -4,7 +4,8 @@ import { ApiRoutine } from './api/routines.js';
 import { ApiPlantShutdown } from './api/plantShutdowns.js';
 import { ApiPlantShutdownWork } from './api/plantShutdownWorks.js';
 import { ApiHoliday } from './api/holidays.js';
-import { ApiStoreClaim } from './api/storeClaims.js'
+import { ApiStoreClaim } from './api/storeClaims.js';
+import { ApiStoreWorkshop } from './api/storeWorkshop.js';
 import { formatDate } from './utils/formatDate.js';
 import { loggerInfo } from "./utils/logger.js";
 
@@ -15,6 +16,7 @@ const apiPlantShutdown = new ApiPlantShutdown();
 const apiPlantShutdownWork = new ApiPlantShutdownWork();
 const apiHoliday = new ApiHoliday();
 const apiStoreClaim = new ApiStoreClaim();
+const apiStoreWorkshop = new ApiStoreWorkshop();
 
 
 export default (io) => {
@@ -103,7 +105,15 @@ export default (io) => {
         socket.on("update_store_claim", (storeClaimData) => apiStoreClaim.handleSocket({ socket, action: "update_store_claim", storeClaimData, io }));
         socket.on("bulk_update_store_claims", (storeClaimData) => apiStoreClaim.handleSocket({ socket, action: "bulk_update_store_claims", storeClaimData, io }));
         socket.on("delete_store_claim", (storeClaimData) => apiStoreClaim.handleSocket({ socket, action: "delete_store_claim", storeClaimData, io }));
-
+        socket.on("get_store_workshop", () => apiStoreWorkshop.handleSocket({ socket, action: "get_store_workshop" }));
+        socket.on("create_store_workshop", (storeWorkshopData) => apiStoreWorkshop.handleSocket({ socket, action: "create_store_workshop", storeWorkshopData, io }));
+        socket.on("update_store_workshop", (storeWorkshopData) => apiStoreWorkshop.handleSocket({ socket, action: "update_store_workshop", storeWorkshopData, io }));
+        socket.on("delete_store_workshop", (storeWorkshopData) => apiStoreWorkshop.handleSocket({ socket, action: "delete_store_workshop", storeWorkshopData, io }));
+        socket.on("create_ubication_workshop", (storeWorkshopData) => apiStoreWorkshop.handleSocket({ socket, action: "create_ubication_workshop", storeWorkshopData, io }));
+        socket.on("create_type_workshop", (storeWorkshopData) => apiStoreWorkshop.handleSocket({ socket, action: "create_type_workshop", storeWorkshopData, io }));
+        socket.on("create_crud_workshop", (storeWorkshopData) => apiStoreWorkshop.handleSocket({ socket, action: "create_crud_workshop", storeWorkshopData, io }));
+        socket.on("update_crud_workshop", (storeWorkshopData) => apiStoreWorkshop.handleSocket({ socket, action: "update_crud_workshop", storeWorkshopData, io }));
+        socket.on("delete_crud_workshop", (storeWorkshopData) => apiStoreWorkshop.handleSocket({ socket, action: "delete_crud_workshop", storeWorkshopData, io }));
         socket.on("disconnect", () => {
             loggerInfo.info(`Socket ${socket.id} disconnected`);
         });

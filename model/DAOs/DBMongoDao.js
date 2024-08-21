@@ -32,6 +32,10 @@ import { holidayModel } from '../models/Holidays.js';
 import { storeClaimModel } from "../models/StoreClaim.js";
 import { storeItemModel } from "../models/StoreItems.js";
 import { scheduleUpdateModel } from "../models/ScheduleUpdates.js";
+import { storeWorkshopModel } from "../models/StoreWorkshops.js";
+import { storeWorkshopTypeModel } from "../models/StoreWorkshopTypes.js";
+import { storeWorkshopUbicationModel } from "../models/StoreWorkshopUbications.js";
+
 
 //const MONGO_URL = config.MONGO_URL_DEV;
 const MONGO_URL = config.MONGO_URL;
@@ -1238,6 +1242,126 @@ export class DBMongoDao {
         }
     }
 
+    getStoreWorkshop = async () => {
+        try {
+            const storeWorkshopResp = await storeWorkshopModel.find({}, { __v: 0, createdAt: 0, updatedAt: 0 });
+            //const storeWorkshopResp = await storeWorkshopModel.find({}, { __v: 0, createdAt: 0, updatedAt: 0 }).populate('storeWorkshopUbication');
+            return storeWorkshopResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    getStoreWorkshopUbications = async () => {
+        try {
+            const storeWorkshopUbicationsResp = await storeWorkshopUbicationModel.find({}, { __v: 0, createdAt: 0, updatedAt: 0 })
+            return storeWorkshopUbicationsResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    getStoreWorkshopTypes = async () => {
+        try {
+            const storeWorkshopTypesResp = await storeWorkshopTypeModel.find({}, { __v: 0, createdAt: 0, updatedAt: 0 })
+            return storeWorkshopTypesResp;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    createWorkshopStoreItem = async (item) => {
+        try {
+            await storeWorkshopModel.insertMany(item);
+            return true;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    createUbicationWorkshop = async (name) => {
+        const newType = new storeWorkshopUbicationModel({
+            name: name
+        });
+        try {
+            await newType.save();
+            return true;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    createTypeWorkshop = async (name) => {
+        const newType = new storeWorkshopTypeModel({
+            name: name
+        });
+        try {
+            await newType.save();
+            return true;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+    updateStoreWorkshop = async (id, storeWorkshopData) => {
+        try {
+            await storeWorkshopModel.updateOne({ "_id": id }, {
+                $set: {
+                    "eqType": storeWorkshopData.eqType,
+                    "tag": storeWorkshopData.tag,
+                    "item": storeWorkshopData.item,
+                    "bigDescription": storeWorkshopData.bigDescription,
+                    "storeWorkshopUbication": storeWorkshopData.storeWorkshopUbication,
+                    "quantity": storeWorkshopData.quantity,
+                    "date": storeWorkshopData.date,
+                    "sector": storeWorkshopData.sector
+                }
+            });
+            return true;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
+
+
+    updateCrudWorkshop = async (id, name, crudAction) => {
+        try {
+            const crudModel = crudAction === 'eqType' ? storeWorkshopTypeModel : storeWorkshopUbicationModel;
+            const updatedDoc = await crudModel.findOneAndUpdate(
+                { id },
+                { $set: { name } },
+                { new: true, runValidators: true }
+            );
+            if (!updatedDoc) {
+                return false;
+            }
+            return true;
+        } catch (error) {
+            loggerError.error(error)
+            return false;
+        }
+    }
+
+    deleteCrudWorkshop = async (id, crudAction) => {
+        try {
+            const crudModel = crudAction === 'eqType' ? storeWorkshopTypeModel : storeWorkshopUbicationModel;
+            const deleteDoc = await crudModel.findOne({ 'id': id });
+            await deleteDoc.remove();
+            return true;
+        } catch (error) {
+            loggerError.error(error)
+            return false;
+        }
+    }
+
+    deleteStoreWorkshop = async (id) => {
+        try {
+            await storeWorkshopModel.deleteOne({ "_id": id });
+            return true;
+        } catch (error) {
+            loggerError.error(error)
+        }
+    }
 
     /*                                                          */
 

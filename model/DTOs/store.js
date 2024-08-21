@@ -33,3 +33,37 @@ export const saveStoreClaimDTO = (data) => ({
     //addedToClaim: data.addedToClaim,
     sector: 'Instrumentos-Sistemas'
 });
+
+
+export const changeIDForViewStoreWorkshopDTO = (data) => ({
+    id: data._id,
+    eqType: data.eqType,
+    tag: data.tag,
+    item: data.item,
+    bigDescription: data.bigDescription,
+    storeWorkshopUbication: data.storeWorkshopUbication,
+    quantity: data.quantity,
+    date: data.date,
+});
+
+export const saveStoreWorkshopDTO = (data) => ({
+    eqType: data.eqType,
+    tag: data.tag ? data.tag : '-',
+    item: data.item ? data.item : '-',
+    bigDescription: data.bigDescription ? data.bigDescription : 'Sin información relevante',
+    storeWorkshopUbication: data.storeWorkshopUbication,
+    quantity: data.quantity,
+    date: data.date ? dateInLocalDate(data.date) : dateInLocalDate(new Date()),
+    sector: 'Instrumentos-Sistemas'
+});
+
+export const reduceForLookUpDTO = (ubications) => ubications.map(ubication => ({
+    id: ubication.id,
+    name: ubication.name,
+}));
+
+export const saveUbicationWorkshopDTO  = (data) => {
+    return {
+        name: data.name,
+    }
+}

@@ -52,7 +52,6 @@ export class ApiAttelier {
             // }, {});
 
         } catch (err) {
-            console.log(err)
             loggerError.error(err);
         } finally {
         }
