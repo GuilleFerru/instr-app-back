@@ -175,15 +175,15 @@ export class ApiRoutine {
     createRoutineScheduleByNewMonth = async () => {
         const today = todayInLocalDate();
         const dueDate = addDays(today, -2);
-        const completeRoutineSchedules = await dao.updateRoutineScheduleByDueDate(dueDate);
+        //const completeRoutineSchedules = await dao.updateRoutineScheduleByDueDate(dueDate);
         
         for (const routineSchedule of completeRoutineSchedules) {
             const startDate = addDays(dueDate, 1)
             const routine = await dao.getRoutine(routineSchedule.routine);
             if (routine[0].active) {
                 const newRoutineSchedule = checkDueDate(routineSchedule.routine, startDate, routineSchedule.checkDays, routineSchedule.otherCheckDay, routine[0].frecuency, '', routineSchedule.nickname);
-                routineSchedule.complete === false && await dao.updateIsExpiredRoutineSchedule(routineSchedule._id, true);
-                await dao.createRoutineSchedule(newRoutineSchedule);
+                //routineSchedule.complete === false && await dao.updateIsExpiredRoutineSchedule(routineSchedule._id, true);
+                //await dao.createRoutineSchedule(newRoutineSchedule);
             }
         }
     }
@@ -363,6 +363,29 @@ export class ApiRoutine {
         } catch (err) {
             loggerError.error(err);
         } finally {
+        }
+    }
+
+    createMonthRoutine = async() => {
+        try {
+
+            const today = todayInLocalDate();
+            const dueDate = addDays(today, -2);
+            //const completeRoutineSchedules = await dao.updateRoutineScheduleByDueDate(dueDate);
+            
+            // for (const routineSchedule of completeRoutineSchedules) {
+            //     const startDate = addDays(dueDate, 1)
+            //     const routine = await dao.getRoutine(routineSchedule.routine);
+            //     if (routine[0].active) {
+            //         const newRoutineSchedule = checkDueDate(routineSchedule.routine, startDate, routineSchedule.checkDays, routineSchedule.otherCheckDay, routine[0].frecuency, '', routineSchedule.nickname);
+            //         routineSchedule.complete === false && await dao.updateIsExpiredRoutineSchedule(routineSchedule._id, true);
+            //         await dao.createRoutineSchedule(newRoutineSchedule);
+            //     }
+            // }
+
+            console.log('llegue', today, dueDate)
+        } catch (err) {
+            loggerError.error(err)
         }
     }
 }
