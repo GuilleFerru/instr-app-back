@@ -110,6 +110,6 @@ import { ApiRoutine } from './api/routines.js';
 const apiRoutine = new ApiRoutine();
 //me crea todas las rutinas del mes, todos los meses a las 0:00 horas
 schedule.scheduleJob("0 0 0 1 */1 *", () => {
-  apiRoutine.createRoutineScheduleByNewMonth();
+  apiRoutine.createRoutineScheduleByNewMonth();  
 })
 //apiRoutine.createRoutineScheduleByNewMonth();
