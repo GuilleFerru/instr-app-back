@@ -37,8 +37,8 @@ import { storeWorkshopTypeModel } from "../models/StoreWorkshopTypes.js";
 import { storeWorkshopUbicationModel } from "../models/StoreWorkshopUbications.js";
 
 
-//const MONGO_URL = config.MONGO_URL_DEV;
-const MONGO_URL = config.MONGO_URL;
+const MONGO_URL = config.MONGO_URL_DEV;
+//const MONGO_URL = config.MONGO_URL;
 
 export class DBMongoDao {
 
