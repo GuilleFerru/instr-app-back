@@ -183,7 +183,6 @@ export class ApiDashboard {
             return data;
 
         } catch (err) {
-            console.log(err)
             loggerError.error(err);
         } finally {
         }

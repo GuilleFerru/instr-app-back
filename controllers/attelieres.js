@@ -12,7 +12,6 @@ export class ControllerAttelier {
             await this.apiAttelier.createAttelier(attelier);
             return res.status(200).json(true);
         } catch (err) {
-            console.log(err);
             return res.status(500).json(err);
         }
     }
@@ -22,7 +21,6 @@ export class ControllerAttelier {
             const attelieres = await this.apiAttelier.getAttelieres();
             return res.status(200).json(attelieres);
         } catch (err) {
-            console.log(err);
             return res.status(500).json(err);
         }
     }

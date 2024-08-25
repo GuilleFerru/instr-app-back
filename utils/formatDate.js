@@ -27,6 +27,15 @@ export const todayInLocalDate = () => {
     return today;
 }
 
+export const getFirstDayOfCurrentMonth = () => {
+    const localToday = new Date().toLocaleDateString('es-AR');
+    const today = parseStringToDate(localToday);
+    // Obtener el primer día del mes
+    const firstDayOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+    return firstDayOfMonth;
+}
+
+
 export const dateInLocalDate = (date) => {
     const localDate = new Date(date).toLocaleDateString('es-AR');
     const dateResp = parseStringToDate(localDate);

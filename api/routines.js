@@ -8,7 +8,7 @@ import { ApiManteinance } from './manteinances.js';
 import { ApiManteinanceAction } from './manteinanceActions.js';
 import { saveRoutineDTO, routineScheduleDTO, routineRespDTO, routineRespForOthersRoutineDTO, routineSavedAsDailyWorkDTO } from '../model/DTOs/routine.js';
 import { OthersRoutineColumnTable } from '../utils/otherRoutinesColumnTable.js';
-import { parseStringToDate, dateInLocalDate, todayInLocalDate, monthAndYearString, getDayName } from '../utils/formatDate.js';
+import { parseStringToDate, dateInLocalDate, todayInLocalDate, monthAndYearString, getDayName, getFirstDayOfCurrentMonth } from '../utils/formatDate.js';
 import { loggerError, loggerInfo } from '../utils/logger.js';
 
 const getNicknamesForSelectForm = async () => {
@@ -112,8 +112,8 @@ const checkDueDate = (lastRoutineId, startDay, checkDays, otherCheckDay, frecuen
 
 }
 
-const otherRoutineResp = (otherRoutines, columns, date) => {
-    const otherRoutineResp = { otherRoutines, columns, date };
+const otherRoutineResp = (otherRoutines, columns, date, hasFrequencyInRange) => {
+    const otherRoutineResp = { otherRoutines, columns, date, hasFrequencyInRange };
     return otherRoutineResp;
 }
 
@@ -121,10 +121,19 @@ const getRoutines = async (routineSchedules, filter) => {
     const routinesId = [];
     const routines = [];
     const savedRoutines = await dao.getRoutines();
-
     if (routineSchedules !== undefined) {
         routineSchedules.map(element => {
-            routinesId.push({ _id: element._id, routineId: element.routine, complete: element.complete, ot: element.ot, nickname: element.nickname, filePath: element.filePath, checkDay: element.otherCheckDay, weekCheckDays: element.checkDays, realCheckedDay: element.realCheckedDay });
+            routinesId.push({
+                _id: element._id,
+                routineId: element.routine,
+                complete: element.complete,
+                ot: element.ot,
+                nickname: element.nickname,
+                filePath: element.filePath,
+                checkDay: element.otherCheckDay,
+                weekCheckDays: element.checkDays,
+                realCheckedDay: element.realCheckedDay,
+            });
         });
     }
     for (const element of routinesId) {
@@ -140,6 +149,23 @@ const getRoutines = async (routineSchedules, filter) => {
     }
     return routines;
 }
+
+// const checkFrequencyRange = (allRoutines) => {
+//     // const currentDate = new Date();
+//     // const currentYear = currentDate.getFullYear();
+//     // const currentMonth = currentDate.getMonth();
+
+//     const hasFrequencyAndDateInRange = allRoutines.some(item => {
+//         const itemDate = new Date(item.createdAt);
+//         const isInCurrentMonth =
+//             itemDate.getFullYear() === currentYear &&
+//             itemDate.getMonth() === currentMonth;
+
+//         return item.frecuency >= 1 && item.frecuency <= 6;
+//     });
+//     return hasFrequencyAndDateInRange;
+
+// }
 
 export class ApiRoutine {
 
@@ -173,19 +199,19 @@ export class ApiRoutine {
     }
 
     createRoutineScheduleByNewMonth = async () => {
-        const today = todayInLocalDate();
-        const dueDate = addDays(today, -2);
-        //const completeRoutineSchedules = await dao.updateRoutineScheduleByDueDate(dueDate);
-        
-        for (const routineSchedule of completeRoutineSchedules) {
-            const startDate = addDays(dueDate, 1)
-            const routine = await dao.getRoutine(routineSchedule.routine);
-            if (routine[0].active) {
-                const newRoutineSchedule = checkDueDate(routineSchedule.routine, startDate, routineSchedule.checkDays, routineSchedule.otherCheckDay, routine[0].frecuency, '', routineSchedule.nickname);
-                //routineSchedule.complete === false && await dao.updateIsExpiredRoutineSchedule(routineSchedule._id, true);
-                //await dao.createRoutineSchedule(newRoutineSchedule);
-            }
-        }
+        // const today = todayInLocalDate();
+        // const dueDate = addDays(today, -2);
+        // const completeRoutineSchedules = await dao.updateRoutineScheduleByDueDate(dueDate);
+
+        // for (const routineSchedule of completeRoutineSchedules) {
+        //     const startDate = addDays(dueDate, 1)
+        //     const routine = await dao.getRoutine(routineSchedule.routine);
+        //     if (routine[0].active) {
+        //         const newRoutineSchedule = checkDueDate(routineSchedule.routine, startDate, routineSchedule.checkDays, routineSchedule.otherCheckDay, routine[0].frecuency, '', routineSchedule.nickname);
+        //         routineSchedule.complete === false && await dao.updateIsExpiredRoutineSchedule(routineSchedule._id, true);
+        //         await dao.createRoutineSchedule(newRoutineSchedule);
+        //     }
+        // }
     }
 
     getRoutine = async (date) => {
@@ -203,19 +229,22 @@ export class ApiRoutine {
     getAllRoutine = async (date) => {
         try {
             const localDate = dateInLocalDate(date);
+            const columns = [];
             const routinesSchedules = await dao.getAllRoutinesSchedules(localDate);
             const allRoutines = await getRoutines(routinesSchedules, 'forRoutines');
-            const columns = [];
             const savedColumns = await OthersRoutineColumnTable.getColumns();
+
             if (savedColumns.length === 0) {
                 const savedColumns = await OthersRoutineColumnTable.createColumns();
                 columns.push(savedColumns[0].columns);
             } else {
                 columns.push(savedColumns[0].columns);
             }
+
             if (allRoutines.length > 0) {
                 const monthAndYear = monthAndYearString(localDate);
-                return otherRoutineResp(allRoutines, ...columns, monthAndYear);
+                const hasFrequencyInRange = allRoutines.some(item => item.frecuency >= 1 && item.frecuency <= 6);
+                return otherRoutineResp(allRoutines, ...columns, monthAndYear, !hasFrequencyInRange);
             }
         } catch (err) {
             loggerError.error(err);
@@ -366,24 +395,20 @@ export class ApiRoutine {
         }
     }
 
-    createMonthRoutine = async() => {
+    createMonthRoutine = async () => {
         try {
-
-            const today = todayInLocalDate();
-            const dueDate = addDays(today, -2);
-            //const completeRoutineSchedules = await dao.updateRoutineScheduleByDueDate(dueDate);
-            
-            // for (const routineSchedule of completeRoutineSchedules) {
-            //     const startDate = addDays(dueDate, 1)
-            //     const routine = await dao.getRoutine(routineSchedule.routine);
-            //     if (routine[0].active) {
-            //         const newRoutineSchedule = checkDueDate(routineSchedule.routine, startDate, routineSchedule.checkDays, routineSchedule.otherCheckDay, routine[0].frecuency, '', routineSchedule.nickname);
-            //         routineSchedule.complete === false && await dao.updateIsExpiredRoutineSchedule(routineSchedule._id, true);
-            //         await dao.createRoutineSchedule(newRoutineSchedule);
-            //     }
-            // }
-
-            console.log('llegue', today, dueDate)
+            const today = getFirstDayOfCurrentMonth();
+            const dueDate = addDays(today, -1);
+            const completeRoutineSchedules = await dao.updateRoutineScheduleByDueDate(dueDate);
+            for (const routineSchedule of completeRoutineSchedules) {
+                const startDate = addDays(dueDate, 1)
+                const routine = await dao.getRoutine(routineSchedule.routine);
+                if (routine[0].active) {
+                    const newRoutineSchedule = checkDueDate(routineSchedule.routine, startDate, routineSchedule.checkDays, routineSchedule.otherCheckDay, routine[0].frecuency, '', routineSchedule.nickname);
+                    routineSchedule.complete === false && await dao.updateIsExpiredRoutineSchedule(routineSchedule._id, true);
+                    await dao.createRoutineSchedule(newRoutineSchedule);
+                }
+            }
         } catch (err) {
             loggerError.error(err)
         }
