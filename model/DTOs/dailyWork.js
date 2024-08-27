@@ -9,7 +9,7 @@ export const saveDailyWorkDTO = (data, dateLocal, isWeekend = false) => ({
     manteinance: data.manteinance,
     ot: data.ot,
     action: data.action,
-    description: data.description,
+    description: data.description.normalize('NFC'),
     complete: data.complete === false ? 'P' : data.complete,
     beginDate: data.beginDate ? formatDate(data.beginDate) : dateLocal,
     beginDateTime: data.beginDate ? dateInLocalDate(data.beginDate) : parseStringToDate(dateLocal),
