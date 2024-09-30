@@ -1,6 +1,6 @@
 import { dao } from '../server.js';
 import { saveHolidaysDTO, holidayScoreRespDTO, holidayPeriodRespDTO, holidayDataDTO } from '../model/DTOs/holidays.js';
-import { formatDate, parseStringToDate } from '../utils/formatDate.js';
+import { formatDate, parseStringToDate,normalizeDate } from '../utils/formatDate.js';
 import { loggerError } from '../utils/logger.js';
 import { ApiEmployee } from './employees.js';
 import { ApiSchedule } from './schedules.js';
@@ -385,7 +385,10 @@ export class ApiHoliday {
             const nextEmpHoliday = []
             if (date) {
                 const period = holidays.filter(holiday => {
-                    return new Date(holiday.startDate) <= new Date(date) && new Date(holiday.endDate) >= new Date(date);
+                    const startDate = new Date(holiday.startDate);
+                    const endDate = new Date(holiday.endDate);
+                    const currentDate = new Date(date);
+                    return normalizeDate(startDate) <= normalizeDate(currentDate) && normalizeDate(endDate) >= normalizeDate(currentDate);
                 });
                 getCurrentPeriod.push(period[0]);
             } else {
