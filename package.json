@@ -24,6 +24,7 @@
     "express": "^4.17.1",
     "express-session": "^1.17.2",
     "helmet": "^4.6.0",
+    "instr-app-back": "file:",
     "joi": "^17.6.0",
     "jsonwebtoken": "^8.5.1",
     "log4js": "^6.4.2",

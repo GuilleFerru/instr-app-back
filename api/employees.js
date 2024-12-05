@@ -1,5 +1,5 @@
 import { dao } from '../server.js';
-import { getForScheduleEmployeesDTO, employeesDTO, updateEmployeeDTO } from '../model/DTOs/employee.js';
+import { getForScheduleEmployeesDTO, employeesDTO, updateEmployeeDTO,filterActiveEmployeesDTO } from '../model/DTOs/employee.js';
 import { scheduleUpdateDTO } from '../model/DTOs/scheduleUpdate.js';
 import { dateInLocalDate } from '../utils/formatDate.js';
 import { timeScheduleForScheduleDTO } from '../model/DTOs/timeSchedule.js';
@@ -12,6 +12,7 @@ import { ObjectId } from 'mongodb';
 
 const apiTimeSchedule = new ApiTimeSchedule();
 const apiScheduleUpdate = new ApiScheduleUpdate();
+
 
 
 export class ApiEmployee {
@@ -32,7 +33,7 @@ export class ApiEmployee {
 
 
 
-    
+
     createEmployee = async (employee) => {
         try {
             const emp = await dao.createEmployee(employee);
@@ -77,7 +78,7 @@ export class ApiEmployee {
     getEmployees = async () => {
         try {
             const empResp = await dao.getEmployees();
-            return empResp;
+            return filterActiveEmployeesDTO(empResp);
         } catch (err) {
             loggerError.error(err);
         } finally {
@@ -149,6 +150,7 @@ export class ApiEmployee {
     static getEmployeesForHolidayForm = async () => {
         try {
             const empResp = await dao.getEmployees();
+            console
             const empSelect = empResp.map(emp => {
                 return {
                     id: emp.legajo,

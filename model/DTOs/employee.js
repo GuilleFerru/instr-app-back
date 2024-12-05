@@ -12,7 +12,8 @@ export const employeeDTO = (employee) => ({
     condicion: "Afiliado",
     shiftType: employee.shift,
     holidayDays: employee.holidayDays,
-    hireDate: employee.hireDate
+    hireDate: employee.hireDate,
+    status: employee.status,
 });
 
 export const getForScheduleEmployeesDTO = (employees) => employees.map(employee => ({
@@ -33,6 +34,7 @@ export const employeesDTO = (employees, schedules) => employees.map(employee => 
     schedule: schedules.find(schedule => schedule.id === employee.schedule).name,
     holidayDays: employee.holidayDays,
     hireDate: new Date(employee.hireDate).toLocaleDateString("es-AR"),
+    status: employee.status,
 }));
 
 export const updateEmployeeDTO = (employee, employeeDb) => ({
@@ -47,4 +49,10 @@ export const updateEmployeeDTO = (employee, employeeDb) => ({
     schedule: employee.shift === 'dailyShift' ? employee.turno : employeeDb[0].schedule,
     holidayDays: employee.holidayDays,
     hireDate: new Date(employee.hireDate),
+    status: employee.status,
 });
+
+export const filterActiveEmployeesDTO = (employees) => {
+    const activeEmployees = employees.filter(employee => employee.status === true);
+    return activeEmployees;
+}
