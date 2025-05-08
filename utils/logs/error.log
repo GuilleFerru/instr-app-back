@@ -1,0 +1,375 @@
+[2024-10-22T03:36:40.958] [ERROR] error - CastError: Cast to Boolean failed for value "" (type string) at path "status"
+    at model.Query.exec (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\lib\query.js:4540:21)
+    at model.Query.Query.then (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\lib\query.js:4639:15)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5) {
+  messageFormat: undefined,
+  stringValue: '""',
+  kind: 'Boolean',
+  value: '',
+  path: 'status',
+  reason: CastError: Cast to boolean failed for value "" (type string) at path "undefined"
+      at castBoolean (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\lib\cast\boolean.js:28:9)
+      at SchemaBoolean.cast (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\lib\schema\boolean.js:207:12)
+      at SchemaBoolean.SchemaType.applySetters (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\lib\schematype.js:1122:12)
+      at SchemaBoolean.SchemaType._castForQuery (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\lib\schematype.js:1553:15)
+      at SchemaBoolean.castForQuery (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\lib\schema\boolean.js:236:15)
+      at SchemaBoolean.SchemaType.castForQueryWrapper (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\lib\schematype.js:1520:20)
+      at castUpdateVal (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\lib\helpers\query\castUpdate.js:523:19)
+      at walkUpdatePath (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\lib\helpers\query\castUpdate.js:343:24)
+      at castUpdate (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\lib\helpers\query\castUpdate.js:95:7)
+      at model.Query._castUpdate (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\lib\query.js:4749:10)
+      at castDoc (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\lib\query.js:4777:18)
+      at model.Query._updateThunk (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\lib\query.js:3934:20)
+      at model.Query.<anonymous> (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\lib\query.js:4036:23)
+      at model.Query._wrappedThunk [as _updateOne] (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\lib\helpers\query\wrapThunk.js:27:8)
+      at C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\kareem\index.js:279:20
+      at _next (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\kareem\index.js:103:16) {
+    stringValue: '""',
+    messageFormat: undefined,
+    kind: 'boolean',
+    value: '',
+    path: undefined,
+    reason: undefined,
+    valueType: 'string'
+  },
+  valueType: 'string'
+}
+[2024-10-23T03:29:02.360] [ERROR] error - MongoBulkWriteError: E11000 duplicate key error collection: instrumentos.holidays index: periodName_1 dup key: { periodName: "Período 2025-2026" }
+    at OrderedBulkOperation.handleWriteError (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\bulk\common.js:879:22)
+    at resultHandler (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\bulk\common.js:397:27)
+    at C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\utils.js:532:9
+    at C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\operations\execute_operation.js:50:17
+    at callbackWithRetry (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\operations\execute_operation.js:81:20)
+    at C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connection_pool.js:272:25
+    at handleOperationResult (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\sdam\server.js:363:9)
+    at MessageStream.messageHandler (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connection.js:479:9)
+    at MessageStream.emit (node:events:513:28)
+    at processIncomingData (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\message_stream.js:108:16)
+    at MessageStream._write (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\message_stream.js:28:9)
+    at writeOrBuffer (node:internal/streams/writable:391:12)
+    at _write (node:internal/streams/writable:332:10)
+    at MessageStream.Writable.write (node:internal/streams/writable:336:10)
+    at TLSSocket.ondata (node:internal/streams/readable:754:22)
+    at TLSSocket.emit (node:events:513:28) {
+  code: 11000,
+  writeErrors: [ WriteError { err: [Object] } ],
+  result: BulkWriteResult {
+    result: {
+      ok: 1,
+      writeErrors: [Array],
+      writeConcernErrors: [],
+      insertedIds: [Array],
+      nInserted: 0,
+      nUpserted: 0,
+      nMatched: 0,
+      nModified: 0,
+      nRemoved: 0,
+      upserted: [],
+      opTime: [Object]
+    }
+  },
+  insertedDocs: []
+}
+[2024-10-23T03:32:46.359] [ERROR] error - TypeError: this.getEmployees is not a function
+    at Function.getEmployeesForHolidayForm (file:///C:/Users/Guille/Desktop/repos/instr-app-back/api/employees.js:152:40)
+    at ApiHoliday.getData (file:///C:/Users/Guille/Desktop/repos/instr-app-back/api/holidays.js:380:55)
+    at ApiHoliday.handleSocket (file:///C:/Users/Guille/Desktop/repos/instr-app-back/api/holidays.js:143:41)
+    at Socket.<anonymous> (file:///C:/Users/Guille/Desktop/repos/instr-app-back/sockets.js:90:73)
+    at Socket.emit (node:events:513:28)
+    at Socket.emitUntyped (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\socket.io\dist\typed-events.js:69:22)
+    at C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\socket.io\dist\socket.js:428:39
+    at processTicksAndRejections (node:internal/process/task_queues:78:11)
+[2024-10-23T03:32:46.546] [ERROR] error - TypeError: Cannot read properties of undefined (reading 'forEach')
+    at ApiHoliday.getData (file:///C:/Users/Guille/Desktop/repos/instr-app-back/api/holidays.js:399:29)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async ApiHoliday.handleSocket (file:///C:/Users/Guille/Desktop/repos/instr-app-back/api/holidays.js:143:30)
+[2024-10-23T03:33:19.044] [ERROR] error - TypeError: this.getEmployees is not a function
+    at Function.getEmployeesForHolidayForm (file:///C:/Users/Guille/Desktop/repos/instr-app-back/api/employees.js:152:40)
+    at ApiHoliday.getData (file:///C:/Users/Guille/Desktop/repos/instr-app-back/api/holidays.js:380:55)
+    at ApiHoliday.handleSocket (file:///C:/Users/Guille/Desktop/repos/instr-app-back/api/holidays.js:143:41)
+    at Socket.<anonymous> (file:///C:/Users/Guille/Desktop/repos/instr-app-back/sockets.js:90:73)
+    at Socket.emit (node:events:513:28)
+    at Socket.emitUntyped (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\socket.io\dist\typed-events.js:69:22)
+    at C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\socket.io\dist\socket.js:428:39
+    at processTicksAndRejections (node:internal/process/task_queues:78:11)
+[2024-10-23T03:33:19.236] [ERROR] error - TypeError: Cannot read properties of undefined (reading 'forEach')
+    at ApiHoliday.getData (file:///C:/Users/Guille/Desktop/repos/instr-app-back/api/holidays.js:399:29)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async ApiHoliday.handleSocket (file:///C:/Users/Guille/Desktop/repos/instr-app-back/api/holidays.js:143:30)
+[2024-10-23T03:35:57.326] [ERROR] error - TypeError: this.getEmployees is not a function
+    at Function.getEmployeesForHolidayForm (file:///C:/Users/Guille/Desktop/repos/instr-app-back/api/employees.js:152:40)
+    at ApiHoliday.getData (file:///C:/Users/Guille/Desktop/repos/instr-app-back/api/holidays.js:380:55)
+    at ApiHoliday.handleSocket (file:///C:/Users/Guille/Desktop/repos/instr-app-back/api/holidays.js:143:41)
+    at Socket.<anonymous> (file:///C:/Users/Guille/Desktop/repos/instr-app-back/sockets.js:90:73)
+    at Socket.emit (node:events:513:28)
+    at Socket.emitUntyped (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\socket.io\dist\typed-events.js:69:22)
+    at C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\socket.io\dist\socket.js:428:39
+    at processTicksAndRejections (node:internal/process/task_queues:78:11)
+[2024-10-23T03:35:57.497] [ERROR] error - TypeError: Cannot read properties of undefined (reading 'forEach')
+    at ApiHoliday.getData (file:///C:/Users/Guille/Desktop/repos/instr-app-back/api/holidays.js:399:29)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async ApiHoliday.handleSocket (file:///C:/Users/Guille/Desktop/repos/instr-app-back/api/holidays.js:143:30)
+[2024-10-23T03:42:46.005] [ERROR] error - TypeError: employees.filter is not a function
+    at filterActiveEmployees (file:///C:/Users/Guille/Desktop/repos/instr-app-back/api/employees.js:17:39)
+    at ApiEmployee.getEmployees (file:///C:/Users/Guille/Desktop/repos/instr-app-back/api/employees.js:84:35)
+    at getEmployees (file:///C:/Users/Guille/Desktop/repos/instr-app-back/api/schedules.js:46:39)
+    at ApiSchedule.createSchedule (file:///C:/Users/Guille/Desktop/repos/instr-app-back/api/schedules.js:250:37)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async ApiSchedule.getSchedule (file:///C:/Users/Guille/Desktop/repos/instr-app-back/api/schedules.js:323:28)
+    at async ApiSchedule.handleSocket (file:///C:/Users/Guille/Desktop/repos/instr-app-back/api/schedules.js:228:30)
+[2024-10-23T03:42:46.171] [ERROR] error - TypeError: Cannot read properties of undefined (reading 'map')
+    at ApiSchedule.createSchedule (file:///C:/Users/Guille/Desktop/repos/instr-app-back/api/schedules.js:258:40)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async ApiSchedule.getSchedule (file:///C:/Users/Guille/Desktop/repos/instr-app-back/api/schedules.js:323:28)
+    at async ApiSchedule.handleSocket (file:///C:/Users/Guille/Desktop/repos/instr-app-back/api/schedules.js:228:30)
+[2024-10-23T03:42:57.509] [ERROR] error - TypeError: employees.filter is not a function
+    at filterActiveEmployees (file:///C:/Users/Guille/Desktop/repos/instr-app-back/api/employees.js:17:39)
+    at ApiEmployee.getEmployees (file:///C:/Users/Guille/Desktop/repos/instr-app-back/api/employees.js:84:35)
+    at getEmployees (file:///C:/Users/Guille/Desktop/repos/instr-app-back/api/schedules.js:46:39)
+    at ApiSchedule.getScheduleForWidgetDashboard (file:///C:/Users/Guille/Desktop/repos/instr-app-back/api/schedules.js:455:37)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async ApiDashboard.getWidgetData (file:///C:/Users/Guille/Desktop/repos/instr-app-back/api/dashboard.js:58:30)
+    at async getWidgetData (file:///C:/Users/Guille/Desktop/repos/instr-app-back/controllers/dashboard.js:12:31)
+[2024-10-23T03:42:57.513] [ERROR] error - TypeError: employees is not iterable
+    at ApiSchedule.getScheduleForWidgetDashboard (file:///C:/Users/Guille/Desktop/repos/instr-app-back/api/schedules.js:461:40)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async ApiDashboard.getWidgetData (file:///C:/Users/Guille/Desktop/repos/instr-app-back/api/dashboard.js:58:30)
+    at async getWidgetData (file:///C:/Users/Guille/Desktop/repos/instr-app-back/controllers/dashboard.js:12:31)
+[2024-10-23T03:43:00.282] [ERROR] error - TypeError: employees.filter is not a function
+    at filterActiveEmployees (file:///C:/Users/Guille/Desktop/repos/instr-app-back/api/employees.js:17:39)
+    at ApiEmployee.getEmployees (file:///C:/Users/Guille/Desktop/repos/instr-app-back/api/employees.js:84:35)
+    at getEmployees (file:///C:/Users/Guille/Desktop/repos/instr-app-back/api/schedules.js:46:39)
+    at ApiSchedule.createSchedule (file:///C:/Users/Guille/Desktop/repos/instr-app-back/api/schedules.js:250:37)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async ApiSchedule.getSchedule (file:///C:/Users/Guille/Desktop/repos/instr-app-back/api/schedules.js:323:28)
+    at async ApiSchedule.handleSocket (file:///C:/Users/Guille/Desktop/repos/instr-app-back/api/schedules.js:228:30)
+[2024-10-23T03:43:00.467] [ERROR] error - TypeError: Cannot read properties of undefined (reading 'map')
+    at ApiSchedule.createSchedule (file:///C:/Users/Guille/Desktop/repos/instr-app-back/api/schedules.js:258:40)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async ApiSchedule.getSchedule (file:///C:/Users/Guille/Desktop/repos/instr-app-back/api/schedules.js:323:28)
+    at async ApiSchedule.handleSocket (file:///C:/Users/Guille/Desktop/repos/instr-app-back/api/schedules.js:228:30)
+[2024-12-05T10:32:34.853] [ERROR] error - MongoNetworkError: Client network socket disconnected before secure TLS connection was established
+    at connectionFailureError (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:293:20)
+    at TLSSocket.<anonymous> (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:267:22)
+    at Object.onceWrapper (node:events:628:26)
+    at TLSSocket.emit (node:events:513:28)
+    at emitErrorNT (node:internal/streams/destroy:157:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:122:3)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21)
+[2024-12-05T10:32:34.954] [ERROR] error - MongoNetworkError: Client network socket disconnected before secure TLS connection was established
+    at connectionFailureError (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:293:20)
+    at TLSSocket.<anonymous> (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:267:22)
+    at Object.onceWrapper (node:events:628:26)
+    at TLSSocket.emit (node:events:513:28)
+    at emitErrorNT (node:internal/streams/destroy:157:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:122:3)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21)
+[2024-12-05T10:32:35.049] [ERROR] error - MongoNetworkError: Client network socket disconnected before secure TLS connection was established
+    at connectionFailureError (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:293:20)
+    at TLSSocket.<anonymous> (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:267:22)
+    at Object.onceWrapper (node:events:628:26)
+    at TLSSocket.emit (node:events:513:28)
+    at emitErrorNT (node:internal/streams/destroy:157:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:122:3)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21)
+[2024-12-05T10:32:35.145] [ERROR] error - MongoNetworkError: Client network socket disconnected before secure TLS connection was established
+    at connectionFailureError (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:293:20)
+    at TLSSocket.<anonymous> (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:267:22)
+    at Object.onceWrapper (node:events:628:26)
+    at TLSSocket.emit (node:events:513:28)
+    at emitErrorNT (node:internal/streams/destroy:157:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:122:3)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21)
+[2024-12-05T10:32:35.242] [ERROR] error - MongoNetworkError: Client network socket disconnected before secure TLS connection was established
+    at connectionFailureError (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:293:20)
+    at TLSSocket.<anonymous> (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:267:22)
+    at Object.onceWrapper (node:events:628:26)
+    at TLSSocket.emit (node:events:513:28)
+    at emitErrorNT (node:internal/streams/destroy:157:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:122:3)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21)
+[2024-12-05T10:32:35.338] [ERROR] error - MongoNetworkError: Client network socket disconnected before secure TLS connection was established
+    at connectionFailureError (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:293:20)
+    at TLSSocket.<anonymous> (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:267:22)
+    at Object.onceWrapper (node:events:628:26)
+    at TLSSocket.emit (node:events:513:28)
+    at emitErrorNT (node:internal/streams/destroy:157:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:122:3)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21)
+[2024-12-05T10:32:35.471] [ERROR] error - MongoNetworkError: Client network socket disconnected before secure TLS connection was established
+    at connectionFailureError (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:293:20)
+    at TLSSocket.<anonymous> (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:267:22)
+    at Object.onceWrapper (node:events:628:26)
+    at TLSSocket.emit (node:events:513:28)
+    at emitErrorNT (node:internal/streams/destroy:157:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:122:3)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21)
+[2024-12-05T10:32:35.567] [ERROR] error - MongoNetworkError: Client network socket disconnected before secure TLS connection was established
+    at connectionFailureError (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:293:20)
+    at TLSSocket.<anonymous> (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:267:22)
+    at Object.onceWrapper (node:events:628:26)
+    at TLSSocket.emit (node:events:513:28)
+    at emitErrorNT (node:internal/streams/destroy:157:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:122:3)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21)
+[2024-12-05T10:32:35.662] [ERROR] error - MongoNetworkError: Client network socket disconnected before secure TLS connection was established
+    at connectionFailureError (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:293:20)
+    at TLSSocket.<anonymous> (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:267:22)
+    at Object.onceWrapper (node:events:628:26)
+    at TLSSocket.emit (node:events:513:28)
+    at emitErrorNT (node:internal/streams/destroy:157:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:122:3)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21)
+[2024-12-05T10:32:35.758] [ERROR] error - MongoNetworkError: Client network socket disconnected before secure TLS connection was established
+    at connectionFailureError (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:293:20)
+    at TLSSocket.<anonymous> (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:267:22)
+    at Object.onceWrapper (node:events:628:26)
+    at TLSSocket.emit (node:events:513:28)
+    at emitErrorNT (node:internal/streams/destroy:157:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:122:3)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21)
+[2024-12-05T10:32:35.864] [ERROR] error - MongoNetworkError: Client network socket disconnected before secure TLS connection was established
+    at connectionFailureError (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:293:20)
+    at TLSSocket.<anonymous> (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:267:22)
+    at Object.onceWrapper (node:events:628:26)
+    at TLSSocket.emit (node:events:513:28)
+    at emitErrorNT (node:internal/streams/destroy:157:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:122:3)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21)
+[2024-12-05T10:32:35.961] [ERROR] error - MongoNetworkError: Client network socket disconnected before secure TLS connection was established
+    at connectionFailureError (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:293:20)
+    at TLSSocket.<anonymous> (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:267:22)
+    at Object.onceWrapper (node:events:628:26)
+    at TLSSocket.emit (node:events:513:28)
+    at emitErrorNT (node:internal/streams/destroy:157:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:122:3)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21)
+[2024-12-05T10:32:36.060] [ERROR] error - MongoNetworkError: Client network socket disconnected before secure TLS connection was established
+    at connectionFailureError (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:293:20)
+    at TLSSocket.<anonymous> (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:267:22)
+    at Object.onceWrapper (node:events:628:26)
+    at TLSSocket.emit (node:events:513:28)
+    at emitErrorNT (node:internal/streams/destroy:157:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:122:3)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21)
+[2024-12-05T10:32:36.161] [ERROR] error - MongoNetworkError: Client network socket disconnected before secure TLS connection was established
+    at connectionFailureError (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:293:20)
+    at TLSSocket.<anonymous> (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:267:22)
+    at Object.onceWrapper (node:events:628:26)
+    at TLSSocket.emit (node:events:513:28)
+    at emitErrorNT (node:internal/streams/destroy:157:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:122:3)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21)
+[2024-12-05T10:32:36.263] [ERROR] error - MongoNetworkError: Client network socket disconnected before secure TLS connection was established
+    at connectionFailureError (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:293:20)
+    at TLSSocket.<anonymous> (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:267:22)
+    at Object.onceWrapper (node:events:628:26)
+    at TLSSocket.emit (node:events:513:28)
+    at emitErrorNT (node:internal/streams/destroy:157:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:122:3)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21)
+[2024-12-05T10:32:36.373] [ERROR] error - MongoNetworkError: Client network socket disconnected before secure TLS connection was established
+    at connectionFailureError (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:293:20)
+    at TLSSocket.<anonymous> (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:267:22)
+    at Object.onceWrapper (node:events:628:26)
+    at TLSSocket.emit (node:events:513:28)
+    at emitErrorNT (node:internal/streams/destroy:157:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:122:3)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21)
+[2024-12-05T10:32:36.481] [ERROR] error - MongoNetworkError: Client network socket disconnected before secure TLS connection was established
+    at connectionFailureError (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:293:20)
+    at TLSSocket.<anonymous> (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:267:22)
+    at Object.onceWrapper (node:events:628:26)
+    at TLSSocket.emit (node:events:513:28)
+    at emitErrorNT (node:internal/streams/destroy:157:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:122:3)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21)
+[2024-12-05T10:32:36.595] [ERROR] error - MongoNetworkError: Client network socket disconnected before secure TLS connection was established
+    at connectionFailureError (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:293:20)
+    at TLSSocket.<anonymous> (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:267:22)
+    at Object.onceWrapper (node:events:628:26)
+    at TLSSocket.emit (node:events:513:28)
+    at emitErrorNT (node:internal/streams/destroy:157:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:122:3)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21)
+[2024-12-05T10:32:36.705] [ERROR] error - MongoNetworkError: Client network socket disconnected before secure TLS connection was established
+    at connectionFailureError (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:293:20)
+    at TLSSocket.<anonymous> (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:267:22)
+    at Object.onceWrapper (node:events:628:26)
+    at TLSSocket.emit (node:events:513:28)
+    at emitErrorNT (node:internal/streams/destroy:157:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:122:3)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21)
+[2024-12-05T10:32:36.832] [ERROR] error - MongoNetworkError: Client network socket disconnected before secure TLS connection was established
+    at connectionFailureError (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:293:20)
+    at TLSSocket.<anonymous> (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:267:22)
+    at Object.onceWrapper (node:events:628:26)
+    at TLSSocket.emit (node:events:513:28)
+    at emitErrorNT (node:internal/streams/destroy:157:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:122:3)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21)
+[2024-12-05T10:32:36.928] [ERROR] error - MongoNetworkError: Client network socket disconnected before secure TLS connection was established
+    at connectionFailureError (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:293:20)
+    at TLSSocket.<anonymous> (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:267:22)
+    at Object.onceWrapper (node:events:628:26)
+    at TLSSocket.emit (node:events:513:28)
+    at emitErrorNT (node:internal/streams/destroy:157:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:122:3)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21)
+[2024-12-05T10:32:37.026] [ERROR] error - MongoNetworkError: Client network socket disconnected before secure TLS connection was established
+    at connectionFailureError (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:293:20)
+    at TLSSocket.<anonymous> (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:267:22)
+    at Object.onceWrapper (node:events:628:26)
+    at TLSSocket.emit (node:events:513:28)
+    at emitErrorNT (node:internal/streams/destroy:157:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:122:3)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21)
+[2024-12-05T10:32:37.121] [ERROR] error - MongoNetworkError: Client network socket disconnected before secure TLS connection was established
+    at connectionFailureError (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:293:20)
+    at TLSSocket.<anonymous> (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:267:22)
+    at Object.onceWrapper (node:events:628:26)
+    at TLSSocket.emit (node:events:513:28)
+    at emitErrorNT (node:internal/streams/destroy:157:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:122:3)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21)
+[2024-12-05T10:32:37.220] [ERROR] error - MongoNetworkError: Client network socket disconnected before secure TLS connection was established
+    at connectionFailureError (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:293:20)
+    at TLSSocket.<anonymous> (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:267:22)
+    at Object.onceWrapper (node:events:628:26)
+    at TLSSocket.emit (node:events:513:28)
+    at emitErrorNT (node:internal/streams/destroy:157:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:122:3)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21)
+[2024-12-05T10:32:37.322] [ERROR] error - MongoNetworkError: Client network socket disconnected before secure TLS connection was established
+    at connectionFailureError (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:293:20)
+    at TLSSocket.<anonymous> (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:267:22)
+    at Object.onceWrapper (node:events:628:26)
+    at TLSSocket.emit (node:events:513:28)
+    at emitErrorNT (node:internal/streams/destroy:157:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:122:3)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21)
+[2024-12-05T10:32:37.425] [ERROR] error - MongoNetworkError: Client network socket disconnected before secure TLS connection was established
+    at connectionFailureError (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:293:20)
+    at TLSSocket.<anonymous> (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:267:22)
+    at Object.onceWrapper (node:events:628:26)
+    at TLSSocket.emit (node:events:513:28)
+    at emitErrorNT (node:internal/streams/destroy:157:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:122:3)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21)
+[2024-12-05T10:32:37.526] [ERROR] error - MongoNetworkError: Client network socket disconnected before secure TLS connection was established
+    at connectionFailureError (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:293:20)
+    at TLSSocket.<anonymous> (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:267:22)
+    at Object.onceWrapper (node:events:628:26)
+    at TLSSocket.emit (node:events:513:28)
+    at emitErrorNT (node:internal/streams/destroy:157:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:122:3)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21)
+[2024-12-05T10:32:37.635] [ERROR] error - MongoNetworkError: Client network socket disconnected before secure TLS connection was established
+    at connectionFailureError (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:293:20)
+    at TLSSocket.<anonymous> (C:\Users\Guille\Desktop\repos\instr-app-back\node_modules\mongoose\node_modules\mongodb\lib\cmap\connect.js:267:22)
+    at Object.onceWrapper (node:events:628:26)
+    at TLSSocket.emit (node:events:513:28)
+    at emitErrorNT (node:internal/streams/destroy:157:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:122:3)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21)

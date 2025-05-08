@@ -79,3 +79,5 @@ export const startAndEndOfWeek = (date) => {
     sunday.setDate(sunday.getDate() - sunday.getDay() + 7);
     return [monday, sunday];
 }
+
+export const normalizeDate = (d) => new Date(d.getFullYear(), d.getMonth(), d.getDate());

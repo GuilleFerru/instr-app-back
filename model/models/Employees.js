@@ -51,8 +51,12 @@ const EmployeesSchema = new mongoose.Schema({
         type: Number,
         require: true,
     },
-    hireDate : {
+    hireDate: {
         type: Date,
+    },
+    status: {
+        type: Boolean,
+        default: true
     }
 
 },

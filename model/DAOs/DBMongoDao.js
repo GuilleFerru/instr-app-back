@@ -141,6 +141,7 @@ export class DBMongoDao {
                         condicion: employee.condicion,
                         holidayDays: employee.holidayDays,
                         hireDate: employee.hireDate,
+                        status: employee.status,
                     }
                 });
             return empResp;
